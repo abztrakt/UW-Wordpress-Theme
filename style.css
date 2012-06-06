@@ -1,7 +1,7 @@
 /*
-Theme Name: UW Skeleton
+Theme Name: UW
 Theme URI: washington.edu
-Description: A skeleton theme for UW Wordpress templates
+Description: A parent theme for UW Wordpress templates
 Author: UW Web Team (but mostly Kilian)
 Author URI: http://uw.edu/
 Version: 1.0
@@ -237,7 +237,7 @@ object {
 .comment-body p {
 	padding: 10px 0;
 }
-#comments, #respond {
+#comments, #respond h3 {
 	font-size: 16px;
 	padding: 40px 15px 0 25px;
 	display: block;
@@ -245,7 +245,19 @@ object {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	line-height: 20px;
 }
+#respond h3 {
+	padding: 40px 15px 15px 0;
+}
 
+/* ---- Tags ---- */
+.entry-meta {
+	padding: 10px 0;
+}
+.entry-meta a {
+	padding: 3px 12px;
+	border-radius: 30px;
+	background-color: #EEE;
+}
 
 
 @media (max-width: 767px) { 

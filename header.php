@@ -5,7 +5,7 @@
 
 <html>
   <link rel="stylesheet" type="text/css" href="http://www.washington.edu/common/bootstrap-2.0.4/css/bootstrap.min.css" />
-  <link rel="stylesheet" type="text/css" href="/concept/wp-content/themes/uwskeleton/css/bootstrap-responsive.css" />
+  <link rel="stylesheet" type="text/css" href="/concept/wp-content/themes/uw/css/bootstrap-responsive.css" />
   <link rel="stylesheet" type="text/css" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 <!--[if lt IE 9]>
@@ -14,13 +14,13 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
   <!--script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-dropdown.js"></script-->
-  <script src="/concept/wp-content/themes/uwskeleton/js/jquery.bootstrap.dropdown.js"></script>
-  <script src="/concept/wp-content/themes/uwskeleton/js/jquery.firenze.js"></script>
-  <script src="/concept/wp-content/themes/uwskeleton/js/weather.js"></script>
-  <script src="/concept/wp-content/themes/uwskeleton/js/jquery.placeholder.js"></script>
-  <script src="/concept/wp-content/themes/uwskeleton/js/jquery.imageexpander.js"></script>
+  <script src="/concept/wp-content/themes/uw/js/jquery.bootstrap.dropdown.js"></script>
+  <script src="/concept/wp-content/themes/uw/js/jquery.firenze.js"></script>
+  <script src="/concept/wp-content/themes/uw/js/weather.js"></script>
+  <script src="/concept/wp-content/themes/uw/js/jquery.placeholder.js"></script>
+  <script src="/concept/wp-content/themes/uw/js/jquery.imageexpander.js"></script>
   <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-  <script src="/concept/wp-content/themes/uwskeleton/js/header.js"></script>
+  <script src="/concept/wp-content/themes/uw/js/header.js"></script>
 <?php
 wp_head();
 ?>
