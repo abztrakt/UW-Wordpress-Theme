@@ -40,15 +40,6 @@
   <!--[if lt IE 9]>
     <script src="<?php echo get_template_directory_uri(); ?>js/html5.js" type="text/javascript"></script>
   <![endif]-->
-
-  <!--script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-  <script src="/concept/wp-content/themes/uw/js/jquery.bootstrap.dropdown.js"></script>
-  <script src="/concept/wp-content/themes/uw/js/jquery.firenze.js"></script>
-  <script src="/concept/wp-content/themes/uw/js/weather.js"></script>
-  <script src="/concept/wp-content/themes/uw/js/jquery.placeholder.js"></script>
-  <script src="/concept/wp-content/themes/uw/js/jquery.imageexpander.js"></script>
-  <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-  <script src="/concept/wp-content/themes/uw/js/header.js"></script-->
     
   <?php wp_head(); ?>
 
