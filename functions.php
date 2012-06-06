@@ -1,5 +1,8 @@
 <?php
 
+    /**
+     * Register with hook 'wp_enqueue_scripts', which can be used for front end CSS and JavaScript
+     */
 add_action( 'after_setup_theme', 'uw_setup' );
 
 if ( ! function_exists( 'uw_setup' ) ): 
@@ -35,6 +38,55 @@ if ( ! function_exists( 'uw_setup' ) ):
   }
 
 endif;
+
+add_action( 'wp_enqueue_scripts', 'uw_enqueue_default_styles' );
+
+if ( ! function_exists( 'uw_enqueue_default_styles' ) ): 
+/**
+ * This is where all the CSS files are registered
+ */
+  function uw_enqueue_default_styles() {
+      wp_register_style( 'bootstrap',get_bloginfo('template_directory') . '/css/bootstrap.css', array(), '2.0.4' );
+      wp_register_style( 'bootstrap-responsive', get_bloginfo('template_directory') . '/css/bootstrap-responsive.css', array('bootstrap'), '2.0.3' );
+      wp_register_style( 'uw-style', get_bloginfo('stylesheet_url'), array('bootstrap-responsive') );
+      wp_register_style( 'google-font-open-sans', 'https://fonts.googleapis.com/css?family=Open+Sans' );
+      wp_enqueue_style( 'bootstrap' );
+      wp_enqueue_style( 'bootstrap-responsive' );
+      wp_enqueue_style( 'uw-style' );
+      wp_enqueue_style( 'google-font-open-sans' );
+  }
+
+endif;
+
+add_action( 'wp_enqueue_scripts', 'uw_enqueue_default_scripts' );
+
+
+if ( ! function_exists( 'uw_enqueue_default_scripts' ) ): 
+/**
+ * This is where all the JS files are registered
+ */
+  function uw_enqueue_default_scripts() {
+    wp_deregister_script('jquery'); //we use googles CDN below
+    wp_register_script( 'jquery','https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js', array(), '1.7.2' );
+    wp_register_script( 'jquery.boostrap.dropdown', get_bloginfo('template_directory') . '/js/jquery.bootstrap.dropdown.js', array('jquery'), '2.0.3' );
+    wp_register_script( 'jquery.boostrap.collapse', get_bloginfo('template_directory') . '/js/bootstrap-collapse.js', array('jquery.boostrap.dropdown'), '2.0.4' );
+    wp_register_script( 'jquery.firenze', get_bloginfo('template_directory') . '/js/jquery.firenze.js', array('jquery'), '1.0' );
+    wp_register_script( 'jquery.weather', get_bloginfo('template_directory') . '/js/weather.js', array('jquery'), '1.0' );
+    wp_register_script( 'jquery.placeholder', get_bloginfo('template_directory') . '/js/jquery.placeholder.js', array('jquery'), '1.0' );
+    wp_register_script( 'jquery.imageexpander', get_bloginfo('template_directory') . '/js/jquery.imageexpander.js', array('jquery'), '1.0' );
+
+    wp_enqueue_script( 'jquery' );
+    wp_enqueue_script( 'jquery.bootstrap.dropdown' );
+    wp_enqueue_script( 'jquery.firenze' );
+    wp_enqueue_script( 'jquery.weather' );
+    wp_enqueue_script( 'jquery.placeholder' );
+    wp_enqueue_script( 'jquery.imageexpander' );
+    wp_enqueue_script( 'jquery.boostrap.collapse' );
+  }
+
+endif;
+
+
 
 if ( ! function_exists( 'uw_header_style' ) ): 
   function uw_header_style() {}

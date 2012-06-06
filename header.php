@@ -1,31 +1,59 @@
 <!doctype html>
-
-<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0" />
-
-
-<html>
-  <link rel="stylesheet" type="text/css" href="http://www.washington.edu/common/bootstrap-2.0.4/css/bootstrap.min.css" />
-  <link rel="stylesheet" type="text/css" href="/concept/wp-content/themes/uw/css/bootstrap-responsive.css" />
-  <link rel="stylesheet" type="text/css" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-<!--[if lt IE 9]>
-<script src="http://69.91.242.176/concept/wp-content/themes/twentyeleven/js/html5.js" type="text/javascript"></script>
+<!--[if IE 6]>
+<html id="ie6" <?php language_attributes(); ?>>
 <![endif]-->
+<!--[if IE 7]>
+<html id="ie7" <?php language_attributes(); ?>>
+<![endif]-->
+<!--[if IE 8]>
+<html id="ie8" <?php language_attributes(); ?>>
+<![endif]-->
+<!--[if !(IE 6) | !(IE 7) | !(IE 8)  ]><!-->
+<html <?php language_attributes(); ?>>
+<!--<![endif]-->
+<head>
+  <meta charset="<?php bloginfo( 'charset' ); ?>" />
+  <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0" />
+  <title>
+    <?php
+      /*
+       * Print the <title> tag based on what is being viewed.
+       */
+      global $page, $paged;
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-  <!--script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-dropdown.js"></script-->
+      wp_title( '|', true, 'right' );
+
+      // Add the blog name.
+      bloginfo( 'name' );
+
+      // Add the blog description for the home/front page.
+      $site_description = get_bloginfo( 'description', 'display' );
+      if ( $site_description && ( is_home() || is_front_page() ) )
+        echo " | $site_description";
+
+      // Add a page number if necessary:
+      if ( $paged >= 2 || $page >= 2 )
+        echo ' | ' . sprintf( __( 'Page %s', 'twentyeleven' ), max( $paged, $page ) );
+    ?>
+  </title>
+
+  <!--[if lt IE 9]>
+    <script src="<?php echo get_template_directory_uri(); ?>js/html5.js" type="text/javascript"></script>
+  <![endif]-->
+
+  <!--script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
   <script src="/concept/wp-content/themes/uw/js/jquery.bootstrap.dropdown.js"></script>
   <script src="/concept/wp-content/themes/uw/js/jquery.firenze.js"></script>
   <script src="/concept/wp-content/themes/uw/js/weather.js"></script>
   <script src="/concept/wp-content/themes/uw/js/jquery.placeholder.js"></script>
   <script src="/concept/wp-content/themes/uw/js/jquery.imageexpander.js"></script>
   <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-  <script src="/concept/wp-content/themes/uw/js/header.js"></script>
-<?php
-wp_head();
-?>
-<style>
-</style>
+  <script src="/concept/wp-content/themes/uw/js/header.js"></script-->
+    
+  <?php wp_head(); ?>
+
+</head>
+
 <body <?php body_class(); ?>>
 
 
