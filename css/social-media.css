@@ -1,0 +1,39 @@
+.social-media {
+	float: left;
+	height: 30px;
+	margin: 30px 0 5px 20px;
+}
+.social-media li {
+  list-style: none;
+  display: inline;
+  line-height: 13px;
+  margin: 4px 0 0 3px;
+  padding: 0 7px 0 0;
+  font-size: .8em;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.social-media li.twit a {  background-position: -35px 0 }
+.social-media li.email a { background-position: -70px 0 }
+.social-media li a {
+  width: 33px;
+  height: 29px;
+  background: url('/concept/wp-content/themes/uwskeleton/img/social/twitter-fb-email.gif') no-repeat 0 0 transparent;
+  display: block;
+  float: left;
+  overflow: hidden;
+  text-indent: -999px;
+  margin: 0;
+  border: none;
+}
+.social-media.loaded li.email a { 
+		background: url('/concept/wp-content/themes/uwskeleton/img/social/email.gif') no-repeat 0 0 transparent;
+		background-position: 0 0;
+		width: 75px;
+}
+
+.loaded .fb, .loaded .twit, .loaded .email {
+  width: 85px;
+  float: left;
+}
