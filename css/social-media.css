@@ -19,7 +19,7 @@
 .social-media li a {
   width: 33px;
   height: 29px;
-  background: url('/concept/wp-content/themes/uwskeleton/img/social/twitter-fb-email.gif') no-repeat 0 0 transparent;
+  background: url('/concept/wp-content/themes/uw/img/social/twitter-fb-email.gif') no-repeat 0 0 transparent;
   display: block;
   float: left;
   overflow: hidden;
@@ -28,7 +28,7 @@
   border: none;
 }
 .social-media.loaded li.email a { 
-		background: url('/concept/wp-content/themes/uwskeleton/img/social/email.gif') no-repeat 0 0 transparent;
+		background: url('/concept/wp-content/themes/uw/img/social/email.gif') no-repeat 0 0 transparent;
 		background-position: 0 0;
 		width: 75px;
 }
