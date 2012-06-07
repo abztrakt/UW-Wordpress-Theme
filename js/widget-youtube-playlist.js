@@ -49,7 +49,7 @@ $(window).load(function() {
             dur = video.media$group.yt$duration.seconds;
 
         var html = '<a id="'+ video_id +'" class="video" href="#">'+
-              '<img class="playBtn" src="/concept/wp-content/themes/news/img/play.png" />'+
+              '<img class="playBtn" src="/cms/wp-content/themes/news/img/play.png" />'+
                     '<img src="'+img.url+'" width="'+img.width+'" height="'+img.height+'" />'+
                     '<span class="title">'+title+'</span>'+
                     '<span class="duration">'+Math.floor(dur/60)+':'+(dur % 60)+'</span>'+

@@ -68,7 +68,7 @@ object {
 .widget_links h2,
 .popular-posts h2,
 .widget_yarpp_widget h2 {
-    background: url(/concept/wp-content/themes/uw/img/widgets/widget-sprite.png) no-repeat 0 -237px #39275B;
+    background: url(/cms/wp-content/themes/uw/img/widgets/widget-sprite.png) no-repeat 0 -237px #39275B;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 13px;
     line-height: 18px;
@@ -84,7 +84,7 @@ object {
 .widget_links h2 span,
 .popular-posts h2 span,
 .widget_yarpp_widget h2 span {
-    background: url(/concept/wp-content/themes/uw/img/widgets/widget-sprite.png) no-repeat -2px 2px;
+    background: url(/cms/wp-content/themes/uw/img/widgets/widget-sprite.png) no-repeat -2px 2px;
     padding: 4px 0 4px 34px;
 }
 
@@ -126,7 +126,7 @@ object {
 	color: #484848;
 }
 .video li {
-	background: url(/concept/wp-content/themes/uw/img/widgets/widget-sprite.png) no-repeat 2px -201px transparent;
+	background: url(/cms/wp-content/themes/uw/img/widgets/widget-sprite.png) no-repeat 2px -201px transparent;
 	padding: 2px 0 2px 25px;
 }
 
@@ -164,7 +164,7 @@ object {
     position: absolute;
     left: 9px;
     top: 5px;
-    background: url(/concept/wp-content/themes/uw/img/header/header-sprite.png) no-repeat -103px 2px transparent;
+    background: url(/cms/wp-content/themes/uw/img/header/header-sprite.png) no-repeat -103px 2px transparent;
     box-shadow: none;
     border: none;
     display: block;
@@ -180,7 +180,7 @@ object {
     line-height: 26px;
     padding: 0 0 45px 0;
     margin: 0;
-    background: url(/concept/wp-content/themes/uw/img/side-menu-bg.gif) no-repeat bottom center transparent;
+    background: url(/cms/wp-content/themes/uw/img/side-menu-bg.gif) no-repeat bottom center transparent;
 }
 .widget_nav_menu a {
     display: block;
@@ -197,7 +197,7 @@ object {
 .entry-content li {
 	margin-left: 0;
 	margin-bottom: 5px;
-	background: url('/concept/wp-content/themes/uw/img/bullet-gold.png') no-repeat left 7px transparent;
+	background: url('/cms/wp-content/themes/uw/img/bullet-gold.png') no-repeat left 7px transparent;
 	list-style: none;
 	padding-left: 12px;
 }
@@ -347,7 +347,7 @@ object {
 	}
 	.patch { display: none }
 	.wordmark {
-		background: url("/concept/wp-content/themes/uw/img/mobile-header/logo1x.png") no-repeat 0 0 transparent;
+		background: url("/cms/wp-content/themes/uw/img/mobile-header/logo1x.png") no-repeat 0 0 transparent;
 		width: 263px;
 		height: 40px;
 		text-indent: -9999px;
@@ -355,12 +355,12 @@ object {
 		display: block;
 	}
 	.wordmark {
-		background: url("/concept/wp-content/themes/uw/img/mobile-header/logo1x.png") no-repeat 0 0 transparent;
+		background: url("/cms/wp-content/themes/uw/img/mobile-header/logo1x.png") no-repeat 0 0 transparent;
 		width: 263px;
 		height: 44px;
 	}
 	#header > div > span:nth-child(3), #header > div > span:nth-child(4)  {
-		background: url("/concept/wp-content/themes/uw/img/mobile-header/dropdowns1x.png") no-repeat -29px 0px transparent;	
+		background: url("/cms/wp-content/themes/uw/img/mobile-header/dropdowns1x.png") no-repeat -29px 0px transparent;	
 		position: absolute;
 		top: 4px;
 		right: 10px;
@@ -731,7 +731,7 @@ object {
 	.image-magnifier {
 		width: 51px;
 		padding: 6px 24px 6px 12px;
-		background: url("/concept/wp-content/themes/uw/img/mobile-header/dropdowns1x.png") no-repeat 58px 2px #39275B;
+		background: url("/cms/wp-content/themes/uw/img/mobile-header/dropdowns1x.png") no-repeat 58px 2px #39275B;
 		font-size: 10px;
 		text-transform: uppercase;
 		color: #fff;
@@ -768,7 +768,7 @@ object {
 	*************************************************************************************/
 	
 	body {
-	    background: url(/concept/wp-content/themes/uw/img/header/bg-stripe.gif) repeat-x 197px 0 #FFF;
+	    background: url(/cms/wp-content/themes/uw/img/header/bg-stripe.gif) repeat-x 197px 0 #FFF;
 	}
 	
 	
@@ -792,7 +792,7 @@ object {
 		top: 0px;		
 	}
 	.thin-fixed div {
-		background: url("/concept/wp-content/themes/uw/img/mobile-header/logo1x.png") no-repeat -35px -5px #39275B;
+		background: url("/cms/wp-content/themes/uw/img/mobile-header/logo1x.png") no-repeat -35px -5px #39275B;
 	}
 	.logged-in #thin-strip {
 		top: 28px !important;
@@ -834,14 +834,14 @@ object {
 	.wordmark, .patch {
 	    display: block;
 	    position: absolute;
-	    background: url(/concept/wp-content/themes/uw/img/header/header-sprite.png) no-repeat 5px 15px #D7A900;
+	    background: url(/cms/wp-content/themes/uw/img/header/header-sprite.png) no-repeat 5px 15px #D7A900;
 	    width: 95px;
 	    height: 90px;
 	    text-indent: -999px;
 	    top: -30px;
 	}
 	.wordmark {
-	    background: url(/concept/wp-content/themes/uw/img/header/header-sprite.png) no-repeat 0 -87px transparent;
+	    background: url(/cms/wp-content/themes/uw/img/header/header-sprite.png) no-repeat 0 -87px transparent;
 	    width: 325px;
 	    height: 25px;
 	    left: 125px;
@@ -861,7 +861,7 @@ object {
 	    position: absolute;
 	    left: 9px;
 	    top: 5px;
-	    background: url(/concept/wp-content/themes/uw/img/header/header-sprite.png) no-repeat -103px 2px transparent;
+	    background: url(/cms/wp-content/themes/uw/img/header/header-sprite.png) no-repeat -103px 2px transparent;
 	    box-shadow: none;
 	    border: none;
 	    display: block;
@@ -1011,7 +1011,7 @@ object {
 	    filter: alpha(opacity=100);
 	}
 	.navbar-caret {
-		background: url(/concept/wp-content/themes/uw/img/header/menu-arrow.gif) no-repeat 0 0 transparent;
+		background: url(/cms/wp-content/themes/uw/img/header/menu-arrow.gif) no-repeat 0 0 transparent;
 	    text-indent: -9999px;
 	    overflow: hidden;
 	    top: 42px;
@@ -1023,7 +1023,7 @@ object {
 		text-indent: -99999px;
 		overflow: hidden;
 		width: 135px;
-	    background: url(/concept/wp-content/themes/uw/img/header/header-sprite.png) no-repeat 10px -108px transparent;
+	    background: url(/cms/wp-content/themes/uw/img/header/header-sprite.png) no-repeat 10px -108px transparent;
 	}
 	.navbar .nav > li.uw-medicine > a {
 		cursor: pointer;
@@ -1042,7 +1042,7 @@ object {
 	    padding: 10px 0 0 55px;
 	}
 	.right-bar, .stripe-top, .stripe-bottom {
-		background: url(/concept/wp-content/themes/uw/img/side-stripe.png) no-repeat 0 0 transparent;	
+		background: url(/cms/wp-content/themes/uw/img/side-stripe.png) no-repeat 0 0 transparent;	
 	}
 	.right-bar {
 	    background-repeat: repeat-y;
@@ -1079,7 +1079,7 @@ object {
 		position: absolute;
 		left: -7px;
 		top: 55px;	
-	    background: url(/concept/wp-content/themes/uw/img/arrow.png) no-repeat 0 0 transparent;
+	    background: url(/cms/wp-content/themes/uw/img/arrow.png) no-repeat 0 0 transparent;
 	    width: 32px;
 	    height: 50px;
 	    display: block;
@@ -1091,7 +1091,7 @@ object {
 		margin-top: -35px;
 		padding: 124px 0 50px 0;
 		overflow: hidden;
-		background: url(/concept/wp-content/themes/uw/img/footer.jpg) no-repeat center top transparent;	
+		background: url(/cms/wp-content/themes/uw/img/footer.jpg) no-repeat center top transparent;	
 	}
 	#footer {
 		width: 990px;
@@ -1125,7 +1125,7 @@ object {
 		margin: 0 0 10px 0;
 	}
 	.social-footer a {	
-		background: url(/concept/wp-content/themes/uw/img/soc-med.gif) no-repeat 0 0 transparent;
+		background: url(/cms/wp-content/themes/uw/img/soc-med.gif) no-repeat 0 0 transparent;
 		padding: 3px 0 3px 31px;
 		margin-bottom: 3px;
 		display: block;
@@ -1138,7 +1138,7 @@ object {
 	/* ----  Thin Strip Footer ---- */
 	
 	#footer-main {
-		background: url(/concept/wp-content/themes/uw/img/footer/bg.gif) repeat-x 0 0 #62584b;
+		background: url(/cms/wp-content/themes/uw/img/footer/bg.gif) repeat-x 0 0 #62584b;
 		height: 25px;
 		position: relative;
 		padding: 4px 0 0;
@@ -1219,11 +1219,11 @@ object {
     only screen and (min--moz-device-pixel-ratio: 1.5),
     only screen and (min-device-pixel-ratio: 1.5) {
     	.wordmark {
-    		background: url("/concept/wp-content/themes/uw/img/mobile-header/logo2x.png") no-repeat 0 0 transparent;
+    		background: url("/cms/wp-content/themes/uw/img/mobile-header/logo2x.png") no-repeat 0 0 transparent;
       	    background-size: 230px 35px;
     	}
     	#header > div > span:nth-child(3), #header > div > span:nth-child(4) {
-    		background: url("/concept/wp-content/themes/uw/img/mobile-header/dropdowns2x.png") no-repeat -29px 0px transparent;	
+    		background: url("/cms/wp-content/themes/uw/img/mobile-header/dropdowns2x.png") no-repeat -29px 0px transparent;	
     		background-size: 66px 32px;
     	}
  		#header > div > span:nth-child(4) {	

@@ -1,5 +1,4 @@
 .communityphotos p {
-	background:url("../widgets/extlink.gif") no-repeat scroll right 4px transparent;
 	color:#555;
 	font-size:60%;
 	font-weight:bold;
@@ -9,7 +8,6 @@
 	text-transform:uppercase;
 }
 .communityphotos p.communityphotosInst {
-	background:url("../widgets/news/expand.gif") no-repeat scroll 0 9px transparent;
 	border-right:1px solid #DDDDDD;
 	clear:both;
 	color:#888888;
@@ -57,7 +55,6 @@
 	padding-top:25px;
 }
 .communityphotosMore a {
-	background:url("../image/arrow_more.gif") no-repeat scroll left 0 transparent;
 	border:medium none transparent;
 	color:#777777 !important;
 	float:right;
@@ -106,6 +103,6 @@
 	display: block;
 }
 .widget_community_photos span a {
-	background: url("/concept/wp-content/themes/uw/img/bullet-gold.png") no-repeat 0 7px;
+	background: url("/cms/wp-content/themes/uw/img/bullet-gold.png") no-repeat 0 7px;
 	padding: 0 0 0 12px;
 }
