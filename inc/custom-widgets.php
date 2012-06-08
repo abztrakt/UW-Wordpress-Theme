@@ -66,7 +66,10 @@ class UW_Widget_Recent_Posts extends WP_Widget {
 		<?php echo $before_widget; ?>
 
     <ul id="news-tab-nav">
-      <li class="selected"><a class="recent-popular-widget" href="#tab-popular" title="Most popular">Most Popular</a></li>
+      <?php  if (class_exists('GADWidgetData') ) : ?>
+        <li class="selected"><a class="recent-popular-widget" href="#tab-popular" title="Most popular">Most Popular</a></li>
+      <?php endif; ?>
+
       <li><a class="recent-popular-widget" href="#tab-recent" title="Most recent">Recent</a></li>
     </ul>
     
@@ -86,6 +89,8 @@ class UW_Widget_Recent_Posts extends WP_Widget {
 		</ul>
 
     <?php  wp_reset_postdata(); ?>
+
+    <?php  if (class_exists('GADWidgetData') ) : ?>
 
     <ul id="tab-popular" class="popular-posts">
 
@@ -107,6 +112,9 @@ class UW_Widget_Recent_Posts extends WP_Widget {
 
       <?php endforeach; ?>
     </ul>
+
+    <?php endif; ?>
+
 		<?php echo $after_widget; ?>
 <?php
 		// Reset the global $the_post as this query will have stomped on it
@@ -312,7 +320,7 @@ class UW_Widget_MailChimp extends WP_Widget {
 
 	public function form( $instance ) {
 
-    $title  = isset( $instance[ 'title' ] ) ? $instance[ 'title' ] : __( 'Videos', '' );  ?>
+    $title  = isset( $instance[ 'title' ] ) ? $instance[ 'title' ] : __( 'Email Campaign', '' );  ?>
 
 		<p>
 		<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
