@@ -23,6 +23,8 @@ class UW_Widget_Recent_Posts extends WP_Widget {
 	function widget($args, $instance) {
 		$cache = wp_cache_get('widget_recent_posts', 'widget');
 
+    $show_popular = class_exists('GADWidgetData');
+
 		if ( !is_array($cache) )
 			$cache = array();
 
@@ -44,7 +46,7 @@ class UW_Widget_Recent_Posts extends WP_Widget {
 		$r = new WP_Query(array('posts_per_page' => $number, 'no_found_rows' => true, 'post_status' => 'publish', 'ignore_sticky_posts' => true));
 		if ($r->have_posts()) :
 
-    if (class_exists('GADWidgetData') ) {
+    if ( $show_popular ) {
 
       $start_date = date('Y-m-d', strtotime('-2 week', time()));
       $end_date   = date('Y-m-d', time());
@@ -66,11 +68,11 @@ class UW_Widget_Recent_Posts extends WP_Widget {
 		<?php echo $before_widget; ?>
 
     <ul id="news-tab-nav">
-      <?php  if (class_exists('GADWidgetData') ) : ?>
+      <?php  if ( $show_popular ) : ?>
         <li class="selected"><a class="recent-popular-widget" href="#tab-popular" title="Most popular">Most Popular</a></li>
       <?php endif; ?>
 
-      <li><a class="recent-popular-widget" href="#tab-recent" title="Most recent">Recent</a></li>
+      <li <?php if( !$show_popular ): ?> class="selected" <?php endif; ?>><a class="recent-popular-widget" href="#tab-recent" title="Most recent">Recent</a></li>
     </ul>
     
     <ul id="tab-recent" class="recent-posts" <?php if( class_exists('GADWidgetData')) : ?> style="display:none;" <?php endif; ?>>
