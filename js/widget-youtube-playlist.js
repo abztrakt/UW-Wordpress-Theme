@@ -43,7 +43,7 @@ $(window).load(function() {
     swfobject.embedSWF("//www.youtube.com/v/"+video+"?"+gets,
                        "youtubeapi", "425", "356", "8", null, null, params, atts);
     $.each(data.feed.entry, function(index,video) {
-        var img = video.media$group.media$thumbnail[0],
+        var img = video.media$group.media$thumbnail[0].replace(/https?:\/\//, '//'),
             video_id  =  video.media$group.yt$videoid.$t,
             title = video.title.$t,
             dur = video.media$group.yt$duration.seconds;
