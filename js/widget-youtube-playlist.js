@@ -21,7 +21,7 @@ $(window).load(function() {
   var $vidContent = $('#vidContent');
   var params = { allowScriptAccess: "always", wmode:'transparent' };
   var atts = { id: "customplayer" };
-  var proxy = 'http://ajax.googleapis.com/ajax/services/feed/load?';
+  var proxy = '//ajax.googleapis.com/ajax/services/feed/load?';
   var playlist = $('#youtubeapi').data('pid');
 
   var gets = jQuery.param({
@@ -37,10 +37,10 @@ $(window).load(function() {
 
   $vidSmall.tinyscrollbar();
 
-  $.getJSON('http://gdata.youtube.com/feeds/api/playlists/'+playlist+'/?callback=?',{'alt':'json','v':'2'}, function (data){
+  $.getJSON('//gdata.youtube.com/feeds/api/playlists/'+playlist+'/?callback=?',{'alt':'json','v':'2'}, function (data){
     var video = data.feed.entry[0].media$group.yt$videoid.$t;
     var count = data.feed.entry.length;
-    swfobject.embedSWF("http://www.youtube.com/v/"+video+"?"+gets,
+    swfobject.embedSWF("//www.youtube.com/v/"+video+"?"+gets,
                        "youtubeapi", "425", "356", "8", null, null, params, atts);
     $.each(data.feed.entry, function(index,video) {
         var img = video.media$group.media$thumbnail[0],

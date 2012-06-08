@@ -73,7 +73,7 @@ class UW_Widget_Recent_Posts extends WP_Widget {
       <li><a class="recent-popular-widget" href="#tab-recent" title="Most recent">Recent</a></li>
     </ul>
     
-		<ul id="tab-recent" class="recent-posts" style="display:none;">
+    <ul id="tab-recent" class="recent-posts" <?php if( class_exists('GADWidgetData')) : ?> style="display:none;" <?php endif; ?>>
 		<?php  while ($r->have_posts()) : $r->the_post(); ?>
       <li>
         <?php if (has_post_thumbnail()) :  ?>
@@ -390,7 +390,7 @@ class UW_Widget_CommunityPhotos extends WP_Widget {
       foreach ($rss_items as $item) {
         $title = $item->get_title();
         $link = $item->get_link();
-        $src = $item->get_enclosure()->get_link();
+        $src = ereg_replace("(https?)://", "//",$item->get_enclosure()->get_link());
         $content .= "
           <a href='$link' title='$title'>
             <span>
