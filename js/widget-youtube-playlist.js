@@ -43,14 +43,14 @@ $(window).load(function() {
     swfobject.embedSWF("//www.youtube.com/v/"+video+"?"+gets,
                        "youtubeapi", "425", "356", "8", null, null, params, atts);
     $.each(data.feed.entry, function(index,video) {
-        var img = video.media$group.media$thumbnail[0].replace(/https?:\/\//, '//'),
+        var img = video.media$group.media$thumbnail[0],
             video_id  =  video.media$group.yt$videoid.$t,
             title = video.title.$t,
             dur = video.media$group.yt$duration.seconds;
 
         var html = '<a id="'+ video_id +'" class="video" href="#">'+
               '<img class="playBtn" src="/cms/wp-content/themes/news/img/play.png" />'+
-                    '<img src="'+img.url+'" width="'+img.width+'" height="'+img.height+'" />'+
+                    '<img src="'+img.url.replace(/https?:\/\//, '//')+'" width="'+img.width+'" height="'+img.height+'" />'+
                     '<span class="title">'+title+'</span>'+
                     '<span class="duration">'+Math.floor(dur/60)+':'+(dur % 60)+'</span>'+
                    '</a>';
