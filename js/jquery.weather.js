@@ -38,7 +38,7 @@
       };
       $.extend(options, settings);
       if (options.ssl) {
-        json_url.replace('http', 'https');
+        json_url = json_url.replace('http', 'https');
       }
       image_url = "" + image_url + options.icon + "/";
       isSuccessful = function(response) {
