@@ -827,7 +827,7 @@ object {
 	}
 	.tan-band #thin-strip a {
 		color: #777;
-		text-shadow: 1px 1px 1px #777;
+		text-shadow: 1px 1px 1px #fff;
 	}
 	.purple-patch .patch {
 		background-color: #39275B

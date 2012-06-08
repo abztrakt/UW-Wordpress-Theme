@@ -1,6 +1,6 @@
-<header id="branding" role="banner">
+<header id="branding" role="banner" <?php banner_class(); ?>>
 
-<div id="header" <?php banner_class(); ?>>
+<div id="header">
     <div>
 		<a class="patch" href="http://www.uw.edu">W</a>
 		<a class="wordmark" href="http://www.uw.edu">University of Washington</a><span id="listicon-wrapper"></span><span id="searchicon-wrapper"></span>
