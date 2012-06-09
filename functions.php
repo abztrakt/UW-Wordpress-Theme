@@ -44,6 +44,9 @@ add_action( 'wp_enqueue_scripts', 'uw_enqueue_default_styles' );
 if ( ! function_exists( 'uw_enqueue_default_styles' ) ): 
 /**
  * This is where all the CSS files are registered
+ *
+ * bloginfo('template_directory')  gives you the url to the parent theme
+ * bloginfo('stylesheet_direcotory')  gives you the url to the child theme
  */
   function uw_enqueue_default_styles() {
       wp_register_style( 'bootstrap',get_bloginfo('template_directory') . '/css/bootstrap.css', array(), '2.0.4' );
@@ -66,6 +69,9 @@ add_action( 'wp_enqueue_scripts', 'uw_enqueue_default_scripts' );
 if ( ! function_exists( 'uw_enqueue_default_scripts' ) ): 
 /**
  * This is where all the JS files are registered
+ *
+ * bloginfo('template_directory')  gives you the url to the parent theme
+ * bloginfo('stylesheet_direcotory')  gives you the url to the child theme
  */
   function uw_enqueue_default_scripts() {
     wp_deregister_script('jquery'); //we use googles CDN below
@@ -188,17 +194,6 @@ if ( ! function_exists( 'uw_dropdowns' ) ):
   }
 
 endif;
-//add_filter( 'wp_nav_menu_args', 'uw_wp_nav_menu_args' );
-
-if ( ! function_exists( 'uw_wp_nav_menu_args' ) ): 
-
-  function uw_wp_nav_menu_args( $args ) 
-  {
-    $args['walker'] = new Walker_Navbar_Menu();
-    return $args;
-  }
-
-endif;
 
 if ( ! function_exists( 'banner_class' ) ): 
   function banner_class() 
@@ -229,7 +224,15 @@ if ( ! function_exists( 'uw_widgets_init' ) ):
 
   function uw_widgets_init() 
   {
-    register_sidebars();    
+    $args = array(
+      'name'          => 'Sidebar',
+      'id'            => 'sidebar',
+      'description'   => 'Widgets for the right column of the all '. get_bloginfo('name') . ' subpages',
+      'before_widget' => '<div id="%1$s" class="widget %2$s">',
+      'after_widget'  => '</div>'
+    );
+
+    register_sidebar($args);    
   }
 
 endif;
@@ -249,6 +252,28 @@ if ( ! function_exists( 'social_media' ) ):
   }
 
 endif;
+
+add_filter('the_content', 'force_https_the_content');
+
+if ( ! function_exists( 'force_https_the_content' ) ):
+  /**
+   * For our setup, when a user is logged into WP he or she is
+   * behind ssl. Imported, old content, however can still point to 
+   * http, which causes some issued like images not loading (even though they 
+   * are accessible through https). This function patches that issue specifically
+   * for images.
+   */
+    function force_https_the_content($content) {
+        if ( is_ssl() )
+        {
+          $content = str_replace( 'src="http://', 'src="https://', $content );
+        }
+        return $content;
+    }
+
+endif;
+
+
 
 if ( ! function_exists( 'get_social_media' ) ):
 
@@ -333,10 +358,7 @@ class Walker_Navbar_Menu extends Walker_Nav_Menu {
 
 	function end_lvl(&$output, $depth) {
 		$indent = str_repeat("\t", $depth);
-    $div    = ( $this-> toggle ) ? '</div>' : '';
-		//$output .= "$div$indent</ul>\n";
 		$output .= "</div>$indent</div></ul>\n";
-		//$output .= "close-$this->count$indent</ul>\n";
     $this->toggle = true;
     $this->count = 0;
 	}
@@ -345,16 +367,14 @@ class Walker_Navbar_Menu extends Walker_Nav_Menu {
 
 		$item_html = '';
     if( $item->menu_item_parent && $this->count++ % 5 == 0) {
-        //$item_html = ( $this->toggle ) ? 'open' : 'close open';
         $item_html = ( $this->toggle ) ? '<div class="menu-block">' : '</div><div class="menu-block">';
-        //$this->toggle = !$this->toggle;
         $this->toggle = false;
     }
 		parent::start_el( &$item_html, $item, $depth, $args );
 
 		if ( $item->is_dropdown && ( 1 != $args->depth ) ) {
 
-			$item_html = str_replace( '<a', '<a href="#open" class="dropdown-toggle" data-toggle="dropdown"', $item_html );
+			$item_html = str_replace( '<a', '<a class="dropdown-toggle" data-toggle="dropdown"', $item_html );
 			$item_html = str_replace( '</a>', '<b class="caret"></b></a>', $item_html );
 			$item_html = str_replace( esc_attr( $item->url ), '#', $item_html );
 		}

@@ -107,7 +107,7 @@
     var $header = $(header)
     $header.css('height','auto')
     $(toggle).parent().removeClass('open');
-    if ( $('a.btn-navbar').is(':hidden') ) $header.height(185);
+    if ( $('a.btn-navbar').is(':hidden') ) $header.height(195);
     $(caret).hide();
   }
 

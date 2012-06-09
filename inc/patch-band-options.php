@@ -160,7 +160,7 @@ function patch_band_options_html() {
     .patch-band-canvas { position:relative; }
     .patch-band-canvas #thin-strip { position:absolute; }
     .patch-band-canvas .main-search { display:none; }
-    .patch-band-canvas #header { position: relative; top: 30px; }
+    .patch-band-canvas #header { position: relative; }
     .patch-band-canvas ul { padding: 0; margin: 0 0 9px 25px; }
     .patch-band-canvas a { text-decoration: none; }
     .patch-band-canvas a:hover { text-decoration: underline; }

@@ -1,10 +1,15 @@
-<header id="branding" role="banner" <?php banner_class(); ?>>
+<?php
+  // Check to see if the header image has been removed
+  $header_image = get_header_image();
+  if ( ! empty( $header_image ) ) :
+?>
+<header style="background-image:url(<?php header_image(); ?>)" id="branding" role="banner" <?php banner_class(); ?>>
+<?php endif; // end check for removed header image ?>
 
 <div id="header">
-    <div>
 		<a class="patch" href="http://www.uw.edu">W</a>
 		<a class="wordmark" href="http://www.uw.edu">University of Washington</a><span id="listicon-wrapper"></span><span id="searchicon-wrapper"></span>
-		<span id="search">
+		<div id="search">
 			<form class="main-search" action="http://www.washington.edu/search" id="searchbox_008816504494047979142:bpbdkw8tbqc" name="form1">
 				<span class="wfield">
 					<input value="008816504494047979142:bpbdkw8tbqc" name="cx" type="hidden">
@@ -13,8 +18,7 @@
   					<input onclick="pageTracker._trackPageview('/pt/hn/search-action');" value="Go" name="sa" class="formbutton" type="submit">
   				</span>
 			</form>	
-		</span>
-	</div>	
+		</div>
 </div>
 
 <div id="thin-strip">

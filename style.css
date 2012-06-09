@@ -147,8 +147,8 @@ object {
 .screen-reader-text {
     position:absolute;
     z-index: -1;
-    top: 5px;
-    left: 5px;
+    top: 12px;
+    left: 25px;
 }
 #s {
     border-radius: 30px;
@@ -171,6 +171,8 @@ object {
     text-indent: -999px;
     overflow: hidden;
     padding: 5px 16px;
+    height: 28px;
+	width: 32px;
 }
 
 /* ----  Right Sidebar Menu Structure ---- */
@@ -275,7 +277,7 @@ object {
 	body .patch {
 		display: none;		
 	}
-	body #header div {
+	body #header {
 		width: 800px;
 		margin-left: -400px;
 	}
@@ -340,7 +342,10 @@ object {
 	/* =============================================================================
 	   Mobile Header Queries Rewrite
 	   ========================================================================== */
-	
+	#branding {
+		background-image: none !important;
+		background-color: #fff !important;
+	}
 	#header  {
 		background: url("http://www.washington.edu/static/mobile/image/top_bg_z.jpg") repeat-x scroll center top white;
 		position: relative;
@@ -359,7 +364,7 @@ object {
 		width: 263px;
 		height: 44px;
 	}
-	#header > div > span:nth-child(3), #header > div > span:nth-child(4)  {
+	#header > span:nth-child(3), #header > span:nth-child(4)  {
 		background: url("/cms/wp-content/themes/uw/img/mobile-header/dropdowns1x.png") no-repeat -29px 0px transparent;	
 		position: absolute;
 		top: 4px;
@@ -368,7 +373,7 @@ object {
 		height: 30px;
 		display: block;
 	}
-	#header > div > span:nth-child(4) {	
+	#header span:nth-child(4) {	
 		right: 50px;
 		background-position: 10px 0;
 	}
@@ -842,14 +847,18 @@ object {
 	
 	/* ----  Header Logos Area ---- */
 	
-	#header div {
+	#branding {
+		height: 195px;
+		margin-bottom: 20px;
+		background-position: center top;
+	}
+	#header {
 	    z-index: 2;
 	    position: relative;
 	    width: 960px;
 	    left: 50%;
 	    margin-left: -480px;
-	    height: 170px;
-	    margin-top: 30px;
+	    height: 145px;
 	}
 	.wordmark, .patch {
 	    display: block;
@@ -858,14 +867,13 @@ object {
 	    width: 95px;
 	    height: 90px;
 	    text-indent: -999px;
-	    top: -30px;
 	}
 	.wordmark {
 	    background: url(/cms/wp-content/themes/uw/img/header/header-sprite.png) no-repeat 0 -87px transparent;
 	    width: 325px;
 	    height: 25px;
 	    left: 125px;
-	    top: 25px;
+	    top: 55px;
 	}
 	
 	
@@ -874,13 +882,13 @@ object {
 	
 	.main-search {
 	    position: absolute;
-	    top: 20px;
+	    top: 50px;
 	    right: 45px;
 	}
-	.formbutton {
+	input[type="submit"].formbutton {
 	    position: absolute;
 	    left: 9px;
-	    top: 5px;
+	    top: 4px;
 	    background: url(/cms/wp-content/themes/uw/img/header/header-sprite.png) no-repeat -103px 2px transparent;
 	    box-shadow: none;
 	    border: none;
@@ -888,8 +896,10 @@ object {
 	    text-indent: -999px;
 	    overflow: hidden;
 	    padding: 5px 16px;
+	    height: 28px;
+	    width: 32px;
 	}
-	.wTextInput, input[type="text"].wTextInput {
+	input[type="text"].wTextInput {
 	    border-radius: 30px;
 	    -webkit-border-radius: 30px;
 	    -moz-border-radius: 30px;
@@ -968,6 +978,7 @@ object {
 	    box-shadow: none;
 	    -webkit-box-shadow: none;
 	    -moz-box-shadow: none;
+	    filter: none;
 	}
 	.navbar .nav > li > a {
 	    color: #fff;
@@ -1242,11 +1253,11 @@ object {
     		background: url("/cms/wp-content/themes/uw/img/mobile-header/logo2x.png") no-repeat 0 0 transparent;
       	    background-size: 230px 35px;
     	}
-    	#header > div > span:nth-child(3), #header > div > span:nth-child(4) {
+    	#header > span:nth-child(3), #header > div > span:nth-child(4) {
     		background: url("/cms/wp-content/themes/uw/img/mobile-header/dropdowns2x.png") no-repeat -29px 0px transparent;	
     		background-size: 66px 32px;
     	}
- 		#header > div > span:nth-child(4) {	
+ 		#header > span:nth-child(4) {	
 			background-position: 10px 0;
 		}
     	#thin-strip ul {
