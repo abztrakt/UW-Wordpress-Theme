@@ -4,3 +4,22 @@ input[type="text"].wTextInput {
 #s {
 	background: url(/cms/wp-content/themes/uw/img/search-bar.png) no-repeat 0 -54px transparent;
 }
+#primary {
+	background: url(/cms/wp-content/themes/uw/img/misc/ie-rounded-corners.png) no-repeat 0 0 transparent;
+	background-color: transparent !important;
+}
+.home #primary {
+	background: none;
+}
+
+/* --- News page  --- */
+ 
+#nc-right-col .widget {
+	border: 1px solid #e3e3e3;
+}
+#nc-right-col .widget_search.widget {
+	border: none;
+}
+#nc-header {
+	border: 1px solid #E9E9E9;
+}

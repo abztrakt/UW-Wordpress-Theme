@@ -67,7 +67,7 @@ class UW_Widget_Recent_Posts extends WP_Widget {
 ?>
 		<?php echo $before_widget; ?>
 
-    <ul id="news-tab-nav">
+    <ul id="news-tab-nav" data-tabs="toggle">
       <?php  if ( $show_popular ) : ?>
         <li class="selected"><a class="recent-popular-widget" href="#tab-popular" title="Most popular">Most Popular</a></li>
       <?php endif; ?>
@@ -611,7 +611,7 @@ class UW_KEXP_KUOW_Widget extends WP_Widget {
 		$kuow = fetch_feed($kuow_url);
 
 		$url = esc_url(strip_tags($kexp_url));
-    $title = "<ul id='radio-tab-nav'>
+    $title = "<ul id='radio-tab-nav' data-tabs='toggle'>
                 <li class='selected'><a class='rsswidget' href='#tab-kexp' title='KEXP'>KEXP</a></li>
                 <li><a class='rsswidget' href='#tab-kuow' title='KUOW'>KUOW</a></li>
               </ul>";
@@ -623,12 +623,12 @@ class UW_KEXP_KUOW_Widget extends WP_Widget {
     echo '<div class="radio-tab-content" id="tab-kexp"><span>';
 		wp_widget_rss_output( $kexp, $instance );
     echo "<a href='$kexp_url' class='more'>More</a>";
-    echo '</div>';
+    echo '</span></div>';
     echo '<div class="radio-tab-content" id="tab-kuow" style="display:none;"><span>';
 		wp_widget_rss_output( $kuow, $instance );
     echo "<a href='$kuow_url' class='more'>More</a>";
     echo '</span></div>';
-    echo '</span></div>';
+    echo '</div>';
 		echo $after_widget;
 
 		if ( ! is_wp_error($kexp) )

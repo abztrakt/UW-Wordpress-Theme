@@ -15,6 +15,14 @@
 
 $(window).load(function() {
   if ( $('#youtubeapi').length < 1) return;
+  if (swfobject.getFlashPlayerVersion().major < 11) {
+      var html = '<div class="alert alert-error">'+
+                    '<strong>You need to upgrade your Adoble Flash Player to watch the UW Today videos.</strong><br/>'+
+                    '<a href="http://get.adobe.com/flashplayer/" title="Flash player upgrade">Download it here from Adobe.</a>'+
+                  '</div>';
+    $('#nc-video-player').html(html);
+    return;
+  }
     
   var $wrapper = $('#tube-wrapper');
   var $vidSmall = $('#vidSmall');
@@ -66,6 +74,10 @@ $(window).load(function() {
       play(this.id);
       return false;
   });
+
+  $vidSmall.one('mouseenter', function() {
+    $(this).tinyscrollbar_update();
+  })
 });
 function onYouTubePlayerReady(playerid){
   uwplayer = document.getElementById("customplayer");

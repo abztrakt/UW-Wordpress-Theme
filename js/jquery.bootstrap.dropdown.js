@@ -52,6 +52,7 @@
       if ($this.is('.disabled, :disabled')) return
 
 
+
       selector = $this.attr('data-target')
 
       if (!selector) {
@@ -68,8 +69,8 @@
 
       if (!isActive) { 
         $parent.toggleClass('open');
+        $('div.collapse').removeClass('collapse');
         if ( $('a.btn-navbar').is(':hidden') ) $header.height(350);
-       // $(header).height(350);
         $caret.show()
       }
 
@@ -107,7 +108,7 @@
     var $header = $(header)
     $header.css('height','auto')
     $(toggle).parent().removeClass('open');
-    if ( $('a.btn-navbar').is(':hidden') ) $header.height(195);
+    if ( $('a.btn-navbar').is(':hidden') ) $header.height(165);
     $(caret).hide();
   }
 

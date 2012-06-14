@@ -38,7 +38,7 @@
 				<div class="span4 right-bar">
 					<div class="stripe-top"></div><div class="stripe-bottom"></div>				
           <div id="sidebar" role="complementary">
-					  <?php dynamic_sidebar('Sidebar'); ?>
+					  <?php dynamic_sidebar('sidebar'); ?>
           </div>
         </div><!-- .span4 -->
 

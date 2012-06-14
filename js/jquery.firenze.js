@@ -6,7 +6,7 @@ $(document).ready(function() {
   var content = $('#content');
   var stories = canvas.find('.storyContainer');
   var width = (document.documentElement.clientWidth > 500 ? stories.first().width() : document.documentElement.clientWidth);
-  var start = startY = deltaX = time = scroll = moved = 0;
+  var start = 0, startY = 0, deltaX = 0, time = 0, scroll = 0, moved = 0;
   var placement = Math.ceil(stories.length/2) - 1;
   var pos = -1 * placement * width;
   var end = (stories.length - 1) * 320;

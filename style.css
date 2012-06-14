@@ -91,14 +91,14 @@ object {
 /* - Widget Headline Colors - */
 
 .widget_links h2 				{ background-color: #21578a }
-.documents h2 					{ background-color: #658d61 }
-.video h2 						{ background-color: #cd7427}
-.announcements h2 				{ background-color: #39275B }
+.documents h2 					{ background-color: #4a7c01 }
+.video h2 						{ background-color: #C37300 }
+.announcements h2 				{ background-color: #248fc4 }
 .widget_recent_entries h2 		{ background-color: #d7a900 }
 .widget_categories h2 			{ background-color: #21578a }
 .widget_archive h2 				{ background-color: #21578a }
 .popular-posts h2 				{ background-color: #21578a }
-.widget_yarpp_widget h2			{ background-color: #cd7427 }
+.widget_yarpp_widget h2			{ background-color: #927b4c }
 
 .widget_links h2 span			{ background-position: 0 -152px }
 .documents h2 span				{ background-position: 0 -101px }
@@ -138,9 +138,7 @@ object {
 
 /* - Search Widget - */
 
-.widget_search {
-    margin: 0 0 30px 0;
-}
+
 .widget_search div {
     position: relative;
 }
@@ -154,11 +152,17 @@ object {
     border-radius: 30px;
     padding: 9px 0 9px 38px;
     width: 83%;
-    color: #999;
+    color: #444;
     box-shadow: inset 1px 1px 5px #d3d3d3;
     -webkit-box-shadow: inset 1px 1px 5px #d3d3d3;
     -moz-box-shadow: inset 1px 1px 5px #d3d3d3;
     border: none;
+}
+::-webkit-input-placeholder {
+   color: #888;
+}
+:-moz-placeholder {
+   color: #888;
 }
 #searchsubmit {
     position: absolute;
@@ -275,15 +279,26 @@ object {
 		margin: 0 auto;
 	}
 	body .patch {
-		display: none;		
+		left: 55px;
 	}
 	body #header {
 		width: 800px;
 		margin-left: -400px;
 	}
 	body .wordmark {
-		left: 50px;
+		left: 180px;
 	}
+	body .dropdown-menu a {
+		font-size: 96%;
+	}
+	body .nav-collapse .dropdown-menu {
+		margin: 0;
+	}	
+	body .nav-collapse .nav > li > a, body .nav-collapse .dropdown-menu a {
+		padding: 6px 0;
+		color: #E5E5E5;
+	}
+	body .navbar-caret { display: none; }
 }
 @media (max-width: 480px) { 
 }
@@ -714,6 +729,10 @@ object {
 
 	/* ----  Photo Handling ---- */
 	
+	.undefined {
+		position: relative;
+	}
+	
 	.alignleft {
 		float: left;
 		padding: 5px 20px 15px 0;
@@ -734,16 +753,16 @@ object {
 		line-height: 16px;
 	}
 	.image-magnifier {
-		width: 51px;
-		padding: 6px 24px 6px 12px;
-		background: url("/cms/wp-content/themes/uw/img/mobile-header/dropdowns1x.png") no-repeat 58px 2px #39275B;
-		font-size: 10px;
+		width: 49px;
+		padding: 10px 5px 9px 32px;
+		background: url("/cms/wp-content/themes/uw/img/misc/misc-sprite.png") no-repeat 0 0 transparent;
+		font-size: 9px;
 		text-transform: uppercase;
 		color: #fff;
 		position: absolute;
 		top: 10px;
-		left: 0;
-		line-height: 12px;
+		left: 5px;
+		line-height: 11px;
 		font-weight: bold;
 		visibility: hidden;
 	}
@@ -843,24 +862,28 @@ object {
 	.hide-patch .wordmark {
 		left: 0;
 	}
-		
+	.wordmark-white .wordmark {
+		background-position: 0 -197px;
+	}	
 	
 	/* ----  Header Logos Area ---- */
 	
 	#branding {
-		height: 195px;
+		height: 165px;
 		margin-bottom: 20px;
 		background-position: center top;
+		padding-top: 30px;
 	}
 	#header {
-	    z-index: 2;
-	    position: relative;
-	    width: 960px;
-	    left: 50%;
-	    margin-left: -480px;
-	    height: 145px;
+		z-index: 2;
+		position: relative;
+		width: 960px;
+		left: 50%;
+		margin-left: -480px;
+		height: 115px;
 	}
 	.wordmark, .patch {
+		top: -30px;
 	    display: block;
 	    position: absolute;
 	    background: url(/cms/wp-content/themes/uw/img/header/header-sprite.png) no-repeat 5px 15px #D7A900;
@@ -873,7 +896,7 @@ object {
 	    width: 325px;
 	    height: 25px;
 	    left: 125px;
-	    top: 55px;
+	    top: 25px;
 	}
 	
 	
@@ -882,7 +905,7 @@ object {
 	
 	.main-search {
 	    position: absolute;
-	    top: 50px;
+	    top: 20px;
 	    right: 45px;
 	}
 	input[type="submit"].formbutton {
@@ -985,10 +1008,12 @@ object {
 	    padding: 9px 9px 11px;
 	    cursor: pointer;
 	}
-	.navbar .nav, .dropup, .dropdown { 
-		position: inherit; 
+	.navbar .nav,
+	.dropup,
+	.dropdown {
+	  position:  static;
 	}
-	
+
 	.dropdown-menu {
 		left: 0;
 		right: 0;
@@ -1119,6 +1144,7 @@ object {
 	/* ----  Footer ---- */
 	
 	#footerBG {
+		clear: both;
 		margin-top: -35px;
 		padding: 124px 0 50px 0;
 		overflow: hidden;

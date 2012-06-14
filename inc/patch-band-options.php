@@ -23,7 +23,7 @@ function patch_band_initialize_options() {
 	add_settings_field(
 		'show_patch',						// ID used to identify the field throughout the theme
 		'Show Patch',							// The label to the left of the option interface element
-		'sandbox_toggle_header_callback',	// The name of the function responsible for rendering the option interface
+		'show_patch_toggle_header_callback',	// The name of the function responsible for rendering the option interface
 		'patchband',	// The page on which this option will be displayed
 		'patchband_header_section'			// The name of the section to which this field belongs
 	);
@@ -31,7 +31,7 @@ function patch_band_initialize_options() {
 	add_settings_field(
 		'patch_color',
 		'Patch Color',
-		'sandbox_toggle_content_callback',
+		'patch_color_toggle_content_callback',
 		'patchband',
 		'patchband_header_section'
 	);
@@ -44,6 +44,17 @@ function patch_band_initialize_options() {
 		'patchband_header_section'
 	);
 
+	add_settings_field(
+		'wordmark_color',
+		'Wordmark Color',
+		'wordmark_color_header_callback',
+		'patchband',
+		'patchband_header_section'
+	);
+
+  /**
+   * No need for a custom footer at the moment
+   *
 	add_settings_section(
 		'patchband_footer_section',			// ID used to identify this section and with which to register options
 		'Footer Options',					// Title to be displayed on the administration page
@@ -75,6 +86,7 @@ function patch_band_initialize_options() {
 		'patchband',
 		'patchband_footer_section'
 	);
+   */
 
 	// Finally, we register the fields with WordPress
 	register_setting( 'patchband', 'patchband' );
@@ -97,14 +109,14 @@ function band_color_header_callback ()
 	$html .= '<label title="Tan band"> Tan </label><br/>'; 
 	echo $html;
 }
-function sandbox_toggle_header_callback() {
+function show_patch_toggle_header_callback() {
 	$options = (array) get_option('patchband');
 	$html = '<input class="header-show" type="checkbox" name="patchband[patch][header][visible]" value="1" ' . checked(1, $options['patch']['header']['visible'], false) . '/>'; 
 	$html .= '<label for="patchband[patch][header][visible]"> Show / hide</label><br/>'; 
 	echo $html;
 } 
 
-function sandbox_toggle_content_callback() {
+function patch_color_toggle_content_callback() {
 	$options = (array) get_option('patchband');
 	$html = '<input type="radio" name="patchband[patch][header][color]" value="purple" ' . checked( $options['patch']['header']['color'], 'purple', false ) . '/>';
 	$html .= '<label title="Purple patch"> Purple </label><br/>'; 
@@ -113,8 +125,19 @@ function sandbox_toggle_content_callback() {
 	echo $html;
 }
 
+function wordmark_color_header_callback() {
+	$options = (array) get_option('patchband');
+	$html = '<input type="radio" name="patchband[wordmark][header][color]" value="purple" ' . checked( $options['wordmark']['header']['color'], 'purple' , false ) . '/>';
+	$html .= '<label title="Purple wordmark"> Purple </label><br/>'; 
+	$html .= '<input type="radio" name="patchband[wordmark][header][color]" value="white" ' . checked( $options['wordmark']['header']['color'], 'white', false ) . '/>';
+	$html .= '<label title="White wordmark"> White </label><br/>'; 
+	echo $html;
+}
 
-/* Footer options */
+
+/* Footer options
+ *
+ *
 function patchcolor_callback() {
 	$options = (array) get_option('patchband');
 	$html = '<input type="radio" name="patchband[patch][footer][color]" value="purple" ' . checked( $options['patch']['footer']['color'], 'purple', false ) . '/>';
@@ -139,6 +162,7 @@ function band_color_footer_callback ()
 	$html .= '<label title="Tan band"> Tan </label><br/>'; 
 	echo $html;
 }
+ */
 
 
 add_action( 'appearance_page_uw-patch-band', 'uw_patch_band_style' );

@@ -37,19 +37,11 @@
     ?>
   </title>
 
-
-    
-    
   <?php wp_head(); ?>
 
-<?php
-// bloginfo('template_directory')  gives you the url to the parent theme
-// bloginfo('stylesheet_directory')  gives you the url to the child theme
-?>
+<!--[if lt IE 9]>
   <script src="<?php bloginfo("template_directory"); ?>/js/html5shiv.js" type="text/javascript"></script>
   <script src="<?php bloginfo("template_directory"); ?>/js/respond.min.js" type="text/javascript"></script>
-
-<!--[if lt IE 9]>
 	<link rel="stylesheet" type="text/css" href="<?php bloginfo("template_directory"); ?>/css/ie8-and-down.css" />
 <![endif]-->
 

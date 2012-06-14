@@ -26,7 +26,6 @@ if ( ! function_exists( 'uw_setup' ) ):
 	  add_theme_support( 'custom-header', array( 'random-default' => true ) );
 	  add_custom_image_header( 'uw_header_style', 'uw_admin_header_style', 'uw_admin_header_image' );
     
-
     register_default_headers( array(
       'blossoms' => array(
         'url' => '%s/../uw/img/header/cherries.jpg',
@@ -64,7 +63,6 @@ if ( ! function_exists( 'uw_enqueue_default_styles' ) ):
 endif;
 
 add_action( 'wp_enqueue_scripts', 'uw_enqueue_default_scripts' );
-
 
 if ( ! function_exists( 'uw_enqueue_default_scripts' ) ): 
 /**
@@ -199,8 +197,9 @@ if ( ! function_exists( 'banner_class' ) ):
   function banner_class() 
   {
     $option = get_option('patchband');
-    $patch = (object) $option['patch'];
-    $band  = (object) $option['band'];
+    $patch    = (object) $option['patch'];
+    $band     = (object) $option['band'];
+    $wordmark = (object) $option['wordmark'];
 
     $classes[] = 'header';
 
@@ -212,6 +211,9 @@ if ( ! function_exists( 'banner_class' ) ):
 
     if ( $band->header['color']== 'tan' )
       $classes[] = 'tan-band';
+
+    if ( $wordmark->header['color']== 'white' )
+      $classes[] = 'wordmark-white';
 
     echo 'class="'. join(' ', $classes ) . '"';
   }
@@ -320,68 +322,6 @@ require( get_template_directory() . '/inc/media-credit.php' );
 require( get_template_directory() . '/inc/custom-widgets.php' );
 require( get_template_directory() . '/inc/custom-settings.php' );
 require( get_template_directory() . '/inc/custom-image-sizes.php' );
-
-class Walker_Navbar_Menu extends Walker_Nav_Menu {
-
-	public $dropdown_enqueued;
-  private $count  = 0;
-  private $toggle = true;
-
-	function __construct() {
-		$this->dropdown_enqueued = wp_script_is( 'bootstrap-dropdown', 'queue' );
-	}
-
-	function display_element( $element, &$children_elements, $max_depth, $depth = 0, $args, &$output ) {
-
-		if ( $element->current )
-			$element->classes[] = 'active';
-
-		$element->is_dropdown  = ( 0 == $depth ) && ! empty( $children_elements[$element->ID] );
-
-		if ( $element->is_dropdown )
-			$element->classes[] = 'dropdown';
-
-		parent::display_element( $element, &$children_elements, $max_depth, $depth, $args, &$output );
-	}
-
-	function start_lvl( &$output, $depth ) {
-
-		if ( ! $this->dropdown_enqueued ) {
-			wp_enqueue_script( 'bootstrap-dropdown' );
-			$this->dropdown_enqueued = true;
-		}
-
-		$indent = str_repeat( "\t", $depth );
-		$class  = ( 0 == $depth ) ? 'dropdown-menu' : 'unstyled';
-		$output .= "\n{$indent}<ul class='{$class}'><div class='menu-wrap'>\n";
-	}
-
-	function end_lvl(&$output, $depth) {
-		$indent = str_repeat("\t", $depth);
-		$output .= "</div>$indent</div></ul>\n";
-    $this->toggle = true;
-    $this->count = 0;
-	}
-
-	function start_el( &$output, $item, $depth, $args ) {
-
-		$item_html = '';
-    if( $item->menu_item_parent && $this->count++ % 5 == 0) {
-        $item_html = ( $this->toggle ) ? '<div class="menu-block">' : '</div><div class="menu-block">';
-        $this->toggle = false;
-    }
-		parent::start_el( &$item_html, $item, $depth, $args );
-
-		if ( $item->is_dropdown && ( 1 != $args->depth ) ) {
-
-			$item_html = str_replace( '<a', '<a class="dropdown-toggle" data-toggle="dropdown"', $item_html );
-			$item_html = str_replace( '</a>', '<b class="caret"></b></a>', $item_html );
-			$item_html = str_replace( esc_attr( $item->url ), '#', $item_html );
-		}
-    
-		$output .= $item_html;
-	}
-  
-}
+require( get_template_directory() . '/inc/dropdown-walker.php' );
 
 ?>

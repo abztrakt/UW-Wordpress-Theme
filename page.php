@@ -33,11 +33,12 @@
 				</div>
 				<div class="span4 right-bar">
 					<div class="stripe-top"></div><div class="stripe-bottom"></div>				
-					<?php get_sidebar(); ?>
+          <div id="sidebar" role="complementary">
+            <?php dynamic_sidebar('sidebar'); ?>
+          </div>
 				</div>
  			 </div>
 			</div><!-- #content -->
 		</div><!-- #primary -->
 
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>

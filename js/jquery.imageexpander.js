@@ -62,10 +62,6 @@ $(document).ready(function() {
           })
           return false;
       })
-    //.on('click.imageexpander', spans, function() { 
-    //  $(this).siblings('img').not(':hidden').trigger('click') 
-    //  return false;
-    //})
 
     $(imgs).each(function() { 
       var $this = $(this)
