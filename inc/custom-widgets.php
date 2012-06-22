@@ -1,4 +1,28 @@
 <?php
+/**
+ * 
+ * Register all of the UW custom widgets
+ * Remove unwanted widgets
+ * Also acts as a list of custom widgets
+ */
+function uw_register_widgets() {
+	if ( !is_blog_installed() )
+		return;
+
+	register_widget('UW_Widget_Recent_Posts');
+  unregister_widget('WP_Widget_Recent_Posts');
+
+	register_widget('UW_Widget_YouTube_Playlist');
+	register_widget('UW_Widget_MailChimp');
+  register_widget('UW_Widget_CommunityPhotos');
+  register_widget('UW_Widget_Showcase_Links');
+  register_widget('UW_Widget_Twitter');
+  register_widget('UW_KEXP_KUOW_Widget');
+  register_widget('UW_Showcase_Widget');
+}
+
+add_action('widgets_init', 'uw_register_widgets', 1);
+
 
 /**
  *
@@ -48,7 +72,7 @@ class UW_Widget_Recent_Posts extends WP_Widget {
 
     if ( $show_popular ) {
 
-      $start_date = date('Y-m-d', strtotime('-2 week', time()));
+      $start_date = date('Y-m-d', strtotime('-1 week', time()));
       $end_date   = date('Y-m-d', time());
 
       $login = new GADWidgetData();
@@ -60,7 +84,7 @@ class UW_Widget_Recent_Posts extends WP_Widget {
       }
 
       $pop_posts = $ga->pages_for_date_period($start_date, $end_date, $number);
-      $pop_posts = array_slice($pop_posts, 1, $number ); // the first, most popular page, is always /news/ (the homepage)
+      $pop_posts = array_slice($pop_posts, 0, $number ); // the first, most popular page, is always /news/ (the homepage)
     }
     
 
@@ -193,7 +217,7 @@ class UW_Widget_YouTube_Playlist extends WP_Widget {
 		parent::__construct(
 	 		'widget_youtube_playlist',
 			'YouTube Playlist',
-			array( 'classname' => 'widget_youtube_playlist', 'description' => __( "Put you're YouTube playlist into your page"), )
+			array( 'classname' => 'widget_youtube_playlist', 'description' => __( "Put your YouTube playlist into your page"), )
 		);
 
    if ( is_active_widget(false, false, $this->id_base) )
@@ -518,6 +542,12 @@ class UW_Widget_Showcase_Links extends WP_Widget {
 
 } 
 
+/**
+ *
+ * Twitter widget
+ *
+ */
+
 class UW_Widget_Twitter extends WP_Widget {
 	function UW_Widget_Twitter() {
 		// widget actual processes
@@ -656,6 +686,85 @@ class UW_KEXP_KUOW_Widget extends WP_Widget {
 	}
 }
 
+/**
+ *
+ * UW Showcase widget
+ *   - This is the Uber , cross site widget
+ */
+
+class UW_Showcase_Widget extends WP_Widget {
+
+	public function UW_Showcase_Widget() {
+		parent::__construct(
+	 		'uw_showcase_widget',
+			'UW Showcase',
+			array( 'classname' => 'widget_uw_showcase', 'description' => __( "Display a UW Showcase widget on your site") )
+		);
+
+	}
+
+	public function widget( $args, $instance ) {
+		extract( $args );
+		$title = apply_filters( 'widget_title', $instance['title'] );
+
+    echo $before_widget;
+
+    if ( ! empty( $title ) ) echo $before_title . $title . $after_title;
+
+    echo apply_filters('the_content', $instance['content']); 
+
+    if (is_super_admin()) 
+      echo '<a class="pull-right" target="_blank" href="' . $instance['edit'] . '">Edit</a>';
+    
+		echo $after_widget;
+	}
+
+	public function update( $new_instance, $old_instance ) {
+		$instance = array();
+    switch_to_blog(1);
+    $post = get_post($new_instance['id']);
+    $edit = get_edit_post_link($post->ID);
+    restore_current_blog();
+
+		$instance['id'] = $new_instance['id'];
+		$instance['title']   = strip_tags( $post->post_title );
+		$instance['content'] = $post->post_content;
+    $instance['edit'] = $edit;
+
+		return $instance;
+	}
+
+	public function form( $instance ) {
+    $cat = get_term_by('slug','showcase-widget', 'category');
+    $args = array(
+      'numberposts' => -1,
+      'category' => $cat->term_id
+    );
+    switch_to_blog(1);
+    $posts = get_posts($args);
+    restore_current_blog();
+    
+    $title  = isset( $instance[ 'title' ] ) ? $instance[ 'title' ] : __( 'Showcase', '' );  ?>
+
+		<input class="widefat hidden" disabled="disabled" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
+
+    <p>
+		<label for="<?php echo $this->get_field_id('id'); ?>"><?php _e( 'Choose content:' ); ?></label>
+			<select name="<?php echo $this->get_field_name('id'); ?>" id="<?php echo $this->get_field_id('id'); ?>" class="widefat">
+
+      <?php foreach($posts as $post) : ?>
+        <option value="<?php echo $post->ID; ?>"<?php selected( $instance['id'], $post->ID); ?>><?php _e($post->post_title); ?></option>
+      <?php endforeach; ?>
+
+			</select>
+		</p>
+		<?php 
+	}
+
+} 
+
+
+
 
 
 
@@ -666,25 +775,5 @@ function uw_add_spans_to_widget_titles($title) {
   return "<span>$title</span>";
 }
 add_filter('widget_title', 'uw_add_spans_to_widget_titles');
-
-/**
- * Register all of the UW custom widgets
- */
-function uw_register_widgets() {
-	if ( !is_blog_installed() )
-		return;
-
-	register_widget('UW_Widget_Recent_Posts');
-  unregister_widget('WP_Widget_Recent_Posts');
-
-	register_widget('UW_Widget_YouTube_Playlist');
-	register_widget('UW_Widget_MailChimp');
-  register_widget('UW_Widget_CommunityPhotos');
-  register_widget('UW_Widget_Showcase_Links');
-  register_widget('UW_Widget_Twitter');
-  register_widget('UW_KEXP_KUOW_Widget');
-}
-
-add_action('widgets_init', 'uw_register_widgets', 1);
 
 ?>

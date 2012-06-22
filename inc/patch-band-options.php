@@ -15,7 +15,7 @@ function patch_band_initialize_options() {
 	add_settings_section(
 		'patchband_header_section',			// ID used to identify this section and with which to register options
 		'Header Options',					// Title to be displayed on the administration page
-		'sandbox_general_options_callback',	// Callback used to render the description of the section
+		'patchband_general_options_callback',	// Callback used to render the description of the section
 		'patchband'		// Page on which to add this section of options
 	);
 
@@ -52,13 +52,21 @@ function patch_band_initialize_options() {
 		'patchband_header_section'
 	);
 
+	add_settings_field(
+		'custom_wordmark',
+		'Custom Wordmark',
+		'custom_wordmark_callback',
+		'patchband',
+		'patchband_header_section'
+	);
+
   /**
    * No need for a custom footer at the moment
    *
 	add_settings_section(
 		'patchband_footer_section',			// ID used to identify this section and with which to register options
 		'Footer Options',					// Title to be displayed on the administration page
-		'sandbox_general_options_callback',	// Callback used to render the description of the section
+		'patchband_general_options_callback',	// Callback used to render the description of the section
 		'patchband'		// Page on which to add this section of options
 	);
 
@@ -89,15 +97,50 @@ function patch_band_initialize_options() {
    */
 
 	// Finally, we register the fields with WordPress
-	register_setting( 'patchband', 'patchband' );
+	register_setting( 'patchband', 'patchband', 'patchband_validation' );
 
 } 
 add_action('admin_init', 'patch_band_initialize_options');
 
-function sandbox_general_options_callback() {
+function patchband_general_options_callback() {
 	echo '<p>Select which areas of content you wish to display.</p>';
 }
 
+
+function patchband_validation($input) 
+{
+  if ( isset($_POST['remove_wordmark']) &&
+        is_numeric($_POST['wordmark_attachment_id'])) {
+          $id = $_POST['wordmark_attachment_id'];
+          wp_delete_attachment($id, true);
+  }
+
+  if ($_FILES['wordmark']) 
+  {
+      include_once(ABSPATH . '/wp-admin/includes/media.php');
+      include_once(ABSPATH . '/wp-admin/includes/file.php');
+      include_once(ABSPATH . '/wp-admin/includes/image.php');
+
+      $overrides = array('test_form' => false); 
+      $file = wp_handle_upload($_FILES['wordmark'], $overrides);
+      $attachment = array(
+                      'post_mime_type' => $file['type'],
+                      'post_title' => 'Custom Wordmark',
+                      'post_content' => '',
+                      'post_status' => 'inherit'
+                  );
+      
+      $attachment_id = wp_insert_attachment( $attachment, $file['file'] );
+
+      if ( !isset($file['error'])) {
+        unset($file['file']); //dont need absolute path
+        $file['id'] = $attachment_id;
+        $input['wordmark']['custom'] = $file;
+      } 
+  }
+
+  return $input;
+}
 
 /* Header options */
 function band_color_header_callback () 
@@ -134,6 +177,17 @@ function wordmark_color_header_callback() {
 	echo $html;
 }
 
+function custom_wordmark_callback() {
+	$options = (array) get_option('patchband');
+  //print_r($options);
+  if( isset($options['wordmark']['custom'])) {
+    $html = '<input type="hidden" id="custom-wordmark" name="wordmark_attachment_id" value="' . $options['wordmark']['custom']['id'] .'" data-url="'. $options['wordmark']['custom']['url'] .'"/>';
+    submit_button( __( 'Remove' ), 'button', 'remove_wordmark', false );
+  } else {
+	  $html = '<input type="file" name="wordmark" /><p class="help">'._('The image should be no larger than <strong>400px by 75px</strong>').'</p>';
+  }
+	echo $html;
+}
 
 /* Footer options
  *
@@ -196,11 +250,11 @@ function patch_band_options_html() {
 		<h2>Patch & Band Options</h2>
 		<?php settings_errors(); ?>
 
-  <div class="patch-band-canvas">
+  <div class="patch-band-canvas" style="margin-top:20px;">
     <?php get_template_part('banner'); ?> </header>
   </div>
 
-		<form method="post" action="options.php">
+		<form method="post" action="options.php" enctype="multipart/form-data">
 			<?php settings_fields( 'patchband' ); ?>
 			<?php do_settings_sections( 'patchband' ); ?>
 			<?php submit_button(); ?>

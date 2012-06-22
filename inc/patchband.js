@@ -38,4 +38,8 @@ jQuery(document).ready(function($) {
     $('header').toggleClass('wordmark-white');
   })
 
+
+//  if( $('#custom-wordmark').length > 0 ) 
+//    $('.wordmark').css('background', 'url(' + $('#custom-wordmark').data('url') + ') no-repeat transparent').width(400).height(75);
+
 });

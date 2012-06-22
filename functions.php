@@ -48,15 +48,18 @@ if ( ! function_exists( 'uw_enqueue_default_styles' ) ):
  * bloginfo('stylesheet_direcotory')  gives you the url to the child theme
  */
   function uw_enqueue_default_styles() {
+      $is_child_theme = get_bloginfo('template_directory') != get_bloginfo('stylesheet_directory');
       wp_register_style( 'bootstrap',get_bloginfo('template_directory') . '/css/bootstrap.css', array(), '2.0.4' );
       wp_register_style( 'bootstrap-responsive', get_bloginfo('template_directory') . '/css/bootstrap-responsive.css', array('bootstrap'), '2.0.3' );
       wp_register_style( 'uw-master', get_bloginfo('template_url') . '/style.css', array('bootstrap-responsive') );
-      wp_register_style( 'uw-style', get_bloginfo('stylesheet_url'), array('bootstrap-responsive') );
+      if ( $is_child_theme)
+        wp_register_style( 'uw-style', get_bloginfo('stylesheet_url'), array('bootstrap-responsive') );
       wp_register_style( 'google-font-open-sans', 'https://fonts.googleapis.com/css?family=Open+Sans' );
       wp_enqueue_style( 'bootstrap' );
       wp_enqueue_style( 'bootstrap-responsive' );
       wp_enqueue_style( 'uw-master' );
-      wp_enqueue_style( 'uw-style' );
+      if ( $is_child_theme)
+        wp_enqueue_style( 'uw-style' );
       wp_enqueue_style( 'google-font-open-sans' );
   }
 
@@ -219,6 +222,18 @@ if ( ! function_exists( 'banner_class' ) ):
   }
 endif;
 
+if ( ! function_exists( 'custom_wordmark' ) ): 
+  function custom_wordmark() 
+  {
+    $option = get_option('patchband');
+    $wordmark = (array) $option['wordmark'];
+    if ( isset($wordmark['custom'] )) {
+      echo ' style="background:url('.$wordmark['custom']['url'].') no-repeat transparent; height:75px; width:445px;" ' ;
+    }
+  }
+endif;
+
+
 /**
  * Register's the default right widget sidebar
  */
@@ -322,6 +337,11 @@ require( get_template_directory() . '/inc/media-credit.php' );
 require( get_template_directory() . '/inc/custom-widgets.php' );
 require( get_template_directory() . '/inc/custom-settings.php' );
 require( get_template_directory() . '/inc/custom-image-sizes.php' );
+require( get_template_directory() . '/inc/custom-image-shortcode.php' );
 require( get_template_directory() . '/inc/dropdown-walker.php' );
 
+if ( is_admin() )  {
+  require( get_template_directory() . '/admin/autocomplete-authors.php' );
+  require( get_template_directory() . '/admin/custom-user-info-fields.php' );
+}
 ?>

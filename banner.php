@@ -8,7 +8,7 @@
 
 <div id="header">
 		<a class="patch" href="http://www.uw.edu">W</a>
-		<a class="wordmark" href="http://www.uw.edu">University of Washington</a><span id="listicon-wrapper"></span><span id="searchicon-wrapper"></span>
+		<a class="wordmark" <?php custom_wordmark(); ?> href="http://www.uw.edu">University of Washington</a><span id="listicon-wrapper"></span><span id="searchicon-wrapper"></span>
 		<div id="search">
 			<form class="main-search" action="http://www.washington.edu/search" id="searchbox_008816504494047979142:bpbdkw8tbqc" name="form1">
 				<span class="wfield">

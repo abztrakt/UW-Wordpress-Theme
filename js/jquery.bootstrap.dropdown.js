@@ -41,6 +41,8 @@
 
     constructor: Dropdown
 
+  , isActive: false
+
   , toggle: function (e) {
       var $this = $(this)
         , $header = $(header)
@@ -50,8 +52,6 @@
         , isActive
 
       if ($this.is('.disabled, :disabled')) return
-
-
 
       selector = $this.attr('data-target')
 
@@ -72,6 +72,7 @@
         $('div.collapse').removeClass('collapse');
         if ( $('a.btn-navbar').is(':hidden') ) $header.height(350);
         $caret.show()
+        Dropdown.prototype.isActive = true
       }
 
       $caret.css('left', $parent.position().left + 20)
@@ -82,16 +83,22 @@
 
   , timer: function(e) {
       var $this = $(this)
+
       if (timeout) {
         clearTimeout(timeout)
         timeout = null
       }
+
       if (e.type == 'mouseleave') { 
         timeout = setTimeout ( function() {
           clearMenus()
-        }, 500)
+        }, 100)
         return false;
       }
+
+      if (Dropdown.prototype.isActive) 
+        $this.trigger('click.dropdown.data-api')
+
       timeout = setTimeout( function(){
         clearMenus()
         $this.trigger('click.dropdown.data-api')
@@ -106,6 +113,7 @@
 
   function clearMenus() {
     var $header = $(header)
+    Dropdown.prototype.isActive = false
     $header.css('height','auto')
     $(toggle).parent().removeClass('open');
     if ( $('a.btn-navbar').is(':hidden') ) $header.height(165);

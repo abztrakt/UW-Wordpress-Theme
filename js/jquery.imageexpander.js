@@ -12,6 +12,8 @@ $(document).ready(function() {
             , $caption = $this.closest('.wp-caption')
             , cap
 
+        if ($this.hasClass('royalImage')) 
+          return;
 
           if( !cached ) {
               var img = new Image()
