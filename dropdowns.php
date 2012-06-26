@@ -11,6 +11,7 @@
       </a>
       <span class="navbar-caret" style="position:absolute;"></span>
       <div class="navbar-inner">
+        <h3 class="visible-phone"><a href="<?php bloginfo('url'); ?>/"><?php bloginfo('title'); ?></a></h3>
         <?php uw_dropdowns(); ?>
       </div>
     </div>

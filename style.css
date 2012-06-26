@@ -941,6 +941,9 @@ object, embed, iframe {
 		color: #777;
 		text-shadow: 1px 1px 1px #fff;
 	}
+	.tan-band .thin-fixed div {
+		background: url(/cms/wp-content/themes/uw/img/header/header-sprite.png) no-repeat 10px -225px transparent;
+	}
 	.purple-patch .patch {
 		background-color: #39275B
 	}
@@ -1017,9 +1020,9 @@ object, embed, iframe {
 	    padding: 9px 0 9px 38px;
 	    width: 175px;
 	    color: #999;
-	    box-shadow: 0 0 8px #d3d3d3;
-	    -webkit-box-shadow: 0 0 8px #d3d3d3;
-	    -moz-box-shadow: 0 0 8px #d3d3d3;
+	    box-shadow: 0 0 8px #777;
+	    -webkit-box-shadow: 0 0 8px #777;
+	    -moz-box-shadow: 0 0 8px #777;
 	    border: none;
 		-webkit-transition-duration: 400ms;
 		-webkit-transition-property: width, background;

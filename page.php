@@ -31,9 +31,9 @@
 			<?php endwhile; // end of the loop. ?>
 
 				</div>
-				<div class="span4 right-bar">
+				<div id="secondary" class="span4 right-bar" role="complementary">
 					<div class="stripe-top"></div><div class="stripe-bottom"></div>				
-          <div id="sidebar" role="complementary">
+          <div id="sidebar">
             <?php dynamic_sidebar('sidebar'); ?>
           </div>
 				</div>

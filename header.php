@@ -52,5 +52,4 @@
 
 
 <?php get_template_part('banner'); ?>
-<?php get_template_part('background'); ?>
 <?php get_template_part('dropdowns'); ?>
