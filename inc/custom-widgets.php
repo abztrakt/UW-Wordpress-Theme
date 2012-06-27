@@ -279,8 +279,11 @@ class UW_Widget_YouTube_Playlist extends WP_Widget {
 	}
 
   public function youtube_playlist_js() {
-    wp_register_script('youtube-playlist-widget', get_bloginfo('template_directory') . '/js/widget-youtube-playlist.js', 'swfobject');
-    wp_enqueue_script( 'swfobject' );
+    wp_register_script(
+      'youtube-playlist-widget', 
+      get_bloginfo('template_directory') . '/js/widget-youtube-playlist.js',
+      array('swfobject', 'jquery.imagesloaded', 'jquery.waypoints')
+    );
     wp_enqueue_script( 'youtube-playlist-widget');
   }
 
@@ -404,12 +407,12 @@ class UW_Widget_CommunityPhotos extends WP_Widget {
     $rss = fetch_feed($URL);
 		$title = apply_filters( 'widget_title', $instance['title'] );
 
-    if (!is_wp_error( $rss ) ) { // Checks that the object is created correctly 
-      // Figure out how many total items there are, but limit it to 5. 
+    $placeholder = get_bloginfo('template_url') . '/img/placeholder.gif';
+
+    if (!is_wp_error( $rss ) ) { 
       $url = $rss->get_permalink();
       $maxitems = $rss->get_item_quantity(20); 
 
-      // Build an array of all the items, starting with element 0 (first element).
       $rss_items = $rss->get_items(0, $maxitems); 
       
       $content = '<span class="showcase-bar community-photos"></span><div class="communityphotos">';
@@ -421,10 +424,10 @@ class UW_Widget_CommunityPhotos extends WP_Widget {
         $content .= "
           <a href='$link' title='$title'>
             <span>
-              <img src='$src' width='110' height='100' alt='$title'/>
+              <img data-src='$src' src='$placeholder' width='110' height='100' alt='$title'/>
             </span>
             <div style='width:110px'>
-              <img src='$src' width='110' height='110' alt='$title'/>
+              <img data-src='$src' src='$placeholder' width='110' height='110' alt='$title'/>
               <p>View Full Size</p>
             </div>
           </a>
@@ -440,6 +443,8 @@ class UW_Widget_CommunityPhotos extends WP_Widget {
   function load_css() {
       wp_register_style( 'communityphotos', get_bloginfo('template_url') . '/css/communityphotos.css' );
       wp_enqueue_style( 'communityphotos' );
+      wp_register_script( 'jquery.communityphotos', get_bloginfo('template_url') . '/js/widget-communityphotos.js' );
+      wp_enqueue_script( 'jquery.communityphotos' );
   }
 }
 

@@ -1,4 +1,4 @@
-<?php
+<?
 
     /**
      * Register with hook 'wp_enqueue_scripts', which can be used for front end CSS and JavaScript
@@ -19,6 +19,7 @@ if ( ! function_exists( 'uw_setup' ) ):
     add_image_size( 'Full Width', 600, 9999, false );
 
 	  register_nav_menu( 'primary', __( 'Primary Menu', 'uw' ) );
+	  register_nav_menu( 'footer', __( 'Footer Menu', 'uw' ) );
 
     define( 'HEADER_IMAGE_WIDTH', apply_filters( 'twentyeleven_header_image_width', 1280 ) );
     define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'twentyeleven_header_image_height', 215 ) );
@@ -84,6 +85,8 @@ if ( ! function_exists( 'uw_enqueue_default_scripts' ) ):
     wp_register_script( 'jquery.weather', get_bloginfo('template_directory') . '/js/jquery.weather.js', array('jquery'), '1.0' );
     wp_register_script( 'jquery.placeholder', get_bloginfo('template_directory') . '/js/jquery.placeholder.js', array('jquery'), '1.0' );
     wp_register_script( 'jquery.imageexpander', get_bloginfo('template_directory') . '/js/jquery.imageexpander.js', array('jquery'), '1.0' );
+    wp_register_script( 'jquery.waypoints', get_bloginfo('template_directory') . '/js/jquery.waypoints.min.js', array('jquery'), '1.1.7' );
+    wp_register_script( 'jquery.imagesloaded', get_bloginfo('template_directory') . '/js/jquery.imagesloaded.min.js', array('jquery'), '1.0' );
 
     wp_enqueue_script( 'jquery' );
     wp_enqueue_script( 'header' );
@@ -186,7 +189,7 @@ if ( ! function_exists( 'uw_dropdowns' ) ):
       'container_class' => 'nav-collapse',
       'menu_class'      => 'nav',
       'fallback_cb'     => '',
-      'walker'          => new Walker_Navbar_Menu(),
+      'walker'          => new UW_Dropdowns_Walker_Menu(),
     ) );
     if ( !$nav ) 
     {
@@ -194,6 +197,26 @@ if ( ! function_exists( 'uw_dropdowns' ) ):
     }
   }
 
+endif;
+
+if ( ! function_exists( 'uw_footer_menu') ) :
+  function uw_footer_menu() 
+  {
+    $nav = has_nav_menu('footer');
+    if ( !$nav ) 
+    {
+      switch_to_blog(1);
+    }
+    wp_nav_menu( array( 
+      'theme_location'  => 'footer',
+      'menu_class'      => 'footer-navigation',
+      'fallback_cb'     => '',
+    ) );
+    if ( !$nav ) 
+    {
+      restore_current_blog();
+    }
+  }
 endif;
 
 if ( ! function_exists( 'banner_class' ) ): 
@@ -339,6 +362,7 @@ require( get_template_directory() . '/inc/custom-settings.php' );
 require( get_template_directory() . '/inc/custom-image-sizes.php' );
 require( get_template_directory() . '/inc/custom-image-shortcode.php' );
 require( get_template_directory() . '/inc/dropdown-walker.php' );
+require( get_template_directory() . '/inc/helper-functions.php' );
 
 if ( is_admin() )  {
   require( get_template_directory() . '/admin/autocomplete-authors.php' );

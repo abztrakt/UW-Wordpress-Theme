@@ -29,6 +29,7 @@
   var toggle = '[data-toggle="dropdown"]'
     , header = '#branding'
     , caret  = '.navbar-caret'
+    , open   = '.open'
     , timeout
     , Dropdown = function (element) {
         var $el = $(element).on('click.dropdown.data-api', this.toggle)
@@ -68,12 +69,16 @@
       isActive = $parent.hasClass('open')
 
       if (!isActive) { 
-        $parent.toggleClass('open');
-        $('div.collapse').removeClass('collapse');
-        if ( $('a.btn-navbar').is(':hidden') ) $header.height(350);
+        $parent.toggleClass('open')
+        $(open).not($parent).removeClass('open')
+        $('div.collapse').removeClass('collapse')
+        if ( $('a.btn-navbar').is(':hidden') ) $header.height(350)
         $caret.show()
         Dropdown.prototype.isActive = true
-      }
+      } 
+
+      if (isActive && e.type == 'click')
+        return true
 
       $caret.css('left', $parent.position().left + 20)
 
@@ -97,7 +102,7 @@
       }
 
       if (Dropdown.prototype.isActive) 
-        $this.trigger('click.dropdown.data-api')
+        $this.trigger('customclick.dropdown.data-api')
 
       timeout = setTimeout( function(){
         clearMenus()
@@ -111,7 +116,10 @@
     }
   }
 
-  function clearMenus() {
+  function clearMenus(e) {
+    if ( e && $(e.target).parent().hasClass('open') || 
+         e && $(e.target).closest('.open').length > 0 ) return
+
     var $header = $(header)
     Dropdown.prototype.isActive = false
     $header.css('height','auto')
@@ -140,10 +148,11 @@
    * =================================== */
 
   $(function () {
-    $('html').on('click.dropdown.data-api', clearMenus)
+    $('html').on('click.dropdown.data-api', function(e) { clearMenus(e); })
     $('body')
       .on('click.dropdown', '.dropdown form', function (e) { e.stopPropagation() })
       .on('click.dropdown.data-api', toggle, Dropdown.prototype.toggle)
+      .on('customclick.dropdown.data-api', toggle, Dropdown.prototype.toggle)
       .on('mouseenter.dropdown.data-api', toggle, Dropdown.prototype.timer)
       .on('mouseleave.dropdown.data-api', '#access', Dropdown.prototype.timer)
       .on('mouseenter.dropdown.data-api', '#access', Dropdown.prototype.backtrace)

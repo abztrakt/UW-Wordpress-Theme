@@ -1,6 +1,6 @@
 <?php
 
-class Walker_Navbar_Menu extends Walker_Nav_Menu {
+class UW_Dropdowns_Walker_Menu extends Walker_Nav_Menu {
 
 	public $dropdown_enqueued;
   private $count  = 0;
@@ -62,5 +62,3 @@ class Walker_Navbar_Menu extends Walker_Nav_Menu {
 	}
   
 }
-
-?>

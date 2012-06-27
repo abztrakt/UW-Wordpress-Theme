@@ -4,7 +4,8 @@
 <div id="footerBG">
     <div id="footer">
     	<h2>Explore the UW</h2>
-      <div class="span2">
+<?php uw_footer_menu(); ?>
+      <!--div class="span2">
         <ul>
           <li class="footerTitle">Admissions</li>
           <li>
@@ -124,7 +125,7 @@
             <li><a class="muw" href="http://www.washington.edu/mobile/" onclick="pageTracker._trackPageview('/pt/on/m-uw');">m.UW</a></li>
           </ul>
         </div>
-      </div>
+      </div-->
     </div>
 </div>
 
