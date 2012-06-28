@@ -20,7 +20,7 @@ class UW_Dropdowns_Walker_Menu extends Walker_Nav_Menu {
 		if ( $element->is_dropdown )
 			$element->classes[] = 'dropdown';
 
-		parent::display_element( $element, &$children_elements, $max_depth, $depth, $args, &$output );
+		parent::display_element( $element, $children_elements, $max_depth, $depth, $args, $output );
 	}
 
 	function start_lvl( &$output, $depth ) {
