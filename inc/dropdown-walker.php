@@ -6,7 +6,7 @@ class UW_Dropdowns_Walker_Menu extends Walker_Nav_Menu {
   private $count  = 0;
   private $toggle = true;
 
-	function __construct() {
+	function UW_Dropdowns_Walker_Menu() {
 		$this->dropdown_enqueued = wp_script_is( 'bootstrap-dropdown', 'queue' );
 	}
 
