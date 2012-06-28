@@ -49,7 +49,7 @@ class UW_Dropdowns_Walker_Menu extends Walker_Nav_Menu {
         $item_html = ( $this->toggle ) ? '<div class="menu-block">' : '</div><div class="menu-block">';
         $this->toggle = false;
     }
-		parent::start_el( &$item_html, $item, $depth, $args );
+		parent::start_el( $item_html, $item, $depth, $args );
 
 		if ( $item->is_dropdown && ( 1 != $args->depth ) ) {
 
