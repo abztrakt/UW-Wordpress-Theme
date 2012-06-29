@@ -253,6 +253,10 @@ if ( ! function_exists( 'custom_wordmark' ) ):
   function custom_wordmark() 
   {
     $option = get_option('patchband');
+
+    if ( ! is_array( $options) )
+      return;
+
     $wordmark = (array) $option['wordmark'];
     if ( isset($wordmark['custom'] )) {
       echo ' style="background:url('.$wordmark['custom']['url'].') no-repeat transparent; height:75px; width:445px;" ' ;
