@@ -162,7 +162,7 @@ object, embed, iframe {
 .widget_yarpp_widget h2		{ background-position: -306px -11px }
 
 
-/* - Text Widget - */
+/* - Text Widget - 
 
 .widget_text h2, .info-box h2, .widget_uw_showcase h2, .widget h2 {
 	font-weight: normal;
@@ -170,7 +170,7 @@ object, embed, iframe {
 	line-height: 21px;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-
+*/
 /* - Documents Widget - */
 
 .widget_categories select {

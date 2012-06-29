@@ -223,6 +223,10 @@ if ( ! function_exists( 'banner_class' ) ):
   function banner_class() 
   {
     $option = get_option('patchband');
+
+    if ( ! is_array($options) )
+      return;
+
     $patch    = (object) $option['patch'];
     $band     = (object) $option['band'];
     $wordmark = (object) $option['wordmark'];
