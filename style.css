@@ -863,7 +863,9 @@ object, embed, iframe {
 	#thin-strip li:nth-child(12) a { background: none; padding: 0; margin: 0 }	
 	#thin-strip li:nth-child(12) { background: none; margin: 0; }
 	
-	/* =============================================================================
+}
+
+/* =============================================================================
 	   High Pixel Density Displays
 	   ========================================================================== */
 	
@@ -891,8 +893,8 @@ object, embed, iframe {
 				background-image: url('http://www.washington.edu/static/mobile/image/sprite2x.png');
 				background-size: 77px 750px;
 			}
-	}	
-}
+	}
+
 
 /********************************************************************************************************************************************************************************
 	Desktop 

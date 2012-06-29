@@ -302,6 +302,8 @@ if ( ! function_exists( 'social_media' ) ):
 endif;
 
 add_filter('the_content', 'force_https_the_content');
+add_filter('the_permalink', 'force_https_the_content');
+add_filter('post_thumbnail_html', 'force_https_the_content');
 
 if ( ! function_exists( 'force_https_the_content' ) ):
   /**
@@ -312,6 +314,7 @@ if ( ! function_exists( 'force_https_the_content' ) ):
    * for images.
    */
     function force_https_the_content($content) {
+          $content = str_replace( 'src="http://', 'src="https://', $content );
         if ( is_ssl() )
         {
           $content = str_replace( 'src="http://', 'src="https://', $content );
@@ -320,8 +323,6 @@ if ( ! function_exists( 'force_https_the_content' ) ):
     }
 
 endif;
-
-
 
 if ( ! function_exists( 'get_social_media' ) ):
 
