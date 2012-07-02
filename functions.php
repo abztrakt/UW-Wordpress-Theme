@@ -314,7 +314,6 @@ if ( ! function_exists( 'force_https_the_content' ) ):
    * for images.
    */
     function force_https_the_content($content) {
-          $content = str_replace( 'src="http://', 'src="https://', $content );
         if ( is_ssl() )
         {
           $content = str_replace( 'src="http://', 'src="https://', $content );
