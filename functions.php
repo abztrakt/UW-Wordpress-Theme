@@ -304,6 +304,13 @@ endif;
 add_filter('the_content', 'force_https_the_content');
 add_filter('the_permalink', 'force_https_the_content');
 add_filter('post_thumbnail_html', 'force_https_the_content');
+add_filter('option_siteurl', 'force_https_the_content');
+add_filter('option_home', 'force_https_the_content');
+add_filter('option_url', 'force_https_the_content');
+add_filter('option_wpurl', 'force_https_the_content');
+add_filter('option_stylesheet_url', 'force_https_the_content');
+add_filter('option_template_url', 'force_https_the_content');
+
 
 if ( ! function_exists( 'force_https_the_content' ) ):
   /**
