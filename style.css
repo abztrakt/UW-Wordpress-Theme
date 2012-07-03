@@ -147,7 +147,8 @@ object, embed, iframe {
 .popular-posts h2,
 .widget_yarpp_widget h2,
 .widget_uw_showcase h2,
-.widget_mailchimp_subscribe h2 {
+.widget_mailchimp_subscribe h2,
+.widget_text h2 {
 	background: url(/cms/wp-content/themes/uw/img/widgets/headline-background.jpg) no-repeat -16px -6px transparent;
 	padding: 32px 0 5px;
 }
@@ -890,12 +891,12 @@ object, embed, iframe {
 	
 	.alignleft {
 		float: left;
-		padding: 5px 20px 15px 0;
+		margin: 5px 20px 15px 0;
 		position: relative;	
 	}
 	.alignright {
 		float: right;
-		padding: 5px 0 15px 20px;	
+		margin: 5px 0 15px 20px;	
 		position: relative;
 	}
 	.wp-media-credit {
