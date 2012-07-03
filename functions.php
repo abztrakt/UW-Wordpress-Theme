@@ -254,7 +254,7 @@ if ( ! function_exists( 'custom_wordmark' ) ):
   {
     $option = get_option('patchband');
 
-    if ( ! is_array( $options) )
+    if ( ! is_array( $option) )
       return;
 
     $wordmark = (array) $option['wordmark'];
