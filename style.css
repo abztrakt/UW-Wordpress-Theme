@@ -51,6 +51,12 @@ h3 {
 	line-height: 21px;
 	color: #715934;
 }
+h4 {
+	color: #484848;
+	font-size: 17px;
+	line-height: 24px;
+}
+
 a {
     color: #4682A8;
 }
