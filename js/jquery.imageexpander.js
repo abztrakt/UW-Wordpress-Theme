@@ -10,7 +10,7 @@ $(document).ready(function() {
             , cached = $this.siblings('img').length > 0 
             , $anchor = $this.parent('a')
             , $caption = $this.closest('.wp-caption')
-            , cap
+            , cap, padding
 
         if ($this.hasClass('royalImage')) 
           return;
@@ -24,9 +24,9 @@ $(document).ready(function() {
               $caption.data('opadding', $caption.css('padding'))
           }
 
-          size    = $this.hasClass('image-expanded') ? $anchor.data('owidth') : 600
+          size    = $this.hasClass('image-expanded') ? $anchor.data('owidth') : 605
           cap     = $this.hasClass('image-expanded') ? 0 : 10 ;
-          padding = $this.hasClass('image-expanded') ? $caption.data('opadding') : '5px 0px 15px 0px'
+          padding = $caption.css('padding')
 
           $anchor.data('expanded', 'true')
 
