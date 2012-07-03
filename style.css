@@ -52,7 +52,7 @@ h3 {
 	color: #715934;
 }
 a {
-    color: #3089C2;
+    color: #4682A8;
 }
 p {
     font-size: 14px;
@@ -146,20 +146,21 @@ object, embed, iframe {
 .widget_links h2,
 .popular-posts h2,
 .widget_yarpp_widget h2,
-.widget_uw_showcase h2 {
-	background: url(/cms/wp-content/themes/uw/img/widgets/headline-background.jpg) no-repeat -16px -11px transparent;
+.widget_uw_showcase h2,
+.widget_mailchimp_subscribe h2 {
+	background: url(/cms/wp-content/themes/uw/img/widgets/headline-background.jpg) no-repeat -16px -6px transparent;
 	padding: 32px 0 5px;
 }
 
-.widget_links h2			{ background-position: -16px -11px }
-.documents h2				{ background-position: -16px -11px }
-.video h2 					{ background-position: -16px -11px }
-.announcements h2 			{ background-position: -16px -11px }
-.widget_recent_entries h2 	{ background-position: -16px -11px }
-.widget_categories h2 		{ background-position: -16px -11px }
-.widget_archive h2 			{ background-position: -16px -11px }
-.popular-posts 				{ background-position: -16px -11px }
-.widget_yarpp_widget h2		{ background-position: -306px -11px }
+.widget_links h2			{ background-position: -16px -6px }
+.documents h2				{ background-position: -16px -154px }
+.video h2 					{ background-position: -16px -295px }
+.announcements h2 			{ background-position: -16px -454px }
+.widget_recent_entries h2 	{ background-position: -16px -604px }
+.widget_categories h2 		{ background-position: -16px -295px }
+.widget_archive h2 			{ background-position: -16px -295px }
+.popular-posts 				{ background-position: -16px -295px }
+.widget_yarpp_widget h2		{ background-position: -16px -295px }
 
 
 /* - Text Widget - 
@@ -431,6 +432,9 @@ object, embed, iframe {
 	body #navbar-menu:before {
 		top: 15px;
 	}
+	body .nav > li {
+		background: none;
+	}
 }
 @media (max-width: 480px) { 
 }
@@ -471,6 +475,10 @@ object, embed, iframe {
 	}
 	.navbar .nav .active > a, .navbar .nav .active > a:hover {
 		background-color: #39275b;
+	}
+	.navbar .nav > li > a:hover {
+		background-color: #fff;
+		color: #888;
 	}
 	.nav-collapse .nav > li:last-child > a {
 		border-bottom: none;
@@ -543,7 +551,7 @@ object, embed, iframe {
 		width: 263px !important;
 		height: 44px !important;
 	}
-	#header > span:nth-child(3), #header > span:nth-child(4)  {
+	#header > span:nth-child(3) {
 		background: url("/cms/wp-content/themes/uw/img/mobile-header/dropdowns1x.png") no-repeat -29px 0px transparent;	
 		position: absolute;
 		top: 4px;
@@ -552,9 +560,14 @@ object, embed, iframe {
 		height: 30px;
 		display: block;
 	}
-	#header span:nth-child(4) {	
+	#header > span:nth-child(4) {	
+		position: absolute;
+		top: 4px;
 		right: 50px;
-		background-position: 10px 0;
+		width: 35px;
+		height: 30px;
+		display: block;
+		background: url("/cms/wp-content/themes/uw/img/mobile-header/dropdowns1x.png") no-repeat 7px 0px transparent;	
 	}
 
 
@@ -723,7 +736,8 @@ object, embed, iframe {
 	#sidebar {
 		padding: 15px;
 	}
-	.entry-content > p, .post-content > p, .entry-meta, ul, h2, h3, h4, #respond {
+	.entry-content > p, .entry-content > h2, .entry-content > h3, .entry-content > h4, 
+	.post-content > p, .entry-meta, ul, .post-content > h2, .post-content > h3, .post-content > h4, #respond {
 		padding: 0 15px;
 	}
 	#respond input[type="text"], #respond textarea {
@@ -739,13 +753,7 @@ object, embed, iframe {
 		border-bottom: 4px solid #D7A900;
 		background-color: #F9F9F9;
 	}	
-	.widget_recent_entries h2, 
-	.widget_categories h2, 
-	.widget_search h2, 
-	.widget_archive h2,
-	.widget_links h2 {
-		font-size: 15px;
-	}
+
 	#s { 
 		width: 90%; 
 		padding: 9px 0 9px 10%;
@@ -772,7 +780,7 @@ object, embed, iframe {
 		font-size: 13px;
 		line-height: 16px;
 		background-color: #F4F4F4;
-		margin-right: right;
+		margin-right: 10px;
 	}
 	.wp-media-credit {
 		padding: 5px 15px 2px;
@@ -865,35 +873,6 @@ object, embed, iframe {
 	
 }
 
-/* =============================================================================
-	   High Pixel Density Displays
-	   ========================================================================== */
-	
-	
-	@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
-	    only screen and (-o-min-device-pixel-ratio: 3/2),
-	    only screen and (min--moz-device-pixel-ratio: 1.5),
-	    only screen and (min-device-pixel-ratio: 1.5) {
-	    	.wordmark {
-	    		background: url("/cms/wp-content/themes/uw/img/mobile-header/logo2x.png") no-repeat 0 0 transparent;
-	      	    background-size: 230px 35px;
-	    	}
-	    	#header > span:nth-child(3), #header > div > span:nth-child(4) {
-	    		background: url("/cms/wp-content/themes/uw/img/mobile-header/dropdowns2x.png") no-repeat -29px 0px transparent;	
-	    		background-size: 66px 32px;
-	    	}
-	 		#header > span:nth-child(4) {	
-				background-position: 10px 0;
-			}
-	    	#thin-strip ul {
-	  	    	background: url("http://www.washington.edu/static/mobile/image/gridLinesX2.png") center center no-repeat #f8f8f8;
-	  	    	background-size: 295px 315px;
-	  	  	}
-			#thin-strip li a {
-				background-image: url('http://www.washington.edu/static/mobile/image/sprite2x.png');
-				background-size: 77px 750px;
-			}
-	}
 
 
 /********************************************************************************************************************************************************************************
@@ -1538,5 +1517,35 @@ object, embed, iframe {
 }
 
 
+/* =============================================================================
+   High Pixel Density Displays
+   ========================================================================== */
+
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+    only screen and (-o-min-device-pixel-ratio: 3/2),
+    only screen and (min--moz-device-pixel-ratio: 1.5),
+    only screen and (min-device-pixel-ratio: 1.5) {
+    	.wordmark {
+    		background: url("/cms/wp-content/themes/uw/img/mobile-header/logo2x.png") no-repeat 0 0 transparent !important;
+      	    background-size: 230px 35px;
+    	}
+    	#header > span:nth-child(4) {
+    		background: url("/cms/wp-content/themes/uw/img/mobile-header/dropdowns2x.png") no-repeat 10px 0px transparent !important;	
+    		background-size: 66px 32px;
+    	}
+ 		#header > span:nth-child(3) {	
+    		background: url("/cms/wp-content/themes/uw/img/mobile-header/dropdowns2x.png") no-repeat -29px 0px transparent !important;	
+    		background-size: 66px 32px;
+    	}
+    	#thin-strip ul {
+  	    	background: url("http://www.washington.edu/static/mobile/image/gridLinesX2.png") center center no-repeat #f8f8f8;
+  	    	background-size: 295px 315px;
+  	  	}
+    	#thin-strip li a {
+    		background-image: url('http://www.washington.edu/static/mobile/image/sprite2x.png');
+    		background-size: 77px 750px;
+    	}
+}
 
 

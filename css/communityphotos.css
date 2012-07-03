@@ -3,7 +3,7 @@
 	font-size:60%;
 	font-weight:bold;
 	margin:0;
-	padding:3px 15px 0 0;
+	padding:3px 5px 0 0;
 	text-align:right;
 	text-transform:uppercase;
 }
@@ -87,6 +87,9 @@
 }
 .communityphotos span img {
 	height:40px;
+}
+.communityphotos div img {
+	margin: 0;
 }
 #nc-left-col .communityphotos {
 	width:auto;

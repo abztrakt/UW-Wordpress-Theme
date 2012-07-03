@@ -224,7 +224,7 @@ if ( ! function_exists( 'banner_class' ) ):
   {
     $option = get_option('patchband');
 
-    if ( ! is_array($options) )
+    if ( ! is_array($option) )
       return;
 
     $patch    = (object) $option['patch'];
