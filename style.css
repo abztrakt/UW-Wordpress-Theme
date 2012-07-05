@@ -1390,16 +1390,16 @@ object, embed, iframe {
 	.social-footer .footerTitle {
 		margin: 0 0 10px 0;
 	}
-	.social-footer a {	
+	.uw-facebook a, .uw-twitter a, .uw-youtube a, .uw-itunes a, .uw-muw a	{	
 		background: url(/cms/wp-content/themes/uw/img/soc-med.gif) no-repeat 0 0 transparent;
 		padding: 3px 0 3px 31px;
 		margin-bottom: 3px;
 		display: block;
-	}		
-	.social-footer .twitter 	{	background-position: 0 -92px	}
-	.social-footer .youtube		{	background-position: 0 -30px	}
-	.social-footer .itunes 		{	background-position: 0 -60px	}
-	.social-footer .muw			{	background-position: 0 -123px	}
+	}	
+	.uw-twitter a 	{	background-position: 0 -92px	}
+	.uw-youtube	a	{	background-position: 0 -30px	}
+	.uw-itunes a	{	background-position: 0 -60px	}
+	.uw-muw a		{	background-position: 0 -123px	}
 	
 	/* ----  Thin Strip Footer ---- */
 	
