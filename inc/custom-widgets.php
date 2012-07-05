@@ -841,9 +841,9 @@ class UW_Showcase_Widget extends WP_Widget {
  */
 class UW_RSS_Widget extends WP_Widget {
 	function UW_RSS_Widget() {
-    $options = array( 'description' => 'Entries from any RSS or Atom feed' );
+    $options = array( 'description' => 'Similar to the Wordpress RSS widget but allows a textarea blurb before the RSS is listed.' );
 		$control_ops = array('width' => 400, 'height' => 350);
-		parent::WP_Widget( $id = 'uw_rss_widget', $name = 'RSS', $options , $control_ops );
+		parent::WP_Widget( $id = 'uw_rss_widget', $name = 'UW RSS', $options , $control_ops );
 	}
 	function form($instance) {
 
