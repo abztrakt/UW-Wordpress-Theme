@@ -18,7 +18,7 @@ function uw_register_widgets() {
 	register_widget('UW_Widget_YouTube_Playlist');
 	register_widget('UW_Widget_MailChimp');
   register_widget('UW_Widget_CommunityPhotos');
-  register_widget('UW_Widget_Showcase_Links');
+  //register_widget('UW_Widget_Showcase_Links');
   register_widget('UW_Widget_Twitter');
   register_widget('UW_KEXP_KUOW_Widget');
   register_widget('UW_Showcase_Widget');
@@ -841,7 +841,9 @@ class UW_Showcase_Widget extends WP_Widget {
  */
 class UW_RSS_Widget extends WP_Widget {
 	function UW_RSS_Widget() {
-		parent::WP_Widget( $id = 'uw_rss_widget', $name = 'RSS', $options = array( 'description' => 'Entries from any RSS or Atom feed' ) );
+    $options = array( 'description' => 'Entries from any RSS or Atom feed' );
+		$control_ops = array('width' => 400, 'height' => 350);
+		parent::WP_Widget( $id = 'uw_rss_widget', $name = 'RSS', $options , $control_ops );
 	}
 	function form($instance) {
 
@@ -863,15 +865,19 @@ class UW_RSS_Widget extends WP_Widget {
     if ( !empty($error) )
       echo '<p class="widget-error"><strong>' . sprintf( __('RSS Error: %s'), $error) . '</strong></p>';
   ?>
+		<p>
+		<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Give the feed a title (optional):' ); ?></label> 
+    <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $instance['title']); ?>" />
+		</p>
+
+		<p>
+		<label for="<?php echo $this->get_field_id( 'text' ); ?>"><?php _e( 'Featured blurb:' ); ?></label> 
+		<textarea class="widefat" style="resize:vertical" rows="14" cols="20" id="<?php echo $this->get_field_id('text'); ?>" name="<?php echo $this->get_field_name('text'); ?>"><?php echo esc_textarea($instance['text']); ?></textarea>
+		</p>
 
 		<p>
 		<label for="<?php echo $this->get_field_id( 'url' ); ?>"><?php _e( 'Enter the RSS feed URL here:' ); ?></label> 
 		<input class="widefat" id="<?php echo $this->get_field_id( 'url' ); ?>" name="<?php echo $this->get_field_name( 'url' ); ?>" type="text" value="<?php echo esc_attr( $instance['url']); ?>" />
-		</p>
-
-		<p>
-		<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Give the feed a title (optional):' ); ?></label> 
-    <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $instance['title']); ?>" />
 		</p>
 
     <p>
@@ -884,12 +890,12 @@ class UW_RSS_Widget extends WP_Widget {
     </select>
     </p>
 
-		<p>
+		<!--p>
       <input id="<?php echo $this->get_field_id( 'show_image' ); ?>" name="<?php echo $this->get_field_name( 'show_image' ); ?>" type="checkbox" value="1" <?php checked( $instance['show_image']); ?>/>
       <label for="<?php echo $this->get_field_id( 'show_image' ); ?>"><?php _e( 'Display item image?' ); ?></label> 
 		</p>
 
-		<!--p>
+		<p>
       <input id="<?php echo $this->get_field_id( 'show_summary' ); ?>" name="<?php echo $this->get_field_name( 'show_summary' ); ?>" type="checkbox" value="1" <?php checked( $instance['show_summary']); ?>/>
       <label for="<?php echo $this->get_field_id( 'show_summary' ); ?>"><?php _e( 'Display item content?' ); ?></label> 
 		</p>
@@ -917,6 +923,12 @@ class UW_RSS_Widget extends WP_Widget {
 		$instance['show_summary'] = (int) ( $new_instance['show_summary'] );
 		$instance['show_author'] = (int) ( $new_instance['show_author'] );
 		$instance['show_date'] = (int) ( $new_instance['show_date'] );
+
+		if ( current_user_can('unfiltered_html') )
+			$instance['text'] =  $new_instance['text'];
+		else
+			$instance['text'] = stripslashes( wp_filter_post_kses( addslashes($new_instance['text']) ) ); // wp_filter_post_kses() expects slashed
+    
 		return $instance;
 	}
 
@@ -926,6 +938,7 @@ class UW_RSS_Widget extends WP_Widget {
     $URL = $instance['url'];
     $rss = fetch_feed($URL);
 		$title = apply_filters( 'widget_title', $instance['title'] );
+    $text  = $instance['text'];
 
     $parsed_url = parse_url($instance['url']);
     $base_url = $parsed_url['host'];
@@ -940,25 +953,19 @@ class UW_RSS_Widget extends WP_Widget {
 
       if ( ! empty( $title ) ) $content .= $before_title . $title . $after_title;
 
+      $content .= "<div class=\"featured\">$text</div>";
+
       foreach ($rss_items as $index=>$item) {
         $title = $item->get_title();
         $link  = $item->get_link();
-        $src   = $item->get_enclosure()->link;
-        $desc  = $item->get_description();
 
-        if ( strlen($src) > 1 && $index == 0 ) 
-          $content .= "<a href='$link' title='$title' style='display:block; height:150px; overflow:hidden;'><img src='$src' alt='$title' style='width:82%'></a>";
-
-        if ( $index == 0 ) {
-          $content .= "<p><a href='$link' title='$title'>$title</a> - $desc</p>";
-          $content .= '<ul>';
-        } else {
-          $content .= "<li><a href='$link' title='$title'>$title</a></li>";
-        }
+        $content .= "<li><a href='$link' title='$title'>$title</a></li>";
       }
-      $content .= '</ul>';
 
-      echo $before_widget . $content . $after_widget;
+    $content .= '</ul>';
+
+    echo $before_widget . $content . $after_widget;
+
     }
 	}
 }
