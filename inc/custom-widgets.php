@@ -446,7 +446,7 @@ class UW_Widget_CommunityPhotos extends WP_Widget {
   function load_css() {
       wp_register_style( 'communityphotos', get_bloginfo('template_url') . '/css/communityphotos.css' );
       wp_enqueue_style( 'communityphotos' );
-      wp_register_script( 'jquery.communityphotos', get_bloginfo('template_url') . '/js/widget-communityphotos.js' );
+      wp_register_script( 'jquery.communityphotos', get_bloginfo('template_url') . '/js/widget-communityphotos.js', array('jquery', 'jquery.waypoints') ) ;
       wp_enqueue_script( 'jquery.communityphotos' );
   }
 }
@@ -841,7 +841,7 @@ class UW_Showcase_Widget extends WP_Widget {
  */
 class UW_RSS_Widget extends WP_Widget {
 	function UW_RSS_Widget() {
-    $options = array( 'description' => 'Similar to the Wordpress RSS widget but allows a textarea blurb before the RSS is listed.' );
+    $options = array( 'description' => 'Similar to the Wordpress RSS widget but allows a blurb before the RSS feed is listed.' );
 		$control_ops = array('width' => 400, 'height' => 350);
 		parent::WP_Widget( $id = 'uw_rss_widget', $name = 'UW RSS', $options , $control_ops );
 	}

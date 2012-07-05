@@ -34,7 +34,7 @@
 				<div id="secondary" class="span4 right-bar" role="complementary">
 					<div class="stripe-top"></div><div class="stripe-bottom"></div>				
           <div id="sidebar">
-            <?php dynamic_sidebar('sidebar'); ?>
+          <?php if (is_active_sidebar('homepage-sidebar') && is_front_page()) : dynamic_sidebar('homepage-sidebar'); else: dynamic_sidebar('sidebar'); endif; ?>
           </div>
 				</div>
  			 </div>
