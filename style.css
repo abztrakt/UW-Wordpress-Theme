@@ -1392,7 +1392,7 @@ object, embed, iframe {
 	}
 	.uw-facebook a, .uw-twitter a, .uw-youtube a, .uw-itunes a, .uw-muw a	{	
 		background: url(/cms/wp-content/themes/uw/img/soc-med.gif) no-repeat 0 0 transparent;
-		padding: 3px 0 3px 31px;
+		padding: 6px 0 6px 31px;
 		margin-bottom: 3px;
 		display: block;
 	}	

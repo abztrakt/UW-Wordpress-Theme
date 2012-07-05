@@ -955,6 +955,8 @@ class UW_RSS_Widget extends WP_Widget {
 
       $content .= "<div class=\"featured\">$text</div>";
 
+      $content .= "<ul>";
+
       foreach ($rss_items as $index=>$item) {
         $title = $item->get_title();
         $link  = $item->get_link();
@@ -962,9 +964,9 @@ class UW_RSS_Widget extends WP_Widget {
         $content .= "<li><a href='$link' title='$title'>$title</a></li>";
       }
 
-    $content .= '</ul>';
+      $content .= '</ul>';
 
-    echo $before_widget . $content . $after_widget;
+      echo $before_widget . $content . $after_widget;
 
     }
 	}
