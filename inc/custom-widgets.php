@@ -933,42 +933,43 @@ class UW_RSS_Widget extends WP_Widget {
 	}
 
 	function widget($args, $instance) {
-    extract( $args);
-		// outputs the content of the widget
-    $URL = $instance['url'];
-    $rss = fetch_feed($URL);
-		$title = apply_filters( 'widget_title', $instance['title'] );
+    extract($args);
+
+    $title = apply_filters( 'widget_title', $instance['title'] );
     $text  = $instance['text'];
+    $URL = $instance['url'];
 
-    $parsed_url = parse_url($instance['url']);
-    $base_url = $parsed_url['host'];
+    $content = '<span class="showcase-bar uw-rss-widget"></span>';
 
-    if (!is_wp_error( $rss ) ) { 
-      $url = $rss->get_permalink();
-      $maxitems = $rss->get_item_quantity($instance['items']); 
+    if ( ! empty( $title ) ) $content .= $before_title . $title . $after_title;
 
-      $rss_items = $rss->get_items(0, $maxitems); 
-      
-      $content = '<span class="showcase-bar uw-rss-widget"></span>';
+    $content .= "<div class=\"featured\">$text</div>";
 
-      if ( ! empty( $title ) ) $content .= $before_title . $title . $after_title;
 
-      $content .= "<div class=\"featured\">$text</div>";
+    if ( strlen($URL) > 0 ) {
+    
+      $rss = fetch_feed($URL);
 
-      $content .= "<ul>";
+      if (!is_wp_error( $rss ) ) { 
+        $url = $rss->get_permalink();
+        $maxitems = $rss->get_item_quantity($instance['items']); 
 
-      foreach ($rss_items as $index=>$item) {
-        $title = $item->get_title();
-        $link  = $item->get_link();
+        $rss_items = $rss->get_items(0, $maxitems); 
+        
+        $content .= "<ul>";
 
-        $content .= "<li><a href='$link' title='$title'>$title</a></li>";
+        foreach ($rss_items as $index=>$item) {
+          $title = $item->get_title();
+          $link  = $item->get_link();
+
+          $content .= "<li><a href='$link' title='$title'>$title</a></li>";
+        }
+
+        $content .= '</ul>';
       }
-
-      $content .= '</ul>';
-
-      echo $before_widget . $content . $after_widget;
-
     }
+
+    echo $before_widget . $content . $after_widget;
 	}
 }
 
