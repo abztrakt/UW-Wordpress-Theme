@@ -51,29 +51,14 @@ jQuery(document).ready(function($){
 
 });
 
-
-
-//
-//
-// Mobile header outdated stuff. Dane, have at it.
-//
-//
-//
-
-
-
 $(window).load(function(){
 	var alerty = $('#alertMessage').outerHeight()
 	$("body").css("background-position", "0 " + alerty + "px" ); 
- 
-  
 });
-
 
 $(document).ready(function(){
 
   $('[href=#]').removeAttr('href'); //prevent ios nav bar from popping down
-
   
   var lip = $('#lip'),
       linkRotator = $('#linkRotator'),
@@ -126,21 +111,5 @@ $(document).ready(function(){
 		}		
 		return false;
 	});
-	
-  // Accessibility 
-/*
-	topnav.css('visibility','hidden').bind('webkitTransitionEnd', function() {
-    if ( !topnav.hasClass('activate') && !search.hasClass('activate') || search.hasClass('activate')) {
-       topnav.css('visibility','hidden');
-    }   
-  });
-  search.css('visibility','hidden').bind('webkitTransitionEnd', function() {
-    if ( !topnav.hasClass('activate') && !search.hasClass('activate') || topnav.hasClass('activate')) {
-       search.css('visibility','hidden');
-    }
-  });
-*/
 
 });
-
-
