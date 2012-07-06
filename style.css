@@ -1292,6 +1292,17 @@ object, embed, iframe {
 	#sidebar {
 	    padding: 10px 0 0 55px;
 	}
+	.right-bar .post-thumbnail.widget p {
+		clear: both;
+		display: block;
+		font-size: 12px;
+		margin: 0 15px 0 0;
+		padding: 5px 5px 5px 10px;
+		background-color: #F4F4F4;
+	}
+	.right-bar .post-thumbnail.widget {
+		margin-top: 20px;
+	}
 	.right-bar, .stripe-top, .stripe-bottom {
 		background: url(img/side-stripe.png) no-repeat 0 0 transparent;	
 	}
