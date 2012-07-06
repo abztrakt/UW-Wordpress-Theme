@@ -257,12 +257,18 @@ object, embed, iframe {
 
 .widget_nav_menu h2, .subpage_menu h2 {
     font-size: 21px;
+    color: #39275b;
     line-height: 26px;
     padding: 0 0 45px 0;
     margin: 0;
     background: url(img/side-menu-bg.gif) no-repeat bottom center transparent;
 }
-.widget_nav_menu h2 span, .subpage_menu h2 span {
+.widget_nav_menu h2 a, .subpage_menu h2 a {
+    font-size: 21px;
+    color: #39275b;
+    border: none;
+}
+.widget_nav_menu h2 a, .subpage_menu h2 a {
 	padding-left: 13px;
 	background: url(img/arrow.png) no-repeat -25px -11px transparent;
 	margin-left: -14px;
@@ -289,7 +295,7 @@ object, embed, iframe {
 	-webkit-transition: border 0.1s linear;
 	transition: border 0.1s linear;
 }
-.widget_nav_menu li:hover, .subpage_menu li hover {
+.widget_nav_menu li:hover, .subpage_menu li:hover {
 	border-left: 4px solid #D7A900;
 }
 #menu-discover-links .sub-menu {

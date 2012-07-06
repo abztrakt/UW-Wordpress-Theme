@@ -23,6 +23,7 @@ function uw_register_widgets() {
   register_widget('UW_KEXP_KUOW_Widget');
   register_widget('UW_Showcase_Widget');
   register_widget('UW_Subpage_Menu');
+  register_widget('UW_Nav_Menu_Widget');
 }
 
 add_action('widgets_init', 'uw_register_widgets', 1);
@@ -999,8 +1000,9 @@ class UW_Subpage_Menu extends WP_Widget {
     echo $before_widget;?>
 
     <?php echo $before_title . $title . $after_title; ?>
+    <?php echo '<ul class="menu">';?>
     <?php wp_list_pages( array('title_li'=>'','depth'=>1,'child_of'=>$id) ); ?>
-
+    <?php echo '</ul>'; ?>
     <?php
 		echo $after_widget;
 	}
@@ -1030,6 +1032,35 @@ class UW_Subpage_Menu extends WP_Widget {
   
 } 
 
+/**
+ * UW Custom Menu 
+ *
+ * Add's an anchor around the title that links to the homepage of the site
+ * Only the display is custom, everything else is using the default WP_Nav_Menu_Widget
+ */
+
+class UW_Nav_Menu_Widget extends WP_Nav_Menu_Widget {
+
+	function widget($args, $instance) {
+		// Get menu
+		$nav_menu = ! empty( $instance['nav_menu'] ) ? wp_get_nav_menu_object( $instance['nav_menu'] ) : false;
+
+		if ( !$nav_menu )
+			return;
+
+		$instance['title'] = apply_filters( 'widget_title', empty( $instance['title'] ) ? '' : $instance['title'], $instance, $this->id_base );
+
+		echo $args['before_widget'];
+
+		if ( !empty($instance['title']) )
+			echo $args['before_title'] . '<a href="'. home_url('/') .'" title="' . esc_attr(strip_tags($instance['title'])) . '">' . $instance['title'] .'</a>'. $args['after_title'];
+
+		wp_nav_menu( array( 'fallback_cb' => '', 'menu' => $nav_menu ) );
+
+		echo $args['after_widget'];
+	}
+
+}
 
 
 
