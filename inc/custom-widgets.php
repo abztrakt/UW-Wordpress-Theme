@@ -22,6 +22,7 @@ function uw_register_widgets() {
   register_widget('UW_Widget_Twitter');
   register_widget('UW_KEXP_KUOW_Widget');
   register_widget('UW_Showcase_Widget');
+  register_widget('UW_Subpage_Menu');
 }
 
 add_action('widgets_init', 'uw_register_widgets', 1);
@@ -972,6 +973,62 @@ class UW_RSS_Widget extends WP_Widget {
     echo $before_widget . $content . $after_widget;
 	}
 }
+
+/**
+ *
+ * Subpage Menu Widget - shows current page and all subpages
+ *
+ *
+ ***********************************************************************************/
+class UW_Subpage_Menu extends WP_Widget {
+
+	public function UW_Subpage_Menu() {
+		parent::__construct(
+	 		'uw_subpage_menu',
+			'Subpage Menu',
+			array( 'classname' => 'subpage_menu', 'description' => __( "Displays a menu of child pages of the current page"), )
+		);
+    
+	}
+
+	public function widget( $args, $instance ) {
+		extract( $args );
+		$id    = $this->get_post_top_ancestor_id();
+    $title = '<a href="' . get_permalink($id) .'" title="'. esc_attr(strip_tags(get_the_title($id))) .'">'.get_the_title($id).'</a>';
+
+    echo $before_widget;?>
+
+    <?php echo $before_title . $title . $after_title; ?>
+    <?php wp_list_pages( array('title_li'=>'','depth'=>1,'child_of'=>$id) ); ?>
+
+    <?php
+		echo $after_widget;
+	}
+
+	public function form( $instance ) {
+
+    //$title  = isset( $instance[ 'title' ] ) ? $instance[ 'title' ] : __( get_bloginfo('name'), '' );  ?>
+
+		<!--p>
+		<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
+		</p-->
+
+		<?php 
+	}
+
+  function get_post_top_ancestor_id(){
+      global $post;
+      
+      if($post->post_parent){
+          $ancestors = array_reverse(get_post_ancestors($post->ID));
+          return $ancestors[0];
+      }
+      
+      return $post->ID;
+  }
+  
+} 
 
 
 

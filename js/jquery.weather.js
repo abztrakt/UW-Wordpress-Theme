@@ -13,7 +13,7 @@
 */(function($) {
   return $.fn.extend({
     weather: function(settings) {
-      var days, gather, image_url, isSuccessful, json_url, key, link, months, options, parameters, query, url, value;
+      var days, gather, image_url, isSuccessful, json_url, key, link, months, options, parameters, query, url, value, sizes;
       url = "http://www.atmos.washington.edu/rss/home.rss";
       link = "http://www.atmos.washington.edu/weather/forecast/";
       json_url = "http://ajax.googleapis.com/ajax/services/feed/load?";
@@ -36,6 +36,11 @@
         fahrenheit: true,
         ssl: false
       };
+      sizes = {
+        'news': 200,
+        'small':56
+      
+      }
       $.extend(options, settings);
       if (options.ssl) {
         json_url = json_url.replace('http', 'https');
@@ -89,9 +94,9 @@
               current_weather = "" + condition;
             }
             img_tag = image !== "00" ? "<img src='" + img_src + "' alt='" + current_weather + "' title='" + current_weather + "' />" : "";
-            if (options.anchor) {
-              img_tag = "<a href='" + link + "'> " + img_tag + " </a>";
-            }
+            //if (options.anchor) {
+            img_tag = "<a href='" + link + "' style='width:"+sizes[options.icon]+"px;background:url("+img_src+")'></a>";
+            //}
             weather_condition = options.condition ? "<span class='weather-condition'>" + current_weather + "</span>" : "";
             weather_datetime = options.showdate ? "<span class='weather-datetime'>" + current_datetime + "</span>" : "";
             self.empty().append(img_tag).append(city).append(weather_condition).append(weather_datetime);

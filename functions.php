@@ -87,6 +87,8 @@ if ( ! function_exists( 'uw_enqueue_default_scripts' ) ):
     wp_register_script( 'jquery.imageexpander', get_bloginfo('template_directory') . '/js/jquery.imageexpander.js', array('jquery'), '1.0' );
     wp_register_script( 'jquery.waypoints', get_bloginfo('template_directory') . '/js/jquery.waypoints.min.js', array('jquery'), '1.1.7' );
     wp_register_script( 'jquery.imagesloaded', get_bloginfo('template_directory') . '/js/jquery.imagesloaded.min.js', array('jquery'), '1.0' );
+    wp_register_script( 'jquery.parallax', get_bloginfo('template_directory') . '/js/jquery.parallax.min.js', array('jquery'), '1.0' );
+    wp_register_script( 'jquery.404', get_bloginfo('template_directory') . '/js/404.js', array('jquery'), '1.0' );
 
     wp_enqueue_script( 'jquery' );
     wp_enqueue_script( 'header' );
@@ -95,6 +97,14 @@ if ( ! function_exists( 'uw_enqueue_default_scripts' ) ):
     wp_enqueue_script( 'jquery.placeholder' );
     wp_enqueue_script( 'jquery.imageexpander' );
     wp_enqueue_script( 'jquery.boostrap.collapse' );
+
+    if( is_404() ) {
+
+      wp_enqueue_script( 'jquery.imagesloaded' );
+      wp_enqueue_script( 'jquery.parallax' );
+      wp_enqueue_script( 'jquery.404' );
+       
+    }
   }
 
 endif;
@@ -299,19 +309,6 @@ endif;
 add_action( 'widgets_init', 'uw_widgets_init' );
 
 
-/**
- * Social Media Buttons
- *
- */
-if ( ! function_exists( 'social_media' ) ):
-
-  function social_media( $id = null ) 
-  {
-    echo get_social_media($id);
-  }
-
-endif;
-
 add_filter('the_content', 'force_https_the_content');
 add_filter('the_permalink', 'force_https_the_content');
 add_filter('post_thumbnail_html', 'force_https_the_content');
@@ -341,46 +338,6 @@ if ( ! function_exists( 'force_https_the_content' ) ):
 
 endif;
 
-if ( ! function_exists( 'get_social_media' ) ):
-
-  function get_social_media( $id = null ) 
-  {
-    wp_register_script('social-media-js', get_bloginfo('template_url') . '/js/social-media.js', 'jquery');
-    wp_enqueue_script('social-media-js');
-
-    wp_register_style('social-media-css', get_bloginfo('template_url') . '/css/social-media.css', 'jquery');
-    wp_enqueue_style('social-media-css');
-
-    if ( $id == null ) {
-      global $post;
-      $permalink = get_permalink( $post->ID );
-    } else if ($id == 'home') {
-      $permalink = home_url();
-    } else {
-      $permalink = get_permalink( $id );
-    }
-    $url = (is_user_logged_in()) ? $permalink : 
-                                   str_replace('.edu/cms/', '.edu/', $permalink );
-    if ( !$post ) {
-      $page_id = get_page_by_path( 'homepage' );
-      $post = get_post($page_id);
-    }
-
-    $html = "<ul class='social-media'>" . 
-              "<li class='fb'><a href='#'>" . 
-              "<div class='facebook-like' data-href='$url' data-send='false' data-layout='button_count' data-width='30' data-show-faces='false'></div>" . 
-              "</a></li>" . 
-              "<li class='twit'>" .
-              "<a class='twitter-share' href='http://twitter.com/share' data-url='$url'>Tweet</a>" .
-              "</li>" . 
-              "<li class='email'><a href='#' class='email-ajax' data-id='$post->ID'>Email</a></li>" . 
-              "<li class='count' data-url='$url'></li>" . 
-           "</ul>";
-    return $html; 
-  }
-
-endif;
-
 require( get_template_directory() . '/inc/patch-band-options.php' );
 require( get_template_directory() . '/inc/media-credit.php' );
 require( get_template_directory() . '/inc/custom-widgets.php' );
@@ -391,7 +348,8 @@ require( get_template_directory() . '/inc/dropdown-walker.php' );
 require( get_template_directory() . '/inc/helper-functions.php' );
 
 if ( is_admin() )  {
-  require( get_template_directory() . '/admin/autocomplete-authors.php' );
+  if (!class_exists('coauthors_plus') )
+    require( get_template_directory() . '/admin/autocomplete-authors.php' );
   require( get_template_directory() . '/admin/custom-user-info-fields.php' );
 }
 ?>
