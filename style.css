@@ -298,6 +298,9 @@ object, embed, iframe {
 .widget_nav_menu li:hover, .subpage_menu li:hover {
 	border-left: 4px solid #D7A900;
 }
+.widget_nav_menu li:last-child a, .subpage_menu li:last-child a {
+	border: none;
+}
 #menu-discover-links .sub-menu {
 	display: none;	
 	z-index: 999;
@@ -1299,6 +1302,9 @@ object, embed, iframe {
 		margin: 0 15px 0 0;
 		padding: 5px 5px 5px 10px;
 		background-color: #F4F4F4;
+	}
+	.attachment-post-thumbnail.wp-post-image {
+		margin: 0;
 	}
 	.right-bar .post-thumbnail.widget {
 		margin-top: 20px;
