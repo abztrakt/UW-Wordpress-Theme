@@ -741,7 +741,6 @@ class UW_Showcase_Widget extends WP_Widget {
 
 		$instance['id'] = $new_instance['id'];
 		$instance['title']   = strip_tags( $post->post_title );
-		//$instance['content'] = $post->post_content;
     $instance['edit'] = $edit;
 
 		return $instance;
@@ -993,6 +992,9 @@ class UW_Subpage_Menu extends WP_Widget {
 	}
 
 	public function widget( $args, $instance ) {
+    //global $post;
+    //if (!is_post_type_hierarchical($post->post_type)) 
+      //return;
 		extract( $args );
 		$id    = $this->get_post_top_ancestor_id();
     $title = '<a href="' . get_permalink($id) .'" title="'. esc_attr(strip_tags(get_the_title($id))) .'">'.get_the_title($id).'</a>';

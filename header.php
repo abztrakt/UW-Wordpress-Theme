@@ -39,6 +39,8 @@
 
   <?php wp_head(); ?>
 
+<link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/print.css" type="text/css" media="print" />
+
 <!--[if lt IE 9]>
   <script src="<?php bloginfo("template_directory"); ?>/js/html5shiv.js" type="text/javascript"></script>
   <script src="<?php bloginfo("template_directory"); ?>/js/respond.min.js" type="text/javascript"></script>
