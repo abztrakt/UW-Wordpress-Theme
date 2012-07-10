@@ -141,6 +141,18 @@ object, embed, iframe {
     width: 100%;
 }
 
+
+/** Link Widget **/
+
+.widget_links li {
+	margin: 0 0 10px;
+}
+.widget_links a {
+	font-size: 16px;
+	display: block;
+	line-height: 21px;
+}
+
 /* - Video Widget - */
 
 
