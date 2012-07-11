@@ -54,7 +54,6 @@ h3 {
 	font-size: 17px;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	line-height: 21px;
-	color: #715934;
 }
 h4 {
 	color: #484848;
@@ -357,6 +356,7 @@ object, embed, iframe {
 }
 
 /* ---- Tags ---- */
+
 .entry-meta {
 	padding: 10px 0;
 }
@@ -366,6 +366,11 @@ object, embed, iframe {
 	background-color: #EEE;
 }
 
+/* ---- Three Columns ---- */
+
+.three-col {
+    margin: 0 17px;
+}
 
 @media (max-width: 767px) { 
 }
@@ -1472,13 +1477,10 @@ object, embed, iframe {
 	
 	/* ----  Admissions Page ---- */
 	
-	.three-col-shadow {
+	.three-col {
 		float: left;
 		border-radius: 5px;
-		padding: 15px;
-		width: 155px;
-		margin: 0 20px 0 0;
-		box-shadow: 0 0 6px #B1B1B1;
+		width: 170px;
 	}
 	
 	
