@@ -1336,9 +1336,12 @@ object, embed, iframe {
 	    height: 50px;
 	    display: block;
 	}
+	/*
 	.entry-content h2 {
 		margin-top: 20px;
 	}
+	*/
+	
 	/* ----  Slideshow Pro ---- */
 	
 	.slideshowpro-wrapper {
