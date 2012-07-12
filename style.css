@@ -11,13 +11,7 @@ Version: 1.0
 /********************************************************************************************************************************************************************************
 	Common to both Mobile and Desktop 
 *********************************************************************************************************************************************************************************/
-.parallax-viewport{position:relative;overflow:hidden;}.parallax-layer{position:absolute;}
-#parallax {
-			margin: 1.5em 0px;
-			overflow: hidden;
-			position: relative;
-			height: 500px;
-		}
+
 /************************************************************************************
     Global
 *************************************************************************************/
@@ -51,9 +45,9 @@ h2 {
     margin-bottom: 10px;
 }
 h3 {
-	font-size: 17px;
+	font-size: 20px;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	line-height: 21px;
+	line-height: 23px;
 }
 h4 {
 	color: #484848;
@@ -935,12 +929,12 @@ object, embed, iframe {
 		padding: 10px 0 10px 20px;
 		margin: 0 0 15px 30px;
 	}
-	/* .info-box-large ul {
+	.info-box-large ul {
 		margin-left: -10px;
-	} */
+	}
 	.info-box-large {
 		padding: 25px 10px;
-		margin: 0 0 15px 40px;
+		margin: 15px 0 15px 40px;
 		width: 235px;
 		border-left: none;
 		border-top: 7px solid #D7A900;
@@ -1265,7 +1259,7 @@ object, embed, iframe {
 	.navbar .nav > li.uw-medicine > a {
 		cursor: pointer;
 	}
-	.uw-medicine:hover {
+	.nav > li.uw-medicine:hover {
 	    background-position: 10px -142px;
 	}
 	
@@ -1453,6 +1447,20 @@ object, embed, iframe {
 		right: 30px;
 		left: auto;
 	}
+	
+	/* ----  404 ---- */
+	
+	.parallax-viewport{position:relative;overflow:hidden;}.parallax-layer{position:absolute;}
+	#parallax {
+			margin: 1.5em 0px;
+			overflow: hidden;
+			position: relative;
+			height: 450px;
+	}
+	.four-oh-four {
+		padding: 0 0 50px;
+	}
+	
 
 /************************************************************************************
 	Unique Pages
