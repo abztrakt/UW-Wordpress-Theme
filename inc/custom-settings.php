@@ -43,7 +43,7 @@
 
     // ampersand fix
     if ( in_array('&', $words) )
-      $new_content = str_replace('&#038;', '<em>&#038;</em>', $content);
+      $new_content = str_replace('&#038;', '<em>&#038;</em>', $new_content);
 
     echo $new_content;
  }
