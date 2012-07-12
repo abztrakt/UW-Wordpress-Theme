@@ -346,6 +346,7 @@ require( get_template_directory() . '/inc/custom-image-sizes.php' );
 require( get_template_directory() . '/inc/custom-image-shortcode.php' );
 require( get_template_directory() . '/inc/dropdown-walker.php' );
 require( get_template_directory() . '/inc/helper-functions.php' );
+//require( get_template_directory() . '/inc/json-api.php' );
 
 if ( is_admin() )  {
   if (!class_exists('coauthors_plus') )

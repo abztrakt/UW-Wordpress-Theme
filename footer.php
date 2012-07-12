@@ -3,7 +3,7 @@
 
 <div id="footerBG">
     <div id="footer">
-    	<h2>Explore the UW</h2>
+    	<h2>Explore <?php echo apply_filters('abbreviation', get_bloginfo('title')); ?></h2>
     	<?php uw_footer_menu(); ?>
     </div>
 </div>
