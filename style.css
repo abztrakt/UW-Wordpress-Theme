@@ -58,7 +58,7 @@ h4 {
 a {
     color: #4682A8;
 }
-#menu-primary-menu > li a:focus {
+#menu-primary-menu li a:focus {
 	outline: thin dotted #fff;
 }
 p {
