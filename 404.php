@@ -32,7 +32,7 @@
               <li><a href="//www.washington.edu/discover/">Discover the UW</a></li>
               <li><a href="//www.washington.edu/maps/">Maps</a></li>
               <li><a href="//www.washington.edu/discover/news/">News Central</a></li>
-              <li><a href="http//www.gohuskies.com/">Husky Sports</a></li>
+              <li><a href="http://www.gohuskies.com/">Husky Sports</a></li>
               <li><a href="//www.washington.edu/discover/visit/">Visitor and Information Center</a></li>
             </ul>
           </div>
