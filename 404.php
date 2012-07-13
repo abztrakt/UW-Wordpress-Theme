@@ -19,7 +19,7 @@
           </div>
         </div>
 
-        <div class="row">
+        <div class="row four-oh-four">
           <div class="span4 offset3">
            <h3>Not what you were expecting?</h3>
            <p>Dubs tells us this page might not be what you had in mind when you set out on your journey through the UW Web.  Don&#146;t worry, you&#146;re not in the Dawg House! Here are some of Dubs&#146; favorite pages if you feel like exploring: </p>

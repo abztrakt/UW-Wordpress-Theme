@@ -6,9 +6,6 @@
 <header style="background-image:url(<?php header_image(); ?>)" id="branding" role="banner" <?php banner_class(); ?>>
 <?php endif; // end check for removed header image ?>
 
-<script type="text/javascript" src="http://use.typekit.com/cfo3phl.js"></script>
-<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-
 
 <div id="header">
 		<div class="skip-link"><a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to primary content', 'twentyeleven' ); ?>"><?php _e( 'Skip to primary content', 'twentyeleven' ); ?></a></div>
