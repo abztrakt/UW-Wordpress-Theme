@@ -16,7 +16,7 @@ Version: 1.0
     Global
 *************************************************************************************/
 body {
-    font-size: 14px;
+    font-size: 90%;
 }
 
 h1, h2, h3, h4 {
@@ -27,7 +27,7 @@ h1, h2, h3, h4 {
 }
 h1 {
 	margin: 10px 0 33px;
-	font-size: 38px;
+	font-size: 2.8em;
 	font-weight: 400; 
 }
 h2, h3, h4 { 
@@ -37,16 +37,16 @@ h1 i, h1 em {
 	font-weight: 400;
 	font-family: Baskerville, 'Times New Roman', Times, serif;
 	text-transform: lowercase;
-	font-size: 45px;
+	font-size: 1.2em;
 }
 h2 {
-    font-size: 21px;
+    font-size: 1.5em;
     line-height: 26px;
     margin-bottom: 10px;
 }
 h3 {
 	color: #5C441F;
-	font-size: 20px;
+	font-size: 1.2em;
 	line-height: 26px;
 }
 h4 {
@@ -63,9 +63,8 @@ a {
 	text-decoration: underline;
 }
 p {
-    font-size: 14px;
-    line-height: 21px;
-    margin-bottom: 18px;
+	line-height: 1.5em;
+    margin-bottom: 1.3em;
 }
 ul {
 	margin-left: 5px;
@@ -1231,7 +1230,7 @@ object, embed, iframe {
 	.dropdown-toggle, .navbar .nav > li > a {
 	    font-family: 'Open Sans', sans-serif;
 	    font-weight: 400; 
-	    font-size: 115%;
+	    font-size: 1.1em;
 	}
 	.navbar .nav li.dropdown .dropdown-toggle .caret, .navbar .nav li.dropdown.open .caret {
 	    border-top-color: #D7A900;
