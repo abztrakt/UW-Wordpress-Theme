@@ -18,6 +18,7 @@
 				<span class="wfield">
 					<input value="008816504494047979142:bpbdkw8tbqc" name="cx" type="hidden">
 					<input value="FORID:0" name="cof" type="hidden">
+          <label for="q" class="hide">Search the UW</label>
 					<input class="wTextInput" placeholder="Search the UW" title="Search the UW" name="q" type="text">
   					<input onclick="pageTracker._trackPageview('/pt/hn/search-action');" value="Go" name="sa" class="formbutton" type="submit">
   				</span>

@@ -326,6 +326,7 @@ class UW_Widget_MailChimp extends WP_Widget {
     <div id="subscribe-box">
       <?php if ( ! empty( $title ) ) echo $before_title . $title . $after_title; ?>
       <form id="mailchimp">
+        <label for="email" class="hide">Your email address</label>
         <input type="text" name="email" id="email" placeholder="Your email address" class="subscribeEmailText" />
         <input class="btn" type="submit" name="submit" value="Submit" />
 
