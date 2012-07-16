@@ -11,7 +11,7 @@
 		<div class="skip-link"><a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to primary content', 'twentyeleven' ); ?>"><?php _e( 'Skip to primary content', 'twentyeleven' ); ?></a></div>
 		<div class="skip-link"><a class="assistive-text" href="#secondary" title="<?php esc_attr_e( 'Skip to sidebar content', 'twentyeleven' ); ?>"><?php _e( 'Skip to sidebar content', 'twentyeleven' ); ?></a></div>
 
-		<a class="patch" href="http://www.uw.edu">W</a>
+		<a class="patch" href="http://www.uw.edu" alt="150 Years">150 Years</a>
 		<a class="wordmark" <?php custom_wordmark(); ?> href="<?php echo home_url('/'); ?>">University of Washington</a><span id="listicon-wrapper"></span><span id="searchicon-wrapper"></span>
 		<div id="search">
 			<form class="main-search" action="http://www.washington.edu/search" id="searchbox_008816504494047979142:bpbdkw8tbqc" name="form1">
