@@ -53,8 +53,8 @@ jQuery(document).ready(function($){
 });
 
 $(window).load(function(){
-	var alerty = $('#alertMessage').outerHeight()
-	$("body").css("background-position", "0 " + alerty + "px" ); 
+	var alert = $('#alertMessage').outerHeight()
+	$("body").css("background-position", "0 " + alert + "px" ); 
 });
 
 $(document).ready(function(){

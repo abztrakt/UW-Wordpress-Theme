@@ -79,7 +79,7 @@ if ( ! function_exists( 'uw_enqueue_default_scripts' ) ):
     wp_deregister_script('jquery'); //we use googles CDN below
     wp_register_script( 'jquery','https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js', array(), '1.7.2' );
     wp_register_script( 'header', get_bloginfo('template_directory') . '/js/header.js', array('jquery') );
-    wp_register_script( 'jquery.boostrap.dropdown', get_bloginfo('template_directory') . '/js/jquery.bootstrap.dropdown.js', array('jquery'), '2.0.3' );
+    wp_register_script( 'jquery.boostrap.dropdown', get_bloginfo('template_directory') . '/js/jquery.bootstrap.dropdown.js', array('jquery'), '2.0.3.1' );
     wp_register_script( 'jquery.boostrap.collapse', get_bloginfo('template_directory') . '/js/bootstrap-collapse.js', array('jquery.boostrap.dropdown'), '2.0.4' );
     wp_register_script( 'jquery.firenze', get_bloginfo('template_directory') . '/js/jquery.firenze.js', array('jquery'), '1.0' );
     wp_register_script( 'jquery.weather', get_bloginfo('template_directory') . '/js/jquery.weather.js', array('jquery'), '1.1' );

@@ -1,5 +1,5 @@
 /* ============================================================
- * bootstrap-dropdown.js v2.0.3
+ * bootstrap-dropdown.js v2.0.3.1
  * http://twitter.github.com/bootstrap/javascript.html#dropdowns
  * ============================================================
  * Copyright 2012 Twitter, Inc.
@@ -156,6 +156,12 @@
       .on('mouseenter.dropdown.data-api', toggle, Dropdown.prototype.timer)
       .on('mouseleave.dropdown.data-api', '#access', Dropdown.prototype.timer)
       .on('mouseenter.dropdown.data-api', '#access', Dropdown.prototype.backtrace)
-    })
+
+    var len = $(toggle).length - 1
+    $(toggle).parent().filter(function(n,i) {
+        return n > len / 2;
+    }).addClass('rightside')
+
+  })
 
 }(window.jQuery);

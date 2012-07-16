@@ -58,20 +58,21 @@ $(window).load(function() {
       var count = data.feed.entry.length;
       swfobject.embedSWF("//www.youtube.com/v/"+video+"?"+gets,
                          "youtubeapi", "425", "356", "8", null, null, params, atts);
+      $vidContent.append('<ul/>');
       $.each(data.feed.entry, function(index,video) {
           var img = video.media$group.media$thumbnail[0],
               video_id  =  video.media$group.yt$videoid.$t,
               title = video.title.$t,
               dur = video.media$group.yt$duration.seconds;
 
-          var html = '<a id="'+ video_id +'" class="video" href="#">'+
+          var html = '<li><a id="'+ video_id +'" class="video" href="#">'+
                 '<img class="playBtn" src="/cms/wp-content/themes/news/img/play.png" />'+
                       '<img src="'+img.url.replace(/https?:\/\//, '//')+'" width="'+img.width+'" height="'+img.height+'" />'+
                       '<span class="title">'+title+'</span>'+
                       '<span class="duration">'+Math.floor(dur/60)+':'+(dur % 60)+'</span>'+
-                     '</a>';
+                     '</a></li>';
 
-          $vidContent.append(html).imagesLoaded(function() {
+          $vidContent.children('ul').append(html).imagesLoaded(function() {
             $vidSmall.tinyscrollbar_update();
           })
           if (--count==0) $vidSmall.find('.scrollbar').show();
