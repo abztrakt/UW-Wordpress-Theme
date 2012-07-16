@@ -15,8 +15,6 @@ function uw_register_widgets() {
   register_widget('UW_RSS_Widget');
   unregister_widget('WP_Widget_RSS');
 
-	register_widget('UW_Widget_YouTube_Playlist');
-	register_widget('UW_Widget_MailChimp');
   register_widget('UW_Widget_CommunityPhotos');
   //register_widget('UW_Widget_Showcase_Links');
   register_widget('UW_Widget_Categories');
@@ -28,7 +26,6 @@ function uw_register_widgets() {
 }
 
 add_action('widgets_init', 'uw_register_widgets', 1);
-
 
 /**
  *
@@ -269,172 +266,6 @@ class UW_Widget_Categories extends WP_Widget_Categories {
 
 }
 
-
-
-
-/**
- *
- *
- * New YouTube Playlist widget
- *
- *
- ***********************************************************************************/
-class UW_Widget_YouTube_Playlist extends WP_Widget {
-
-	public function UW_Widget_YouTube_Playlist() {
-		parent::__construct(
-	 		'widget_youtube_playlist',
-			'YouTube Playlist',
-			array( 'classname' => 'widget_youtube_playlist', 'description' => __( "Put your YouTube playlist into your page"), )
-		);
-
-   if ( is_active_widget(false, false, $this->id_base) )
-      add_action( 'wp_head', array(&$this, 'youtube_playlist_js') );
-    
-	}
-
-	public function widget( $args, $instance ) {
-		extract( $args );
-		$title = apply_filters( 'widget_title', $instance['title'] );
-
-    echo str_replace('span4','span8',$before_widget);?>
-
-    <?php if ( ! empty( $title ) ) echo $before_title . $title . $after_title; ?>
-
-      <div id="nc-video-player">
-        <div id="tube-wrapper">
-          <div id="youtubeapi" data-pid="<?php echo $instance['playlist_id']; ?>"></div>
-          <div id="vidSmall">
-            <div class="scrollbar">
-            <div class="track">
-            <div class="thumb">
-            <div class="end">
-            </div></div></div></div>
-            <div class="viewport">
-            <div id="vidContent" class="overview">
-            </div></div>
-          </div>
-        </div>
-      </div>
-
-    <?php
-		echo $after_widget;
-	}
-
-	public function update( $new_instance, $old_instance ) {
-		$instance = array();
-		$instance['title'] = strip_tags( $new_instance['title'] );
-		$instance['playlist_id'] = strip_tags( $new_instance['playlist_id'] );
-
-		return $instance;
-	}
-
-	public function form( $instance ) {
-
-		$title  = isset( $instance[ 'title' ] ) ? $instance[ 'title' ] : __( 'Videos', '' ); 
-		$id     = isset( $instance[ 'playlist_id' ] ) ?  $instance[ 'playlist_id' ] :  __( '', '' ); ?>
-
-		<p>
-		<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
-		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
-		</p>
-		<p>
-		<label for="<?php echo $this->get_field_id( 'playlist_id' ); ?>"><?php _e( 'Playlist ID:' ); ?></label> 
-		<input class="widefat" id="<?php echo $this->get_field_id( 'playlist_id' ); ?>" name="<?php echo $this->get_field_name( 'playlist_id' ); ?>" type="text" value="<?php echo esc_attr( $id ); ?>" />
-		</p>
-
-		<?php 
-	}
-
-  public function youtube_playlist_js() {
-    wp_register_script(
-      'youtube-playlist-widget', 
-      get_bloginfo('template_directory') . '/js/widget-youtube-playlist.js',
-      array('swfobject', 'jquery.imagesloaded', 'jquery.waypoints')
-    );
-    wp_enqueue_script( 'youtube-playlist-widget');
-  }
-
-} 
-
-
-/**
- *
- *
- * New MailChimp Widget for UW News
- * [todo] this may be deleted if we want to use an official Mailchimp widget instead
- *
- *
- ***********************************************************************************/
-class UW_Widget_MailChimp extends WP_Widget {
-
-	public function UW_Widget_MailChimp() {
-		parent::__construct(
-	 		'widget_mailchimp_subscribe',
-			'MailChimp Subsciption',
-			array( 'classname' => 'widget_mailchimp_subscribe', 'description' => __( "Have User's sign up to your weekly and daily MailChimp campaigns"), )
-		);
-
-   if ( is_active_widget(false, false, $this->id_base) )
-      add_action( 'wp_head', array(&$this, 'mailchimp_js') );
-    
-	}
-
-	public function widget( $args, $instance ) {
-		extract( $args );
-		$title = apply_filters( 'widget_title', $instance['title'] );
-
-    echo $before_widget;?>
-
-    <div id="subscribe-box">
-      <?php if ( ! empty( $title ) ) echo $before_title . $title . $after_title; ?>
-      <form id="mailchimp">
-        <label for="email" class="hide">Your email address</label>
-        <input type="text" name="email" id="email" placeholder="Your email address" class="subscribeEmailText" />
-        <input class="btn" type="submit" name="submit" value="Submit" />
-
-        <div>
-        <input type="radio" name="pref" checked="checked" value="UW News Weekly Roundup" id="pref_weekly" />
-        <label class="label-marg" for="pref_weekly">Weekly Roundup</label>
-
-        <input type="radio" name="pref" value="UW Today" id="pref_daily" />
-        <label for="pref_daily">Daily</label>
-        </div>
-        
-        <div class="response"></div>
-      </form>
-    </div>
-
-
-    <?php
-		echo $after_widget;
-	}
-
-	public function update( $new_instance, $old_instance ) {
-		$instance = array();
-		$instance['title'] = strip_tags( $new_instance['title'] );
-
-		return $instance;
-	}
-
-	public function form( $instance ) {
-
-    $title  = isset( $instance[ 'title' ] ) ? $instance[ 'title' ] : __( 'Email Campaign', '' );  ?>
-
-		<p>
-		<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
-		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
-		</p>
-
-		<?php 
-	}
-
-  public function mailchimp_js() {
-    wp_register_script('mailchimp-subscribe-widget', get_bloginfo('template_directory') . '/js/widget-mailchimp-subscribe.js');
-    wp_enqueue_script( 'mailchimp-subscribe-widget' );
-  }
-
-} 
 
 /**
  *
