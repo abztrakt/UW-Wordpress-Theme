@@ -40,7 +40,6 @@ jQuery(document).ready(function($){
           var icon = $.trim(json.responseData.feed.entries[2].title.split('|')[1]);
           var weat = $.trim(json.responseData.feed.entries[1].title.split('|')[1]);
           var temp = $.trim(json.responseData.feed.entries[0].title.split('|')[1]);
-          console.log(json);
           var html = '<li><a href="http://www.atmos.washington.edu/weather/forecast/" title="'+weat+'">Forcast';
           html += '<img src="/cms/wp-content/themes/uw/img/weather/top-nav/'+icon+'.png" alt="'+weat+'"/>';
           html += '</a></li>';
