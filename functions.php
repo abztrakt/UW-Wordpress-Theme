@@ -82,7 +82,7 @@ if ( ! function_exists( 'uw_enqueue_default_scripts' ) ):
     wp_register_script( 'jquery.boostrap.dropdown', get_bloginfo('template_directory') . '/js/jquery.bootstrap.dropdown.js', array('jquery'), '2.0.3' );
     wp_register_script( 'jquery.boostrap.collapse', get_bloginfo('template_directory') . '/js/bootstrap-collapse.js', array('jquery.boostrap.dropdown'), '2.0.4' );
     wp_register_script( 'jquery.firenze', get_bloginfo('template_directory') . '/js/jquery.firenze.js', array('jquery'), '1.0' );
-    wp_register_script( 'jquery.weather', get_bloginfo('template_directory') . '/js/jquery.weather.js', array('jquery'), '1.0' );
+    wp_register_script( 'jquery.weather', get_bloginfo('template_directory') . '/js/jquery.weather.js', array('jquery'), '1.1' );
     wp_register_script( 'jquery.placeholder', get_bloginfo('template_directory') . '/js/jquery.placeholder.js', array('jquery'), '1.0' );
     wp_register_script( 'jquery.imageexpander', get_bloginfo('template_directory') . '/js/jquery.imageexpander.js', array('jquery'), '1.0' );
     wp_register_script( 'jquery.waypoints', get_bloginfo('template_directory') . '/js/jquery.waypoints.min.js', array('jquery'), '1.1.7' );
