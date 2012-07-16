@@ -259,6 +259,22 @@ if ( ! function_exists( 'banner_class' ) ):
   }
 endif;
 
+if ( ! function_exists( 'is_custom_wordmark' ) ): 
+  function is_custom_wordmark()
+  {
+    $option = get_option('patchband'); 
+
+    if ( ! is_array( $option) )
+      return false;
+
+    $wordmark = (array) $option['wordmark'];
+    if ( isset($wordmark['custom'] )) 
+      return true;
+
+    return false;
+  }
+endif;
+
 if ( ! function_exists( 'custom_wordmark' ) ): 
   function custom_wordmark() 
   {

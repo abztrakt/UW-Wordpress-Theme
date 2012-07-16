@@ -534,7 +534,7 @@ object, embed, iframe {
 		width: 263px !important;
 		height: 44px !important;
 	}
-	#header > span:nth-child(3) {
+	#listicon-wrapper {
 		background: url("img/mobile-header/dropdowns1x.png") no-repeat -29px 0px transparent;	
 		position: absolute;
 		top: 4px;
@@ -543,7 +543,7 @@ object, embed, iframe {
 		height: 30px;
 		display: block;
 	}
-	#header > span:nth-child(4) {	
+	#searchicon-wrapper {	
 		position: absolute;
 		top: 4px;
 		right: 50px;
@@ -1576,11 +1576,11 @@ object, embed, iframe {
     		background: url("img/mobile-header/logo2x.png") no-repeat 0 0 transparent !important;
       	    background-size: 230px 35px;
     	}
-    	#header > span:nth-child(4) {
+    	#listicon-wrapper {
     		background: url("img/mobile-header/dropdowns2x.png") no-repeat 10px 0px transparent !important;	
     		background-size: 66px 32px;
     	}
- 		#header > span:nth-child(3) {	
+ 		#searchicon-wrapper {	
     		background: url("img/mobile-header/dropdowns2x.png") no-repeat -29px 0px transparent !important;	
     		background-size: 66px 32px;
     	}
