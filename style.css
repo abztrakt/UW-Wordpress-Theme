@@ -304,7 +304,6 @@ object, embed, iframe {
 	padding-left: 12px;
 }
 
-
 /* ---- Comments (built-in) ---- */
 
 .comment {
@@ -1213,6 +1212,9 @@ object, embed, iframe {
 		width: 960px;
 		margin: 0 auto;
 	}
+	.rightside .inner-wrap {
+		float: right;
+	}
 	.menu-block {
 		float: left;
 	}
@@ -1342,14 +1344,14 @@ object, embed, iframe {
 	}
 	*/
 	
-	/* ----  Slideshow Pro ---- */
+	/* ----  Slideshow Pro ----
 	
 	.slideshowpro-wrapper {
 		border: 2px solid #d9d9d9;
 		padding: 0 10px 0 10px;
 		margin-bottom: 15px;
 		height: 455px;
-	}
+	}*/
 	.slideshowpro-wrapper object {
 		width: 100% !important;
 		height: 429px !important;
