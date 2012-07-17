@@ -16,7 +16,7 @@ if ( ! function_exists( 'uw_setup' ) ):
     add_image_size( 'Thimble', 50, 50, true );
     add_image_size( 'Sidebar', 250, 9999, false );
     add_image_size( 'Body Image', 300, 9999, false );
-    add_image_size( 'Full Width', 600, 9999, false );
+    add_image_size( 'Full Width', 620, 9999, false );
 
 	  register_nav_menu( 'primary', __( 'Primary Menu', 'uw' ) );
 	  register_nav_menu( 'footer', __( 'Footer Menu', 'uw' ) );
