@@ -96,8 +96,7 @@ $(document).ready(function(){
 	searchbtn.click(function(e){
    		e.preventDefault();
 		search.toggleClass("activate");
-		search.css('display', 'block');
-    	$('#search form').css('display', 'block');	
+    	// $('#search form').css('display', 'block');	
 		if(topnav.hasClass('activate')){
 			topnav.toggleClass("activate");	
 		}	
@@ -109,8 +108,7 @@ $(document).ready(function(){
 	menubtn.click(function(e){
     	e.preventDefault();
 		topnav.toggleClass("activate");		
-		topnav.css('display', 'block');
-		$('#thin-strip ul').css('display', 'block');
+		// $('#thin-strip ul').css('display', 'block');
 		if(search.hasClass('activate')){
 			search.toggleClass("activate");	
 		}	

@@ -549,12 +549,9 @@ object, embed, iframe {
 		height: 30px;
 		background: url("img/mobile-header/dropdowns1x.png") no-repeat 7px 0px transparent;	
 	}
-	 #search form {
-		 display: none;
-	 }
-	 #thin-strip ul {
-		 display: none;
-	 }
+	.main-search, #thin-strip {
+		 visibility: hidden;
+	}
 
 	/* =============================================================================
 	   Mobile Header Queries
@@ -573,7 +570,8 @@ object, embed, iframe {
 		-moz-transition: height .5s; /* Firefox 4 */
 		-webkit-transition: height .52s; /* Safari and Chrome */
 		-o-transition: height .5s; /* Opera */
-		width: 100%
+		width: 100%;
+		visibility: hidden;
 	}
 	#thin-strip span {
 	    background:url("http://www.washington.edu/static/mobile/image/arrow2.png") no-repeat scroll right -69px transparent;
@@ -667,11 +665,11 @@ object, embed, iframe {
 	}
 	.main-search.activate, #thin-strip.activate {
 		height: 45px;
-		display: block !important;
 		transition: height .5s;
 		-moz-transition: height .5s; /* Firefox 4 */
 		-webkit-transition: height .52s; /* Safari and Chrome */
 		-o-transition: height .5s; /* Opera */
+		visibility: visible;
 	}
 	#thin-strip.activate {
 		height: 340px;
