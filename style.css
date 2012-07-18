@@ -358,10 +358,13 @@ object, embed, iframe {
 .entry-meta {
 	padding: 10px 0;
 }
-.entry-meta a {
+.pull-right {
+	border: 2px solid;
 	padding: 3px 12px;
 	border-radius: 30px;
-	background-color: #EEE;
+	background-color: #00B424;
+	color: white;
+	text-shadow: 1px 1px 1px #333;
 }
 
 /* ---- Three Columns ---- */
@@ -440,9 +443,6 @@ object, embed, iframe {
 	}
 	body {
 		padding: 0;
-	}
-	#thin-strip {
-		visibility: hidden;
 	}
 	#branding {
 		height: auto !important;
@@ -551,7 +551,7 @@ object, embed, iframe {
 		display: block;
 		background: url("img/mobile-header/dropdowns1x.png") no-repeat 7px 0px transparent;	
 	}
-
+  		
 
 	/* =============================================================================
 	   Mobile Header Queries
@@ -664,7 +664,7 @@ object, embed, iframe {
 	}
 	.main-search.activate, #thin-strip.activate {
 		height: 45px;
-		visibility:visible;
+		display: block !important;
 		transition: height .5s;
 		-moz-transition: height .5s; /* Firefox 4 */
 		-webkit-transition: height .52s; /* Safari and Chrome */
@@ -672,7 +672,7 @@ object, embed, iframe {
 	}
 	#thin-strip.activate {
 		height: 340px;
-		visibility:visible;
+		display: block !important;
 	}
 	.wfield {
 		-webkit-box-shadow: inset 2px 2px 4px #888;
@@ -931,7 +931,7 @@ object, embed, iframe {
 		border-left: 4px solid #DDD;
 		width: 245px;
 		float: right;
-		padding: 10px 0 10px 20px;
+		padding: 10px 0 0 20px;
 		margin: 0 0 15px 30px;
 	}
 	.info-box-large ul {
@@ -1207,6 +1207,11 @@ object, embed, iframe {
 		padding: 3px 10px 3px 7px;
 		font-size: 105%;
 		color: #717171;
+	}
+	.dropdown-menu li > a:focus {
+		color: white;
+		text-decoration: none;
+		background-color: #08C;
 	}
 	.menu-wrap {
 		width: 960px;
@@ -1579,11 +1584,11 @@ object, embed, iframe {
       	    background-size: 230px 35px;
     	}
     	#listicon-wrapper {
-    		background: url("img/mobile-header/dropdowns2x.png") no-repeat 10px 0px transparent !important;	
+    		background: url("img/mobile-header/dropdowns2x.png") no-repeat -29px 0px transparent !important;	
     		background-size: 66px 32px;
     	}
  		#searchicon-wrapper {	
-    		background: url("img/mobile-header/dropdowns2x.png") no-repeat -29px 0px transparent !important;	
+    		background: url("img/mobile-header/dropdowns2x.png") no-repeat 10px 0px transparent !important;	
     		background-size: 66px 32px;
     	}
     	#thin-strip ul {
@@ -1595,5 +1600,3 @@ object, embed, iframe {
     		background-size: 77px 750px;
     	}
 }
-
-
