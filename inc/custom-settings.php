@@ -86,3 +86,87 @@ function uw_general_settings_api_init() {
  }
 
  add_filter('abbreviation', 'uw_abbreviate_title');
+
+ /**
+  * 
+  * Custom Header color picker for the background color
+  *
+  * Since this page doesn't use the Settings API its a bit different.
+  * I registered the customizations via the Settings API (for the future)
+  *  and then print our the settings on the action 'custom_header_options'
+  *
+  */
+
+
+ function uw_header_settings_api_init() {
+ 	add_settings_section('background_color',
+		'Background Color',
+		'_background_howto',
+		'custom-header');
+ 	
+ 	add_settings_field('header_background_color',
+		'Color',
+		'header_background_color_html',
+		'custom-header',
+		'background_color');
+
+ 	register_setting('custom-header', 'header_background_color');
+
+ }
+
+ function _background_howto() { echo ''; }
+
+ function header_background_color_html() {
+   if ( isset($_POST['header_background_color'])) 
+     update_option('header_background_color', $_POST['header_background_color']);
+
+  $color = get_option('header_background_color');
+  echo "<input type=\"text\" name=\"header_background_color\" id=\"bg-color\" value=\"$color\" /> ";
+  echo '<a href="#" class="hide-if-no-js" id="bg-pickcolor">' . _( 'Select a Color' ) . '</a>';
+  echo '<div id="bg-color-picker" style="z-index: 100; background:#eee; border:1px solid #ccc;width:250px;display:none;"></div>';
+  echo '<div id="bg-color-preview" style="z-index: 100; background:#eee; border:1px solid #ccc;width:250px;display:none;"></div>';
+  ?>
+    <script type='text/javascript'>
+      jQuery(document).ready(function($) {
+        var $input   = $('#bg-color')
+          , $headimg = $('#headimg')
+        $('#bg-color-picker').farbtastic(function(color) {
+          $input.val(color)
+          $headimg.css('background-color', color)
+        }) ;
+          
+        $('#bg-pickcolor').click(function() { $('#bg-color-picker').show(); return false; });
+          
+        $('h3').filter(function() {
+          return $(this).text().indexOf('Text') !== -1;
+        }).next('table').andSelf().remove(); //andSelf refers to <h3>Header Text</h3>
+
+        $headimg.css('text-align', 'center').children().not('img').hide()
+            .end().width('85%')
+
+        $headimg.css('background-color', $input.val())
+
+        $('body').click(function() { $('#bg-color-picker').hide() })
+      })
+    </script>
+  <?php
+ }
+ 
+ function uw_print_header_settings() {
+   do_settings_sections('custom-header', 'uw_adjust_custom_header_page');
+ }
+ 
+ add_action('admin_init', 'uw_header_settings_api_init');
+ add_action('custom_header_options', 'uw_print_header_settings');
+
+ function header_background_color() {
+   echo get_header_background_color();
+ }
+ function get_header_background_color() {
+   $color = get_option('header_background_color');
+
+     if (!$color)
+       return '';
+
+   return "background-color:$color;";
+ }

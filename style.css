@@ -549,7 +549,12 @@ object, embed, iframe {
 		height: 30px;
 		background: url("img/mobile-header/dropdowns1x.png") no-repeat 7px 0px transparent;	
 	}
-  		
+	 #search form {
+		 display: none;
+	 }
+	 #thin-strip ul {
+		 display: none;
+	 }
 
 	/* =============================================================================
 	   Mobile Header Queries

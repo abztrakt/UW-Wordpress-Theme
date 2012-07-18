@@ -91,25 +91,30 @@ $(document).ready(function(){
 	});
 
   // [TODO] clean up
+    
   var searchbtn = $("#searchicon-wrapper");
 	searchbtn.click(function(e){
-    e.preventDefault();
+   		e.preventDefault();
 		search.toggleClass("activate");
-    search.css('visibility', 'visible');
+		search.css('display', 'block');
+    	$('#search form').css('display', 'block');	
 		if(topnav.hasClass('activate')){
-			topnav.toggleClass("activate");		
-		}			
-		return false;
-	});
+			topnav.toggleClass("activate");	
+		}	
+		$('input.wTextInput').focus(); // Focus in search field		
+		return false;	
+	});	
 	
   var menubtn= $("#listicon-wrapper");
 	menubtn.click(function(e){
-    e.preventDefault();
+    	e.preventDefault();
 		topnav.toggleClass("activate");		
-    topnav.css('visibility', 'visible');
+		topnav.css('display', 'block');
+		$('#thin-strip ul').css('display', 'block');
 		if(search.hasClass('activate')){
-			search.toggleClass("activate");		
-		}		
+			search.toggleClass("activate");	
+		}	
+		$('#thin-strip ul a:first').focus()	 // Focus in the dropdown field	
 		return false;
 	});
 
