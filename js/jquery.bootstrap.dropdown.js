@@ -26,10 +26,10 @@
  /* DROPDOWN CLASS DEFINITION
   * ========================= */
 
-  var toggle = '[data-toggle="dropdown"]'
-    , header = '#branding'
-    , caret  = '.navbar-caret'
-    , open   = '.open'
+  var toggle  = '[data-toggle="dropdown"]'
+    , header  = '#branding'
+    , caret   = '.navbar-caret'
+    , open    = '.open'
     , timeout
     , Dropdown = function (element) {
         var $el = $(element).on('click.dropdown.data-api', this.toggle)
@@ -43,9 +43,10 @@
     constructor: Dropdown
 
   , isActive: false
+  , keys: {enter:13, esc:27, tab:9, left:37, up:38, right:39, down:40, spacebar:32 }
 
   , toggle: function (e) {
-      var $this = $(this)
+      var $this = $(e.target)
         , $header = $(header)
         , $parent
         , $caret
@@ -80,6 +81,10 @@
       if (isActive && e.type == 'click')
         return true
 
+      if (e.type === 'keydown') {
+        $(e.target).parent().find('ul a').first().focus();
+      }
+
       $caret.css('left', $parent.position().left + 20)
 
       return false
@@ -110,6 +115,113 @@
       }, 200)
     }
 
+  , handleKeys : function(e) {
+
+      if (e.altKey || e.ctrlKey || e.shiftKey) 
+        return true;
+
+      var keys = Dropdown.prototype.keys
+        , $this = $(this)
+        , $anchors = $('a.dropdown-toggle')
+
+
+      switch(e.keyCode) {
+        case keys.enter:
+          Dropdown.prototype.toggle(e);
+          return true;
+
+        case keys.spacebar:
+        case keys.up:
+        case keys.down:
+          var fake_event = jQuery.Event( 'keydown', { keyCode: keys.enter } );
+          $this.trigger(fake_event);
+          return false;
+
+        case keys.esc:
+          clearMenus();
+          return false;
+
+        case keys.tab:
+          clearMenus();
+          return true;
+        
+        case keys.left:
+          var index = $anchors.index($this)
+          $anchors.eq(index-1).focus()
+          return false;
+
+        case keys.right:
+          var index = $anchors.index($this)
+          //fix last anchor to circle focus back to first anchor
+          index = index === $anchors.length-1 ? -1 : index; 
+          $anchors.eq(index+1).focus()
+          return false;
+
+        default:
+          return true;
+      }
+  
+    }
+
+  , handleDropdownKeys : function(e) {
+
+      if (e.altKey || e.ctrlKey || e.shiftKey) 
+        return true;
+
+      var keys     = Dropdown.prototype.keys
+        , $this    = $(this)
+        , $anchors = $this.closest('ul').find('a')
+
+      
+      switch(e.keyCode) {
+
+        case keys.spacebar:
+          document.location.href = $this.attr('href');
+          return false;
+
+        case keys.tab:
+          clearMenus();
+          return true;
+
+        case keys.esc:
+          $this.blur().closest('ul').siblings('a').focus();
+          clearMenus();
+          return true;
+
+        case keys.down:
+          var index = $anchors.index($this)
+          //fix last anchor to circle focus back to first anchor
+          index = index === $anchors.length-1 ? -1 : index; 
+          $anchors.eq(index+1).focus();
+          return false;
+
+        case keys.up:
+          var index = $anchors.index($this)
+          $anchors.eq(index-1).focus();
+          return false;
+
+        case keys.left:
+          $this.blur().closest('ul').siblings('a').focus();
+          clearMenus();
+          return false;
+
+        case keys.right:
+          $this.blur().closest('ul').parent().next('li').children('a').focus();
+          clearMenus();
+          return false;
+
+        default:
+          var chr = String.fromCharCode(e.which)
+            , exists = false;
+          $anchors.filter(function() {
+            exists = this.innerHTML.charAt(0) === chr
+            return exists;
+          }).first().focus();
+          return !exists;
+
+      }
+      
+    }
   , backtrace: function(e) {
       clearTimeout(timeout)
       timeout = null
@@ -156,6 +268,8 @@
       .on('mouseenter.dropdown.data-api', toggle, Dropdown.prototype.timer)
       .on('mouseleave.dropdown.data-api', '#access', Dropdown.prototype.timer)
       .on('mouseenter.dropdown.data-api', '#access', Dropdown.prototype.backtrace)
+      .on('keydown.dropdown.data-api', toggle, Dropdown.prototype.handleKeys)
+      .on('keydown.dropdown.data-api', 'ul.dropdown-menu a', Dropdown.prototype.handleDropdownKeys)
 
     var len = $(toggle).length - 1
     $(toggle).parent().filter(function(n,i) {
