@@ -55,12 +55,15 @@
 
       if ($this.is('.disabled, :disabled')) return
 
-      selector = $this.attr('data-target')
+      if( $this.siblings('ul.dropdown-menu').length === 0 )
+        return true;
 
-      if (!selector) {
-        selector = $this.attr('href')
-        selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') //strip for ie7
-      }
+      //selector = $this.attr('data-target')
+
+      //if (!selector) {
+      //  selector = $this.attr('href')
+      //  selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') //strip for ie7
+      //}
 
       $caret = $(caret)
 
@@ -117,7 +120,7 @@
 
   , handleKeys : function(e) {
 
-      if (e.altKey || e.ctrlKey || e.shiftKey) 
+      if (e.altKey || e.ctrlKey)
         return true;
 
       var keys = Dropdown.prototype.keys
@@ -165,7 +168,7 @@
 
   , handleDropdownKeys : function(e) {
 
-      if (e.altKey || e.ctrlKey || e.shiftKey) 
+      if (e.altKey || e.ctrlKey)
         return true;
 
       var keys     = Dropdown.prototype.keys
@@ -268,7 +271,7 @@
       .on('mouseenter.dropdown.data-api', toggle, Dropdown.prototype.timer)
       .on('mouseleave.dropdown.data-api', '#access', Dropdown.prototype.timer)
       .on('mouseenter.dropdown.data-api', '#access', Dropdown.prototype.backtrace)
-      .on('keydown.dropdown.data-api', toggle, Dropdown.prototype.handleKeys)
+      .on('keydown.dropdown.data-api', 'a.dropdown-toggle', Dropdown.prototype.handleKeys)
       .on('keydown.dropdown.data-api', 'ul.dropdown-menu a', Dropdown.prototype.handleDropdownKeys)
 
     var len = $(toggle).length - 1

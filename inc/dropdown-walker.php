@@ -54,14 +54,14 @@ class UW_Dropdowns_Walker_Menu extends Walker_Nav_Menu {
 		parent::start_el( $item_html, $item, $depth, $args );
 
 		if ( $item->is_dropdown && ( 1 != $args->depth ) ) {
-
 			$item_html = str_replace( '<a', '<a class="dropdown-toggle" data-toggle="dropdown" tabindex="0"', $item_html );
 			$item_html = str_replace( '</a>', '<b class="caret"></b></a>', $item_html );
-			//$item_html = str_replace( esc_attr( $item->url ), '#', $item_html );
+    } else if ( $item->menu_item_parent == 0) {
+			$item_html = str_replace( '<a', '<a class="dropdown-toggle" tabindex="0"', $item_html );
     } else {
 			$item_html = str_replace( '<a', '<a tabindex="-1"', $item_html );
     }
-    
+
 		$output .= $item_html;
 	}
   
