@@ -1208,7 +1208,7 @@ object, embed, iframe {
 		font-size: 105%;
 		color: #717171;
 	}
-	.dropdown-menu li > a:focus {
+	#branding .dropdown-menu li > a:focus {
 		color: white;
 		text-decoration: none;
 		background-color: #08C;
