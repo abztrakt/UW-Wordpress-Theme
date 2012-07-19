@@ -101,8 +101,15 @@ $(document).ready(function(){
 			topnav.toggleClass("activate");	
 		}	
 		$('input.wTextInput').focus(); // Focus in search field		
+		if(search.hasClass('activate')) {
+			menubtn.attr('title', 'Hide Menu');
+		} else {
+			menubtn.attr('title', 'Show Menu');
+		}
 		return false;	
 	});	
+	
+	
 	
   var menubtn= $("#listicon-wrapper");
 	menubtn.click(function(e){
@@ -113,6 +120,11 @@ $(document).ready(function(){
 			search.toggleClass("activate");	
 		}	
 		$('#thin-strip ul a:first').focus()	 // Focus in the dropdown field	
+		if(topnav.hasClass('activate')) {
+			menubtn.attr('title', 'Hide Menu');
+		} else {
+			menubtn.attr('title', 'Show Menu');
+		}
 		return false;
 	});
 
