@@ -102,9 +102,9 @@ $(document).ready(function(){
 		}	
 		$('input.wTextInput').focus(); // Focus in search field		
 		if(search.hasClass('activate')) {
-			menubtn.attr('title', 'Hide Menu');
+			searchbtn.attr('title', 'Hide Menu');
 		} else {
-			menubtn.attr('title', 'Show Menu');
+			searchbtn.attr('title', 'Show Menu');
 		}
 		return false;	
 	});	
