@@ -60,7 +60,6 @@ a {
 }
 #branding a:focus {
 	outline: thin dotted #fff;
-	text-decoration: underline;
 }
 p {
 	line-height: 1.5em;
@@ -121,7 +120,7 @@ object, embed, iframe {
 .video h2 					{ background-position: -16px -295px }
 .announcements h2 			{ background-position: -16px -454px }
 .widget_recent_entries h2 	{ background-position: -16px -578px }
-.widget_categories h2 		{ background-position: -16px -295px }
+.widget_categories h2 		{ background-position: -16px -154px }
 .widget_archive h2 			{ background-position: -16px -295px }
 .popular-posts 				{ background-position: -16px -295px }
 .widget_yarpp_widget h2		{ background-position: -16px -578px }
@@ -366,7 +365,9 @@ object, embed, iframe {
 	color: white;
 	text-shadow: 1px 1px 1px #333;
 }
-
+.pull-right a {
+	color: white;
+}
 /* ---- Three Columns ---- */
 
 .three-col {
@@ -381,6 +382,10 @@ object, embed, iframe {
 		width: 800px;
 		margin: 0 auto;
 	}
+	body .rightside .inner-wrap {
+		float: left;
+	}
+
 	body #thin-strip div {
 		width: 768px;
 		margin: 0 auto;
@@ -420,6 +425,10 @@ object, embed, iframe {
 	body .nav > li {
 		background: none;
 	}
+	body #nc-left-col .featured img {
+		width: 228px;
+	}
+
 }
 @media (max-width: 480px) { 
 }
@@ -466,6 +475,7 @@ object, embed, iframe {
 		border-bottom: none;
 	}
 	.navbar-inner {	
+		background-color: #fff;
 		display: block;
 		padding: 0 0 0 0;
 		box-shadow: 0 3px 4px #DDD;
@@ -473,6 +483,7 @@ object, embed, iframe {
 		margin: 0 0 12px 0;
 		background-image: none;
 		border-radius: 0;
+		filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ffffff', endColorstr='#ffffff', GradientType=0);
 	}
 	.navbar-inner h3 {
 		padding: 0;
@@ -714,14 +725,12 @@ object, embed, iframe {
 	   Body Content Styles
 	   ========================================================================== */
 	
-	/* Right Sidebar */
 	
 	.widget_nav_menu a, .subpage_menu a { font-size: 15px; padding: 4px 0; }
 	#sidebar {
 		padding: 15px;
 	}
-	.entry-content > p, .entry-content > h2, .entry-content > h3, .entry-content > h4, .entry-content > ul, 
-	.post-content > p, .entry-meta, .post-content > h2, .post-content > h3, .post-content > h4, #respond {
+	.entry-content, .entry-meta, .post-content, #respond {
 		padding: 0 15px;
 	}
 	#respond input[type="text"], #respond textarea {
@@ -742,6 +751,7 @@ object, embed, iframe {
 		width: 90%; 
 		padding: 9px 0 9px 10%;
 	}
+	.sharing li, .sharing-hidden li {}
 	
 	/* Image Handling */
 	
@@ -787,6 +797,7 @@ object, embed, iframe {
 	h1 i, h1 em {
 		font-size: 31px;
 	}
+	
 
 	/* ----  Thin Strip Footer ---- */
 
@@ -943,8 +954,8 @@ object, embed, iframe {
 		margin: 15px 0 15px 40px;
 		width: 235px;
 		border-left: none;
-		border-top: 7px solid #D7A900;
-		border-bottom: 7px solid #D7A900;
+		border-top: 3px solid #D7A900;
+		border-bottom: 3px solid #D7A900;
 	}
 	.info-box-large .wp-caption-text {
 		margin: 0 10px 10px 0;
@@ -1243,6 +1254,9 @@ object, embed, iframe {
 	    font-weight: 400; 
 	    font-size: 1.1em;
 	}
+	.navbar .nav li.dropdown.open > .dropdown-toggle, .navbar .nav li.dropdown > .dropdown-toggle:focus {
+		color: #D7A900;
+	}
 	.navbar .nav li.dropdown .dropdown-toggle .caret, .navbar .nav li.dropdown.open .caret {
 	    border-top-color: #D7A900;
 	    border-bottom-color: #D7A900;
@@ -1361,7 +1375,7 @@ object, embed, iframe {
 	}*/
 	.slideshowpro-wrapper object {
 		width: 100% !important;
-		height: 429px !important;
+		height: 442px !important;
 	}
 	
 	/* ----  Footer ---- */
@@ -1550,7 +1564,7 @@ object, embed, iframe {
 		rgba(0, 0, 0, 0.1) 
 		rgba(0, 0, 0, 0.1) 
 		rgba(0, 0, 0, 0.25);
-		filter: progid:dximagetransform.microsoft.gradient(startColorstr='#333333', endColorstr='#222222', GradientType=0);
+		filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ffffff', endColorstr='#ffffff', GradientType=0);
 		filter: progid:dximagetransform.microsoft.gradient(enabled=false);
 		-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.075);
 		-moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.075);
@@ -1558,9 +1572,6 @@ object, embed, iframe {
 	}
 	.navbar .btn-navbar:hover {
 		background-color: #b0b0b0;
-	}
-	.navbar-inner {	
-		background: white;
 	}
 	#navbar-menu {
 		background-color: #fff;
