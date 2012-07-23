@@ -74,6 +74,8 @@ class UW_Widget_Recent_Posts extends WP_Widget {
 		if ($r->have_posts()) :
 
     if ( $show_popular ) {
+      $blog_details = get_blog_details(get_current_blog_id());
+      $path = str_replace('/cms', '', $blog_details->path);
 
       $start_date = date('Y-m-d', strtotime('-1 week', time()));
       $end_date   = date('Y-m-d', time());
@@ -86,7 +88,11 @@ class UW_Widget_Recent_Posts extends WP_Widget {
         $ga = new GALib('client', $login->auth_token, NULL, NULL, $login->account_id);
       }
 
-      $pop_posts = $ga->pages_for_date_period($start_date, $end_date, $number);
+      $pop_posts = $ga->pages_for_date_period($start_date, $end_date, $number+1);
+      foreach ($pop_posts as $index=>$post) {
+        if( $post['value'] == $path ) 
+          unset($pop_posts[$index]);
+      }
       $pop_posts = array_slice($pop_posts, 0, $number ); // the first, most popular page, is always /news/ (the homepage)
     }
     
@@ -102,7 +108,7 @@ class UW_Widget_Recent_Posts extends WP_Widget {
       <li <?php if( !$show_popular ): ?> class="selected" <?php endif; ?>><a class="recent-popular-widget" href="#tab-recent" title="Most recent">Recent</a></li>
     </ul>
     
-    <ul id="tab-recent" class="recent-posts" <?php if( class_exists('GADWidgetData')) : ?> style="display:none;" <?php endif; ?>>
+    <ul id="tab-recent" class="recent-posts" <?php if( $show_popular ) : ?> style="display:none;" <?php endif; ?>>
 		<?php  while ($r->have_posts()) : $r->the_post(); ?>
       <li>
         <?php if (has_post_thumbnail()) :  ?>
@@ -119,7 +125,7 @@ class UW_Widget_Recent_Posts extends WP_Widget {
 
     <?php  wp_reset_postdata(); ?>
 
-    <?php  if (class_exists('GADWidgetData') ) : ?>
+    <?php  if ( $show_popular ) : ?>
 
     <ul id="tab-popular" class="popular-posts">
 
