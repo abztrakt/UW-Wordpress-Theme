@@ -71,8 +71,8 @@
 	display: none;
 } 
 #nc-left-col .communityphotos a span {
-	width: 55px;
-	height: 55px;
+	width: 60px;
+	height: 60px;
 }
 .communityphotos a span {
 	width: 30px;
@@ -93,6 +93,10 @@
 }
 #nc-left-col .communityphotos {
 	width:auto;
+	padding: 0 0 15px 15px;
+}
+#nc-left-col .communityphotos .widgettitle {
+	padding: 5px 0 0 0;
 }
 .communityphotos {
  	 float:left;
