@@ -26,7 +26,7 @@ h1, h2, h3, h4 {
     color: #39275B;
 }
 h1 {
-	margin: 10px 0 30px;
+	margin: 10px 0 25px;
 	font-size: 2.65em;
 	font-weight: 400; 
 }
@@ -109,7 +109,8 @@ object, embed, iframe {
 .widget_mailchimp_subscribe h2,
 .widget_text h2,
 .subpage_menu h2, 
-.pagelet_widget h2 {
+.pagelet_widget h2,
+#masonry h2 {
 	background: url(img/widgets/headline-background.jpg) no-repeat -16px -148px transparent;
 	padding: 32px 0 5px;
 }
