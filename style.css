@@ -27,7 +27,7 @@ h1, h2, h3, h4 {
 }
 h1 {
 	margin: 10px 0 30px;
-	font-size: 2.7em;
+	font-size: 2.65em;
 	font-weight: 400; 
 }
 h2, h3, h4 { 
@@ -37,7 +37,7 @@ h1 i, h1 em {
 	font-weight: 400;
 	font-family: Baskerville, 'Times New Roman', Times, serif;
 	text-transform: lowercase;
-	font-size: 1.2em;
+	font-size: 1.1em;
 }
 h2 {
     font-size: 1.5em;
@@ -230,7 +230,7 @@ object, embed, iframe {
 	text-decoration: none;
 	border-bottom: 1px solid #F4F4F4;
 	display: block;
-	color: #555;
+	color: #484848;
 	font-size: 13px;
 	padding: 2px 0 2px;
 	margin-bottom: 4px;
