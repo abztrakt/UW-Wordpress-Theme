@@ -13,21 +13,21 @@
 		<div class="skip-link"><a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to primary content', 'twentyeleven' ); ?>"><?php _e( 'Skip to primary content', 'twentyeleven' ); ?></a></div>
 		<div class="skip-link"><a class="assistive-text" href="#secondary" title="<?php esc_attr_e( 'Skip to sidebar content', 'twentyeleven' ); ?>"><?php _e( 'Skip to sidebar content', 'twentyeleven' ); ?></a></div>
 
-		<a class="patch" href="http://www.uw.edu" alt="150 Years">150 Years</a>
+		<a class="patch" href="http://www.uw.edu" title="150 Years">150 Years</a>
 		<a class="wordmark" <?php custom_wordmark(); ?> href="<?php echo is_custom_wordmark() ? home_url('/') : '//www.washington.edu'; ?>">University of Washington</a>
-		<a title="Show search" role="button" href="#searchicon-wrapper" id="searchicon-wrapper" class="visible-phone" aria-haspopup="true">Show search</a>
+		<a title="Show search" role="button" href="#searchicon-wrapper" id="searchicon-wrapper" class="visible-phone" aria-haspopup="true">Search</a>
 		<div id="search">
 			<form role="search" class="main-search" action="http://www.washington.edu/search" id="searchbox_008816504494047979142:bpbdkw8tbqc" name="form1">
 				<span class="wfield">
 					<input value="008816504494047979142:bpbdkw8tbqc" name="cx" type="hidden">
 					<input value="FORID:0" name="cof" type="hidden">
           <label for="q" class="hide">Search the UW</label>
-					<input class="wTextInput" placeholder="Search the UW" title="Search the UW" name="q" type="text">
+					<input id="q" class="wTextInput" placeholder="Search the UW" title="Search the UW" name="q" type="text">
   					<input value="Go" name="sa" class="formbutton" type="submit">
   				</span>
 			</form>	
 		</div>
-		<a title="Show menu" role="button" href="#listicon-wrapper" id="listicon-wrapper" class="visible-phone" aria-haspopup="true">Show menu</a>
+		<a title="Show menu" role="button" href="#listicon-wrapper" id="listicon-wrapper" class="visible-phone" aria-haspopup="true">Menu</a>
 </div>
 
 <div id="thin-strip">

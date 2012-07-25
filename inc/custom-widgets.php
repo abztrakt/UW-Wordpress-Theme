@@ -863,8 +863,9 @@ class UW_RSS_Widget extends WP_Widget {
         foreach ($rss_items as $index=>$item) {
           $title = $item->get_title();
           $link  = $item->get_link();
+          $attr  = esc_attr(strip_tags($title));
 
-          $content .= "<li><a href='$link' title='$title'>$title</a></li>";
+          $content .= "<li><a href='$link' title='$attr'>$title</a></li>";
         }
 
         $content .= '</ul>';
