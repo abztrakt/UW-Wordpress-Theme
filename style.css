@@ -901,10 +901,12 @@ object, embed, iframe {
 		font-style: italic;
 	}
 	.wp-caption-text {
-		margin-top: 5px;
+		margin-left: 5px;
+		margin-top: 15px;
 		font-size: 12px;
-		margin-right: 10px;
+		margin-right: 15px;
 		line-height: 16px;
+
 	}
 	.image-magnifier {
 		width: 49px;
