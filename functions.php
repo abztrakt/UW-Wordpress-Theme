@@ -368,8 +368,6 @@ if ( ! function_exists( 'force_https_the_content' ) ):
     function force_https_the_content($content) {
         if ( is_ssl() )
           $content = str_replace( 'src="http://', 'src="https://', $content );
-        if ( !is_user_logged_in() )
-          $content = str_replace( '/cms/', '', $content );
         return $content;
     }
 

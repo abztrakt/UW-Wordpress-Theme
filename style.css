@@ -897,7 +897,7 @@ object, embed, iframe {
 	.wp-media-credit {
 		text-align: right;
 		font-size: 11px;
-		margin: 5px 10px 0 0;
+		margin: 5px 10px -10px 0;
 		font-style: italic;
 	}
 	.wp-caption-text {
