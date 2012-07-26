@@ -3,7 +3,7 @@
   $header_image = get_header_image();
   if ( ! empty( $header_image ) ) :
 ?>
-<header style="background-image:url(<?php header_image(); ?>); <?php header_background_color(); ?>" id="branding" role="banner" <?php banner_class(); ?>>
+<header style="background-image:url(<?php echo ( is_user_logged_in() ) ? $header_image : str_replace('/cms/','/',$header_image); ?>); <?php header_background_color(); ?>" id="branding" role="banner" <?php banner_class(); ?>>
 <?php else: ?>
 <header id="branding" role="banner" <?php banner_class(); ?>>
 <?php endif; ?>
