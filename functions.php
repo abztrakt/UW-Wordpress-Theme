@@ -25,7 +25,7 @@ if ( ! function_exists( 'uw_setup' ) ):
     define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'twentyeleven_header_image_height', 215 ) );
     
 	  add_theme_support( 'custom-header', array( 'random-default' => true ) );
-	  add_custom_image_header( 'uw_header_style', 'uw_admin_header_style', 'uw_admin_header_image' );
+	  //add_custom_image_header( 'uw_header_style', 'uw_admin_header_style', 'uw_admin_header_image' );
     
     register_default_headers( array(
       'blossoms' => array(
@@ -326,6 +326,26 @@ endif;
 add_action( 'widgets_init', 'uw_widgets_init' );
 
 
+/**
+ * Filter the Welcome New User Email to replace 'USER_ROLE' in the text
+ *  with the new user's role.
+
+if ( ! function_exists( 'uw_custom_welcome_email' ) ): 
+
+  function uw_custom_welcome_email($welcome_email, $user_id) 
+  {
+    $user = get_userdata($user_id);
+	  $welcome_email = str_replace( 'USER_ROLE', join($user->roles,','), $welcome_email );
+    // echo $welcome_email;
+    return $welcome_email;
+  }
+
+endif;
+//add_filter('update_welcome_user_email', 'uw_custom_welcome_email', 10, 2);
+//wpmu_welcome_user_notification(10,'password');
+*/
+
+
 add_filter('the_content', 'force_https_the_content');
 add_filter('the_permalink', 'force_https_the_content');
 add_filter('post_thumbnail_html', 'force_https_the_content');
@@ -347,9 +367,9 @@ if ( ! function_exists( 'force_https_the_content' ) ):
    */
     function force_https_the_content($content) {
         if ( is_ssl() )
-        {
           $content = str_replace( 'src="http://', 'src="https://', $content );
-        }
+        if ( !is_user_logged_in() )
+          $content = str_replace( '/cms/', '', $content );
         return $content;
     }
 
