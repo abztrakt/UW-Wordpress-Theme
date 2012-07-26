@@ -41,7 +41,7 @@ jQuery(document).ready(function($){
           var weat = $.trim(json.responseData.feed.entries[1].title.split('|')[1]);
           var temp = $.trim(json.responseData.feed.entries[0].title.split('|')[1]);
           var html = '<li><a href="http://www.atmos.washington.edu/weather/forecast/" title="Forecast is '+weat+'">';
-          html += '<img src="/cms/wp-content/themes/uw/img/weather/top-nav/'+icon+'.png" alt="Forecast is '+weat+'"/>';
+          html += '<img src="/discover/wp-content/themes/uw/img/weather/top-nav/'+icon+'.png" alt="Forecast is '+weat+'"/>';
           html += '</a></li>';
           html += '<li><a href="http://www.atmos.washington.edu/weather/forecast/">';
           html += 'Seattle '+temp;
@@ -99,12 +99,13 @@ $(document).ready(function(){
     	// $('#search form').css('display', 'block');	
 		if(topnav.hasClass('activate')){
 			topnav.toggleClass("activate");	
+			menubtn.attr('title', 'Show menu');
 		}	
 		$('input.wTextInput').focus(); // Focus in search field		
 		if(search.hasClass('activate')) {
-			searchbtn.attr('title', 'Hide Menu');
+			searchbtn.attr('title', 'Hide search');
 		} else {
-			searchbtn.attr('title', 'Show Menu');
+			searchbtn.attr('title', 'Show search');
 		}
 		return false;	
 	});	
@@ -117,13 +118,14 @@ $(document).ready(function(){
 		topnav.toggleClass("activate");		
 		// $('#thin-strip ul').css('display', 'block');
 		if(search.hasClass('activate')){
-			search.toggleClass("activate");	
+			search.toggleClass("activate");
+			searchbtn.attr('title', 'Show search');	
 		}	
 		$('#thin-strip ul a:first').focus()	 // Focus in the dropdown field	
 		if(topnav.hasClass('activate')) {
-			menubtn.attr('title', 'Hide Menu');
+			menubtn.attr('title', 'Hide menu');
 		} else {
-			menubtn.attr('title', 'Show Menu');
+			menubtn.attr('title', 'Show menu');
 		}
 		return false;
 	});
