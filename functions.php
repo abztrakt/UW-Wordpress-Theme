@@ -1,8 +1,7 @@
 <?
-
-    /**
-     * Register with hook 'wp_enqueue_scripts', which can be used for front end CSS and JavaScript
-     */
+/**
+ * Register with hook 'wp_enqueue_scripts', which can be used for front end CSS and JavaScript
+ */
 add_action( 'after_setup_theme', 'uw_setup' );
 
 if ( ! function_exists( 'uw_setup' ) ): 
@@ -376,11 +375,13 @@ endif;
 add_filter('wp_redirect', 'remove_cms_from_redirect_url');
 if ( ! function_exists( 'remove_cms_from_redirect_url' ) ):
   function remove_cms_from_redirect_url( $url ) {
-    if ( !is_user_logged_in() ) {
-      $url = str_replace('/cms/','/', $url);
-      $url = str_replace('https:','http:', $url);
+    if ( is_user_logged_in() || strpos($url, 'wp-login.php') > 0 ) {
+      return $url;
+      //$url = preg_replace( '/https?:\/\/www.washington.edu\/cms\//', 'http://www.washington.edu/', $html );
     }
-    return $url;
+    //$url = str_replace('/cms/','/', $url);
+    //$url = str_replace('https:','http:', $url);
+    return preg_replace( '/https?:\/\/www.washington.edu\/cms\//', 'http://www.washington.edu/', $html );
   }
 endif;
 
