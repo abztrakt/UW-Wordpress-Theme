@@ -1,11 +1,11 @@
 input[type="text"].wTextInput {
-	background: url(/cms/wp-content/themes/uw/img/search-bar.png) no-repeat 0 0 transparent;
+	background: url(img/search-bar.png) no-repeat 0 0 transparent;
 }
 #s {
-	background: url(/cms/wp-content/themes/uw/img/search-bar.png) no-repeat 0 -54px transparent;
+	background: url(img/search-bar.png) no-repeat 0 -54px transparent;
 }
 #primary {
-	background: url(/cms/wp-content/themes/uw/img/misc/ie-rounded-corners.png) no-repeat 0 0 transparent;
+	background: url(img/misc/ie-rounded-corners.png) no-repeat 0 0 transparent;
 	background-color: transparent !important;
 }
 
