@@ -379,9 +379,10 @@ if ( ! function_exists( 'remove_cms_from_redirect_url' ) ):
       return $url;
       //$url = preg_replace( '/https?:\/\/www.washington.edu\/cms\//', 'http://www.washington.edu/', $html );
     }
-    //$url = str_replace('/cms/','/', $url);
-    //$url = str_replace('https:','http:', $url);
-    return preg_replace( '/https?:\/\/www.washington.edu\/cms\//', 'http://www.washington.edu/', $html );
+    $url = str_replace('/cms/','/', $url);
+    $url = str_replace('https:','http:', $url);
+    return $url;
+    //return preg_replace( '/https?:\/\/www.washington.edu\/cms\//', 'http://www.washington.edu/', $html );
   }
 endif;
 
