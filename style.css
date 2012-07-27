@@ -32,6 +32,9 @@ h1 {
 }
 h2, h3, h4 { 
 	margin-bottom: 10px;
+	font-weight: 300;
+	letter-spacing: 0;
+	font-size: 1.7em;
 }
 h1 i, h1 em {
 	font-weight: 400;
@@ -43,6 +46,8 @@ h2 {
     font-size: 1.5em;
     line-height: 26px;
     margin-bottom: 10px;
+    letter-spacing: 0;
+    font-weight: 300;
 }
 h3 {
 	color: #5C441F;

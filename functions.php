@@ -373,6 +373,17 @@ if ( ! function_exists( 'force_https_the_content' ) ):
 
 endif;
 
+add_filter('wp_redirect', 'remove_cms_from_redirect_url');
+if ( ! function_exists( 'remove_cms_from_redirect_url' ) ):
+  function remove_cms_from_redirect_url( $url ) {
+    if ( !is_user_logged_in() ) {
+      $url = str_replace('/cms/','/', $url);
+      $url = str_replace('https:','http', $url);
+    }
+    return $url;
+  }
+endif;
+
 require( get_template_directory() . '/inc/patch-band-options.php' );
 require( get_template_directory() . '/inc/media-credit.php' );
 require( get_template_directory() . '/inc/custom-widgets.php' );
