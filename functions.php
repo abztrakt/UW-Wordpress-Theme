@@ -378,7 +378,7 @@ if ( ! function_exists( 'remove_cms_from_redirect_url' ) ):
   function remove_cms_from_redirect_url( $url ) {
     if ( !is_user_logged_in() ) {
       $url = str_replace('/cms/','/', $url);
-      //$url = str_replace('https:','http', $url);
+      $url = str_replace('https:','http:', $url);
     }
     return $url;
   }
