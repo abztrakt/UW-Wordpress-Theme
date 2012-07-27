@@ -375,14 +375,11 @@ endif;
 add_filter('wp_redirect', 'remove_cms_from_redirect_url');
 if ( ! function_exists( 'remove_cms_from_redirect_url' ) ):
   function remove_cms_from_redirect_url( $url ) {
-    if ( is_user_logged_in() || strpos($url, 'wp-login.php') > 0 ) {
-      return $url;
-      //$url = preg_replace( '/https?:\/\/www.washington.edu\/cms\//', 'http://www.washington.edu/', $html );
+    if ( !is_user_logged_in() ) {
+      $url = str_replace('/cms/','/', $url);
+      $url = str_replace('https:','http:', $url);
     }
-    $url = str_replace('/cms/','/', $url);
-    $url = str_replace('https:','http:', $url);
     return $url;
-    //return preg_replace( '/https?:\/\/www.washington.edu\/cms\//', 'http://www.washington.edu/', $html );
   }
 endif;
 
