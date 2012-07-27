@@ -375,7 +375,7 @@ endif;
 add_filter('wp_redirect', 'remove_cms_from_redirect_url');
 if ( ! function_exists( 'remove_cms_from_redirect_url' ) ):
   function remove_cms_from_redirect_url( $url ) {
-    if ( ! is_admin() && empty( $_SERVER['REMOTE_USER'] ) && $blog_id != 1 && !preg_match('/\b(wp-admin|wp-login)\b/i', $_SERVER['REQUEST_URI']) && !is_user_logged_in()) {
+    if ( ! is_admin() && empty( $_SERVER['REMOTE_USER'] ) && $blog_id != 1 && !preg_match('/\b(wp-admin|wp-login|\/login)\b/i', $_SERVER['REQUEST_URI']) && !is_user_logged_in()) {
       $url = str_replace('/cms/','/', $url);
       $url = str_replace('https:','http:', $url);
     }
