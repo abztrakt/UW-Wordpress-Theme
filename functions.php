@@ -383,6 +383,12 @@ if ( ! function_exists( 'remove_cms_from_redirect_url' ) ):
   }
 endif;
 
+if ( ! function_exists( 'is_local' ) ):
+  function is_local() {
+    return defined('WP_LOCAL');
+  }
+endif;
+
 require( get_template_directory() . '/inc/patch-band-options.php' );
 require( get_template_directory() . '/inc/media-credit.php' );
 require( get_template_directory() . '/inc/custom-widgets.php' );
