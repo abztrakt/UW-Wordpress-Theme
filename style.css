@@ -952,6 +952,11 @@ hr {
 	.alignleft:hover .image-magnifier, .alignright:hover .image-magnifier {
 		visibility:visible;
 	}
+	/* ---- Fixes LIs from not wrapping properly ---- */
+	.page ul, .post ul {
+		overflow: hidden;
+	}
+	
 	/* ---- Inset Boxes ---- */
 	
 	.info-box {
