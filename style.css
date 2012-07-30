@@ -771,7 +771,7 @@ object, embed, iframe {
 	}
 	.alignleft img, .alignright img {
 		height: auto !important;
-		max-width: 100% !important;
+		width: 100% !important;
 		min-width: 225px !important;
 		margin: 1.6em 0 0;
 	}
@@ -780,7 +780,6 @@ object, embed, iframe {
 		font-size: 13px;
 		line-height: 16px;
 		background-color: #F4F4F4;
-		margin-right: 10px;
 	}
 	.wp-media-credit {
 		padding: 5px 15px 2px;
