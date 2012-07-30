@@ -328,6 +328,9 @@ add_action( 'widgets_init', 'uw_widgets_init' );
 /**
  * Filter the Welcome New User Email to replace 'USER_ROLE' in the text
  *  with the new user's role.
+ *
+ *  Test with this command: wpmu_welcome_user_notification($user_id,'password');
+ */
 
 if ( ! function_exists( 'uw_custom_welcome_email' ) ): 
 
@@ -335,14 +338,11 @@ if ( ! function_exists( 'uw_custom_welcome_email' ) ):
   {
     $user = get_userdata($user_id);
 	  $welcome_email = str_replace( 'USER_ROLE', join($user->roles,','), $welcome_email );
-    // echo $welcome_email;
     return $welcome_email;
   }
 
 endif;
-//add_filter('update_welcome_user_email', 'uw_custom_welcome_email', 10, 2);
-//wpmu_welcome_user_notification(10,'password');
-*/
+add_filter('update_welcome_user_email', 'uw_custom_welcome_email', 10, 2);
 
 
 add_filter('the_content', 'force_https_the_content');
