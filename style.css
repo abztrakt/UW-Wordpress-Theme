@@ -953,7 +953,7 @@ hr {
 		visibility:visible;
 	}
 	/* ---- Fixes LIs from not wrapping properly ---- */
-	.page ul, .post ul {
+	.type-page ul, .type-post ul {
 		overflow: hidden;
 	}
 	
