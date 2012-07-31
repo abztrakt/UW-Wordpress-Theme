@@ -161,10 +161,7 @@ hr {
 /* - Video Widget - */
 
 
-.video li a {
-	color: #484848;
-}
-.video li {
+#sidebar .video li {
 	background: url(img/widgets/widget-sprite.png) no-repeat 2px -201px transparent;
 	padding: 2px 0 2px 25px;
 }
