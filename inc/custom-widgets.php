@@ -88,12 +88,20 @@ class UW_Widget_Recent_Posts extends WP_Widget {
         $ga = new GALib('client', $login->auth_token, NULL, NULL, $login->account_id);
       }
 
+      $wp_posts = array();
       $pop_posts = $ga->pages_for_date_period($start_date, $end_date, $number+1);
       foreach ($pop_posts as $index=>$post) {
         if( $post['value'] == $path ) 
           unset($pop_posts[$index]);
+        else {
+          $wp_post = get_page_by_path(basename($post['value']), OBJECT, 'post');
+          if (isset($wp_post) && !in_array($wp_post, $wp_posts)) {
+            $wp_posts[] = $wp_post;
+            $wp_post_views[$wp_post->ID] = $post['children']['children']['ga:pageviews'];
+          }
+        }
       }
-      $pop_posts = array_slice($pop_posts, 0, $number ); // the first, most popular page, is always /news/ (the homepage)
+      $pop_posts = array_slice($wp_posts, 0, $number ); // the first, most popular page, is always /news/ (the homepage)
     }
     
 
@@ -129,10 +137,7 @@ class UW_Widget_Recent_Posts extends WP_Widget {
 
     <ul id="tab-popular" class="popular-posts">
 
-      <?php foreach( $pop_posts as $ga_post ): ?>
-        <?php $post = get_page_by_path(basename($ga_post['value']), OBJECT, 'post'); ?>
-        <?php if (!isset($post)) continue; ?>
-
+      <?php foreach( $pop_posts as $post ): ?>
           <li>
             <?php if (get_the_post_thumbnail($post->ID)) :  ?>
             <a class="widget-thumbnail" href="<?php echo get_permalink($post->ID) ?>" title="<?php echo esc_attr($post->post_title); ?>">
@@ -142,7 +147,7 @@ class UW_Widget_Recent_Posts extends WP_Widget {
             <a class="widget-link" href="<?php echo get_permalink($post->ID) ?>" title="<?php echo esc_attr($post->post_title); ?>">
               <?php echo $post->post_title; ?>
             </a>
-            <p><small><?php echo $ga_post['children']['children']['ga:pageviews']; ?> views</small></p>
+            <p><small><?php echo $wp_post_views[$post->ID]; ?> views</small></p>
           </li>
 
       <?php endforeach; ?>
@@ -869,6 +874,7 @@ class UW_RSS_Widget extends WP_Widget {
         }
 
         $content .= '</ul>';
+        //$content .= "<a class=\"rss-more\" href=\"$url\">More</a>";
       }
     }
 
