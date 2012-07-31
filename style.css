@@ -97,7 +97,7 @@ hr {
 /* ----  Right Sidebar ---- */
 
 #sidebar ul {
-    margin: 0;
+   margin-left: 0;
 }
 #sidebar li {
     list-style: none;
