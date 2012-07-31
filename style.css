@@ -60,7 +60,7 @@ h4 {
 	line-height: 24px;
 }
 h4 em {
-	color: gray;
+	color: #6B6B6B;
 	font-family: Baskerville, 'Times New Roman', Times, serif;
 	font-weight: 300;
 	font-size: 1.3em;
@@ -1611,7 +1611,8 @@ hr {
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
     only screen and (-o-min-device-pixel-ratio: 3/2),
     only screen and (min--moz-device-pixel-ratio: 1.5),
-    only screen and (min-device-pixel-ratio: 1.5) {
+    only screen and (min-device-pixel-ratio: 1.5),
+    (max-width: 767px)  {
     	.wordmark {
     		background: url("img/mobile-header/logo2x.png") no-repeat 0 0 transparent !important;
       	    background-size: 230px 35px;
