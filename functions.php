@@ -324,6 +324,16 @@ endif;
 
 add_action( 'widgets_init', 'uw_widgets_init' );
 
+add_filter('body_class','my_class_names');
+if ( ! function_exists( 'uw_custom_body_classes' ) ):
+  function my_class_names($classes) 
+  {
+    $classes[] = 'site-'. sanitize_html_class(str_replace('cms','',get_blog_details(get_current_blog_id())->path));
+    return $classes;
+  }
+endif;
+
+
 
 /**
  * Filter the Welcome New User Email to replace 'USER_ROLE' in the text

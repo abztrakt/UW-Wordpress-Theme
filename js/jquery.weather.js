@@ -95,7 +95,7 @@
             }
             img_tag = image !== "00" ? "<img src='" + img_src + "' alt='" + current_weather + "' title='" + current_weather + "' />" : "";
             //if (options.anchor) {
-            img_tag = "<a href='" + link + "' style='width:"+sizes[options.icon]+"px;background:url("+img_src+");text-indent:-10000px;' title='"+ current_weather + "'>Forecast</a>";
+            img_tag = "<a href='" + link + "' style='width:"+sizes[options.icon]+"px;background-image:url("+img_src+");text-indent:-10000px;' title='"+ current_weather + "'>Forecast</a>";
             //}
             weather_condition = options.condition ? "<span class='weather-condition'>" + current_weather + "</span>" : "";
             weather_datetime = options.showdate ? "<span class='weather-datetime'>" + current_datetime + "</span>" : "";

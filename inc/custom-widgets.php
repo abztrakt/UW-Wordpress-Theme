@@ -127,6 +127,7 @@ class UW_Widget_Recent_Posts extends WP_Widget {
         <a class="widget-link" href="<?php the_permalink() ?>" title="<?php echo esc_attr(get_the_title() ? get_the_title() : get_the_ID()); ?>">
           <?php if ( get_the_title() ) the_title(); else the_ID(); ?>
         </a>
+          <p> <small><?php echo human_time_diff(get_the_time('U'), current_time('timestamp')); ?> ago</small> </p>
       </li>
 		<?php endwhile; ?>
 		</ul>
@@ -874,7 +875,7 @@ class UW_RSS_Widget extends WP_Widget {
         }
 
         $content .= '</ul>';
-        //$content .= "<a class=\"rss-more\" href=\"$url\">More</a>";
+        $content .= "<a class=\"rss-more\" href=\"$url\">More</a>";
       }
     }
 
