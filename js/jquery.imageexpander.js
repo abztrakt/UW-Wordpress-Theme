@@ -5,6 +5,7 @@ $(document).ready(function() {
 
   $('body')
       .on('click.imageexpander', imgs, function() {
+          return false;
       
           var $this = $(this)
             , cached = $this.siblings('img').length > 0 
@@ -65,6 +66,10 @@ $(document).ready(function() {
           return false;
       })
 
+/**
+ *
+ * Temporarily commented out until all bugs are fixed
+ *
     $(imgs).each(function() { 
       var $this = $(this)
         , hasCaption = $this.closest('.wp-caption').length > 0
@@ -84,6 +89,7 @@ $(document).ready(function() {
         .append($a)
         .append('<span class="image-magnifier">Click to expand</span>')
     })
+    */
 
 
 });
