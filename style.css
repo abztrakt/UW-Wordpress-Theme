@@ -390,8 +390,11 @@ hr {
 }
 
 @media (min-width: 768px) and (max-width: 979px) { 
+	#access {
+		overflow: hidden;
+	}
 	body #primary {
-		width: 800px;
+		width: 768px;
 		margin: 0 auto;
 	}
 	body .rightside .inner-wrap {
@@ -406,7 +409,7 @@ hr {
 		left: 25px;
 	}
 	body #header {
-		width: 800px;
+		width: 768px;
 		margin-left: -400px;
 	}
 	body .wordmark {
@@ -992,7 +995,6 @@ hr {
 	    background: url(img/header/bg-stripe.gif) repeat-x 197px 0 #FFF;
 	}
 	
-	
 	/* ----  Thin Strip ---- */
 	
 	#thin-strip {
@@ -1194,6 +1196,7 @@ hr {
 	    -moz-box-shadow: 0 0 9px #c1c1c1;
 	}
 	.navbar-inner {
+		padding: 0;
 	    width: 995px;
 	    margin: 0 auto;
 	    background-color: transparent;
@@ -1377,20 +1380,6 @@ hr {
 	    height: 50px;
 	    display: block;
 	}
-	/*
-	.entry-content h2 {
-		margin-top: 20px;
-	}
-	*/
-	
-	/* ----  Slideshow Pro ----
-	
-	.slideshowpro-wrapper {
-		border: 2px solid #d9d9d9;
-		padding: 0 10px 0 10px;
-		margin-bottom: 15px;
-		height: 455px;
-	}*/
 	.slideshowpro-wrapper object {
 		width: 100% !important;
 		height: 442px !important;
@@ -1610,7 +1599,7 @@ hr {
     only screen and (-o-min-device-pixel-ratio: 3/2),
     only screen and (min--moz-device-pixel-ratio: 1.5),
     only screen and (min-device-pixel-ratio: 1.5),
-    (max-width: 767px)  {
+    and (max-width: 767px)  {
     	.wordmark {
     		background: url("img/mobile-header/logo2x.png") no-repeat 0 0 transparent !important;
       	    background-size: 230px 35px;
