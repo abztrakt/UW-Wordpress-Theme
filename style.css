@@ -812,6 +812,12 @@ hr {
 		font-size: 31px;
 	}
 	
+	/* ----  Disqus ---- */
+	
+	#disqus_thread {
+		margin: 0 15px;
+	}
+	
 
 	/* ----  Thin Strip Footer ---- */
 
@@ -1529,14 +1535,7 @@ hr {
 		border-radius: 5px;
 		width: 170px;
 	}
-	
-	/* ----  Disqus ---- */
-	
-	#disqus_thread {
-		margin: 0 15px;
-	}
-	
-	
+		
 }
 @media (min-width: 1200px) {  
 }
