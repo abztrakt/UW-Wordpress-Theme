@@ -377,6 +377,11 @@ hr {
 	color: white;
 	text-shadow: 1px 1px 1px #333;
 }
+	/* ---- Fixes double border and padding ---- */
+.pull-right .pull-right {
+	padding: 0;
+	border: 0;
+}
 .pull-right a {
 	color: white;
 }
