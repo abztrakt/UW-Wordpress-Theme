@@ -45,7 +45,7 @@ if ( ! function_exists( 'uw_enqueue_default_styles' ) ):
  * This is where all the CSS files are registered
  *
  * bloginfo('template_directory')  gives you the url to the parent theme
- * bloginfo('stylesheet_direcotory')  gives you the url to the child theme
+ * bloginfo('stylesheet_directory')  gives you the url to the child theme
  */
   function uw_enqueue_default_styles() {
       $is_child_theme = get_bloginfo('template_directory') != get_bloginfo('stylesheet_directory');
@@ -72,7 +72,7 @@ if ( ! function_exists( 'uw_enqueue_default_scripts' ) ):
  * This is where all the JS files are registered
  *
  * bloginfo('template_directory')  gives you the url to the parent theme
- * bloginfo('stylesheet_direcotory')  gives you the url to the child theme
+ * bloginfo('stylesheet_directory')  gives you the url to the child theme
  */
   function uw_enqueue_default_scripts() {
     wp_deregister_script('jquery'); //we use googles CDN below
