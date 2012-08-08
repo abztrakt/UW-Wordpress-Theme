@@ -124,6 +124,7 @@ hr {
 .widget_text h2,
 .subpage_menu h2, 
 .pagelet_widget h2,
+.widget_uw_rss_widget h2,
 #masonry h2 {
 	background: url(img/widgets/headline-background.jpg) no-repeat -16px -148px transparent;
 	padding: 32px 0 5px;
@@ -307,7 +308,8 @@ hr {
 .entry-content li,
 .widget_text li,
 .widget_uw_showcase li, 
-.pagelet_widget li {
+.pagelet_widget li
+.widget_uw_rss_widget li {
 	margin-left: 0;
 	margin-bottom: 5px;
 	background: url('img/bullet-gold.png') no-repeat left 7px transparent;
