@@ -316,6 +316,10 @@ hr {
 	list-style: none;
 	padding-left: 12px;
 }
+.more {
+	background: url('img/misc/bullet.png') right center no-repeat;
+	padding-right: 10px;
+}
 
 /* ---- Comments (built-in) ---- */
 
