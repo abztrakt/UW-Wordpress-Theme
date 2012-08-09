@@ -382,6 +382,20 @@ if ( ! function_exists( 'force_https_the_content' ) ):
 
 endif;
 
+
+add_filter('sharing_permalink', 'uw_remove_cms_from_sharedaddy_permalink');
+if ( ! function_exists( 'uw_remove_cms_from_sharedaddy_permalink') ):
+  /**
+   * Bug fix for the Sharedaddy plugin. The plugin uses the default permalink 
+   *  of the post which contains /cms/. This function and filter removes /cms/ from 
+   *  the permalink but only for the Sharedaddy plugin.
+   */
+  function uw_remove_cms_from_sharedaddy_permalink($url) 
+  {
+    return str_replace('/cms/','/', $url); 
+  }
+endif;
+
 add_filter('wp_redirect', 'remove_cms_from_redirect_url');
 if ( ! function_exists( 'remove_cms_from_redirect_url' ) ):
   function remove_cms_from_redirect_url( $url ) {
