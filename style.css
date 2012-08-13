@@ -267,10 +267,10 @@ hr {
 .widget_nav_menu li:last-child a, .subpage_menu li:last-child a, .related-posts li:last-child {
 	border: none;
 }
-#menu-discover-links .sub-menu {
+.menu .sub-menu {
 	display: none;	
 	z-index: 999;
-	top: -30px;
+	top: -20px;
 	position: absolute;
 	right: 250px;
 	width: 200px;
@@ -283,10 +283,10 @@ hr {
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 }
-#menu-discover-links .menu-item:hover .sub-menu {
+.menu .menu-item:hover .sub-menu {
 	display: block;
 }
-#menu-discover-links .menu-item .sub-menu:after {
+.menu .menu-item .sub-menu:after {
 	content: " ";
 	background: url('img/misc/menu-notch.png') no-repeat -3px 0 transparent;
 	color: #F4F4F4;
@@ -295,7 +295,7 @@ hr {
 	height: 30px;
 	position: absolute;
 	font-size: 17px;
-	top: 25px;
+	top: 20px;
 	right: -15px;
 }
 .sub-menu li:last-child a {
