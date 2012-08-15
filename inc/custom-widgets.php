@@ -121,7 +121,7 @@ class UW_Widget_Recent_Posts extends WP_Widget {
       <li>
         <?php if (has_post_thumbnail()) :  ?>
         <a class="widget-thumbnail" href="<?php the_permalink() ?>" title="<?php echo esc_attr(get_the_title() ? get_the_title() : get_the_ID()); ?>">
-          <?php the_post_thumbnail( 'Thimble' ); ?>
+          <?php the_post_thumbnail( 'thumbnail' ); ?>
         </a>
         <?php endif; ?>
         <a class="widget-link" href="<?php the_permalink() ?>" title="<?php echo esc_attr(get_the_title() ? get_the_title() : get_the_ID()); ?>">
@@ -142,7 +142,7 @@ class UW_Widget_Recent_Posts extends WP_Widget {
           <li>
             <?php if (get_the_post_thumbnail($post->ID)) :  ?>
             <a class="widget-thumbnail" href="<?php echo get_permalink($post->ID) ?>" title="<?php echo esc_attr($post->post_title); ?>">
-              <?php echo get_the_post_thumbnail($post->ID, 'Thimble'); ?>
+              <?php echo get_the_post_thumbnail($post->ID, 'thumbnail'); ?>
             </a>
             <?php endif; ?>
             <a class="widget-link" href="<?php echo get_permalink($post->ID) ?>" title="<?php echo esc_attr($post->post_title); ?>">
