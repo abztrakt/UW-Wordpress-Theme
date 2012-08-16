@@ -329,6 +329,7 @@ if ( ! function_exists( 'uw_custom_body_classes' ) ):
   function my_class_names($classes) 
   {
     $classes[] = 'site-'. sanitize_html_class(str_replace('cms','',get_blog_details(get_current_blog_id())->path));
+    $classes[] = has_post_thumbnail() || is_home() && has_post_thumbnail(get_option('page_for_posts')) ? 'featured-image' : '';
     return $classes;
   }
 endif;
@@ -396,6 +397,20 @@ if ( ! function_exists( 'uw_remove_cms_from_sharedaddy_permalink') ):
   }
 endif;
 
+
+add_filter('excerpt_more', 'new_excerpt_more');
+if ( ! function_exists( 'new_excerpt_more') ):
+  /**
+   * Added Excerpt filter
+   */
+   function new_excerpt_more($more) 
+   {
+	global $post;
+   	return '... <a href="'. get_permalink($post->ID) . '">Read More</a>';
+   }
+endif;
+
+
 add_filter('wp_redirect', 'remove_cms_from_redirect_url');
 if ( ! function_exists( 'remove_cms_from_redirect_url' ) ):
   function remove_cms_from_redirect_url( $url ) {
@@ -424,8 +439,8 @@ require( get_template_directory() . '/inc/helper-functions.php' );
 //require( get_template_directory() . '/inc/json-api.php' );
 
 if ( is_admin() )  {
-  if (!class_exists('coauthors_plus') )
-    require( get_template_directory() . '/admin/autocomplete-authors.php' );
+  //if (!class_exists('coauthors_plus') )
+    //require( get_template_directory() . '/admin/autocomplete-authors.php' );
   require( get_template_directory() . '/admin/custom-user-info-fields.php' );
 }
 ?>

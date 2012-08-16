@@ -250,6 +250,7 @@ hr {
 }
 .widget_nav_menu a:hover, .subpage_menu a:hover {
 	text-decoration: none;
+	font-weight: bold;
 }
 .widget_nav_menu li, .subpage_menu li {
 	border-left: 4px solid #fff;
@@ -373,7 +374,7 @@ hr {
 /* ---- Tags ---- */
 
 .entry-meta {
-	padding: 10px 0;
+	margin: 10px 0;
 }
 .pull-right {
 	border: 2px solid;
@@ -1363,6 +1364,7 @@ hr {
 	    min-height: 375px;
 	}
 	.stripe-top, .stripe-bottom  {
+		margin-top: -20px;
 	    background-position: 0 0;
 	    width: 40px;
 	    height: 214px;
@@ -1397,9 +1399,22 @@ hr {
 	    height: 50px;
 	    display: block;
 	}
+
 	.slideshowpro-wrapper object {
 		width: 100% !important;
 		height: 442px !important;
+	}
+	
+	/* ----  Featured Image Banner ---- */
+	
+	.featured-image #arrow-mark {
+		left: -11px;
+		top: 35px;
+		width: 675px;
+		height: 115px;
+	}
+	.featured-image .span8 {
+		margin-top: 140px;
 	}
 	
 	/* ----  Footer ---- */
@@ -1546,7 +1561,22 @@ hr {
 		border-radius: 5px;
 		width: 170px;
 	}
-		
+	
+	.post-info {
+		display: block;
+		width: 100%;
+		overflow: hidden;
+	}
+	.post-info p {
+		float: left;
+		font-weight: bold;
+	}
+	.post-info p.author-info {
+		padding-left: 10px;
+		margin-left: 10px;
+		border-left: 1px solid #DDD;
+		font-weight: normal;
+	}
 }
 @media (min-width: 1200px) {  
 }

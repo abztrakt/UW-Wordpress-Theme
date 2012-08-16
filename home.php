@@ -6,21 +6,23 @@
 						
 			<div class="row show-grid">
 				<div class="span8">
-					<span id="arrow-mark"></span>
-					
-					
+				<?php  $featured = wp_get_attachment_image_src( get_post_thumbnail_id(get_option('page_for_posts')), 'Full Width' ) ; ?>
+				<span id="arrow-mark" <?php if ( $featured ) { echo 'style="background-image:url(' . $featured[0] . ')"'; }?> ></span>
+								
 			<?php while ( have_posts() ) : the_post(); ?>
 
 				
 			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 				<header class="entry-header">
-					<h1 class="entry-title"><?php apply_filters('italics', get_the_title()); ?></h1>
+					<h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php apply_filters('italics', get_the_title()); ?></a></h2>
+					<span class="post-info"><?php the_date('F j, Y', '<p>', '</p>'); ?><p class="author-info">By <?php the_author(); ?></p></span>
 				</header><!-- .entry-header -->
 			
 				<div class="entry-content">
-					<?php the_content(); ?>
+					<?php the_excerpt(); ?>
 					<?php wp_link_pages( array( 'before' => '<div class="page-link"><span>' . __( 'Pages:', 'twentyeleven' ) . '</span>', 'after' => '</div>' ) ); ?>
 				</div><!-- .entry-content -->
+				<hr>
 				<footer class="entry-meta">
 					<?php edit_post_link( __( 'Edit', 'twentyeleven' ), '<span class="edit-link">', '</span>' ); ?>
 				</footer><!-- .entry-meta -->

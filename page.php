@@ -6,11 +6,14 @@
 						
 			<div class="row show-grid">
 				<div class="span8">
-					<span id="arrow-mark"></span>
 					
 					
 			<?php while ( have_posts() ) : the_post(); ?>
 
+
+      <?php  $featured = wp_get_attachment_image_src( get_post_thumbnail_id(), 'Full Width' ) ; ?>
+
+      <span id="arrow-mark" <?php if ( $featured ) { echo 'style="background-image:url(' . $featured[0] . ')"'; }?> ></span>
 				
 			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 				<header class="entry-header">
