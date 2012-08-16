@@ -1407,7 +1407,7 @@ hr {
 	
 	/* ----  Featured Image Banner ---- */
 	
-	.featured-image #arrow-mark {
+	.blog.featured-image #arrow-mark {
 		left: auto;
 		top: auto;
 		position: static;
