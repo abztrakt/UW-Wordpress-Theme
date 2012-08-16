@@ -50,7 +50,7 @@ class UW_Widget_Recent_Posts extends WP_Widget {
 	function widget($args, $instance) {
 		$cache = wp_cache_get('widget_recent_posts', 'widget');
 
-    $show_popular = class_exists('GADWidgetData');
+    $show_popular = class_exists('GADWidgetData') && $instance['show-popular'];
 
 		if ( !is_array($cache) )
 			$cache = array();
@@ -171,6 +171,7 @@ class UW_Widget_Recent_Posts extends WP_Widget {
 		$instance = $old_instance;
 		$instance['title'] = strip_tags($new_instance['title']);
 		$instance['number'] = (int) $new_instance['number'];
+		$instance['show-popular'] = (bool) $new_instance['show-popular'];
 		$this->flush_widget_cache();
 
 		$alloptions = wp_cache_get( 'alloptions', 'options' );
@@ -193,6 +194,12 @@ class UW_Widget_Recent_Posts extends WP_Widget {
 
 		<p><label for="<?php echo $this->get_field_id('number'); ?>"><?php _e('Number of posts to show:'); ?></label>
 		<input id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="text" value="<?php echo $number; ?>" size="3" /></p>
+
+
+    <?php if (class_exists('GADWidgetData') ) : ?>
+		<p> <input id="<?php echo $this->get_field_id('show-popular'); ?>" name="<?php echo $this->get_field_name('show-popular'); ?>" type="checkbox" value="1" <?php checked( $instance['show-popular']) ?> />
+    <label for="<?php echo $this->get_field_id('show-popular'); ?>"><?php _e('Show popular posts'); ?></label> </p>
+    <?php endif; ?>
 <?php
 	}
 }
