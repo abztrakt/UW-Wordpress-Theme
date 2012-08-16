@@ -785,12 +785,12 @@ hr {
 	.image-magnifier { 
 		display: none; 
 	}
-	.alignleft, .alignright {
+	.alignleft, .alignright, .alignnone {
 		min-width: 225px !important;
 		max-width: 100% !important;
 		margin: 0 auto;
 	}
-	.alignleft img, .alignright img {
+	.alignleft img, .alignright img, .alignnone img {
 		height: auto !important;
 		width: 100% !important;
 		min-width: 225px !important;
@@ -1408,15 +1408,14 @@ hr {
 	/* ----  Featured Image Banner ---- */
 	
 	.featured-image #arrow-mark {
-		left: -11px;
-		top: 35px;
+		left: auto;
+		top: auto;
+		position: static;
+		margin: 0px 0px 25px -53px;
 		width: 675px;
 		height: 115px;
 	}
-	.featured-image .span8 {
-		margin-top: 140px;
-	}
-	
+
 	/* ----  Footer ---- */
 	
 	
