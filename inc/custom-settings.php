@@ -98,7 +98,7 @@ function uw_general_settings_api_init() {
   */
 
 
- function uw_header_settings_api_init() {
+ function uw_background_color_header_settings_api_init() {
  	add_settings_section('background_color',
 		'Background Color',
 		'_background_howto',
@@ -150,23 +150,116 @@ function uw_general_settings_api_init() {
       })
     </script>
   <?php
- }
- 
- function uw_print_header_settings() {
-   do_settings_sections('custom-header', 'uw_adjust_custom_header_page');
- }
- 
- add_action('admin_init', 'uw_header_settings_api_init');
- add_action('custom_header_options', 'uw_print_header_settings');
+  }
 
- function header_background_color() {
+  function uw_print_header_settings() {
+   do_settings_sections('custom-header', 'uw_adjust_custom_header_page');
+  }
+
+  add_action('admin_init', 'uw_background_color_header_settings_api_init');
+  add_action('custom_header_options', 'uw_print_header_settings');
+
+  function header_background_color() {
    echo get_header_background_color();
- }
- function get_header_background_color() {
+  }
+  function get_header_background_color() {
    $color = get_option('header_background_color');
 
      if (!$color)
        return '';
 
    return "background-color:$color;";
- }
+  }
+
+
+  /**
+  * Custom header image for the blogroll page
+  *
+  *   This is the image that will show up as the banner of the blogroll page.
+  *   Just as the background color above, the is printed out using the 'custom_header_options'
+  *     action but still registered via the Settings API for future use.
+  *
+  */
+
+  function uw_blogroll_banner_header_settings_api_init() {
+  add_settings_section('blogroll_banner',
+    'Blogroll Banner',
+    '_blogroll_banner_howto',
+    'custom-header');
+
+  add_settings_field('blogroll_banner_image',
+    'Image',
+    'header_blogroll_banner_html',
+    'custom-header',
+    'blogroll_banner');
+
+  register_setting('custom-header', 'blogroll_banner');
+  }
+
+  function _blogroll_banner_howto() { echo ''; }
+
+  function header_blogroll_banner_html() { 
+    if ( isset($_REQUEST['remove-blogroll-banner']) && 
+      wp_verify_nonce($_REQUEST['_wpnonce-remove-blogroll-banner'], 'remove-blogroll-banner')) {
+      update_option('blogroll-banner', false );
+    } else if ( isset($_REQUEST['blogroll_banner_file']) && 
+      wp_verify_nonce($_REQUEST['_wpnonce-blogroll-banner'], 'custom-header-blogroll-banner')) {
+      update_option('blogroll-banner', $_REQUEST['blogroll_banner_file']);
+    }
+    $image_library_url  = get_upload_iframe_src( 'image', null, 'library' );
+    $image_library_url  = remove_query_arg( 'TB_iframe', $image_library_url );
+    $image_library_url  = add_query_arg( array( 'context' => 'custom-header-blogroll-banner', 'TB_iframe' => 1 ), $image_library_url );
+    $blogroll_banner_id = get_option('blogroll-banner');
+    $text = 'Choose an image from your library';
+
+    if ($blogroll_banner_id) {
+      $text = ' or choose a different image from your library';
+      $blogroll_banner_thumb = wp_get_attachment_link($blogroll_banner_id, 'large') ;
+    }
+  ?>
+
+    <p>
+      <?php echo $blogroll_banner_thumb; ?>
+      <?php if ( $blogroll_banner_id) : ?>
+        <br/>
+        <input type="hidden" name="_wpnonce-remove-blogroll-banner" value="<?php echo wp_create_nonce('remove-blogroll-banner'); ?>">
+        <input type="submit" name="remove-blogroll-banner" id="remove-blogroll-banner" class="button" value="Remove Blogroll Banner">
+      <?php endif; ?> 
+      <label for="choose-from-library-link"><?php _e($text) ?></label>
+      <a id="choose-from-library-link" class="button thickbox" href="<?php echo esc_url($image_library_url); ?>"><?php _e( 'Choose Image' ); ?></a>
+    </p>
+
+  <?php }
+  
+  add_action( 'admin_init', 'uw_blogroll_banner_header_settings_api_init');
+
+  /**
+   * Taken from wp-admin/custom-header.php to limit fields in the media uploader
+   */
+  function choose_blogroll_banner() {
+		if ( isset( $_REQUEST['context'] ) && $_REQUEST['context'] == 'custom-header-blogroll-banner' ) {
+      add_filter( 'attachment_fields_to_edit', 'blogroll_banner_attachment_fields_to_edit', 10, 2 );
+      add_filter( 'media_upload_tabs', 'blogroll_banner_filter_upload_tabs' );
+      add_filter( 'media_upload_mime_type_links', '__return_empty_array' );
+    }
+  }
+  add_action( 'admin_menu', 'choose_blogroll_banner' );
+  
+	function blogroll_banner_attachment_fields_to_edit( $form_fields, $post ) {
+		$form_fields = array();
+		$href = esc_url(add_query_arg(array(
+			'page' => 'custom-header',
+			'step' => 2,
+			'_wpnonce-blogroll-banner' => wp_create_nonce('custom-header-blogroll-banner'),
+			'blogroll_banner_file' => $post->ID
+		), admin_url('themes.php')));
+
+		$form_fields['buttons'] = array( 'tr' => '<tr class="submit"><td></td><td><a data-location="' . $href . '" class="wp-set-header">' . __( 'Set as blogroll banner' ) . '</a></td></tr>' );
+		$form_fields['context'] = array( 'input' => 'hidden', 'value' => 'custom-header-blogroll-banner' );
+
+		return $form_fields;
+	}
+  
+	function blogroll_banner_filter_upload_tabs() {
+		return array( 'library' => __('Media Library') );
+	}

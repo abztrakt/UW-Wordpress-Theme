@@ -6,8 +6,7 @@
 						
 			<div class="row show-grid">
 				<div class="span8">
-				<?php  $featured = wp_get_attachment_image_src( get_post_thumbnail_id(get_option('page_for_posts')), 'Full Width' ) ; ?>
-				<span id="arrow-mark" <?php if ( $featured ) { echo 'style="background-image:url(' . $featured[0] . ')"'; }?> ></span>
+				<span id="arrow-mark" <?php the_blogroll_banner_style(); ?> ></span>
 								
 			<?php while ( have_posts() ) : the_post(); ?>
 

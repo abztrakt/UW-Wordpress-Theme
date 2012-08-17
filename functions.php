@@ -329,7 +329,7 @@ if ( ! function_exists( 'uw_custom_body_classes' ) ):
   function my_class_names($classes) 
   {
     $classes[] = 'site-'. sanitize_html_class(str_replace('cms','',get_blog_details(get_current_blog_id())->path));
-    $classes[] = !is_home() && has_post_thumbnail() || is_home() && has_post_thumbnail(get_option('page_for_posts')) ? 'featured-image' : '';
+    $classes[] = is_home() && get_option('blogroll-banner')? 'featured-image' : '';
     return $classes;
   }
 endif;
