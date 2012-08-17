@@ -14,7 +14,7 @@
 			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 				<header class="entry-header">
 					<h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php apply_filters('italics', get_the_title()); ?></a></h2>
-					<span class="post-info"><?php the_date('F j, Y', '<p>', '</p>'); ?><p class="author-info">By <?php the_author(); ?></p></span>
+					<span class="post-info"><p><?php the_time('F j, Y'); ?></p><p class="author-info">By <?php the_author(); ?></p></span>
 				</header><!-- .entry-header -->
 			
 				<div class="entry-content">
