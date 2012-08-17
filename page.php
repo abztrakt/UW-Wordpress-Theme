@@ -10,7 +10,7 @@
 					
 			<?php while ( have_posts() ) : the_post(); ?>
 
-      <span id="arrow-mark" <?php echo 'style="background-image:url(' . get_the_blogroll_banner_url() . ')"'; ?> ></span>
+      <span id="arrow-mark" <?php the_blogroll_banner_style(); ?> ></span>
 				
 			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 				<header class="entry-header">
