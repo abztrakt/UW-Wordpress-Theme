@@ -130,4 +130,11 @@ $(document).ready(function(){
 		return false;
 	});
 
+
 });
+
+jQuery(window).load(function() {
+  setTimeout(function(){
+    window.scrollTo(0, 0);
+  }, 0);
+})
