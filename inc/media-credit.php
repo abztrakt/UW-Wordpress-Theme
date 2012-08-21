@@ -38,17 +38,23 @@ function my_image_attachment_fields_to_edit($form_fields, $post) {
 
 	// add our custom field to the $form_fields array
 	// input type="text" name/id="attachments[$attachment->ID][custom1]"
-	$form_fields["media_credit"] = array(
-		"label" => __("Image Credit"),
-		"input" => "text", // this is default if "input" is omitted
-		"value" => get_post_meta($post->ID, "_media_credit", true)
-	);
-	// if you will be adding error messages for your field,
-	// then in order to not overwrite them, as they are pre-attached
-	// to this array, you would need to set the field up like this:
-	$form_fields["media_credit"]["label"] = __("Image Credit");
-	$form_fields["media_credit"]["input"] = "text";
-	$form_fields["media_credit"]["value"] = get_post_meta($post->ID, "_media_credit", true);
+
+  // also only show this field when the context is meant to show it
+  if ( ! in_array( $_REQUEST['context'],
+                   array('custom-header-blogroll-banner', 'custom-header' )) )
+  {
+    $form_fields["media_credit"] = array(
+      "label" => __("Image Credit"),
+      "input" => "text", // this is default if "input" is omitted
+      "value" => get_post_meta($post->ID, "_media_credit", true)
+    );
+    // if you will be adding error messages for your field,
+    // then in order to not overwrite them, as they are pre-attached
+    // to this array, you would need to set the field up like this:
+    $form_fields["media_credit"]["label"] = __("Image Credit");
+    $form_fields["media_credit"]["input"] = "text";
+    $form_fields["media_credit"]["value"] = get_post_meta($post->ID, "_media_credit", true);
+  }
 
 	return $form_fields;
 }
