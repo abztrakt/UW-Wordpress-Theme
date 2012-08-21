@@ -19,12 +19,11 @@ $(document).ready(function() {
         if ( !! $this.parent('a').attr('target') ) 
           return true;
 
-          $('<img/>', {
-            src: url,
-            error: function() {
-              return window.location = url;
-            },
-            load: function() {
+          $('<img src="'+url+'"/>').imagesLoaded(function($img, $proper, $broken) {
+
+              if ( !! $broken.length)
+                return window.location = url
+              
               var $newimg = $(this)
                 , owidth  = $this.attr('width')
                 , size    = $newimg.get(0).width > fullwidth ? fullwidth : $newimg.get(0).width;
@@ -57,7 +56,6 @@ $(document).ready(function() {
                       $this.siblings('span.image-magnifier, a.image-fullsize').toggle()
                   }
                 })
-            }
           })
 
         return false;
