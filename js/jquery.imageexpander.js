@@ -1,75 +1,96 @@
 $(document).ready(function() {
 
-  var imgs  = '.entry-content img'
-    , spans = '.image-magnifier'
+  var imgs    = '.entry-content img:not(.image-expanded)'
+    , newimgs = '.entry-content img.image-expanded'
+    , spans   = '.image-magnifier'
+    , fullwidth = 605
+    , duration  = 314
 
   $('body')
-      .on('click.imageexpander', imgs, function() {
+      .on('click.imageexpander.first', imgs, function() {
+        var $this = $(this)
+          , url   = $this.parent('a').attr('href')
+          , $caption = $this.closest('.wp-caption')
+          , size
+
+        if ( $this.is(':animated'))
           return false;
-      
-          var $this = $(this)
-            , cached = $this.siblings('img').length > 0 
-            , $anchor = $this.parent('a')
-            , $caption = $this.closest('.wp-caption')
-            , cap, padding
 
-        if ($this.hasClass('royalImage')) 
-          return;
+        if ( !! $this.parent('a').attr('target') ) 
+          return true;
 
-          if( !cached ) {
-              var img = new Image()
-              img.className = 'image-expanded ' // + $this.attr('class')
-              img.style.display = 'none'
-              $this.after(img)
-              $anchor.data('owidth', $this.width())
-              $caption.data('opadding', $caption.css('padding'))
-          }
+          $('<img/>', {
+            src: url,
+            error: function() {
+              return window.location = url;
+            },
+            load: function() {
+              var $newimg = $(this)
+                , owidth  = $this.attr('width')
+                , size    = $newimg.get(0).width > fullwidth ? fullwidth : $newimg.get(0).width;
+              
+              $newimg.addClass('image-expanded')
 
-          size    = $this.hasClass('image-expanded') ? $anchor.data('owidth') : 605
-          cap     = $this.hasClass('image-expanded') ? 0 : 10 ;
-          padding = $caption.css('padding')
+              $this
+                .removeAttr('height')
+                .removeAttr('width')
+                .after($newimg.hide())
+                .stop()
+                .animate({
+                  'width': fullwidth
+                }, {
+                  duration: duration,
+                  step: function(step,fx) {
+                     $caption.width(step+10)
+                  },
+                  complete: function(step,fx) {
+                      $newimg
+                        .width(step) 
+                        .fadeIn(300)     
+                        .data('owidth', owidth)
 
-          $anchor.data('expanded', 'true')
-
-          $this
-            .removeAttr('height')
-            .stop()
-            .animate({
-              'width': size
-            }, {
-              duration:200,
-              queue: false,
-              easing:'swing',
-              step : function(step, fx) {
-                // caption adds 10px 
-                $caption.width(step + cap) 
-                if ( size === 600 && step > 550 )
-                  $caption.css('padding',padding).width(step)
-                else if ( size !== 600 && step < 550 ) {
-                  $caption.css('padding',padding)
-                  cap = 10
-                }
-              },
-              complete: function() {
-                if ( !cached ) {
-                  img.src = $anchor.attr('href')
-                  img.onload =  function() {
-                    $(this).siblings('img').andSelf().css('width',size).toggle()
-                      .end().siblings().not('img').toggle();
+                      $this.css('position','absolute')
+                        .fadeOut(function() {
+                          $(this).remove();
+                        })
+                      
+                      $this.siblings('span.image-magnifier, a.image-fullsize').toggle()
                   }
-                } else {
-                  $(this).siblings('img').andSelf().css('width',size).toggle()
-                    .end().siblings().not('img').toggle();
-                }
-              }
+                })
+            }
           })
-          return false;
+
+        return false;
       })
 
-/**
- *
- * Temporarily commented out until all bugs are fixed
- *
+  $('body')
+      .on('click', newimgs, function() {
+        var $this = $(this)
+          , $caption = $this.closest('.wp-caption')
+          , owidth = $this.data('owidth')
+          , size  = $this.width() > owidth  ? owidth : fullwidth 
+          , sibs  = $this.siblings('span.image-magnifier, a.image-fullsize')
+
+        if ( $this.is(':animated'))
+          return false;
+
+        $this.animate({
+          'width':size
+        },{ 
+          duration: duration,
+          step : function(step,fx) {
+             $caption.width(step+10)
+          },
+          complete : function() {
+              sibs.toggle()
+          }
+        })
+      
+        return false;
+
+      })
+
+
     $(imgs).each(function() { 
       var $this = $(this)
         , hasCaption = $this.closest('.wp-caption').length > 0
@@ -77,7 +98,7 @@ $(document).ready(function() {
 
       // patch for images without captions
       if ( !hasCaption )
-        $this.parent('a').addClass($this.attr('class') + ' wp-caption').width($this.width())
+        $this.parent('a').wrap('<div class="'+this.className+' wp-caption" style="width:'+ $this.width()  +'"/>')
         
       $a = $this.parent('a').clone()
       $a.html('High resolution')
@@ -87,9 +108,7 @@ $(document).ready(function() {
 
       $this.parent('a')
         .append($a)
-        .append('<span class="image-magnifier">Click to expand</span>')
+        //.append('<span class="image-magnifier">Click to expand</span>')
     })
-    */
-
 
 });
