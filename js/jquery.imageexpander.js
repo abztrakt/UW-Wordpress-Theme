@@ -96,6 +96,10 @@ $(document).ready(function() {
         , hasCaption = $this.closest('.wp-caption').length > 0
         , $a
 
+      if( ! $this.parent('a').attr('href').match(/\b(jpeg|jpg|png|gif|tiff)/i))
+        return false;
+        
+
       // patch for images without captions
       if ( !hasCaption )
         $this.parent('a').wrap('<div class="'+this.className+' wp-caption" style="width:'+ $this.width()  +'"/>')
@@ -108,7 +112,7 @@ $(document).ready(function() {
 
       $this.parent('a')
         .append($a)
-        //.append('<span class="image-magnifier">Click to expand</span>')
+        .append('<span class="image-magnifier">Click to expand</span>')
     })
 
 });
