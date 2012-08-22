@@ -89,6 +89,7 @@ if ( ! function_exists( 'uw_enqueue_default_scripts' ) ):
     wp_register_script( 'jquery.parallax', get_bloginfo('template_directory') . '/js/jquery.parallax.min.js', array('jquery'), '1.0' );
     wp_register_script( 'jquery.404', get_bloginfo('template_directory') . '/js/404.js', array('jquery'), '1.0' );
     wp_register_script( 'jquery.masonry', get_bloginfo('template_directory') . '/js/jquery.masonry.min.js', array('jquery') );
+    wp_register_script( 'uwalert','//washington.edu/static/alert.js', array('jquery') );
 
     wp_enqueue_script( 'jquery' );
     wp_enqueue_script( 'header' );
@@ -97,6 +98,7 @@ if ( ! function_exists( 'uw_enqueue_default_scripts' ) ):
     wp_enqueue_script( 'jquery.placeholder' );
     wp_enqueue_script( 'jquery.imageexpander' );
     wp_enqueue_script( 'jquery.boostrap.collapse' );
+    wp_enqueue_script( 'uwalert' );
 
     if( is_404() ) {
 
