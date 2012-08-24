@@ -248,7 +248,7 @@ hr {
 	padding: 2px 0 2px;
 	margin-bottom: 4px;
 }
-.widget_nav_menu a:hover, .subpage_menu a:hover {
+#menu-sidebar a:hover, .subpage_menu a:hover {
 	text-decoration: none;
 	font-weight: bold;
 }
@@ -1553,6 +1553,31 @@ hr {
 		margin: 40px 0 20px;
 	}
 	
+	
+	/* ----  Post Page ---- */
+	
+	.single #arrow-mark { top: 55px }
+	
+
+	.author-info {
+   		font-size: 14px;
+   		margin: 10px 0 30px;
+   		border-left: 4px solid #DDD;
+   		padding: 0 0 0 15px; }
+
+   	.date { margin-bottom: .6em }
+   	    
+   	p small {
+   	    font-size: 13px; }
+   	
+   	.story-tags {
+   	    margin-top: -15px; }
+
+	body.single h1 {
+	    margin: 0;
+	    font-size: 30px;
+	    font-weight: 400; }
+
 	/* ----  Admissions Page ---- */
 	
 	.three-col {
