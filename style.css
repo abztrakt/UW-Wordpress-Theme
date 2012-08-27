@@ -1089,7 +1089,7 @@ hr {
 	/* ----  Header Logos Area ---- */
 	
 	#branding {
-		height: 165px;
+		height: 150px;
 		margin-bottom: 20px;
 		background-position: center top;
 		padding-top: 30px;
@@ -1100,7 +1100,7 @@ hr {
 		width: 960px;
 		left: 50%;
 		margin-left: -480px;
-		height: 115px;
+		height: 100px;
 	}
 	.wordmark, .patch {
 		top: -30px;
@@ -1411,7 +1411,7 @@ hr {
 		left: auto;
 		top: auto;
 		position: static;
-		margin: -25px 0px 2px -55px;
+		margin: -25px 0px 10px -55px;
 		width: 675px;
 		height: 115px;
 	}
@@ -1559,7 +1559,7 @@ hr {
 	.single #arrow-mark { top: 55px }
 	
 
-	.author-info {
+	div.author-info {
    		font-size: 14px;
    		margin: 10px 0 30px;
    		border-left: 4px solid #DDD;
