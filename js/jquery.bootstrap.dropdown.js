@@ -76,7 +76,7 @@
         $parent.toggleClass('open')
         $(open).not($parent).removeClass('open')
         $('div.collapse').removeClass('collapse')
-        if ( $('a.btn-navbar').is(':hidden') ) $header.height(350)
+        if ( $('a.btn-navbar').is(':hidden') ) $header.height(335)
         $caret.show()
         Dropdown.prototype.isActive = true
       } 
