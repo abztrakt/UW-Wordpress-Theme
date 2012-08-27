@@ -13,7 +13,7 @@
 		'reading');
  	
  	add_settings_field('italicized_words',
-		'Words to italize',
+		'Words to italicize',
 		'italicized_words_form_html',
 		'reading',
 		'italics_section');
