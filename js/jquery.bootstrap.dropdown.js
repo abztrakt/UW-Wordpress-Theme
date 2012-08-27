@@ -239,7 +239,7 @@
     Dropdown.prototype.isActive = false
     $header.css('height','auto')
     $(toggle).parent().removeClass('open');
-    if ( $('a.btn-navbar').is(':hidden') ) $header.height(165);
+    if ( $('a.btn-navbar').is(':hidden') ) $header.height(150);
     $(caret).hide();
   }
 
