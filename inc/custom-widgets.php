@@ -108,13 +108,14 @@ class UW_Widget_Recent_Posts extends WP_Widget {
 ?>
 		<?php echo $before_widget; ?>
 
-    <ul id="news-tab-nav" data-tabs="toggle">
       <?php  if ( $show_popular ) : ?>
+    <ul id="news-tab-nav" data-tabs="toggle">
         <li class="selected"><a class="recent-popular-widget" href="#tab-popular" title="Most popular">Most Popular</a></li>
-      <?php endif; ?>
-
-      <li <?php if( !$show_popular ): ?> class="selected" <?php endif; ?>><a class="recent-popular-widget" href="#tab-recent" title="Most recent">Recent</a></li>
+        <li><a class="recent-popular-widget" href="#tab-recent" title="Most recent">Recent</a></li>
     </ul>
+      <?php else: ?>
+        <?php echo $before_title . $title . $after_title; ?>
+      <?php endif; ?>
     
     <ul id="tab-recent" class="recent-posts" <?php if( $show_popular ) : ?> style="display:none;" <?php endif; ?>>
 		<?php  while ($r->have_posts()) : $r->the_post(); ?>
