@@ -65,7 +65,7 @@ if ( ! function_exists('uw_feed_shortcode') ):
 
       $content = "<div class=\"row pull-left\">";
       $content .= "<div class=\"span$span row\">";
-      $content .= "<div class=\"feed-in-body\"><h3>$title</h3></div>";
+      $content .= "<div class=\"feed-in-body\"><a href=\"$url\" title=\"$title\"><h3>$title</h3></a></div>";
       $content .= "<ul>";
 
       foreach ($feed_items as $index=>$item) 
@@ -77,7 +77,6 @@ if ( ! function_exists('uw_feed_shortcode') ):
       }
 
       $content .= '</ul>';
-      $content .= "<a class=\"feed-more\" href=\"$url\">More</a>";
       $content .= "</div></div>";
     }
     return $content;
