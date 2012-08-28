@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  var imgs    = '.entry-content img:not(.image-expanded)'
+  var imgs    = '.site-news.entry-content img:not(.image-expanded)'
     , newimgs = '.entry-content img.image-expanded'
     , spans   = '.image-magnifier'
     , fullwidth = 605
