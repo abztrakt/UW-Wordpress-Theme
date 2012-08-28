@@ -407,7 +407,7 @@ if ( ! function_exists( 'new_excerpt_more') ):
    */
    function new_excerpt_more($more) 
    {
-	global $post;
+	  global $post;
    	return '... <a href="'. get_permalink($post->ID) . '">Read More</a>';
    }
 endif;
@@ -436,7 +436,7 @@ require( get_template_directory() . '/inc/media-credit.php' );
 require( get_template_directory() . '/inc/custom-widgets.php' );
 require( get_template_directory() . '/inc/custom-settings.php' );
 require( get_template_directory() . '/inc/custom-image-sizes.php' );
-require( get_template_directory() . '/inc/custom-image-shortcode.php' );
+require( get_template_directory() . '/inc/custom-shortcodes.php' );
 require( get_template_directory() . '/inc/dropdown-walker.php' );
 require( get_template_directory() . '/inc/helper-functions.php' );
 //require( get_template_directory() . '/inc/json-api.php' );
