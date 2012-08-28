@@ -28,15 +28,15 @@ $(document).ready(function() {
                 , owidth  = $this.attr('width')
                 , size    = $newimg.get(0).width > fullwidth ? fullwidth : $newimg.get(0).width;
               
-              $newimg.addClass('image-expanded')
+              $newimg.addClass('image-expanded '+$this.attr('class'))
 
               $this
-                .removeAttr('height')
-                .removeAttr('width')
+                //.removeAttr('height')
+                //.removeAttr('width')
                 .after($newimg.hide())
                 .stop()
                 .animate({
-                  'width': fullwidth
+                  'width': size 
                 }, {
                   duration: duration,
                   step: function(step,fx) {
@@ -45,11 +45,12 @@ $(document).ready(function() {
                   complete: function(step,fx) {
                       $newimg
                         .width(step) 
-                        .fadeIn(300)     
+                        .fadeIn(duration)     
                         .data('owidth', owidth)
+                        .data('size', size)
 
-                      $this.css('position','absolute')
-                        .fadeOut(function() {
+                      $this.css({'position':'absolute', 'left':$newimg.position().left})
+                        .fadeOut(duration, function() {
                           $(this).remove();
                         })
                       
@@ -66,14 +67,14 @@ $(document).ready(function() {
         var $this = $(this)
           , $caption = $this.closest('.wp-caption')
           , owidth = $this.data('owidth')
-          , size  = $this.width() > owidth  ? owidth : fullwidth 
-          , sibs  = $this.siblings('span.image-magnifier, a.image-fullsize')
+          , width  = $this.width() > owidth  ? owidth : $this.data('size')
+          , sibs   = $this.siblings('span.image-magnifier, a.image-fullsize')
 
         if ( $this.is(':animated'))
           return false;
 
         $this.animate({
-          'width':size
+          'width':width
         },{ 
           duration: duration,
           step : function(step,fx) {
