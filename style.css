@@ -455,7 +455,13 @@ hr {
 	body #nc-left-col .featured img {
 		width: 228px;
 	}
-
+	body.blog.featured-image #arrow-mark {
+		background-size: 78%;
+		margin: -5px 0px 10px -31px;
+	}
+	#branding {
+		height: 150px !important;
+	}
 }
 @media (max-width: 480px) { 
 }
@@ -1451,7 +1457,6 @@ hr {
 	.footer-navigation > li > a {
 		display: block;
 		margin-bottom: 10px;
-		color: #39275B;
 		font-weight: bold;
 		line-height: 15px;
 	}
