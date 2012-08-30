@@ -86,13 +86,25 @@ if ( ! function_exists('uw_feed_shortcode') ):
 endif;
 add_shortcode( 'rss', 'uw_feed_shortcode' );
 
-function bartag_func($atts) {
-     extract(shortcode_atts(array(
-	      'foo' => 'no foo',
-	      'baz' => 'default baz',
-     ), $atts));
-     return "foo = {$foo}";
-}
-add_shortcode('bartag', 'bartag_func');
+/**
+ * Archive Shortcode
+ */
 
+if ( ! function_exists('uw_archive_shortcode') ):
+  function uw_archive_shortcode( $atts ) 
+  {
+    $params = shortcode_atts( array(
+        'type'      => 'postbypost',
+        'format'    => 'html',
+        'limit'     => '',
+        'showcount' => false,
+        'before'    => '',
+        'after'     => '',
+        'order'     => 'desc'
+      ), $atts );
+    $params['echo'] = false;
+    return '<div class="archive-shortcode">'. wp_get_archives($params) . '</div>';
+  }
+endif;
+add_shortcode( 'archives', 'uw_archive_shortcode' );
 
