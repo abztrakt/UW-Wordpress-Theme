@@ -76,6 +76,8 @@ if ( ! function_exists('uw_feed_shortcode') ):
           $content .= "<li><a href=\"$link\" title=\"$attr\">$title</a></li>";
       }
 
+      $span--;
+      $content .= "<a href=\"$url\" title=\"$title\" class=\"offset$span\">More</a>";
       $content .= '</ul>';
       $content .= "</div></div>";
     }
