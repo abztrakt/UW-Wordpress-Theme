@@ -49,3 +49,13 @@ if (!function_exists('the_blogroll_banner_style')) :
   }
 
 endif;
+
+if ( ! function_exists( 'is_local' ) ):
+
+  function is_local() 
+  {
+    return defined('WP_LOCAL');
+  }
+
+endif;
+
