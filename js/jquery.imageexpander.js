@@ -26,13 +26,11 @@ $(document).ready(function() {
               
               var $newimg = $(this)
                 , owidth  = $this.attr('width')
-                , size    = $newimg.get(0).width > fullwidth ? fullwidth : $newimg.get(0).width;
-              
+                , size    = $newimg.get(0).width > fullwidth || $newimg.get(0).width === 0 ? fullwidth : $newimg.get(0).width;
+
               $newimg.addClass('image-expanded '+$this.attr('class'))
 
               $this
-                //.removeAttr('height')
-                //.removeAttr('width')
                 .after($newimg.hide())
                 .stop()
                 .animate({
@@ -87,8 +85,10 @@ $(document).ready(function() {
       
         return false;
 
+      }).on('click', '.image-magnifier', function(e) {
+        $(e.target).siblings('img').eq(0).trigger('click');
+        return false;
       })
-
 
     $(imgs).each(function() { 
       var $this = $(this)
