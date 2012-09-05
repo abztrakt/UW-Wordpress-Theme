@@ -1,9 +1,11 @@
 jQuery(document).ready(function($){
 
+  //prevent ios nav bar from popping down
+  $('[href=#]').removeAttr('href'); 
+
   /**
    * Header Strip
    */
-
   var strip = $('#thin-strip')
       , win = $(window)
       , pos = $('body').hasClass('admin-bar') ? 28 : 0;
@@ -50,17 +52,6 @@ jQuery(document).ready(function($){
         }
       });
 
-});
-
-$(window).load(function(){
-	var alert = $('#alertMessage').outerHeight()
-	$("body").css("background-position", "0 " + alert + "px" ); 
-});
-
-$(document).ready(function(){
-
-  $('[href=#]').removeAttr('href'); //prevent ios nav bar from popping down
-  
   var lip = $('#lip'),
       linkRotator = $('#linkRotator'),
       ul = linkRotator.find('ul').first(),
@@ -91,7 +82,6 @@ $(document).ready(function(){
 	});
 
   // [TODO] clean up
-    
   var searchbtn = $("#searchicon-wrapper");
 	searchbtn.click(function(e){
    		e.preventDefault();
@@ -109,8 +99,6 @@ $(document).ready(function(){
 		}
 		return false;	
 	});	
-	
-	
 	
   var menubtn= $("#listicon-wrapper");
 	menubtn.click(function(e){
@@ -130,11 +118,12 @@ $(document).ready(function(){
 		return false;
 	});
 
-
 });
 
 jQuery(window).load(function() {
+  // hide mobile safari url bar
   setTimeout(function(){
     window.scrollTo(0, 0);
   }, 0);
-})
+});
+
