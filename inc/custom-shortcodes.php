@@ -114,21 +114,34 @@ add_shortcode( 'archives', 'uw_archive_shortcode' );
 if ( ! function_exists('uw_blogroll_shortcode') ):
   function uw_blogroll_shortcode( $atts ) 
   {
+
     if ( !is_page() )
       return '';
 
     $params = shortcode_atts( array(
         'excerpt'      => 'true',
-        'number'      =>  5
+        'trim'         => 'false',
+        'number'       =>  5
       ), $atts );
 
     $posts = get_posts("numberposts={$params['number']}");
+
     foreach ($posts as $post) {
+
       $link = get_permalink($post->ID);
-      $excerpt = strlen($post->post_excerpt) > 0 ? $post->post_excerpt : wp_trim_words($post->post_content);
-      $html .= "<li><a href=\"$link\">{$post->post_title}</a><p>{$excerpt}</p></li>";
+
+      if ( $params['excerpt']== 'true' ) 
+      {
+        $excerpt = strlen($post->post_excerpt) > 0 ? $post->post_excerpt : $post->post_content;
+        if ( $params['trim'] == 'true' )
+          $excerpt = wp_trim_words($excerpt);
+        $excerpt = "<p>$excerpt</p>";
+      }
+      $html .= "<li><a href=\"$link\">{$post->post_title}</a>{$excerpt}</li>";
     }
-    return $html;
+
+    return "<ul class=\"shortcode-blogroll\">$html</ul>";
+
   }
 endif;
 add_shortcode( 'blogroll', 'uw_blogroll_shortcode' );
