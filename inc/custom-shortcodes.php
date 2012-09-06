@@ -114,6 +114,9 @@ add_shortcode( 'archives', 'uw_archive_shortcode' );
 if ( ! function_exists('uw_blogroll_shortcode') ):
   function uw_blogroll_shortcode( $atts ) 
   {
+    if ( !is_page() )
+      return '';
+
     $params = shortcode_atts( array(
         'excerpt'      => 'true',
         'number'      =>  5
