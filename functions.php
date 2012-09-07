@@ -400,12 +400,12 @@ if ( ! function_exists( 'uw_remove_cms_from_sharedaddy_permalink') ):
 endif;
 
 
-add_filter('excerpt_more', 'new_excerpt_more');
-if ( ! function_exists( 'new_excerpt_more') ):
+add_filter('excerpt_more', 'uw_excerpt_more');
+if ( ! function_exists( 'uw_excerpt_more') ):
   /**
    * Added Excerpt filter
    */
-   function new_excerpt_more($more) 
+   function uw_excerpt_more($more) 
    {
 	  global $post;
    	return '... <a href="'. get_permalink($post->ID) . '">Read More</a>';
