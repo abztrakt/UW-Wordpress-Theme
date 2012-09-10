@@ -113,6 +113,11 @@ jQuery(document).ready(function($){
       .height(0)
       .data('open', false )
 
+    // Toggle title Show/Hide text 
+    $this.attr('title', $this.attr('title').indexOf('Show') ===  -1 ? 
+                          $this.attr('title').replace('Hide', 'Show') :
+                          $this.attr('title').replace('Show', 'Hide') )
+
     // if search is clicked
     if ( !ismenu && search.data('open')) {
       search.find('input.wTextInput').focus()
