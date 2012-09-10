@@ -2,6 +2,7 @@ jQuery(document).ready(function($){
 
   //prevent ios nav bar from popping down
   $('[href=#]').removeAttr('href'); 
+  $('table').addClass('table') //for bootstrap 
 
   /**
    * Header Strip
