@@ -97,6 +97,7 @@
         , complete = function () {
             if (startEvent.type == 'show') that.reset()
             that.transitioning = 0
+            that.$element.show()
             that.$element.trigger(completeEvent)
           }
 
@@ -151,7 +152,13 @@
           || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '') //strip for ie7
         , option = $(target).data('collapse') ? 'toggle' : $this.data()
       $(target).collapse(option)
+    }).on('webkitTransitionEnd', '.collapse', function() {
+      var $this = $(this)
+      if ( !$this.hasClass('in') && !$this.height() )
+        $this.hide()
     })
+    if ( $(window).width() < 767 )
+      $('.nav-collapse').hide()
   })
 
 }(window.jQuery);

@@ -15,7 +15,7 @@ jQuery(document).ready(function($){
       var top = $(this).scrollTop()
 
       if ( win.width() < 768 ) {
-        strip.removeAttr('style')
+        //strip.removeAttr('style')
         return false
       }
 
@@ -81,42 +81,62 @@ jQuery(document).ready(function($){
 		return false;
 	});
 
-  // [TODO] clean up
-  var searchbtn = $("#searchicon-wrapper");
-	searchbtn.click(function(e){
-   		e.preventDefault();
-		search.toggleClass("activate");
-    	// $('#search form').css('display', 'block');	
-		if(topnav.hasClass('activate')){
-			topnav.toggleClass("activate");	
-			menubtn.attr('title', 'Show menu');
-		}	
-		$('input.wTextInput').focus(); // Focus in search field		
-		if(search.hasClass('activate')) {
-			searchbtn.attr('title', 'Hide search');
-		} else {
-			searchbtn.attr('title', 'Show search');
-		}
-		return false;	
-	});	
-	
-  var menubtn= $("#listicon-wrapper");
-	menubtn.click(function(e){
-    	e.preventDefault();
-		topnav.toggleClass("activate");		
-		// $('#thin-strip ul').css('display', 'block');
-		if(search.hasClass('activate')){
-			search.toggleClass("activate");
-			searchbtn.attr('title', 'Show search');	
-		}	
-		$('#thin-strip ul a:first').focus()	 // Focus in the dropdown field	
-		if(topnav.hasClass('activate')) {
-			menubtn.attr('title', 'Hide menu');
-		} else {
-			menubtn.attr('title', 'Show menu');
-		}
-		return false;
-	});
+
+  $('#q').on('focus', function() {
+    window.scrollTo(0,0)
+  })
+
+  if ( win.width() < 768 ) {
+    search.css('visibility','hidden')
+    topnav.css('visibility','hidden')
+  }
+
+  $('body').on('touchstart click', '#searchicon-wrapper, #listicon-wrapper', function() {
+    var $this = $(this)
+      , $nav  = [search, topnav]
+      , ismenu = $this.is('#listicon-wrapper') 
+
+    if ( ismenu ) 
+      $nav.reverse()
+
+    search.find('input.wTextInput').blur()
+
+    var height = $nav[0].data('open') ? 0 : 
+                 ismenu ? 340 : 45;
+
+    $nav[0]
+      .css('visibility', 'visible')
+      .height(height)
+      .data('open',!$nav[0].data('open'))
+
+    $nav[1]
+      .height(0)
+      .data('open', false )
+
+    // if search is clicked
+    if ( !ismenu && search.data('open')) {
+      search.find('input.wTextInput').focus()
+      window.scrollTo(0,0)
+    }
+
+    return false; 
+
+  }).on('transitionend webkitTransitionEnd mozTransitionEnd oTransitionEnd', '#thin-strip, form.main-search', function(e) {
+
+    var $this = $(this)
+
+    if ( !$this.data('open') && !$this.height() )
+      $this.css('visibility','hidden')
+
+  })
+
+  $(window).resize(function() {
+    if ( $(this).width() > 767 ) {
+      search.removeAttr('style') 
+      topnav.removeAttr('style') 
+    }
+  })
+
 
 });
 
@@ -126,4 +146,3 @@ jQuery(window).load(function() {
     window.scrollTo(0, 0);
   }, 0);
 });
-

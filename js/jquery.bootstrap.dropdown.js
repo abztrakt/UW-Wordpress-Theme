@@ -58,13 +58,6 @@
       if( $this.siblings('ul.dropdown-menu').length === 0 )
         return true;
 
-      //selector = $this.attr('data-target')
-
-      //if (!selector) {
-      //  selector = $this.attr('href')
-      //  selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') //strip for ie7
-      //}
-
       $caret = $(caret)
 
       $parent = $(selector)
@@ -81,7 +74,8 @@
         Dropdown.prototype.isActive = true
       } 
 
-      if (isActive && e.type == 'click')
+      if (isActive && e.type == 'click' || 
+          !isActive && $(window).width() < 768)
         return true
 
       if (e.type === 'keydown') {
@@ -273,6 +267,11 @@
       .on('mouseenter.dropdown.data-api', '#access', Dropdown.prototype.backtrace)
       .on('keydown.dropdown.data-api', 'a.dropdown-toggle', Dropdown.prototype.handleKeys)
       .on('keydown.dropdown.data-api', 'ul.dropdown-menu a', Dropdown.prototype.handleDropdownKeys)
+
+    $(window).resize(function() {
+      if ( $(this).width() > 767 )
+        $('div.nav-collapse').removeAttr('style').removeClass('in')
+    })
 
     var len = $(toggle).length - 1
     $(toggle).parent().filter(function(n,i) {
