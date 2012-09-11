@@ -725,7 +725,7 @@ class UW_Showcase_Widget extends WP_Widget {
                   return;
 
                 var length = $('select.showcase-select').first().find('option').length
-                  console.log(length);
+
                 $('.preview-showcase-widget').slice(0,length)
                   .dialog({
                     autoOpen: false,
