@@ -20,7 +20,7 @@ jQuery(document).ready(function($){
         return false
       }
 
-      if ( top < 160 - pos )
+      if ( top < 145 - pos )
         strip.stop().css({'position':'absolute', 'top':0}).removeClass('thin-fixed').data('animate', false);
 
       if ( top > 220 && !strip.is(':animated') && !strip.data('animate')) 
