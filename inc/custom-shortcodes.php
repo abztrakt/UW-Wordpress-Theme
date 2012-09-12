@@ -135,7 +135,7 @@ if ( ! function_exists('uw_blogroll_shortcode') ):
         $excerpt = strlen($post->post_excerpt) > 0 ? $post->post_excerpt : $post->post_content;
         if ( $params['trim'] == 'true' )
           $excerpt = wp_trim_words($excerpt);
-        $excerpt = "<p>$excerpt</p>";
+        $excerpt = wpautop($excerpt); //using apply_filters('the_content', $excerpt) causes an infinite loop
       }
       $html .= "<li><a href=\"$link\">{$post->post_title}</a>{$excerpt}</li>";
     }
