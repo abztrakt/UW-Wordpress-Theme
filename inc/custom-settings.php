@@ -81,7 +81,7 @@ function uw_general_settings_api_init() {
  function uw_abbreviate_title($title) {
    $abbr = get_option('abbreviation');
    if (! $abbr ) 
-     return $title;
+     return 'the UW';
    return $abbr;
  }
 
