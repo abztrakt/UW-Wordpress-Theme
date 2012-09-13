@@ -326,6 +326,9 @@ ol li {
 .more {
 	background: url('img/misc/bullet.png') right center no-repeat;
 	padding-right: 10px;
+	padding: 6px 17px 6px 10px;
+	background-color: #F4F4F4;
+	border-radius: 20px;
 }
 
 /* ---- Comments (built-in) ---- */
@@ -783,7 +786,7 @@ ol li {
 	}
 	.info-box {
 		padding: 10px 15px;
-		margin: 30px 25px 30px 15px;
+		margin: 30px 0 30px 0;
 		border-top: 4px solid #D7A900;
 		border-bottom: 4px solid #D7A900;
 		background-color: #F9F9F9;
