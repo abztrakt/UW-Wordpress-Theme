@@ -1485,7 +1485,7 @@ ol li {
 	.social-footer .footerTitle {
 		margin: 0 0 10px 0;
 	}
-	.uw-facebook a, .uw-twitter a, .uw-youtube a, .uw-itunes a, .uw-muw a, .uw-linkedin	{	
+	.uw-facebook a, .uw-twitter a, .uw-youtube a, .uw-itunes a, .uw-muw a, .uw-linkedin a {	
 		background: url(img/soc-med.gif) no-repeat 0 0 transparent;
 		padding: 6px 0 6px 31px;
 		margin-bottom: 3px;
