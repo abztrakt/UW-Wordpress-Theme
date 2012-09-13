@@ -1485,7 +1485,7 @@ ol li {
 	.social-footer .footerTitle {
 		margin: 0 0 10px 0;
 	}
-	.uw-facebook a, .uw-twitter a, .uw-youtube a, .uw-itunes a, .uw-muw a	{	
+	.uw-facebook a, .uw-twitter a, .uw-youtube a, .uw-itunes a, .uw-muw a, .uw-linkedin	{	
 		background: url(img/soc-med.gif) no-repeat 0 0 transparent;
 		padding: 6px 0 6px 31px;
 		margin-bottom: 3px;
@@ -1495,6 +1495,7 @@ ol li {
 	.uw-youtube	a	{	background-position: 0 -30px	}
 	.uw-itunes a	{	background-position: 0 -60px	}
 	.uw-muw a		{	background-position: 0 -123px	}
+	.uw-linkedin a  {	background-position: 0 -154px	}
 	
 	/* ----  Thin Strip Footer ---- */
 	
