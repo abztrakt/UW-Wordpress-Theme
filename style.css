@@ -1053,9 +1053,9 @@ ol li {
 	.thin-fixed div {
 		background: url("img/mobile-header/logo1x.png") no-repeat -35px -5px;
 	}
-	.logged-in #thin-strip {
+	/*.logged-in #thin-strip {
 		top: 28px !important;
-	}
+	}*/
 	#thin-strip div {
 		height: 30px;
 	    width: 960px;
@@ -1513,6 +1513,7 @@ ol li {
 	}
 	#footer-main ul {
 		text-align: center;
+		margin: 0;
 	}
 	#footer-main li {
 		padding: 0 9px 0 0;
