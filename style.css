@@ -323,9 +323,12 @@ ol li {
 	list-style: decimal;
 	margin-left: 18px;
 }
-.more {
+.more, .rss-more {
 	background: url('img/misc/bullet.png') right center no-repeat;
 	padding-right: 10px;
+	padding: 6px 17px 6px 10px;
+	background-color: #F4F4F4;
+	border-radius: 20px;
 }
 
 /* ---- Comments (built-in) ---- */
@@ -783,7 +786,7 @@ ol li {
 	}
 	.info-box {
 		padding: 10px 15px;
-		margin: 30px 25px 30px 15px;
+		margin: 30px 0 30px 0;
 		border-top: 4px solid #D7A900;
 		border-bottom: 4px solid #D7A900;
 		background-color: #F9F9F9;
@@ -1050,9 +1053,9 @@ ol li {
 	.thin-fixed div {
 		background: url("img/mobile-header/logo1x.png") no-repeat -35px -5px;
 	}
-	.logged-in #thin-strip {
+	/*.logged-in #thin-strip {
 		top: 28px !important;
-	}
+	}*/
 	#thin-strip div {
 		height: 30px;
 	    width: 960px;
@@ -1482,7 +1485,7 @@ ol li {
 	.social-footer .footerTitle {
 		margin: 0 0 10px 0;
 	}
-	.uw-facebook a, .uw-twitter a, .uw-youtube a, .uw-itunes a, .uw-muw a	{	
+	.uw-facebook a, .uw-twitter a, .uw-youtube a, .uw-itunes a, .uw-muw a, .uw-linkedin a {	
 		background: url(img/soc-med.gif) no-repeat 0 0 transparent;
 		padding: 6px 0 6px 31px;
 		margin-bottom: 3px;
@@ -1492,6 +1495,7 @@ ol li {
 	.uw-youtube	a	{	background-position: 0 -30px	}
 	.uw-itunes a	{	background-position: 0 -60px	}
 	.uw-muw a		{	background-position: 0 -123px	}
+	.uw-linkedin a  {	background-position: 0 -154px	}
 	
 	/* ----  Thin Strip Footer ---- */
 	
@@ -1509,6 +1513,7 @@ ol li {
 	}
 	#footer-main ul {
 		text-align: center;
+		margin: 0;
 	}
 	#footer-main li {
 		padding: 0 9px 0 0;
