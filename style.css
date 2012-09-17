@@ -407,8 +407,45 @@ ol li {
     margin: 0 17px;
 }
 
-@media (max-width: 767px) { 
+/************************************************
+*	New Alert  									*
+************************************************/
+
+#uwalert-alert-message div {
+	width: 1100px;
+	margin: 0 auto;
+	padding: 5px 0 15px;
 }
+#uwalert-alert-message h1, #uwalert-alert-message p {
+	color: white;
+	padding: 5px 100px 0 200px;
+	margin: 0;
+}
+#uwalert-alert-message h1 {
+	font-size: 18px;
+}
+#uwalert-alert-message p {
+	font-size: 13px;
+	line-height: 15px;
+}
+#uwalert-alert-message a { color: #FDE048; }
+
+.alert-red 				{ background-color: #C61029;}
+.alert-red div			{ background: url('http://www.uw.edu/static/alert_logo_red-v2.jpg') no-repeat 0 -38px; }
+#alert-mini.alert-red	{ background: url('http://www.uw.edu/static/alert_logo_red-v2.jpg') no-repeat 16% 5% #C61029; background-size: 18%; }
+
+.alert-steel 			{ background-color: #597286; }
+.alert-steel div 		{ background: url('http://www.uw.edu/static/alert_logo_steel-v2.jpg') no-repeat 0 -38px; }
+#alert-mini.alert-steel { background: url('http://www.uw.edu/static/alert_logo_steel-v2.jpg') no-repeat 16% 5% #597286; background-size: 18%; }
+
+.alert-blue 			{ background-color: #0193c9; }
+.alert-blue div 		{ background: url('http://www.uw.edu/static/alert_logo_blue-v2.jpg') no-repeat 0 -38px; }
+#alert-mini.alert-blue  { background: url('http://www.uw.edu/static/alert_logo_blue-v2.jpg') no-repeat 16% 5% #0193c9; background-size: 18%; }
+
+.alert-orange 			{ background-color: #ec7330;}
+.alert-orange div 		{ background: url('http://www.uw.edu/static/alert_logo_orange-v2.jpg') no-repeat 0 -38px; }
+#alert-mini.alert-orange { background: url('http://www.uw.edu/static/alert_logo_orange-v2.jpg') no-repeat 16% 5% #ec7330; background-size: 18%; }
+
 
 @media (min-width: 768px) and (max-width: 979px) { 
 	#access {
@@ -470,6 +507,17 @@ ol li {
 	}
 	#branding {
 		height: 150px !important;
+	}
+	
+	/* ---- Alert ---- */
+
+	#uwalert-alert-message h1, #uwalert-alert-message p {
+		color: white;
+		padding: 5px 0 0 200px;
+		margin: 0;
+	}
+	#uwalert-alert-message div {
+		width: 768px;
 	}
 }
 @media (max-width: 480px) { 
@@ -892,6 +940,25 @@ ol li {
 	#footer-right {
 		display: none;
 	}
+	
+	/* ---- Alert ---- */
+
+	.alert-steel div, .alert-orange div, .alert-red div, .alert-blue divs {
+		background-position: center -40px;
+	}
+	#uwalert-alert-message div {
+		width: 100%;
+		padding-top: 65px;
+	}
+	#uwalert-alert-message h1, #uwalert-alert-message p {
+		color: white;
+		padding: 5px 15px 5px 30px;
+		margin: 0;
+		border: none;
+	}
+	#uwalert-alert-message h1 {
+		line-height: 18px;
+	}
 
 	/* =============================================================================
 	   Media Queries
@@ -1053,9 +1120,9 @@ ol li {
 	.thin-fixed div {
 		background: url("img/mobile-header/logo1x.png") no-repeat -35px -5px;
 	}
-	/*.logged-in #thin-strip {
+	.logged-in #thin-strip {
 		top: 28px !important;
-	}*/
+	}
 	#thin-strip div {
 		height: 30px;
 	    width: 960px;
@@ -1547,6 +1614,22 @@ ol li {
 		padding: 0 0 50px;
 	}
 	
+	/* ---- Alert ---- */
+	
+	#uwalert-alert-message div {
+		width: 1100px;
+	}
+	#alert-mini {
+       position: fixed;
+       display:none;
+       top: 0;
+       right: 0;
+       left: 0;
+       text-align:center;
+       z-index: 1;
+       color: #fff;
+       padding: 40px 0 10px 0; 
+	}
 
 /************************************************************************************
 	Unique Pages
