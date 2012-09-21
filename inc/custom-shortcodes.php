@@ -109,7 +109,7 @@ endif;
 add_shortcode( 'archives', 'uw_archive_shortcode' );
 
 /**
- * Blogroll Shorcode
+ * Blogroll Shortcode
  */
 if ( ! function_exists('uw_blogroll_shortcode') ):
   function uw_blogroll_shortcode( $atts ) 

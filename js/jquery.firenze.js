@@ -31,7 +31,7 @@ $(document).ready(function() {
         scroll = 0;
         moved = 0;
         touched = $(e.target);
-        if (touched.hasClass('tileAnchorHeadline')){
+        if (touched.parent().is('h2')) {
           touched = touched.parent();
         }
         classname = touched.attr('class').split(' ')[0];
