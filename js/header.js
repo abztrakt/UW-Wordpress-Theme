@@ -4,29 +4,72 @@ jQuery(document).ready(function($){
   $('[href=#]').removeAttr('href'); 
   $('table').addClass('table') //for bootstrap 
 
-  /**
-   * Header Strip
-   */
-  var strip = $('#thin-strip')
-      , win = $(window)
-      , pos = $('body').hasClass('admin-bar') ? 28 : 0;
-  
-    $(window).bind('scroll', function() {
+    /*
+     * UW Alert Banner
+     */
+    var data = {
+      number:1,
+      type:'post',
+      status:'publish'
+    }
 
-      var top = $(this).scrollTop()
+    var alert_url =  window.location.hash.indexOf('alert') === -1 ? 
+          "https://public-api.wordpress.com/rest/v1/sites/uwemergency.wordpress.com/posts/?callback=?" :
+          'https://public-api.wordpress.com/rest/v1/sites/en.blog.wordpress.com/posts/?callback=?';
 
-      if ( win.width() < 768 ) {
-        //strip.removeAttr('style')
-        return false
-      }
+    $.getJSON(alert_url, data,
+        function(res){
+          if ( !res || res.found < 1)
+            return;
+          
+          var post  = res.posts[0]
+            , cats  = post.categories
+            , slugs = []
+            , css   = ''
 
-      if ( top < 145 - pos )
-        strip.stop().css({'position':'absolute', 'top':0}).removeClass('thin-fixed').data('animate', false);
+          var colors = ['red', 'orange', 'blue', 'steel'];
 
-      if ( top > 220 && !strip.is(':animated') && !strip.data('animate')) 
-        strip.css({'position':'fixed', 'top': -30}).addClass('thin-fixed').animate( {'top': pos},300).data('animate', true);
+          $.each(cats, function(i,val) {
+            slugs += '|'+val.slug
+          })
+          for (var i = 0; i < colors.length; i += 1) {
+            if(slugs.indexOf(colors[i]) != -1 ) {
+              css = 'uwalert-'+colors[i].toLowerCase();
+            }
+          };
+
+          if ( window.location.hash.indexOf('alert') != -1 )
+            css = window.location.hash.replace('#','')
+
+          if( css.length === 0 ){
+            return false;
+          }
+
+          var anchor  = $('<a/>').attr({'href': 'http://emergency.uw.edu', 'title':post.title}).html('More info')
+            , excerpt = post.excerpt.replace(' [...]', '... '+anchor.prop('outerHTML'))
+            , html    = $('<div id="uwalert-alert-message" class="'+css+'" />')
+                          .html('<div><h1>'+post.title+'</h1>'+excerpt+'</div>')
+            , adjust  = $('body').hasClass('admin-bar') ? $('#wpadminbar').height() : 0;
+
+          $('body')
+            .prepend(html)
+            .data('alert-height', $('#uwalert-alert-message').outerHeight() + adjust )
+
+          var mini = $('<a id="alert-mini" class="hidden-phone"/>')
+                        .attr({href:'#',title:post.title})
+                        .click(function() {
+                          $('body').data('scrolling',true).animate({scrollTop:0}, {duration:500, easing:'swing', complete:function() {$('body').data('scrolling',false)}})
+                          $(this).slideUp()
+                          return false;
+                        }).html('Campus Alert: '+post.title).addClass(css)
+
+          $('body').append(mini)
+
+        },
+        function(){
 
     });
+
 
     /**
      * Header weather widget
@@ -87,7 +130,7 @@ jQuery(document).ready(function($){
     window.scrollTo(0,0)
   })
 
-  if ( win.width() < 768 ) {
+  if ( $(window).width() < 768 ) {
     search.css('visibility','hidden')
     topnav.css('visibility','hidden')
   }
@@ -131,18 +174,10 @@ jQuery(document).ready(function($){
 
     var $this = $(this)
 
-    if ( !$this.data('open') && !$this.height() )
-      $this.css('visibility','hidden')
+    //if ( !$this.data('open') && !$this.height() && $this.not('.thin-fixed'))
+      //$this.css('visibility','hidden')
 
   })
-
-  $(window).resize(function() {
-    if ( $(this).width() > 767 ) {
-      search.removeAttr('style') 
-      topnav.removeAttr('style') 
-    }
-  })
-
 
 });
 
@@ -151,4 +186,56 @@ jQuery(window).load(function() {
   setTimeout(function(){
     window.scrollTo(0, 0);
   }, 0);
+
+  /**
+   * Header Strip
+   */
+  var $thin    = $('#thin-strip')
+      , strip  = $thin.clone().removeAttr('style').addClass('thin-fixed')
+      , search = $('#search form')
+      , win    = $(window)
+      , bod    = $('body')
+      
+
+    bod.append(strip.hide())
+    strip.data('otop',bod.hasClass('top'))
+    win.bind('scroll', function() {
+
+      var top    = $(this).scrollTop()
+        , pos = bod.hasClass('admin-bar') ? 28 : 0
+        , adjust = bod.data('alert-height') || pos
+        , $mini = $('#alert-mini')
+
+      if ( $(this).width() < 768 )
+        return false
+
+      if ( top < 130 + adjust){
+        strip.css('top',-28).hide().data('showing',false)
+        $mini.hide()
+      }
+
+      if ( top > 220 + adjust && !strip.data('showing') ) {
+        strip.show().animate({top:strip.data('otop')+pos},{duration:300, easing:'swing'}).data('showing',true)
+      }
+
+      if ( $mini.length != 0 && !bod.data('scrolling') )
+      {
+        if ( top < 300 + adjust)
+          $mini.slideUp()
+
+        if ( top > 330 + adjust)
+          $mini.slideDown()
+      }
+    });
+  
+
+  $(window).resize(function() {
+    if ( $(this).width() > 767 ) {
+      search.removeAttr('style') 
+      $thin.removeAttr('style')
+      strip.css('visibility','visible')
+      
+    }
+  })
+
 });

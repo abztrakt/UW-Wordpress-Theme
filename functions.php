@@ -77,7 +77,7 @@ if ( ! function_exists( 'uw_enqueue_default_scripts' ) ):
   function uw_enqueue_default_scripts() {
     wp_deregister_script('jquery'); //we use googles CDN below
     wp_register_script( 'jquery','https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js', array(), '1.7.2' );
-    wp_register_script( 'header', get_bloginfo('template_directory') . '/js/header.js', array('jquery'), '1.0.1' );
+    wp_register_script( 'header', get_bloginfo('template_directory') . '/js/header.js', array('jquery'), '1.1.0' );
     wp_register_script( 'jquery.boostrap.dropdown', get_bloginfo('template_directory') . '/js/jquery.bootstrap.dropdown.js', array('jquery'), '2.0.3.2' );
     wp_register_script( 'jquery.boostrap.collapse', get_bloginfo('template_directory') . '/js/bootstrap-collapse.js', array('jquery.boostrap.dropdown'), '2.0.4.1' );
     wp_register_script( 'jquery.firenze', get_bloginfo('template_directory') . '/js/jquery.firenze.js', array('jquery'), '1.0' );
@@ -89,7 +89,6 @@ if ( ! function_exists( 'uw_enqueue_default_scripts' ) ):
     wp_register_script( 'jquery.parallax', get_bloginfo('template_directory') . '/js/jquery.parallax.min.js', array('jquery'), '1.0' );
     wp_register_script( 'jquery.404', get_bloginfo('template_directory') . '/js/404.js', array('jquery'), '1.0' );
     wp_register_script( 'jquery.masonry', get_bloginfo('template_directory') . '/js/jquery.masonry.min.js', array('jquery') );
-    wp_register_script( 'uwalert','https://washington.edu/static/alert.js', array(), '2.0', true );
 
     wp_enqueue_script( 'jquery' );
     wp_enqueue_script( 'header' );
@@ -98,7 +97,6 @@ if ( ! function_exists( 'uw_enqueue_default_scripts' ) ):
     wp_enqueue_script( 'jquery.placeholder' );
     wp_enqueue_script( 'jquery.imageexpander' );
     wp_enqueue_script( 'jquery.boostrap.collapse' );
-    wp_enqueue_script( 'uwalert' );
 
     if( is_404() ) {
 
@@ -424,6 +422,17 @@ if ( ! function_exists( 'remove_cms_from_admin_url' ) ):
     return $url;
   }
 endif;
+
+/*
+ * Will be used in WP 3.4.2 to fix our schedules posts bug
+add_filter('cron_request', 'uw_change_cron_address_to_cmswp');
+if ( ! function_exists('uw_change_cron_address_to_cmswp') ):
+  function uw_change_cron_address_to_cmswp($args) 
+  {
+    return $args;
+  }
+endif;
+ */
 
 require( get_template_directory() . '/inc/patch-band-options.php' );
 require( get_template_directory() . '/inc/media-credit.php' );
