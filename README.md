@@ -10,7 +10,8 @@ The theme is meant to act not only as a standalone theme but as a skeleton for c
 If there are desired features or changes, our team's philosophy is to create a child theme 
   and edit as little as possible of this theme's code by overriding and adding files via the child theme.
 
-**Please note: the theme that was originally here has been moved to the 2011 branch.*
+**Please note: the theme that was originally here has been moved to the 2011 branch.
+  It can also be found with all its tags in its separate repo: [UW-Wordpress-Child-Theme](https://github.com/uweb/UW-Wordpress-Child-Theme)*
 
 ## History
 
