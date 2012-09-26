@@ -66,8 +66,8 @@
       isActive = $parent.hasClass('open')
 
       if (!isActive) { 
-        $parent.toggleClass('open')
-        $(open).not($parent).removeClass('open')
+        $parent.toggleClass('open').children('ul').attr('aria-hidden','false')
+        $(open).not($parent).removeClass('open').children('ul').attr('aria-hidden','true')
         $('div.collapse').removeClass('collapse')
         if ( $('a.btn-navbar').is(':hidden') ) $header.height(335)
         $caret.show()
@@ -234,6 +234,7 @@
     $header.css('height','auto')
     $(toggle).parent().removeClass('open');
     if ( $('a.btn-navbar').is(':hidden') ) $header.height(150);
+    $('[aria-hidden]').attr('aria-hidden','true')
     $(caret).hide();
   }
 

@@ -79,7 +79,7 @@ if ( ! function_exists( 'uw_enqueue_default_scripts' ) ):
     wp_register_script( 'jquery','https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js', array(), '1.7.2' );
     wp_register_script( 'header', get_bloginfo('template_directory') . '/js/header.js', array('jquery'), '1.1.0' );
     wp_register_script( 'jquery.boostrap.dropdown', get_bloginfo('template_directory') . '/js/jquery.bootstrap.dropdown.js', array('jquery'), '2.0.3.2' );
-    wp_register_script( 'jquery.boostrap.collapse', get_bloginfo('template_directory') . '/js/bootstrap-collapse.js', array('jquery.boostrap.dropdown'), '2.0.4.1' );
+    wp_register_script( 'jquery.boostrap.collapse', get_bloginfo('template_directory') . '/js/bootstrap-collapse.js', array('jquery.boostrap.dropdown'), '2.0.4.2' );
     wp_register_script( 'jquery.firenze', get_bloginfo('template_directory') . '/js/jquery.firenze.js', array('jquery'), '1.0.1' );
     wp_register_script( 'jquery.weather', get_bloginfo('template_directory') . '/js/jquery.weather.js', array('jquery'), '1.1' );
     wp_register_script( 'jquery.placeholder', get_bloginfo('template_directory') . '/js/jquery.placeholder.js', array('jquery'), '1.0' );
@@ -411,12 +411,13 @@ if ( ! function_exists( 'uw_excerpt_more') ):
 endif;
 
 
-add_filter('remove_cms', 'remove_cms_from_admin_url');
+add_filter('remove_cms', 'remove_cms_from_admin_url', 10, 2);
 add_filter('wp_redirect', 'remove_cms_from_admin_url');
 if ( ! function_exists( 'remove_cms_from_admin_url' ) ):
-  function remove_cms_from_admin_url( $url ) {
-    if ( ! is_admin() && empty( $_SERVER['REMOTE_USER'] ) && $blog_id != 1 && !preg_match('/\b(wp-admin|wp-login|\/login)\b/i', $_SERVER['REQUEST_URI']) && !is_user_logged_in()) {
-      $url = str_replace('/cms/','/', $url);
+  function remove_cms_from_admin_url( $url, $forced=false) {
+    if ( ! is_admin() && empty( $_SERVER['REMOTE_USER'] ) && $blog_id != 1 && !preg_match('/\b(wp-admin|wp-login|\/login)\b/i', $_SERVER['REQUEST_URI']) && !is_user_logged_in() 
+          || $forced ) {
+      $url = str_replace('.edu/cms/','.edu/', $url);
       $url = str_replace('https:','http:', $url);
     }
     return $url;

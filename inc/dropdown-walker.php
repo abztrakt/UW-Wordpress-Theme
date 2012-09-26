@@ -32,7 +32,7 @@ class UW_Dropdowns_Walker_Menu extends Walker_Nav_Menu {
 
 		$indent = str_repeat( "\t", $depth );
 		$class  = ( 0 == $depth ) ? 'dropdown-menu' : 'unstyled';
-		$output .= "\n{$indent}<ul class='{$class}'><div class='menu-wrap'><div class='inner-wrap'>\n";
+		$output .= "\n{$indent}<ul role='menu' aria-hidden='true' class='{$class}'><div class='menu-wrap'><div class='inner-wrap'>\n";
 	}
 
 	function end_lvl(&$output, $depth) {
@@ -53,7 +53,9 @@ class UW_Dropdowns_Walker_Menu extends Walker_Nav_Menu {
     }
 		parent::start_el( $item_html, $item, $depth, $args );
 
+    $item_html = str_replace('<li', '<li role="menuitem"', $item_html);
 		if ( $item->is_dropdown && ( 1 != $args->depth ) ) {
+			$item_html = str_replace( '<li', '<li aria-haspopup="true"', $item_html );
 			$item_html = str_replace( '<a', '<a class="dropdown-toggle" data-toggle="dropdown" tabindex="0"', $item_html );
 			$item_html = str_replace( '</a>', '<b class="caret"></b></a>', $item_html );
     } else if ( $item->menu_item_parent == 0) {
