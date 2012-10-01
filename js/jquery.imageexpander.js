@@ -16,7 +16,8 @@ $(document).ready(function() {
         if ( $this.is(':animated'))
           return false;
 
-        if ( !! $this.parent('a').attr('target') ) 
+        if ( !! $this.parent('a').attr('target')  ||
+              !! $this.closest('.gallery').length ) 
           return true;
 
           $('<img src="'+url+'"/>').imagesLoaded(function($img, $proper, $broken) {

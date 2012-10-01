@@ -32,7 +32,7 @@
 
 <div id="thin-strip">
 	<div>
-		<ul role="global links">
+		<ul role="navigation">
 			<li><a href="http://www.washington.edu/">UW Home</a></li>
 			<li><a href="http://www.washington.edu/home/directories.html">Directories</a></li>
 			<li><a href="http://www.washington.edu/discover/visit/uw-events">Calendar</a></li>
