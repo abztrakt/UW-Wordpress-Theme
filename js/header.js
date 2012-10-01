@@ -278,7 +278,7 @@ jQuery(window).load(function() {
         $ul.removeClass('open').attr('aria-hidden','true')
           .height(0)
 
-      $('span.navbar-caret').hide()
+      $('span.navbar-caret').stop().hide()
 
     }).click(function() {
 
