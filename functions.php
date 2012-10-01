@@ -78,8 +78,6 @@ if ( ! function_exists( 'uw_enqueue_default_scripts' ) ):
     wp_deregister_script('jquery'); //we use googles CDN below
     wp_register_script( 'jquery','https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js', array(), '1.7.2' );
     wp_register_script( 'header', get_bloginfo('template_directory') . '/js/header.js', array('jquery'), '1.1.0' );
-    wp_register_script( 'jquery.boostrap.dropdown', get_bloginfo('template_directory') . '/js/jquery.bootstrap.dropdown.js', array('jquery'), '2.0.3.2' );
-    wp_register_script( 'jquery.boostrap.collapse', get_bloginfo('template_directory') . '/js/bootstrap-collapse.js', array('jquery.boostrap.dropdown'), '2.0.4.2' );
     wp_register_script( 'jquery.firenze', get_bloginfo('template_directory') . '/js/jquery.firenze.js', array('jquery'), '1.0.1' );
     wp_register_script( 'jquery.weather', get_bloginfo('template_directory') . '/js/jquery.weather.js', array('jquery'), '1.1' );
     wp_register_script( 'jquery.placeholder', get_bloginfo('template_directory') . '/js/jquery.placeholder.js', array('jquery'), '1.0' );
@@ -92,11 +90,9 @@ if ( ! function_exists( 'uw_enqueue_default_scripts' ) ):
 
     wp_enqueue_script( 'jquery' );
     wp_enqueue_script( 'header' );
-    wp_enqueue_script( 'jquery.bootstrap.dropdown' );
     wp_enqueue_script( 'jquery.firenze' );
     wp_enqueue_script( 'jquery.placeholder' );
     wp_enqueue_script( 'jquery.imageexpander' );
-    wp_enqueue_script( 'jquery.boostrap.collapse' );
 
     if( is_404() ) {
 
@@ -426,10 +422,12 @@ endif;
 
 /*
  * Will be used in WP 3.4.2 to fix our schedules posts bug
+ *
 add_filter('cron_request', 'uw_change_cron_address_to_cmswp');
 if ( ! function_exists('uw_change_cron_address_to_cmswp') ):
   function uw_change_cron_address_to_cmswp($args) 
   {
+    $args['url'] = str_replace('www.washington.edu',$_SERVER['SERVER_NAME'],$args['url']);
     return $args;
   }
 endif;
