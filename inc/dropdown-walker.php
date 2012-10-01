@@ -47,7 +47,7 @@ class UW_Dropdowns_Walker_Menu extends Walker_Nav_Menu {
     $item->attr_title = apply_filters('attribute_escape', $item->post_title);
 
 		$item_html = '';
-    if( $item->menu_item_parent && $this->count++ % 5 == 0) {
+    if( $item->menu_item_parent && $this->count++ % 7 == 0) {
         $item_html = ( $this->toggle ) ? '<div class="menu-block">' : '</div><div class="menu-block">';
         $this->toggle = false;
     }
