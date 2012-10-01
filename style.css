@@ -1513,6 +1513,12 @@ ol li {
 		background: rgba(255, 255, 255, 0.98);
 		opacity: 1;
 		box-shadow: 1px 1px 5px #808080;	
+		-webkit-box-shadow: 1px 1px 5px #808080;	
+		-moz-box-shadow: 1px 1px 5px #808080;
+		/* For IE 8 */
+		-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#484848')";
+		/* For IE 5.5 - 7 */
+		filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#484848');
 	}
 	.menu-block {
 		padding: 20px 0 0 20px;
@@ -1522,7 +1528,6 @@ ol li {
 		background: -o-linear-gradient(left,  rgba(255,255,255,0.01) 96%,rgba(237,237,237,1) 100%); /* Opera 11.10+ */
 		background: -ms-linear-gradient(left,  rgba(255,255,255,0.01) 96%,rgba(237,237,237,1) 100%); /* IE10+ */
 		background: linear-gradient(to right,  rgba(255,255,255,0.01) 96%,rgba(237,237,237,1) 100%); /* W3C */
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#03ffffff', endColorstr='#ededed',GradientType=1 ); /* IE6-9 */
 	}
 	.menu-block li:last-child {
 		margin-bottom: 20px;

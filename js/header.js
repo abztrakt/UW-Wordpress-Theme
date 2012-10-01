@@ -280,7 +280,7 @@ jQuery(window).load(function() {
 
       $('span.navbar-caret').stop().hide()
 
-    }).click(function() {
+    }).click(function(e) {
 
       if ( $(window).width() < 979 )  {
 
@@ -289,8 +289,9 @@ jQuery(window).load(function() {
           , $a      = $this.children('a')
 
       if ( $ul.hasClass('open') ) {
-        //document.location.href = $a.attr('href')
+        document.location.href = $a.attr('href')
       } else {
+        window.scrollTo(0,0)
           $('.dropdown-menu').removeClass('open').height(0)
           $ul.addClass('open').attr('aria-hidden','false')
             .height($ul.data('height')) 
