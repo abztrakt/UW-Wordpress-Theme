@@ -51,7 +51,7 @@ if ( ! function_exists( 'uw_enqueue_default_styles' ) ):
       $is_child_theme = get_bloginfo('template_directory') != get_bloginfo('stylesheet_directory');
       wp_register_style( 'bootstrap',get_bloginfo('template_directory') . '/css/bootstrap.css', array(), '2.0.4' );
       wp_register_style( 'bootstrap-responsive', get_bloginfo('template_directory') . '/css/bootstrap-responsive.css', array('bootstrap'), '2.0.3' );
-      wp_register_style( 'uw-master', get_bloginfo('template_url') . '/style.css', array('bootstrap-responsive') );
+      wp_register_style( 'uw-master', get_bloginfo('template_url') . '/style.css', array('bootstrap-responsive'), '3.4.2.2' );
       if ( $is_child_theme)
         wp_register_style( 'uw-style', get_bloginfo('stylesheet_url'), array('bootstrap-responsive'), '3.4.1.1' );
       wp_register_style( 'google-font-open-sans', 'https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300' );
@@ -77,11 +77,11 @@ if ( ! function_exists( 'uw_enqueue_default_scripts' ) ):
   function uw_enqueue_default_scripts() {
     wp_deregister_script('jquery'); //we use googles CDN below
     wp_register_script( 'jquery','https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js', array(), '1.7.2' );
-    wp_register_script( 'header', get_bloginfo('template_directory') . '/js/header.js', array('jquery'), '1.1.0' );
+    wp_register_script( 'header', get_bloginfo('template_directory') . '/js/header.js', array('jquery'), '1.2.0' );
     wp_register_script( 'jquery.firenze', get_bloginfo('template_directory') . '/js/jquery.firenze.js', array('jquery'), '1.0.1' );
     wp_register_script( 'jquery.weather', get_bloginfo('template_directory') . '/js/jquery.weather.js', array('jquery'), '1.1' );
     wp_register_script( 'jquery.placeholder', get_bloginfo('template_directory') . '/js/jquery.placeholder.js', array('jquery'), '1.0' );
-    wp_register_script( 'jquery.imageexpander', get_bloginfo('template_directory') . '/js/jquery.imageexpander.js', array('jquery'), '1.0.2' );
+    wp_register_script( 'jquery.imageexpander', get_bloginfo('template_directory') . '/js/jquery.imageexpander.js', array('jquery'), '1.0.3' );
     wp_register_script( 'jquery.waypoints', get_bloginfo('template_directory') . '/js/jquery.waypoints.min.js', array('jquery'), '1.1.7' );
     wp_register_script( 'jquery.imagesloaded', get_bloginfo('template_directory') . '/js/jquery.imagesloaded.min.js', array('jquery'), '1.0' );
     wp_register_script( 'jquery.parallax', get_bloginfo('template_directory') . '/js/jquery.parallax.min.js', array('jquery'), '1.0' );

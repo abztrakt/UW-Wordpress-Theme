@@ -1,14 +1,18 @@
 input[type="text"].wTextInput {
-	background: url(../img/search-bar.png) no-repeat 0 0 transparent;
+	background: url('../img/search-bar.png') no-repeat 0 0 transparent;
 }
 #s {
-	background: url(../img/search-bar.png) no-repeat 0 -54px transparent;
+	background: url('../img/search-bar.png') no-repeat 0 -54px transparent;
 }
 #primary {
-	background: url(../img/misc/ie-rounded-corners.png) no-repeat 0 0 transparent;
+	background: url('../img/misc/ie-rounded-corners.png') no-repeat 0 0 transparent;
 	background-color: transparent !important;
 }
-
+.menu-block {
+	background: url('../img/header/ie-menu-bg.gif') repeat-y top right transparent;
+}
+.dropdown-menu a { display: inline-block; }
+.menu .sub-menu { border: 2px solid #e7e7e7; }
 
 /* --- News page  --- */
  
