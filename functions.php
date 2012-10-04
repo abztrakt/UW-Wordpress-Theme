@@ -407,6 +407,17 @@ if ( ! function_exists( 'uw_excerpt_more') ):
 endif;
 
 
+add_filter('upload_mimes', 'add_custom_upload_mimes');
+/**
+ * Wordpress doesn't know what a PSD is, so we have to tell it
+ * */
+if ( ! function_exists( 'add_custom_upload_mimes' ) ):
+function add_custom_upload_mimes($existing_mimes){
+    $existing_mimes['psd'] = 'image/photoshop'; //allow PSD files
+    return $existing_mimes;
+}
+endif;
+
 add_filter('remove_cms', 'remove_cms_from_admin_url', 10, 2);
 add_filter('wp_redirect', 'remove_cms_from_admin_url');
 if ( ! function_exists( 'remove_cms_from_admin_url' ) ):
