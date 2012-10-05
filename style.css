@@ -435,21 +435,21 @@ ol li {
 }
 #uwalert-alert-message a { color: #FDE048; }
 
-.alert-red 				{ background-color: #C61029;}
-.alert-red div			{ background: url('http://www.uw.edu/static/alert_logo_red-v2.jpg') no-repeat 0 -38px; }
-#alert-mini.alert-red	{ background: url('http://www.uw.edu/static/alert_logo_red-v2.jpg') no-repeat 16% 14% #C61029; background-size: 18%; }
+.uwalert-red 				{ background-color: #C61029;}
+.uwalert-red div			{ background: url('http://www.uw.edu/static/alert_logo_red-v2.jpg') no-repeat 0 -38px; }
+#alert-mini.uwalert-red	{ background: url('http://www.uw.edu/static/alert_logo_red-v2.jpg') no-repeat 16% 14% #C61029; background-size: 18%; }
 
-.alert-steel 			{ background-color: #597286; }
-.alert-steel div 		{ background: url('http://www.uw.edu/static/alert_logo_steel-v2.jpg') no-repeat 0 -38px; }
-#alert-mini.alert-steel { background: url('http://www.uw.edu/static/alert_logo_steel-v2.jpg') no-repeat 16% 14% #597286; background-size: 18%; }
+.uwalert-steel 			{ background-color: #597286; }
+.uwalert-steel div 		{ background: url('http://www.uw.edu/static/alert_logo_steel-v2.jpg') no-repeat 0 -38px; }
+#alert-mini.uwalert-steel { background: url('http://www.uw.edu/static/alert_logo_steel-v2.jpg') no-repeat 16% 14% #597286; background-size: 18%; }
 
-.alert-blue 			{ background-color: #0193c9; }
-.alert-blue div 		{ background: url('http://www.uw.edu/static/alert_logo_blue-v2.jpg') no-repeat 0 -38px; }
-#alert-mini.alert-blue  { background: url('http://www.uw.edu/static/alert_logo_blue-v2.jpg') no-repeat 16% 14% #0193c9; background-size: 18%; }
+.uwalert-blue 			{ background-color: #0193c9; }
+.uwalert-blue div 		{ background: url('http://www.uw.edu/static/alert_logo_blue-v2.jpg') no-repeat 0 -38px; }
+#alert-mini.uwalert-blue  { background: url('http://www.uw.edu/static/alert_logo_blue-v2.jpg') no-repeat 16% 14% #0193c9; background-size: 18%; }
 
-.alert-orange 			{ background-color: #ec7330;}
-.alert-orange div 		{ background: url('http://www.uw.edu/static/alert_logo_orange-v2.jpg') no-repeat 0 -38px; }
-#alert-mini.alert-orange { background: url('http://www.uw.edu/static/alert_logo_orange-v2.jpg') no-repeat 16% 14% #ec7330; background-size: 18%; }
+.uwalert-orange 			{ background-color: #ec7330;}
+.uwalert-orange div 		{ background: url('http://www.uw.edu/static/alert_logo_orange-v2.jpg') no-repeat 0 -38px; }
+#alert-mini.uwalert-orange { background: url('http://www.uw.edu/static/alert_logo_orange-v2.jpg') no-repeat 16% 14% #ec7330; background-size: 18%; }
 
 
 @media (min-width: 768px) and (max-width: 979px) { 
@@ -655,7 +655,7 @@ ol li {
 		filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ffffff', endColorstr='#ffffff', GradientType=0);
 	}
 	.navbar-inner h3 {
-		padding: 0;
+		padding: 3px 0 0;
 		margin: 0 0 5px;
 		position: relative;
 		width: 80%;
