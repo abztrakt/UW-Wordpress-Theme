@@ -186,7 +186,7 @@ if ( ! function_exists( 'uw_dropdowns' ) ):
   function uw_dropdowns() 
   {
     $nav = has_nav_menu('primary');
-    if ( !$nav ) 
+    if ( ( !$nav ) && ( is_multisite() ) )
     {
       switch_to_blog(1);
     }
@@ -197,7 +197,7 @@ if ( ! function_exists( 'uw_dropdowns' ) ):
       'fallback_cb'     => '',
       'walker'          => new UW_Dropdowns_Walker_Menu(),
     ) );
-    if ( !$nav ) 
+    if ( ( !$nav ) && ( is_multisite() ) )
     {
       restore_current_blog();
     }
@@ -209,7 +209,7 @@ if ( ! function_exists( 'uw_footer_menu') ) :
   function uw_footer_menu() 
   {
     $nav = has_nav_menu('footer');
-    if ( !$nav ) 
+    if ( ( !$nav ) && ( is_multisite() ) )
     {
       switch_to_blog(1);
     }
@@ -218,7 +218,7 @@ if ( ! function_exists( 'uw_footer_menu') ) :
       'menu_class'      => 'footer-navigation',
       'fallback_cb'     => '',
     ) );
-    if ( !$nav ) 
+    if ( ( !$nav ) && ( is_multisite() ) )
     {
       restore_current_blog();
     }
@@ -324,7 +324,8 @@ add_filter('body_class','my_class_names');
 if ( ! function_exists( 'uw_custom_body_classes' ) ):
   function my_class_names($classes) 
   {
-    $classes[] = 'site-'. sanitize_html_class(str_replace('cms','',get_blog_details(get_current_blog_id())->path));
+    if (is_multisite())
+        $classes[] = 'site-'. sanitize_html_class(str_replace('cms','',get_blog_details(get_current_blog_id())->path));
     $classes[] = is_home() && get_option('blogroll-banner')? 'featured-image' : '';
     return $classes;
   }

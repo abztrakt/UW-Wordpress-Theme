@@ -87,7 +87,7 @@ jQuery(document).ready(function($){
           var weat = $.trim(json.responseData.feed.entries[1].title.split('|')[1]);
           var temp = $.trim(json.responseData.feed.entries[0].title.split('|')[1]);
           var html = '<li class="header-weather"><a href="http://www.atmos.washington.edu/weather/forecast/" title="Forecast is '+weat+'">';
-          html += '<img src="/news/wp-content/themes/uw/img/weather/top-nav/'+icon+'.png" alt="Forecast is '+weat+'"/>';
+          html += '<img src="//uw.edu/news/wp-content/themes/uw/img/weather/top-nav/'+icon+'.png" alt="Forecast is '+weat+'"/>';
           html += '</a></li>';
           html += '<li class="header-forcast"><a href="http://www.atmos.washington.edu/weather/forecast/">';
           html += 'Seattle '+temp;
