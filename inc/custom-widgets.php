@@ -636,10 +636,12 @@ class UW_Showcase_Widget extends WP_Widget {
 
     if ( ! empty( $title ) ) echo $before_title . $title . $after_title;
 
-    switch_to_blog(1);
+    if (is_multisite())
+        switch_to_blog(1);
     $post = get_post($instance['id']);
     echo apply_filters('the_content', $post->post_content);
-    restore_current_blog();
+    if (is_multisite())
+        restore_current_blog();
 
     if (is_super_admin()) 
       echo '<a class="pull-right" target="_blank" href="' . $instance['edit'] . '">Edit</a>';
@@ -649,10 +651,12 @@ class UW_Showcase_Widget extends WP_Widget {
 
 	public function update( $new_instance, $old_instance ) {
 		$instance = array();
-    switch_to_blog(1);
+    if (is_multisite())
+        switch_to_blog(1);
     $post = get_post($new_instance['id']);
     $edit = get_edit_post_link($post->ID);
-    restore_current_blog();
+    if (is_multisite())
+        restore_current_blog();
 
 		$instance['id'] = $new_instance['id'];
 		$instance['title']   = strip_tags( $post->post_title );
@@ -668,9 +672,11 @@ class UW_Showcase_Widget extends WP_Widget {
       'numberposts' => -1,
       'category' => $cat->term_id
     );
-    switch_to_blog(1);
+    if (is_multisite())
+        switch_to_blog(1);
     $posts = get_posts($args);
-    restore_current_blog();
+    if (is_multisite())
+        restore_current_blog();
     
     $title  = isset( $instance[ 'title' ] ) ? $instance[ 'title' ] : __( 'Showcase', '' );  ?>
 
