@@ -121,26 +121,31 @@ if ( ! function_exists('uw_blogroll_shortcode') ):
     $params = shortcode_atts( array(
         'excerpt'      => 'true',
         'trim'         => 'false',
+        'image'        => 'hide',
         'number'       =>  5
       ), $atts );
 
-    if ( !array_key_exists('numberposts', $atts ) )
-      $atts['numberposts'] = $atts['number'];
+    if ( !array_key_exists('numberposts', $params ) )
+      $params['numberposts'] = $params['number'];
 
-    $posts = get_posts($atts);
+    $posts = get_posts($params);
 
     foreach ($posts as $post) {
 
       $link = get_permalink($post->ID);
 
-      if ( $params['excerpt']== 'true' ) 
+      if ( in_array($params['excerpt'], array('show', 'true') ) ) 
       {
         $excerpt = strlen($post->post_excerpt) > 0 ? $post->post_excerpt : $post->post_content;
-        if ( $params['trim'] == 'true' )
+        if ( in_array($params['trim'], array('show', 'true') ) )
           $excerpt = wp_trim_words($excerpt);
         $excerpt = wpautop($excerpt); //using apply_filters('the_content', $excerpt) causes an infinite loop
+        if ( in_array($params['image'], array('show', 'true') ) ) {
+          $image = get_the_post_thumbnail($post->ID, 'thumbnail', array('style'=>'float:left;padding-right:10px;'));
+          $class = 'class="pull-left"';
+        }
       }
-      $html .= "<li><a href=\"$link\">{$post->post_title}</a>{$excerpt}</li>";
+      $html .= "<li $class><a href=\"$link\">{$post->post_title}</a>$image{$excerpt}</li>";
     }
 
     return "<ul class=\"shortcode-blogroll\">$html</ul>";
