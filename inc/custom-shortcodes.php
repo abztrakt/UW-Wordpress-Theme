@@ -115,10 +115,13 @@ if ( ! function_exists('uw_blogroll_shortcode') ):
   function uw_blogroll_shortcode( $atts ) 
   {
 
+    if ( ! is_array($atts) )
+      $atts = array();
+
     if ( !is_page() )
       return '';
 
-    $params = shortcode_atts( array(
+    $params = array_merge( array(
         'excerpt'      => 'true',
         'trim'         => 'false',
         'image'        => 'hide',
