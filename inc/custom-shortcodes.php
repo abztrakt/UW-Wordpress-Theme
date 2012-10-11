@@ -124,7 +124,10 @@ if ( ! function_exists('uw_blogroll_shortcode') ):
         'number'       =>  5
       ), $atts );
 
-    $posts = get_posts("numberposts={$params['number']}");
+    if ( !array_key_exists('numberposts', $atts ) )
+      $atts['numberposts'] = $atts['number'];
+
+    $posts = get_posts($atts);
 
     foreach ($posts as $post) {
 
