@@ -289,7 +289,7 @@ jQuery(window).load(function() {
           , $a      = $this.children('a')
 
       if ( $ul.hasClass('open') ) {
-        document.location.href = $a.attr('href')
+        document.location.href = $(e.target).attr('href')
       } else {
         window.scrollTo(0,0)
           $('.dropdown-menu').removeClass('open').height(0)
