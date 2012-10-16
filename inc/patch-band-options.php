@@ -109,13 +109,17 @@ function patchband_general_options_callback() {
 
 function patchband_validation($input) 
 {
+  $options = (array) get_option('patchband');
+
   if ( isset($_POST['remove_wordmark']) &&
         is_numeric($_POST['wordmark_attachment_id'])) {
           $id = $_POST['wordmark_attachment_id'];
           wp_delete_attachment($id, true);
+  } else {
+    $input['wordmark']['custom'] = $options['wordmark']['custom'];
   }
 
-  if ($_FILES['wordmark']) 
+  if ( $_FILES['wordmark'] && $_FILES['wordmark']['size'] > 0 ) 
   {
       include_once(ABSPATH . '/wp-admin/includes/media.php');
       include_once(ABSPATH . '/wp-admin/includes/file.php');
@@ -139,6 +143,7 @@ function patchband_validation($input)
       } 
   }
 
+
   return $input;
 }
 
@@ -146,6 +151,10 @@ function patchband_validation($input)
 function band_color_header_callback () 
 {
 	$options = (array) get_option('patchband');
+
+  if ( !isset( $options['band']['header']['color'] ))
+    $options['band']['header']['color'] = 'purple';
+
 	$html = '<input type="radio" name="patchband[band][header][color]" value="purple" ' . checked( $options['band']['header']['color'], 'purple', false ) . '/>';
 	$html .= '<label title="Purple band"> Purple </label><br/>'; 
 	$html .= '<input type="radio" name="patchband[band][header][color]" value="tan" ' . checked( $options['band']['header']['color'], 'tan' , false ) . '/>';
@@ -154,6 +163,10 @@ function band_color_header_callback ()
 }
 function show_patch_toggle_header_callback() {
 	$options = (array) get_option('patchband');
+
+  if ( $options['patch']['header']['visible'] )
+    $options['patch']['header']['visible'] = 1;
+
 	$html = '<input class="header-show" type="checkbox" name="patchband[patch][header][visible]" value="1" ' . checked(1, $options['patch']['header']['visible'], false) . '/>'; 
 	$html .= '<label for="patchband[patch][header][visible]"> Show / hide</label><br/>'; 
 	echo $html;
@@ -161,6 +174,10 @@ function show_patch_toggle_header_callback() {
 
 function patch_color_toggle_content_callback() {
 	$options = (array) get_option('patchband');
+
+  if ( !isset( $options['patch']['header']['color'] ))
+    $options['patch']['header']['color'] = 'gold';
+
 	$html = '<input type="radio" name="patchband[patch][header][color]" value="purple" ' . checked( $options['patch']['header']['color'], 'purple', false ) . '/>';
 	$html .= '<label title="Purple patch"> Purple </label><br/>'; 
 	$html .= '<input type="radio" name="patchband[patch][header][color]" value="gold" ' . checked( $options['patch']['header']['color'], 'gold' , false ) . '/>';
@@ -170,6 +187,10 @@ function patch_color_toggle_content_callback() {
 
 function wordmark_color_header_callback() {
 	$options = (array) get_option('patchband');
+
+  if ( !isset( $options['wordmark']['header']['color'] ))
+    $options['wordmark']['header']['color'] = 'purple';
+
 	$html = '<input type="radio" name="patchband[wordmark][header][color]" value="purple" ' . checked( $options['wordmark']['header']['color'], 'purple' , false ) . '/>';
 	$html .= '<label title="Purple wordmark"> Purple </label><br/>'; 
 	$html .= '<input type="radio" name="patchband[wordmark][header][color]" value="white" ' . checked( $options['wordmark']['header']['color'], 'white', false ) . '/>';
@@ -179,7 +200,6 @@ function wordmark_color_header_callback() {
 
 function custom_wordmark_callback() {
 	$options = (array) get_option('patchband');
-  //print_r($options);
   if( isset($options['wordmark']['custom'])) {
     $html = '<input type="hidden" id="custom-wordmark" name="wordmark_attachment_id" value="' . $options['wordmark']['custom']['id'] .'" data-url="'. $options['wordmark']['custom']['url'] .'"/>';
     submit_button( __( 'Remove' ), 'button', 'remove_wordmark', false );
