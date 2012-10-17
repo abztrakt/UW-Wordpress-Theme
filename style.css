@@ -916,9 +916,10 @@ ol li {
 	#respond input[type="text"], #respond textarea {
 		width: 95%;
 	}
-	#content .date, .story-tags, .author-info {
+	#content .date, .author-info {
 		margin-left: 15px;
 	}
+	.story-tags { display: none }
 	.info-box {
 		padding: 10px 15px;
 		margin: 30px 0 30px 0;
@@ -1454,6 +1455,7 @@ ol li {
 	}
 	.navbar .nav .active > a, .navbar .nav .active > a:hover {
 		color: #d7a900;
+		background-color: transparent;
 	}
 	.navbar .nav .dropdown-menu .active > a {
 		background-color: #08C;
