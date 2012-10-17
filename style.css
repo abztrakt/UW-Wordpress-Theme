@@ -91,7 +91,7 @@ img {
 	height: auto !important;
 }
 object, embed, iframe {
-	margin: 10px 0 30px 0;
+	margin: 10px 0 15px;
 	display: block;
 	max-width: 100% !important;
 }
@@ -229,7 +229,7 @@ hr {
     font-size: 21px;
     color: #39275b;
     line-height: 26px;
-    padding: 0 0 45px 0;
+    padding: 0 0 30px 0;
     margin: 0;
     background: url(img/side-menu-bg.gif) no-repeat bottom center transparent;
 }
@@ -252,9 +252,11 @@ hr {
 	padding: 2px 0 2px;
 	margin-bottom: 4px;
 }
-#menu-sidebar a:hover, .subpage_menu a:hover {
-	text-decoration: none;
+#sidebar .menu a:hover {
 	font-weight: bold;
+}
+#sidebar .widgettitle a:hover {
+	color: #919191;
 }
 .widget_nav_menu li, .subpage_menu li {
 	border-left: 4px solid #fff;
@@ -634,7 +636,8 @@ ol li {
 		text-shadow: 1px 1px 0 #3A3A3A;
 	}
 	.navbar .nav .active > a, .navbar .nav .active > a:hover {
-		background-color: #39275b;
+		color: #d7a900;
+		background-color: inherit;
 	}
 	.navbar .nav > li > a:hover {
 		background-color: #fff;
@@ -655,7 +658,7 @@ ol li {
 		filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ffffff', endColorstr='#ffffff', GradientType=0);
 	}
 	.navbar-inner h3 {
-		padding: 3px 0 0;
+		padding: 5px 0 0;
 		margin: 0 0 5px;
 		position: relative;
 		width: 80%;
@@ -1327,9 +1330,9 @@ ol li {
 	    padding: 9px 0 9px 38px;
 	    width: 175px;
 	    color: #999;
-	    box-shadow: 0 0 8px #b1b1b1;
-	    -webkit-box-shadow: 0 0 8px #b1b1b1;
-	    -moz-box-shadow: 0 0 8px #b1b1b1;
+	    box-shadow: 0 0 8px #8F8F8F;
+	    -webkit-box-shadow: 0 0 8px #8F8F8F;
+	    -moz-box-shadow: 0 0 8px #8F8F8F;
 	    border: none;
 		-webkit-transition-duration: 400ms;
 		-webkit-transition-property: width, background;
@@ -1387,9 +1390,9 @@ ol li {
 	    background-color: #4b4b4b;
 	    border-top: 1px solid #fff;
 	    border-bottom: 1px solid #fff;
-	    box-shadow: 0 0 9px #c1c1c1;
-	    -webkit-box-shadow: 0 0 9px #c1c1c1;
-	    -moz-box-shadow: 0 0 9px #c1c1c1;
+	    box-shadow: 0 0 8px #9C9C9C;
+	    -webkit-box-shadow: 0 0 8px #9C9C9C;
+	    -moz-box-shadow: 0 0 8px #9C9C9C;
 	}
 	.navbar-inner {
 		position: relative;
@@ -1450,8 +1453,11 @@ ol li {
 		background: none;
 	}
 	.navbar .nav .active > a, .navbar .nav .active > a:hover {
-		background-color: inherit;	
-		color: inherit;
+		color: #d7a900;
+	}
+	.navbar .nav .dropdown-menu .active > a {
+		background-color: #08C;
+		color: white;
 	}
 	.dropdown-toggle, .navbar .nav > li > a {
 	    font-family: 'Open Sans', sans-serif;
@@ -1800,6 +1806,11 @@ ol li {
 		margin: 40px 0 20px;
 	}
 	
+	/* ----  Category Page ---- */
+	
+	.category .entry-header {
+		clear: both;
+	}
 	
 	/* ----  Post Page ---- */
 	
