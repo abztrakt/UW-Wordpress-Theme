@@ -31,6 +31,8 @@
 
 			<?php endwhile; // end of the loop. ?>
 
+        <?php uw_prev_next_links(); ?>
+
 				</div>
 				<div id="secondary" class="span4 right-bar" role="complementary">
 					<div class="stripe-top"></div><div class="stripe-bottom"></div>				
