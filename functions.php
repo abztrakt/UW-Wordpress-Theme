@@ -455,13 +455,14 @@ if ( ! function_exists( 'uw_excerpt_more') ):
 endif;
 
 
-add_filter('upload_mimes', 'add_custom_upload_mimes');
+add_filter('upload_mimes', 'uw_add_custom_upload_mimes');
 /**
  * Wordpress doesn't know what a PSD is, so we have to tell it
  * */
-if ( ! function_exists( 'add_custom_upload_mimes' ) ):
-function add_custom_upload_mimes($existing_mimes){
+if ( ! function_exists( 'uw_add_custom_upload_mimes' ) ):
+function uw_add_custom_upload_mimes($existing_mimes){
     $existing_mimes['psd'] = 'image/photoshop'; //allow PSD files
+    $existing_mimes['ai|eps'] = 'application/postscript';
     return $existing_mimes;
 }
 endif;
