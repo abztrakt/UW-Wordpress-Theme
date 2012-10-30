@@ -248,7 +248,7 @@ class UW_Widget_Categories extends WP_Widget_Categories {
       if ( $title )
         echo $before_title . $title . $after_title;
 
-      $cat_args = array('orderby' => 'name', 'show_count' => $c, 'hierarchical' => $h);
+      $cat_args = array('orderby' => 'name', 'show_count' => $c, 'hierarchical' => $h, 'exclude' => '1');
 
       if ( $d ) {
         $cat_args['show_option_none'] = __('Select Category');
