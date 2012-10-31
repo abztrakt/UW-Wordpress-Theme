@@ -253,6 +253,7 @@ jQuery(window).load(function() {
   }
   calculate_dropdowns();
 
+  $('#menu-primary-menu').attr('role','menubar')
   $('.dropdown')
     .mouseenter(function(e) {
     
@@ -450,3 +451,62 @@ jQuery(window).load(function() {
   })
 
 });
+
+/** 'enhanced'-search (dev) **/
+$(document).ready(function() {
+  var $inputs  = $('#search ').find('input[type=radio]')
+    , soptions = $('.search-options')
+    , $toggle  = $('.search-toggle')
+    , $flash   = $('.search-flash')
+    , $q = $('#q')
+    , ie = $.browser.msie //$('[id^=ie]')
+
+  $inputs.removeAttr('checked').first().attr('checked', true)
+
+  $inputs.change(function() {
+    var str = 'Search ' + $(this).data('placeholder')
+    $q.prop('placeholder', str).attr('placeholder', str);
+    if ( ie ) $q.val(str)
+    if ( typeof _gaq !== 'undefined' ) _gaq.push(['_trackEvent', 'Enhanced Search', 'Options',  str ]);
+  })
+
+  $toggle.click(function() {
+    if ( typeof _gaq !== 'undefined' ) _gaq.push(['_trackEvent', 'Enhanced Search', 'Toggle',  soptions.is(':hidden') ? 'Open' : 'Close' ]);
+
+    if ( !ie ) $q.css('width', soptions.is(':hidden') ?  '225px' : '' )
+    $(this).toggleClass('close-toggle')
+    soptions.fadeToggle()
+  })
+
+  $('#search form').submit(function() {
+    var $this  = $(this)
+      , $input = $inputs.filter(':checked')
+      , method = $input.val()
+
+    if ( typeof _gaq !== 'undefined' ) _gaq.push(['_trackEvent', 'Enhanced Search', 'Search',  method.charAt(0).toUpperCase() + method.slice(1) ]);
+
+    if ( method === 'main' )
+      return true;
+
+    if ( method === 'directory') {
+      window.location.href = 'http://www.washington.edu/home/peopledir/?method=name&whichdir=both&term=' + $q.val()
+      return false;
+    }
+
+    if ( method === 'site') {
+      window.location.href = $input.data('site') + '?s=' + $q.val()
+      return false;
+    }
+    return true; //all else fails, just go to the normal search
+  })
+
+  $('#q').one('focus', function() {
+    $toggle.fadeIn();
+    //$flash.fadeIn().delay(2000).fadeOut()
+    //soptions.fadeIn();
+    if ( typeof _gaq !== 'undefined' ) _gaq.push(['_trackEvent', 'Enhanced Search','Focus',$(this).attr('placeholder')]);
+  })
+
+
+
+})
