@@ -833,6 +833,9 @@ ol li {
 		-webkit-box-shadow: inset 0px -2px 4px #DDD;
 		background-color: white;
 	}
+  .search-options {
+    display:none;
+  }
 	.main-search {
 	    height: 0;
 	    overflow: hidden;
