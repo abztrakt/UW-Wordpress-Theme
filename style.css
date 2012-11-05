@@ -392,7 +392,7 @@ ol li {
 .entry-meta {
 	margin: 10px 0;
 }
-.edit-link.pull-right {
+.edit-link.pull-right{
 	border: 2px solid;
 	padding: 3px 12px;
 	border-radius: 30px;
@@ -400,12 +400,14 @@ ol li {
 	color: white;
 	text-shadow: 1px 1px 1px #333;
 }
-	/* ---- Fixes double border and padding ---- */
+
+/* ---- Fixes double border and padding ---- */
+
 .pull-right .pull-right {
 	padding: 0;
 	border: 0;
 }
-.pull-right a {
+.edit-link.pull-right a {
 	color: white;
 }
 /* ---- Three Columns ---- */
@@ -1964,10 +1966,13 @@ ol li {
 	/* ----  Ceremonies Page ---- */
 	
 	.site-freshcon .patch, .site-ceremony .patch, .site-graduation .patch {
-		top: 20px;
+		top: 10px;
 		background: url(img/misc/seal.png) no-repeat 0 0 transparent;
 	}
-	
+	.site-freshcon .wordmark, .site-ceremony .wordmark, .site-graduation .wordmark {
+		top: 38px;
+		left: 98px;
+	}
 	
 }
 @media (min-width: 1200px) {  
