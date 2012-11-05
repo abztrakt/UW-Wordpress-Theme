@@ -392,7 +392,7 @@ ol li {
 .entry-meta {
 	margin: 10px 0;
 }
-.pull-right {
+.edit-link.pull-right {
 	border: 2px solid;
 	padding: 3px 12px;
 	border-radius: 30px;
@@ -1960,6 +1960,15 @@ ol li {
 		border-left: 1px solid #DDD;
 		font-weight: normal;
 	}
+	
+	/* ----  Ceremonies Page ---- */
+	
+	.site-freshcon .patch, .site-ceremony .patch, .site-graduation .patch {
+		top: 20px;
+		background: url(img/misc/seal.png) no-repeat 0 0 transparent;
+	}
+	
+	
 }
 @media (min-width: 1200px) {  
 }
