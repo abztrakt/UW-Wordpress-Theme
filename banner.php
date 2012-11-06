@@ -37,10 +37,12 @@
           <input type="radio" name="search-toggle" value="directory" data-placeholder="the Directory"/>
           UW Directory
         </label>
+        <?php if ( strpos( home_url(),'search') == false ): ?>
         <label class="radio">
           <input type="radio" name="search-toggle" value="site" data-site="<?php echo home_url('/'); ?>" data-placeholder="<?php bloginfo() ?>"/>
           This site
         </label>
+        <?php endif; ?>
 
         <span class="search-options-notch"></span>
       </div>
