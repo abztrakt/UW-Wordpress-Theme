@@ -263,3 +263,49 @@ function uw_general_settings_api_init() {
 	function blogroll_banner_filter_upload_tabs() {
 		return array( 'library' => __('Media Library') );
 	}
+
+
+/**
+ * Add an option for which slider to put on the front-page 
+ */
+
+if ( class_exists('RoyalSliderAdmin') ): 
+
+  function slider_royalslider_settings_api_init() {
+    add_settings_section('royalslider',
+    '',
+    '_slider_howto',
+    'reading');
+    
+    add_settings_field('homepage_royalslider',
+    'Royalslider to show on homepage',
+    'slider_royalslider_homepage_html',
+    'reading',
+    'royalslider');
+    register_setting('reading','homepage_royalslider');
+
+    add_settings_field('posts_per_frontpage',
+      'Front page shows at most',
+      'posts_per_frontpage_input_html',
+      'reading',
+    'default');
+    register_setting('reading','posts_per_frontpage');
+
+  }
+
+  add_action('admin_init', 'slider_royalslider_settings_api_init');
+
+  function _slider_howto() { echo ''; }
+
+  function slider_royalslider_homepage_html() {
+   $output = '<input type="text" name="homepage_royalslider" value="1" size="4"/>';
+   echo $output;
+  }
+
+  function posts_per_frontpage_input_html() {
+    echo '<input name="posts_per_frontpage" type="number" step="1" min="1" value="'.get_option('posts_per_frontpage').'" class="small-text">';
+  }
+
+endif;
+  
+
