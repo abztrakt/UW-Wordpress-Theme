@@ -298,8 +298,9 @@ if ( class_exists('RoyalSliderAdmin') ):
   function _slider_howto() { echo ''; }
 
   function slider_royalslider_homepage_html() {
-   $output = '<input type="text" name="homepage_royalslider" value="1" size="4"/>';
-   echo $output;
+    $slider = get_option('homepage_royalslider');
+    $output = "<input type=\"text\" name=\"homepage_royalslider\" value=\"$slider\" size=\"4\"/>";
+    echo $output;
   }
 
   function posts_per_frontpage_input_html() {
