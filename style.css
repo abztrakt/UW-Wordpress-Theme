@@ -1662,6 +1662,12 @@ ol li {
 	.dropdown-menu.open .menu-block:last-child {
 		background: none !important;
 	}
+	.home-link a {
+		background: url('img/misc/home.png') no-repeat 0 11px transparent;
+		text-indent: -9999px;
+		overflow: hidden;
+		width: 10px;
+	}
 	/************************************************************************************
 		Body
 	*************************************************************************************/
