@@ -1,4 +1,4 @@
-<?
+<?  
 /**
  * Register with hook 'wp_enqueue_scripts', which can be used for front end CSS and JavaScript
  */
@@ -428,19 +428,31 @@ if ( ! function_exists( 'force_https_the_content' ) ):
 endif;
 
 
-add_filter('sharing_permalink', 'uw_remove_cms_from_sharedaddy_permalink');
-if ( ! function_exists( 'uw_remove_cms_from_sharedaddy_permalink') ):
+add_filter('wpcf7_ajax_loader', 'uw_remove_cms_from_plugin_permalinks');
+add_filter('wpcf7_form_action_url', 'uw_remove_cms_from_plugin_permalinks');
+add_filter('sharing_permalink', 'uw_remove_cms_from_plugin_permalinks');
+if ( ! function_exists( 'uw_remove_cms_from_plugin_permalinks') ):
   /**
-   * Bug fix for the Sharedaddy plugin. The plugin uses the default permalink 
+   * Bug fix for the plugins that need site url. The plugin uses the default permalink 
    *  of the post which contains /cms/. This function and filter removes /cms/ from 
-   *  the permalink but only for the Sharedaddy plugin.
+   *  the permalink.
    */
-  function uw_remove_cms_from_sharedaddy_permalink($url) 
+  function uw_remove_cms_from_plugin_permalinks($url) 
   {
-    return str_replace('/cms/','/', $url); 
+      return defined('WP_LOCAL') ? $url : str_replace('/cms/','/', $url);  
   }
 endif;
 
+add_filter('wpcf7_form_class_attr', 'uw_add_wpcf7_bootstrap_class' );
+if ( ! function_exists( 'uw_add_wpcf7_bootstrap_class') ):
+  /**
+   * Add the boostrap class to the contact form 7 form tag
+   */
+  function uw_add_wpcf7_bootstrap_class($class) 
+  {
+      return $class . ' form-horizontal';
+  }
+endif;
 
 add_filter('excerpt_more', 'uw_excerpt_more');
 if ( ! function_exists( 'uw_excerpt_more') ):
