@@ -433,6 +433,24 @@ jQuery(window).load(function() {
 
     })
 
+    /*
+     * Sidebar menu setup
+     */
+      $('#sidebar').find('.menu').children('li').each(function() {
+      
+        var $this = $(this)
+          , $lis  = $this.find('li')
+          , width = Math.ceil($lis.length/10)
+
+
+        if (  width > 0 ) {
+          $this.children('ul').first().width(width* 200)
+          for ( var i =0; i < $lis.length; i+=10 ) {
+            $lis.slice(i,i+10).wrapAll('<ul class="pull-left" style="width:200px"/>')
+          };
+        }
+      })
+
 
   /*
    * Responsive
