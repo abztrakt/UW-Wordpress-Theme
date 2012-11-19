@@ -14,8 +14,8 @@ jQuery(document).ready(function($){
     }
 
     var alert_url =  window.location.hash.indexOf('alert') === -1 ? 
-          "https://public-api.wordpress.com/rest/v1/sites/uwemergency.wordpress.com/posts/?callback=?" :
-          'https://public-api.wordpress.com/rest/v1/sites/en.blog.wordpress.com/posts/?callback=?';
+          'https://www.washington.edu/static/UW-Alert-Banner/alert/?c=?' :
+          'https://www.washington.edu/static/UW-Alert-Banner/alert/?test=true&c=?';
 
     $.getJSON(alert_url, data,
         function(res){
