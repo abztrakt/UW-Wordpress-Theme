@@ -182,9 +182,18 @@ jQuery(document).ready(function($){
 });
 
 jQuery(window).load(function() {
+
+  // if the alert banner is not showing
+  // and there is a hash
+  sAnchor = ( window.location.hash.indexOf('alert') === -1 && window.location.hash.length > 0 )
+
   // hide mobile safari url bar
+  // -- If there is an anchor, scroll to position and compensate for bar
   setTimeout(function(){
-    window.scrollTo(0, 0);
+    if (sAnchor)
+      window.scrollBy(0,-30);
+    else
+      window.scrollTo(0,0);
   }, 0);
 
   /**
