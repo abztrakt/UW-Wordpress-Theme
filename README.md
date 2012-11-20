@@ -15,6 +15,32 @@ If there are desired features or changes, our team's philosophy is to create a c
 
 ## History
 
+### 1.2.0 - Search and Navigation Updates
+  - Better search
+  - Slideshow template added
+  - Royalslider bugfix
+  - Updating 404 experience
+  - Fixing flyouts for submenu
+
+### 1.1.3 - Bug fixes and italics
+  - Removed italicizing
+  - Fixed menu background bug
+
+### 1.1.2 - Blogroll view updates  
+  - Dropdown menu fix
+  - Featured images for blogroll posts
+  - Category for blogroll
+  - Changed default on user creation email
+
+### 1.1.1 - Alert css and single site
+  - Alert colors
+  - Fix for non-multisite
+
+### 1.1.0 - Navigation Updates
+  - Responsive design fixes
+  - Additional accessibility changes
+  - New accounting for galleries in image expander
+
 ### 1.0.0 - Revamped Theme
   - Refreshed UW Brand
   - Responsive design
