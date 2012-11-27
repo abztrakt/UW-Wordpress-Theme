@@ -156,3 +156,36 @@ if ( ! function_exists('uw_blogroll_shortcode') ):
   }
 endif;
 add_shortcode( 'blogroll', 'uw_blogroll_shortcode' );
+
+if ( ! function_exists( 'uw_youtube_playlist_shortcode' ) ) :
+  function uw_youtube_playlist_shortcode( $atts ) 
+  {
+    wp_enqueue_script('widget-youtube-playlist');
+
+    $content = '
+      <div id="youtube-playlist-player" class="row">
+
+        <div class="youtube-large">
+            <div id="youtubeapi" data-pid="'.$atts['id'].'"></div>
+        </div>
+
+        <div class="youtube-small">
+          <div id="youtube-player-controls">
+              <div class="scrollbar">
+              <div class="track">
+              <div class="thumb">
+              <div class="end">
+              </div></div></div></div>
+              <div class="viewport">
+              <div id="vidContent" class="overview">
+              </div></div>
+          </div>
+        </div>
+
+      </div>
+    ';
+    
+    return $content; 
+  }
+endif;
+add_shortcode('youtube', 'uw_youtube_playlist_shortcode');
