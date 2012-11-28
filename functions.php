@@ -113,6 +113,9 @@ if ( ! function_exists( 'uw_admin_js_css' ) ):
   {
     wp_register_script( 'admin', get_bloginfo('template_directory') . '/admin/js/admin.js', array('jquery'),'1.0' );
     wp_enqueue_script('admin');
+
+    // no real reason to register it
+    wp_enqueue_style( 'google-font-open-sans', 'https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300' );
   }
 endif;
 
