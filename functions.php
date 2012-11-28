@@ -495,6 +495,18 @@ if ( ! function_exists( 'remove_cms_from_admin_url' ) ):
   }
 endif;
 
+add_filter('sharing_show', 'uw_sharing_show');
+if ( ! function_exists( 'uw_sharing_show' ) ):
+  /**
+   * If the blogroll is on the front page 
+   * don't show any of the sharing links
+   */
+  function uw_sharing_show($show) 
+  {
+    return is_front_page() ? false : $show;
+  }
+endif;
+
 /*
  * Will be used in WP 3.4.2 to fix our schedules posts bug
  *
