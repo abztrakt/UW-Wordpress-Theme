@@ -489,10 +489,13 @@ add_filter('wp_redirect', 'remove_cms_from_admin_url');
 if ( ! function_exists( 'remove_cms_from_admin_url' ) ):
   function remove_cms_from_admin_url( $url, $forced=false) {
     global $blog_id;
-    if ( ! is_admin() && empty( $_SERVER['REMOTE_USER'] ) && $blog_id != 1 && !preg_match('/\b(wp-admin|wp-login|\/login)\b/i', $_SERVER['REQUEST_URI']) && !is_user_logged_in() 
+    if ( ! defined('WP_LOCAL') && ! is_admin() && empty( $_SERVER['REMOTE_USER'] ) && $blog_id != 1 && !preg_match('/\b(wp-admin|wp-login|\/login)\b/i', $_SERVER['REQUEST_URI']) && !is_user_logged_in() 
           || $forced ) {
       $url = str_replace('.edu/cms/','.edu/', $url);
       $url = str_replace('https:','http:', $url);
+      // relative urls
+      if ( strpos($url,'http') === false ) 
+        $url = str_replace( '/cms/','/', $url );
     }
     return $url;
   }
