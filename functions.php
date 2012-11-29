@@ -433,8 +433,6 @@ if ( ! function_exists( 'force_https_the_content' ) ):
 endif;
 
 
-add_filter('wpcf7_ajax_loader', 'uw_remove_cms_from_plugin_permalinks');
-add_filter('wpcf7_form_action_url', 'uw_remove_cms_from_plugin_permalinks');
 add_filter('sharing_permalink', 'uw_remove_cms_from_plugin_permalinks');
 if ( ! function_exists( 'uw_remove_cms_from_plugin_permalinks') ):
   /**
@@ -484,6 +482,8 @@ function uw_add_custom_upload_mimes($existing_mimes){
 }
 endif;
 
+add_filter('wpcf7_ajax_loader', 'remove_cms_from_admin_url');
+add_filter('wpcf7_form_action_url', 'remove_cms_from_admin_url');
 add_filter('remove_cms', 'remove_cms_from_admin_url', 10, 2);
 add_filter('wp_redirect', 'remove_cms_from_admin_url');
 if ( ! function_exists( 'remove_cms_from_admin_url' ) ):
