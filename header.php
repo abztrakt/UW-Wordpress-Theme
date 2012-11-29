@@ -14,6 +14,9 @@
 <head>
   <meta charset="<?php bloginfo( 'charset' ); ?>" />
   <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0" />
+  <?php if ( has_post_thumbnail() ): ?>
+  <meta property="og:image" content="<?php $ogthumb = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ) ); echo $ogthumb[0]; ?>" /> 
+  <?php endif; ?>
   <title>
     <?php
       /*
