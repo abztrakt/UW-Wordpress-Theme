@@ -2128,6 +2128,9 @@ ol li {
 	body .navbar .btn-navbar:hover {
 		background-color: #DDD;
 	}
+  body .menu .sub-menu {
+    right:178px;
+  }
 }
 
 @media (min-width: 980px) {
