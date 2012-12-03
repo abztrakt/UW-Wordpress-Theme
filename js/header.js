@@ -46,7 +46,7 @@ jQuery(document).ready(function($){
           }
 
           var anchor  = $('<a/>').attr({'href': 'http://emergency.uw.edu', 'title':post.title}).html('More info')
-            , excerpt = post.excerpt.replace(' [...]', '... '+anchor.prop('outerHTML'))
+            , excerpt = $(post.excerpt.replace(' [...]','')).append( ' ' ).append( anchor.prop('outerHTML') ).prop('outerHTML')
             , html    = $('<div id="uwalert-alert-message" class="'+css+'" />')
                           .html('<div><h1>'+post.title+'</h1>'+excerpt+'</div>')
             , adjust  = $('body').hasClass('admin-bar') ? $('#wpadminbar').height() : 0;
