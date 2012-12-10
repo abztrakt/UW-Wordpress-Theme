@@ -4,9 +4,9 @@
 	}
 	#primary {
 		background-color: transparent;
-		box-shadow: transparent;
-		-moz-box-shadow: transparent;
-		-webkit-box-shadow: transparent;
+		box-shadow: none;
+		-moz-box-shadow: none;
+		-webkit-box-shadow: none;
 		height: 1120px;
 	}
 	#arrow-mark, h1, #secondary, #footerBG { display: none; }
@@ -14,5 +14,13 @@
 		position: absolute;
 		top: 233px;
 		left: 171px;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 979px) { 
+	iframe {
+		position: absolute;
+		top: 233px;
+		left: 42px;
 	}
 }
