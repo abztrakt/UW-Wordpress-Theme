@@ -48,6 +48,7 @@ if ( ! function_exists( 'uw_enqueue_default_styles' ) ):
  * bloginfo('stylesheet_directory')  gives you the url to the child theme
  */
   function uw_enqueue_default_styles() {
+      global $current_blog;
       $is_child_theme = get_bloginfo('template_directory') != get_bloginfo('stylesheet_directory');
       wp_register_style( 'bootstrap',get_bloginfo('template_directory') . '/css/bootstrap.css', array(), '2.0.4' );
       wp_register_style( 'bootstrap-responsive', get_bloginfo('template_directory') . '/css/bootstrap-responsive.css', array('bootstrap'), '2.0.3' );
@@ -61,6 +62,14 @@ if ( ! function_exists( 'uw_enqueue_default_styles' ) ):
       if ( $is_child_theme)
         wp_enqueue_style( 'uw-style' );
       wp_enqueue_style( 'google-font-open-sans' );
+
+      // Holiday video 2012
+      if ( $current_blog->path === '/cms/discover/' 
+            && get_query_var('pagename') === 'holiday')
+      {
+        wp_register_style( 'holiday-2012', get_bloginfo('template_directory') . '/css/holiday.css', array('bootstrap'), '2.0.3' );
+        wp_enqueue_style( 'holiday-2012' );
+      }
   }
 
 endif;

@@ -1,0 +1,18 @@
+@media (min-width: 768px) {
+	body {
+		background: url(../img/holiday-2012.jpg) no-repeat center 182px white;	
+	}
+	#primary {
+		background-color: transparent;
+		box-shadow: transparent;
+		-moz-box-shadow: transparent;
+		-webkit-box-shadow: transparent;
+		height: 1120px;
+	}
+	#arrow-mark, h1, #secondary, #footerBG { display: none; }
+	iframe {
+		position: absolute;
+		top: 233px;
+		left: 171px;
+	}
+}
