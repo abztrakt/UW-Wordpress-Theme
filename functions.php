@@ -522,6 +522,7 @@ if ( ! function_exists( 'uw_sharing_show' ) ):
   }
 endif;
 
+
 /*
  * Will be used in WP 3.4.2 to fix our schedules posts bug
  *
@@ -541,6 +542,7 @@ require( get_template_directory() . '/inc/custom-widgets.php' );
 require( get_template_directory() . '/inc/custom-settings.php' );
 require( get_template_directory() . '/inc/custom-image-sizes.php' );
 require( get_template_directory() . '/inc/custom-shortcodes.php' );
+require( get_template_directory() . '/inc/custom-embeds.php' );
 require( get_template_directory() . '/inc/dropdown-walker.php' );
 require( get_template_directory() . '/inc/helper-functions.php' );
 //require( get_template_directory() . '/inc/json-api.php' );
