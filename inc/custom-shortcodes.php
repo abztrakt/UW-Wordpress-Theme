@@ -157,6 +157,9 @@ if ( ! function_exists('uw_blogroll_shortcode') ):
 endif;
 add_shortcode( 'blogroll', 'uw_blogroll_shortcode' );
 
+/**
+ * Youtube playlist shortcode
+ */
 if ( ! function_exists( 'uw_youtube_playlist_shortcode' ) ) :
   function uw_youtube_playlist_shortcode( $atts ) 
   {
@@ -189,3 +192,62 @@ if ( ! function_exists( 'uw_youtube_playlist_shortcode' ) ) :
   }
 endif;
 add_shortcode('youtube', 'uw_youtube_playlist_shortcode');
+
+/**
+ * Google calendar shortcode
+ */
+// turns an iframe into a shortcode
+add_filter( 'pre_kses', 'uw_google_calendar_embed_to_shortcode' );
+if ( ! function_exists('uw_google_calendar_embed_to_shortcode') ) :
+  function uw_google_calendar_embed_to_shortcode( $content ) 
+  {
+    if ( false === strpos( $content, '<iframe ' ) && false === strpos( $content, 'google.com/calendar' ) )
+      return $content;
+    
+	  $content = preg_replace_callback( '#&lt;iframe\s[^&]*?(?:&(?!gt;)[^&]*?)*?src="https?://.*?\.google\.(.*?)/(.*?)\?(.+?)"[^&]*?(?:&(?!gt;)[^&]*?)*?&gt;\s*&lt;/iframe&gt;\s*(?:&lt;br\s*/?&gt;)?\s*#i', 'uw_google_calendar_embed_to_shortcode_callback', $content );
+
+	  $content = preg_replace_callback( '!\<iframe\s[^>]*?src="https?://.*?\.google\.(.*?)/(.*?)\?(.+?)"[^>]*?\>\s*\</iframe\>\s*!i', 'uw_google_calendar_embed_to_shortcode_callback', $content );
+
+    return $content;
+  }
+endif;
+
+if ( ! function_exists('uw_google_calendar_embed_to_shortcode_callback') ) :
+function uw_google_calendar_embed_to_shortcode_callback ( $match ) {
+	if ( preg_match( '/\bwidth=[\'"](\d+)/', $match[0], $width ) ) {
+		$width = min( array( (int) $width[1] , 630 ) );
+	} else {
+		$width = 630;
+	}
+
+	if ( preg_match( '/\bheight=[\'"](\d+)/', $match[0], $height ) ) {
+		$height = (int) $height[1];
+	} else {
+		$height = 500;
+	}
+  $url = $match[3];
+
+  return "[googleapps domain=\"www\" dir=\"calendar/embed\" query=\"$url\" width=\"$width\" height=\"$height\"]";
+}
+endif;
+
+if ( ! function_exists('uw_google_calendar_shortcode') ) :
+function uw_google_calendar_shortcode( $atts ) {
+
+    $params = shortcode_atts( array(
+      'query'   => '',
+      'dir'     => '',
+      'domain'  => 'www',
+      'width'   => 620,
+      'height'  => 500,
+    ), $atts );
+    extract($params);
+
+    if ( $dir == 'calendar/embed' ) 
+	    return '<div class="googleapps-'. $app .'"><iframe width="' . $width . '" height="' . $height . '" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/calendar/embed?' . $query . '"></iframe></div>';
+
+    return '';
+}
+endif;
+
+add_shortcode( 'googleapps', 'uw_google_calendar_shortcode' );
