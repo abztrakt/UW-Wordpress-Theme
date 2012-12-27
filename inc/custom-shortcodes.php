@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * allow shortcodes in text widgets
+ */
+add_filter( 'widget_text', 'do_shortcode' );
+
 /**
  * The Caption shortcode filter - original function in wp-includes/media.php
  */
