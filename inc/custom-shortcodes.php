@@ -60,11 +60,12 @@ if ( ! function_exists('uw_feed_shortcode') ):
       $url = $feed->get_permalink();
       $feed_items = $feed->get_items(0, $number); 
       $feed_items = $feed->get_items(0, $number); 
+      $pullleft = $span === 4 ? 'pull-left' : '';
 
       $title = ($title == null ) ? $feed->get_title() : $title;
 
-      $content = "<div class=\"row pull-left\">";
-      $content .= "<div class=\"span$span row\">";
+      $content = "<div class=\"row $pullleft\">";
+      $content .= "<div class=\"span$span\">";
       $content .= "<div class=\"feed-in-body\"><a href=\"$url\" title=\"$title\"><h3>$title</h3></a></div>";
       $content .= "<ul>";
 
