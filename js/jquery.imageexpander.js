@@ -102,7 +102,7 @@ $(document).ready(function() {
 
       // patch for images without captions
       if ( !hasCaption )
-        $this.parent('a').wrap('<div class="'+this.className+' wp-caption" style="width:'+ $this.width()  +'"/>')
+        $this.parent('a').wrap('<div class="'+this.className+' wp-caption" style="width:'+ $this.width()  +'px;"/>')
         
       $a = $this.parent('a').clone()
       $a.html('High resolution')
