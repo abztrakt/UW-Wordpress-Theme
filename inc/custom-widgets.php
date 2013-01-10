@@ -523,7 +523,7 @@ class UW_Widget_Twitter extends WP_Widget {
 
     <?php echo $before_widget; ?>
       <div class="twitter-box">
-        <a href="//twitter.com/<?php echo $instance['name'] ?>"><?php if ( ! empty( $title ) ) echo $before_title . $title . $after_title; ?></a>
+        <a href="https://www.twitter.com/<?php echo $instance['name'] ?>"><?php if ( ! empty( $title ) ) echo $before_title . $title . $after_title; ?></a>
         <div class="twitter-feed" data-name="<?php echo $name; ?>" data-count="<?php echo $count; ?>"></div>
       </div>
     <?php echo $after_widget;?>
@@ -535,6 +535,7 @@ class UW_Widget_Twitter extends WP_Widget {
   function load_css_js() {
       wp_register_script( 'twitter-feed', get_bloginfo('template_url') . '/js/widget-twitter-feed.js' , 'jquery' );
       wp_enqueue_script( 'twitter-feed' );
+      wp_enqueue_script( 'jquery.waypoints' );
   }
 }
 
