@@ -15,6 +15,7 @@ Version: 1.0
 /************************************************************************************
     Global
 *************************************************************************************/
+
 body {
     font-size: 90%;
 }
@@ -464,6 +465,33 @@ ol li {
 
 /* ---- Comments (built-in) ---- */
 
+.entry-header {
+  position:relative;
+}
+.entry-header .comments-link a {
+  background: #eee url('img/comment-bubble.png') no-repeat;
+  color: #666;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 35px;
+  overflow: hidden;
+  padding: 0 0 0;
+  position: absolute;
+  top: -5px;
+  right: -15px;
+  text-align: center;
+  text-decoration: none;
+  width: 43px;
+  height: 36px;
+}
+.entry-header .comments-link .leave-reply {
+  visibility: hidden;
+}
+.entry-header .comments-link a:hover, .entry-header .comments-link a:focus, .entry-header .comments-link a:active {
+  background-color: #1982d1;
+  color: #fff;
+  color: rgba(255,255,255,0.8);
+}
 .comment {
 	list-style: none;
 }
@@ -534,11 +562,45 @@ ol li {
 .edit-link.pull-right a {
 	color: white;
 }
+
 /* ---- Three Columns ---- */
 
 .three-col {
     margin: 0 17px;
 }
+
+/* ----  Right Sidebar ---- */
+
+.image-page .image-attachment {
+	text-align: center;
+	padding: 50px 0;
+}
+.image-page .image-attachment p {
+	width: 55%;
+	margin: 0 auto;
+	color: #666;
+	font-size: 13px;
+}
+.image-page img {
+	display: block;
+	margin: 0 auto;
+	border: 5px solid #fff;
+	box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
+}
+.image-page #arrow-mark {
+	display: none;
+}
+body .image-page  h1, body.single .image-page  h1 {
+	text-transform: uppercase;
+	clear: both;
+	border: none;
+	font-size: 21px;
+	display: inline-block;
+	padding: 0 15px 10px 10px;
+	margin: 40px 0 10px 0;
+	border-bottom: 1px solid #E7E7E7;
+}
+
 
 /************************************************
 *	New Alert  									*
@@ -626,7 +688,7 @@ ol li {
 		background-color: #f4f4f4;
 		color: #484848;
 	}
-	body .navbar-caret { display: none !important }
+	body .navbar-caret, .caret { display: none !important }
 	body .dropdown-menu {
    	 	height:0px;
     }
@@ -1063,6 +1125,15 @@ ol li {
 	}
 	.sharing li, .sharing-hidden li {}
 	
+  /* Comments icon */
+  .entry-header .comments-link a {
+    float:right;
+    position:relative;
+    top:0;
+    right:0;
+    margin-right:5px;
+  }
+
 	/* Image Handling */
 	
 	.image-magnifier { 
@@ -1442,7 +1513,7 @@ ol li {
 	
 	/* ----  Top Search ---- */
 	
-	.main-search {
+	#search {
 	    position: absolute;
 	    top: 20px;
 	    right: 45px;
@@ -1491,8 +1562,8 @@ ol li {
   	#search .search-toggle {
   	  display:none;
   	  position: absolute;
-  	  top: 25px;
-  	  right: 51px;
+  	  top: 6px;
+  	  right: 7px;
   	  width:25px;
   	  height:25px;
   	  background: url('img/misc/super-search-handle.png') no-repeat center center #e4e4e4;
@@ -1524,8 +1595,8 @@ ol li {
   	#search .search-options {
   	  display:none;
   	  position: absolute;
-  	  top: 60px;
-  	  right: 30px;
+  	  top: 36px;
+  	  right: -14px;
   	  width: 90px;
   	  z-index: 999;
   	  background-color: white;
@@ -1538,15 +1609,15 @@ ol li {
   	  -moz-border-radius: 5px;
   	}
   	#search .search-options-notch {
-  	  background: url('img/misc/super-search-notch.png') no-repeat -3px 0 transparent;
-  	  color: #F4F4F4;
-  	  display: block;
-  	  width: 20px;
-  	  height: 20px;
-  	  position: absolute;
-  	  font-size: 17px;
-  	  top: -15px;
-  	  right: 25px;
+	  	background: url('img/misc/super-search-notch.png') no-repeat -3px -5px transparent;
+	  	color: #F4F4F4;
+	  	display: block;
+	  	width: 25px;
+	  	height: 12px;
+	  	position: absolute;
+	  	font-size: 17px;
+	  	top: -10px;
+	  	right: 20px;
   	}
   	#search .search-options label {
   	  padding:5px;
@@ -2110,7 +2181,7 @@ ol li {
 
 @media (max-width: 979px) {
 	body .navbar .btn-navbar {	
-		background-color: #f4f4f4;
+		background-color: #444;
 		background-image: -ms-linear-gradient(top, #f4f4f4, #f8f8f8);
 		background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f4f4f4), to(#f8f8f8));
 		background-image: -webkit-linear-gradient(top, #f4f4f4, #f8f8f8);
