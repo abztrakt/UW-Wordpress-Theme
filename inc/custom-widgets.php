@@ -671,7 +671,7 @@ class UW_Showcase_Widget extends WP_Widget {
     $cat = get_term_by('slug','showcase-widget', 'category');
     $args = array(
       'numberposts' => -1,
-      'category' => $cat->term_id
+      'category' => $cat ? $cat->term_id : null
     );
     if (is_multisite())
         switch_to_blog(1);
