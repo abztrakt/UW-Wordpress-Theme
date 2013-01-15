@@ -639,12 +639,21 @@ class UW_Showcase_Widget extends WP_Widget {
 
     if (is_multisite())
         switch_to_blog(1);
-    $post = get_post($instance['id']);
-    echo apply_filters('the_content', $post->post_content);
+
+        if ($instance['type'] == 'category') {
+            $arrPosts = get_posts(array('category'=>$instance['id']));
+            // TODO Display multiple posts in category
+            foreach ($arrPosts as $objPost) {
+                echo apply_filters('the_content', $objPost->post_content);
+            }
+        } else {
+            $post = get_post($instance['id']);
+            echo apply_filters('the_content', $post->post_content);
+        }
     if (is_multisite())
         restore_current_blog();
 
-    if (is_super_admin()) 
+    if (is_super_admin() && ($instance['type'] == 'post'))
       echo '<a class="pull-right" target="_blank" href="' . $instance['edit'] . '">Edit</a>';
     
 		echo $after_widget;
@@ -652,30 +661,43 @@ class UW_Showcase_Widget extends WP_Widget {
 
 	public function update( $new_instance, $old_instance ) {
 		$instance = array();
-    if (is_multisite())
-        switch_to_blog(1);
-    $post = get_post($new_instance['id']);
-    $edit = get_edit_post_link($post->ID);
-    if (is_multisite())
-        restore_current_blog();
 
+        if (is_multisite())
+            switch_to_blog(1);
+
+        if ($new_instance['type'] == 'category') {
+            $objCategory = get_category($new_instance['id']);
+        } else {
+            $post = get_post($new_instance['id']);
+            $edit = get_edit_post_link($post->ID);
+        }
+
+        if (is_multisite())
+            restore_current_blog();
+
+        error_log("Error Log: ".print_r($old_instance['id']));
 		$instance['id'] = $new_instance['id'];
-		$instance['title']   = strip_tags( $post->post_title );
-    $instance['edit'] = $edit;
+        $strTitle = $new_instance['type'] == 'category' ? $objCategory->name : $post->post_title;
+		$instance['title'] = strip_tags( $strTitle );
+		$instance['type']  = $new_instance['type'];
+        $instance['edit']  = $edit ? $edit : '';
 
 		return $instance;
 	}
 
 	public function form( $instance ) {
     wp_enqueue_script('jquery-ui-dialog');
+    if (is_multisite())
+        switch_to_blog(1);
+
     $cat = get_term_by('slug','showcase-widget', 'category');
     $args = array(
       'numberposts' => -1,
       'category' => $cat ? $cat->term_id : null
     );
-    if (is_multisite())
-        switch_to_blog(1);
     $posts = get_posts($args);
+    $arrCats = get_categories(array('hide_empty' => 0,'pad_counts' => 1));
+
     if (is_multisite())
         restore_current_blog();
     
@@ -685,13 +707,26 @@ class UW_Showcase_Widget extends WP_Widget {
 
 		<label for="<?php echo $this->get_field_id('id'); ?>"><?php _e( 'Choose content:' ); ?></label>
       <a class="alignright preview-showcase" id="preview-widget-<?php echo $this->get_field_id('id'); ?>" href="#preview">Preview</a>
-			<select name="<?php echo $this->get_field_name('id'); ?>" id="<?php echo $this->get_field_id('id'); ?>" class="widefat showcase-select">
-
+      <select data-type="post" name="<?php echo $this->get_field_name('id'); ?>" id="post-<?php echo $this->get_field_id('id'); ?>" class="widefat showcase-select">
+      <option value="">--</option>
       <?php foreach($posts as $post) : ?>
+        <?php $strID = $instance['type'] == 'post' ? $instance['id'] : '' ?>
         <option value="<?php echo $post->ID; ?>"<?php selected( $instance['id'], $post->ID); ?>><?php _e($post->post_title); ?></option>
       <?php endforeach; ?>
+      </select>
 
-			</select>
+            <h3>OR</h3>
+
+		<label for="category-<?php echo $this->get_field_id('id'); ?>"><?php _e( 'Choose category:' ); ?></label>
+        <select data-type="category" name="<?php echo $this->get_field_name('id'); ?>" id="category-<?php echo $this->get_field_id('id'); ?>" class="widefat">
+      <option value="">--</option>
+      <?php foreach($arrCats as $objCat) : ?>
+      <?php $strID = $instance['type'] == 'category' ? $instance['id'] : '' ?>
+      <option value="<?php echo $objCat->cat_ID ?>" <?php selected( $instance['id'], $objCat->cat_ID); ?>><?php echo $objCat->name ?> (<?php echo $objCat->count ?>)</option>
+      <?php endforeach; ?>
+    </select>
+
+        <input class="widefat" disabled="disabled" id="<?php echo $this->get_field_id( 'type' ); ?>" name="<?php echo $this->get_field_name( 'type' ); ?>" type="text" value="<?php echo $instance['type'] ?>" />
 
       <style type="text/css">
         .preview-showcase-widget h2 {
@@ -748,6 +783,18 @@ class UW_Showcase_Widget extends WP_Widget {
 
                });
 
+                // Anytime a select changes, update it
+                $('select').change(function() {
+                    if ($(this).val() != '') {
+                        var strType = $(this).data('type')
+                        $('#widget-uw_showcase_widget-4-type').val(strType)
+                    }
+                    // TODO: this should be done
+                    // $('select').attr('disabled', 'disabled');
+                    //$('.someElement').removeAttr('disabled');
+                        
+                });
+                
                 $.fn.showcase_widget_preview_enabled = true;
 
         });
