@@ -710,7 +710,7 @@ class UW_Showcase_Widget extends WP_Widget {
 
 		<label for="<?php echo $this->get_field_id('post_id'); ?>"><?php _e( 'Choose content:' ); ?></label>
       <a class="alignright preview-showcase" id="preview-widget-<?php echo $this->get_field_id('post_id'); ?>" href="#preview">Preview</a>
-      <select data-type="post" name="<?php echo $this->get_field_name('post_id'); ?>" id="post-<?php echo $this->get_field_id('post_id'); ?>" class="widefat showcase-select">
+      <select data-type="post" name="<?php echo $this->get_field_name('post_id'); ?>" id="<?php echo $this->get_field_id('post_id'); ?>" class="widefat showcase-select">
       <option value="">--</option>
       <?php foreach($posts as $post) : ?>
         <option value="<?php echo $post->ID; ?>"<?php selected( $instance['post_id'], $post->ID); ?>><?php _e($post->post_title); ?></option>
@@ -784,15 +784,14 @@ class UW_Showcase_Widget extends WP_Widget {
 
                });
 
+                // There is a better way to do this, but it works
                 // Anytime a select changes, update it
-                // This doesn't work as expected
-                $('select').change(function() {
-                    // if ($(this).val() != '') {
-                    // }
-                    // TODO: this should be done
-                    // $('select').attr('disabled', 'disabled');
-                    //$('.someElement').removeAttr('disabled');
-                        
+                $('#widget-uw_showcase_widget-4-category_id').change(function() {
+                    $('option:selected', '#widget-uw_showcase_widget-4-post_id').removeAttr('selected')
+                });
+
+                $('#widget-uw_showcase_widget-4-post_id').change(function() {
+                    $('option:selected','#widget-uw_showcase_widget-4-category_id').removeAttr('selected')
                 });
 
                 $.fn.showcase_widget_preview_enabled = true;
