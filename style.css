@@ -571,11 +571,13 @@ ol li {
 
 /* ----  Right Sidebar ---- */
 
-.image-page .image-attachment {
+.image-page .attachment {
 	text-align: center;
+}
+.image-page .image-attachment {
 	padding: 50px 0;
 }
-.image-page .image-attachment p {
+.image-page .attachment p {
 	width: 55%;
 	margin: 0 auto;
 	color: #666;

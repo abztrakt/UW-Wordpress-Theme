@@ -536,8 +536,11 @@ if ( ! function_exists('uw_change_cron_address_to_cmswp') ):
 endif;
  */
 
+
+
 require( get_template_directory() . '/inc/patch-band-options.php' );
 require( get_template_directory() . '/inc/media-credit.php' );
+require( get_template_directory() . '/inc/custom-media-urls.php' );
 require( get_template_directory() . '/inc/custom-widgets.php' );
 require( get_template_directory() . '/inc/custom-settings.php' );
 require( get_template_directory() . '/inc/custom-image-sizes.php' );
