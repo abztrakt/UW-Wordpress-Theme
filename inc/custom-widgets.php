@@ -633,74 +633,49 @@ class UW_Showcase_Widget extends WP_Widget {
 		extract( $args );
 		$title = apply_filters( 'widget_title', $instance['title'] );
 
-        echo $before_widget;
+    echo $before_widget;
 
-        if ( ! empty( $title ) ) echo $before_title . $title . $after_title;
+    if ( ! empty( $title ) ) echo $before_title . $title . $after_title;
 
-        if (is_multisite())
-            switch_to_blog(1);
+    if (is_multisite())
+        switch_to_blog(1);
+    $post = get_post($instance['id']);
+    echo apply_filters('the_content', $post->post_content);
+    if (is_multisite())
+        restore_current_blog();
 
-        if (!empty($instance['category_id'])) {
-            $arrPosts = get_posts(array('category'=>$instance['category_id']));
-            // TODO Display multiple posts in category
-            if (count($arrPosts) == 0)
-                echo 'No Content';
-            $strRand = rand(0, count($arrPosts) - 1);
-            echo apply_filters('the_content', $arrPosts[$strRand]->post_content);
-        } else {
-            $post = get_post($instance['post_id']);
-            echo apply_filters('the_content', $post->post_content);
-        }
-        if (is_multisite())
-            restore_current_blog();
-
-        if (is_super_admin() && ($instance['post_id']))
-            echo '<a class="pull-right" target="_blank" href="' . $instance['edit'] . '">Edit</a>';
-        
-        echo $after_widget;
+    if (is_super_admin()) 
+      echo '<a class="pull-right" target="_blank" href="' . $instance['edit'] . '">Edit</a>';
+    
+		echo $after_widget;
 	}
 
 	public function update( $new_instance, $old_instance ) {
 		$instance = array();
+    if (is_multisite())
+        switch_to_blog(1);
+    $post = get_post($new_instance['id']);
+    $edit = get_edit_post_link($post->ID);
+    if (is_multisite())
+        restore_current_blog();
 
-        if (is_multisite())
-            switch_to_blog(1);
-
-        if (!empty($new_instance['category_id'])) {
-            $objCategory = get_category($new_instance['category_id']);
-        } else {
-            $post = get_post($new_instance['post_id']);
-            $edit = get_edit_post_link($post->ID);
-        }
-
-        if (is_multisite())
-            restore_current_blog();
-
-        $instance['post_id'] = $new_instance['post_id'];
-        $instance['category_id'] = $new_instance['category_id'];
-        $instance['id'] = !empty($new_instance['category_id']) ? $new_instance['category_id'] : $new_instance['post_id'];
-
-        $strTitle = !empty($new_instance['category_id']) ? $objCategory->name : $post->post_title;
-		$instance['title'] = strip_tags( $strTitle );
-		$instance['type']  = $new_instance['type'];
-        $instance['edit']  = $edit ? $edit : '';
-
+		$instance['id'] = $new_instance['id'];
+		$instance['title']   = strip_tags( $post->post_title );
+    $instance['edit'] = $edit;
 
 		return $instance;
 	}
 
 	public function form( $instance ) {
     wp_enqueue_script('jquery-ui-dialog');
-    if (is_multisite())
-        switch_to_blog(1);
-
     $cat = get_term_by('slug','showcase-widget', 'category');
     $args = array(
       'numberposts' => -1,
-      'category' => $cat ? $cat->term_id : null
+      'category' => $cat->term_id
     );
+    if (is_multisite())
+        switch_to_blog(1);
     $posts = get_posts($args);
-    $arrCats = get_categories(array('hide_empty' => 0,'pad_counts' => 1));
     if (is_multisite())
         restore_current_blog();
     
@@ -708,26 +683,15 @@ class UW_Showcase_Widget extends WP_Widget {
 
 		<input class="widefat hidden" disabled="disabled" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
 
-		<label for="<?php echo $this->get_field_id('post_id'); ?>"><?php _e( 'Choose content:' ); ?></label>
-      <a class="alignright preview-showcase" id="preview-widget-<?php echo $this->get_field_id('post_id'); ?>" href="#preview">Preview</a>
-      <select data-type="post" name="<?php echo $this->get_field_name('post_id'); ?>" id="<?php echo $this->get_field_id('post_id'); ?>" class="widefat showcase-select">
-      <option value="">--</option>
+		<label for="<?php echo $this->get_field_id('id'); ?>"><?php _e( 'Choose content:' ); ?></label>
+      <a class="alignright preview-showcase" id="preview-widget-<?php echo $this->get_field_id('id'); ?>" href="#preview">Preview</a>
+			<select name="<?php echo $this->get_field_name('id'); ?>" id="<?php echo $this->get_field_id('id'); ?>" class="widefat showcase-select">
+
       <?php foreach($posts as $post) : ?>
-        <option value="<?php echo $post->ID; ?>"<?php selected( $instance['post_id'], $post->ID); ?>><?php _e($post->post_title); ?></option>
+        <option value="<?php echo $post->ID; ?>"<?php selected( $instance['id'], $post->ID); ?>><?php _e($post->post_title); ?></option>
       <?php endforeach; ?>
-      </select>
 
-            <h3>OR</h3>
-
-		<label for="<?php echo $this->get_field_id('category_id'); ?>"><?php _e( 'Choose category:' ); ?></label>
-        <select data-type="category" name="<?php echo $this->get_field_name('category_id'); ?>" id="<?php echo $this->get_field_id('category_id'); ?>" class="widefat">
-      <option value="">--</option>
-      <?php foreach($arrCats as $objCat) : ?>
-      <option value="<?php echo $objCat->cat_ID ?>" <?php selected( $instance['category_id'], $objCat->cat_ID); ?>><?php echo $objCat->name ?> (<?php echo $objCat->count ?>)</option>
-      <?php endforeach; ?>
-    </select>
-
-        <input class="widefat hidden" disabled="disabled" id="<?php echo $this->get_field_id( 'type' ); ?>" name="<?php echo $this->get_field_name( 'type' ); ?>" type="text" value="<?php echo $instance['type']; ?>" />
+			</select>
 
       <style type="text/css">
         .preview-showcase-widget h2 {
@@ -754,7 +718,7 @@ class UW_Showcase_Widget extends WP_Widget {
       <?php foreach($posts as $post) : ?>
 
         <div class="hidden preview-showcase-widget post-<?php echo $post->ID; ?>">
-          <h2><span><?php echo $post->post_title; ?></span></h2>
+          <h2><span><?php echo$post->post_title; ?></span></h2>
           <?php echo apply_filters('the_content', $post->post_content); ?>
         </div>
 
@@ -783,16 +747,6 @@ class UW_Showcase_Widget extends WP_Widget {
                  $('.post-'+id).dialog('open');
 
                });
-
-                // There is a better way to do this, but it works
-                // Anytime a select changes, update it
-                $('#widget-uw_showcase_widget-4-category_id').change(function() {
-                    $('option:selected', '#widget-uw_showcase_widget-4-post_id').removeAttr('selected')
-                });
-
-                $('#widget-uw_showcase_widget-4-post_id').change(function() {
-                    $('option:selected','#widget-uw_showcase_widget-4-category_id').removeAttr('selected')
-                });
 
                 $.fn.showcase_widget_preview_enabled = true;
 
