@@ -786,13 +786,13 @@ class UW_Showcase_Widget extends WP_Widget {
 
                 // There is a better way to do this, but it works
                 // Anytime a select changes, update it
-                jQuery('select[data-type="category"]').change(function() {
-                    $('option:selected', 'select[data-type="post"]').removeAttr('selected')
-                });
+                // jQuery('select[data-type="category"]').change(function() {
+                //     $('option:selected', 'select[data-type="post"]').removeAttr('selected')
+                // });
 
-                $('select[data-type="post"]').change(function() {
-                    $('option:selected','select[data-type="category"]').removeAttr('selected')
-                });
+                // $('select[data-type="post"]').change(function() {
+                //     $('option:selected','select[data-type="category"]').removeAttr('selected')
+                // });
 
                 $.fn.showcase_widget_preview_enabled = true;
 
