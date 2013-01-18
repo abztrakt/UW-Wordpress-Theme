@@ -788,10 +788,12 @@ class UW_Showcase_Widget extends WP_Widget {
                     var type = $(this).val()
 
                     if (type == 'category') {
+                        $('.preview-showcase').hide()
                         var data = <?php echo json_encode($arrCats) ?>;
                     }
 
                     if (type == 'post') {
+                        $('.preview-showcase').show()
                         var data = <?php echo json_encode($posts) ?>;
                     }
 
