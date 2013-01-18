@@ -640,21 +640,21 @@ class UW_Showcase_Widget extends WP_Widget {
         if (is_multisite())
             switch_to_blog(1);
 
-        if (!empty($instance['category_id'])) {
+        if ($instance['type'] == 'category') {
             $arrPosts = get_posts(array('category'=>$instance['category_id']));
             // TODO Display multiple posts in category
             if (count($arrPosts) == 0)
                 echo 'No Content';
             $strRand = rand(0, count($arrPosts) - 1);
-            echo apply_filters('the_content', $arrPosts[$strRand]->post_content);
+            echo apply_filters('the_content', $arrPosts[$strRand]->content);
         } else {
-            $post = get_post($instance['post_id']);
-            echo apply_filters('the_content', $post->post_content);
+            $post = get_post($instance['id']);
+            echo apply_filters('the_content', $post->content);
         }
         if (is_multisite())
             restore_current_blog();
 
-        if (is_super_admin() && ($instance['post_id']))
+        if (is_super_admin() && ($instance['type'] == 'post')) 
             echo '<a class="pull-right" target="_blank" href="' . $instance['edit'] . '">Edit</a>';
         
         echo $after_widget;
@@ -666,25 +666,21 @@ class UW_Showcase_Widget extends WP_Widget {
         if (is_multisite())
             switch_to_blog(1);
 
-        if (!empty($new_instance['category_id'])) {
-            $objCategory = get_category($new_instance['category_id']);
+        if ($new_instance['type'] == 'category') {
+            $objCategory = get_category($new_instance['id']);
         } else {
-            $post = get_post($new_instance['post_id']);
+            $post = get_post($new_instance['id']);
             $edit = get_edit_post_link($post->ID);
         }
 
         if (is_multisite())
             restore_current_blog();
 
-        $instance['post_id'] = $new_instance['post_id'];
-        $instance['category_id'] = $new_instance['category_id'];
-        $instance['id'] = !empty($new_instance['category_id']) ? $new_instance['category_id'] : $new_instance['post_id'];
-
-        $strTitle = !empty($new_instance['category_id']) ? $objCategory->name : $post->post_title;
+        $instance['id'] = $new_instance['id'];
+        $strTitle = $new_instance['type'] == 'category' ? $objCategory->name : $post->post_title;
 		$instance['title'] = strip_tags( $strTitle );
-		$instance['type']  = $new_instance['type'];
+        $instance['type'] = $new_instance['type'];
         $instance['edit']  = $edit ? $edit : '';
-
 
 		return $instance;
 	}
@@ -708,26 +704,24 @@ class UW_Showcase_Widget extends WP_Widget {
 
 		<input class="widefat hidden" disabled="disabled" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
 
-		<label for="<?php echo $this->get_field_id('post_id'); ?>"><?php _e( 'Choose content:' ); ?></label>
-      <a class="alignright preview-showcase" id="preview-widget-<?php echo $this->get_field_id('post_id'); ?>" href="#preview">Preview</a>
-      <select data-type="post" name="<?php echo $this->get_field_name('post_id'); ?>" id="<?php echo $this->get_field_id('post_id'); ?>" class="widefat showcase-select">
-      <option value="">--</option>
+        <div id="widget-showcase-type">
+          <label for="<?php echo $this->get_field_name('type'); ?>"><?php _e( 'Single Post' ); ?></label>
+          <input class="widget-radio" type="radio" name="<?php echo $this->get_field_name('type'); ?>" <?php selected($instance['type'],'post'); ?> value="post" /><br />
+
+          <label for="<?php echo $this->get_field_name('type'); ?>"><?php _e( 'Category' ); ?></label>
+          <input class="widget-radio"  type="radio" name="<?php echo $this->get_field_name('type'); ?>" <?php selected($instance['type'],'category'); ?> value="category" /><br />
+        </div>
+
+
+        <div class="widget-select-wrapper" style="display:none;">
+		<label for="<?php echo $this->get_field_id('id'); ?>"><?php _e( 'Choose content:' ); ?></label>
+      <a class="alignright preview-showcase" id="preview-widget-<?php echo $this->get_field_id('id'); ?>" href="#preview">Preview</a>
+      <select name="<?php echo $this->get_field_name('id'); ?>" id="<?php echo $this->get_field_id('id'); ?>" class="widefat showcase-select">
       <?php foreach($posts as $post) : ?>
-        <option value="<?php echo $post->ID; ?>"<?php selected( $instance['post_id'], $post->ID); ?>><?php _e($post->post_title); ?></option>
+        <option value="<?php echo $post->ID; ?>"<?php selected( $instance['id'], $post->ID); ?>><?php _e($post->post_title); ?></option>
       <?php endforeach; ?>
       </select>
-
-            <h3>OR</h3>
-
-		<label for="<?php echo $this->get_field_id('category_id'); ?>"><?php _e( 'Choose category:' ); ?></label>
-        <select data-type="category" name="<?php echo $this->get_field_name('category_id'); ?>" id="<?php echo $this->get_field_id('category_id'); ?>" class="widefat">
-      <option value="">--</option>
-      <?php foreach($arrCats as $objCat) : ?>
-      <option value="<?php echo $objCat->cat_ID ?>" <?php selected( $instance['category_id'], $objCat->cat_ID); ?>><?php echo $objCat->name ?> (<?php echo $objCat->count ?>)</option>
-      <?php endforeach; ?>
-    </select>
-
-        <input class="widefat hidden" disabled="disabled" id="<?php echo $this->get_field_id( 'type' ); ?>" name="<?php echo $this->get_field_name( 'type' ); ?>" type="text" value="<?php echo $instance['type']; ?>" />
+        </div>
 
       <style type="text/css">
         .preview-showcase-widget h2 {
@@ -748,6 +742,9 @@ class UW_Showcase_Widget extends WP_Widget {
           font-size: 14px; line-height: 21px; 
           color: #333;
           font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+        #widget-showcase-type {
+            margin: 5px 0;
         }
       </style>
 
@@ -784,15 +781,32 @@ class UW_Showcase_Widget extends WP_Widget {
 
                });
 
-                // There is a better way to do this, but it works
-                // Anytime a select changes, update it
-                // jQuery('select[data-type="category"]').change(function() {
-                //     $('option:selected', 'select[data-type="post"]').removeAttr('selected')
-                // });
+                $('.widget-radio').click(function() {
+                    console.log('click')
 
-                // $('select[data-type="post"]').change(function() {
-                //     $('option:selected','select[data-type="category"]').removeAttr('selected')
-                // });
+                    $('.widget-select-wrapper').show()
+                    var type = $(this).val()
+
+
+                    if (type == 'category') {
+                        var data = <?php echo json_encode($arrCats) ?>;
+                    }
+
+                    if (type == 'post') {
+                        var data = <?php echo json_encode($posts) ?>;
+                    }
+
+                    $('.showcase-select').empty();
+
+                    $.each(data, function() {
+
+                        key = type == 'post' ? this.ID : this.cat_ID
+                        value = type == 'post' ? this.post_title : this.name
+
+                        $('.showcase-select').append($('<option>', { value : key })
+                            .text(value));
+                    });
+                });
 
                 $.fn.showcase_widget_preview_enabled = true;
 
