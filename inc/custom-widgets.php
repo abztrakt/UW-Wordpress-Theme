@@ -641,7 +641,7 @@ class UW_Showcase_Widget extends WP_Widget {
             switch_to_blog(1);
 
         if ($instance['type'] == 'category') {
-            $arrPosts = get_posts(array('category'=>$instance['category_id']));
+            $arrPosts = get_posts(array('category'=>$instance['id']));
             // TODO Display multiple posts in category
             if (count($arrPosts) == 0)
                 echo 'No Content';
@@ -666,18 +666,18 @@ class UW_Showcase_Widget extends WP_Widget {
         if (is_multisite())
             switch_to_blog(1);
 
-        if ($new_instance['type'] == 'category') {
-            $objCategory = get_category($new_instance['id']);
-        } else {
+        if ($new_instance['type'] == 'post') {
             $post = get_post($new_instance['id']);
             $edit = get_edit_post_link($post->ID);
+        } else {
+            $objCategory = get_category($new_instance['id']);
         }
 
         if (is_multisite())
             restore_current_blog();
 
         $instance['id'] = $new_instance['id'];
-        $strTitle = $new_instance['type'] == 'category' ? $objCategory->name : $post->post_title;
+        $strTitle = $new_instance['type'] == 'post' ? $post->post_title : $objCategory->name;
 		$instance['title'] = strip_tags( $strTitle );
         $instance['type'] = $new_instance['type'];
         $instance['edit']  = $edit ? $edit : '';
@@ -782,11 +782,9 @@ class UW_Showcase_Widget extends WP_Widget {
                });
 
                 $('.widget-radio').click(function() {
-                    console.log('click')
 
                     $('.widget-select-wrapper').show()
                     var type = $(this).val()
-
 
                     if (type == 'category') {
                         var data = <?php echo json_encode($arrCats) ?>;
@@ -797,7 +795,6 @@ class UW_Showcase_Widget extends WP_Widget {
                     }
 
                     $('.showcase-select').empty();
-
                     $.each(data, function() {
 
                         key = type == 'post' ? this.ID : this.cat_ID
