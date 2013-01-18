@@ -646,10 +646,10 @@ class UW_Showcase_Widget extends WP_Widget {
             if (count($arrPosts) == 0)
                 echo 'No Content';
             $strRand = rand(0, count($arrPosts) - 1);
-            echo apply_filters('the_content', $arrPosts[$strRand]->content);
+            echo apply_filters('the_content', $arrPosts[$strRand]->post_content);
         } else {
             $post = get_post($instance['id']);
-            echo apply_filters('the_content', $post->content);
+            echo apply_filters('the_content', $post->post_content);
         }
         if (is_multisite())
             restore_current_blog();
@@ -781,6 +781,7 @@ class UW_Showcase_Widget extends WP_Widget {
 
                });
 
+                // FIXME: Really ugly and could use some streamlining
                 $('.widget-radio').click(function() {
 
                     $('.widget-select-wrapper').show()
@@ -797,6 +798,7 @@ class UW_Showcase_Widget extends WP_Widget {
                     $('.showcase-select').empty();
                     $.each(data, function() {
 
+                        // Because wordpress uses different names for ids and such
                         key = type == 'post' ? this.ID : this.cat_ID
                         value = type == 'post' ? this.post_title : this.name
 
