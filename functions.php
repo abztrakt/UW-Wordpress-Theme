@@ -120,7 +120,7 @@ add_action( 'admin_head', 'uw_admin_js_css' );
 if ( ! function_exists( 'uw_admin_js_css' ) ):
   function uw_admin_js_css() 
   {
-    wp_register_script( 'admin', get_bloginfo('template_directory') . '/admin/js/admin.js', array('jquery'),'1.1' );
+    wp_register_script( 'admin', get_bloginfo('template_directory') . '/admin/js/admin.js', array('jquery'),'1.0' );
     wp_enqueue_script('admin');
 
     // no real reason to register it
