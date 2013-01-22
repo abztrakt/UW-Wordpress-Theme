@@ -633,9 +633,9 @@ class UW_Showcase_Widget extends WP_Widget {
 		extract( $args );
 		$title = apply_filters( 'widget_title', $instance['title'] );
 
-        echo $before_widget;
+    echo $before_widget;
 
-        if ( ! empty( $title ) ) echo $before_title . $title . $after_title;
+    if ( ! empty( $title ) ) echo $before_title . $title . $after_title;
 
     if (is_multisite())
         switch_to_blog(1);
@@ -671,17 +671,20 @@ class UW_Showcase_Widget extends WP_Widget {
     $cat = get_term_by('slug','showcase-widget', 'category');
     $args = array(
       'numberposts' => -1,
-      'category' => $cat ? $cat->term_id : null
+      'category' => $cat->term_id
     );
     if (is_multisite())
         switch_to_blog(1);
     $posts = get_posts($args);
-      <select name="<?php echo $this->get_field_name('id'); ?>" id="<?php echo $this->get_field_id('id'); ?>" class="widefat showcase-select">
-      <?php foreach($posts as $post) : ?>
-        <option value="<?php echo $post->ID; ?>"<?php selected( $instance['id'], $post->ID); ?>><?php _e($post->post_title); ?></option>
-      <?php endforeach; ?>
-      </select>
-        </div>
+    if (is_multisite())
+        restore_current_blog();
+    
+    $title  = isset( $instance[ 'title' ] ) ? $instance[ 'title' ] : __( 'Showcase', '' );  ?>
+
+		<input class="widefat hidden" disabled="disabled" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
+
+		<label for="<?php echo $this->get_field_id('id'); ?>"><?php _e( 'Choose content:' ); ?></label>
+      <a class="alignright preview-showcase" id="preview-widget-<?php echo $this->get_field_id('id'); ?>" href="#preview">Preview</a>
 			<select name="<?php echo $this->get_field_name('id'); ?>" id="<?php echo $this->get_field_id('id'); ?>" class="widefat showcase-select">
 
       <?php foreach($posts as $post) : ?>
@@ -715,7 +718,7 @@ class UW_Showcase_Widget extends WP_Widget {
       <?php foreach($posts as $post) : ?>
 
         <div class="hidden preview-showcase-widget post-<?php echo $post->ID; ?>">
-          <h2><span><?php echo $post->post_title; ?></span></h2>
+          <h2><span><?php echo$post->post_title; ?></span></h2>
           <?php echo apply_filters('the_content', $post->post_content); ?>
         </div>
 
