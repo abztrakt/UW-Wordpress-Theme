@@ -662,13 +662,6 @@ class UW_Showcase_Widget extends WP_Widget {
 
 	public function update( $new_instance, $old_instance ) {
 		$instance = array();
-    if (is_multisite())
-        switch_to_blog(1);
-    $post = get_post($new_instance['id']);
-    $edit = get_edit_post_link($post->ID);
-    if (is_multisite())
-        restore_current_blog();
-
         if (is_multisite())
             switch_to_blog(1);
 
@@ -696,11 +689,12 @@ class UW_Showcase_Widget extends WP_Widget {
     $cat = get_term_by('slug','showcase-widget', 'category');
     $args = array(
       'numberposts' => -1,
-      'category' => $cat->term_id
+      'category' => $cat ? $cat->term_id : null
     );
     if (is_multisite())
         switch_to_blog(1);
     $posts = get_posts($args);
+    $arrCats = get_categories(array('hide_empty' => 0,'pad_counts' => 1));
     if (is_multisite())
         restore_current_blog();
     
@@ -755,7 +749,7 @@ class UW_Showcase_Widget extends WP_Widget {
       <?php foreach($posts as $post) : ?>
 
         <div class="hidden preview-showcase-widget post-<?php echo $post->ID; ?>">
-          <h2><span><?php echo$post->post_title; ?></span></h2>
+          <h2><span><?php echo $post->post_title; ?></span></h2>
           <?php echo apply_filters('the_content', $post->post_content); ?>
         </div>
 
