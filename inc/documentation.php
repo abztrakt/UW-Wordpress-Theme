@@ -1,9 +1,26 @@
 <?php
+// Create the function to output the contents of our Dashboard Widget
 
-function uw_documentation_page() {
-	add_theme_page( 'Documentation & FAQs', 'FAQs', 'read', 'uw-documentation',	'uw_documentation_html'	);
+
+function uw_add_documentation_dashboard_widget() {
+
+	global $wp_meta_boxes;
+  
+	wp_add_dashboard_widget('uw-documentation', 'Documentation and FAQs', 'uw_documentation_html');	
+
+  $wp_meta_boxes['dashboard']['side']['core']['uw-documentation'] =
+     $wp_meta_boxes['dashboard']['normal']['core']['uw-documentation'];
+  unset($wp_meta_boxes['dashboard']['normal']['core']['uw-documentation']);
+  
+  remove_meta_box( 'dashboard_quick_press', 'dashboard', 'side' );
+  remove_meta_box( 'dashboard_primary', 'dashboard', 'side' );
+  remove_meta_box( 'dashboard_secondary', 'dashboard', 'side' );
+  remove_meta_box( 'dashboard_recent_drafts', 'dashboard', 'side' );
+	remove_meta_box( 'dashboard_incoming_links', 'dashboard', 'normal' );
+  
 } 
-add_action( 'admin_menu', 'uw_documentation_page', 11);
+
+add_action('wp_dashboard_setup', 'uw_add_documentation_dashboard_widget' ); 
 
 function uw_documentation_html() 
 {
@@ -11,8 +28,6 @@ function uw_documentation_html()
 
 	<div class="wrap">
 
-		<div id="icon-themes" class="icon32"></div>
-		<h2>Documentation & FAQs</h2>
     <p>
       This documentation is also available on the <a href="http://www.washington.edu/marketing/web-design/wordpress-theme/documentation/" target="_blank">University Marketing</a> site.
     </p>
