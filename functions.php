@@ -538,6 +538,7 @@ endif;
 
 
 
+require( get_template_directory() . '/inc/documentation.php' );
 require( get_template_directory() . '/inc/patch-band-options.php' );
 require( get_template_directory() . '/inc/media-credit.php' );
 require( get_template_directory() . '/inc/custom-media-urls.php' );
