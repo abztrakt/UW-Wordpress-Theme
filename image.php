@@ -25,8 +25,6 @@
 				</footer><!-- .entry-meta -->
 			</article><!-- #post-<?php the_ID(); ?> -->
 
-					<?php comments_template( '', true ); ?>
-
 			<?php endwhile; // end of the loop. ?>
 
 				</div>
