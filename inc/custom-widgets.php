@@ -519,11 +519,14 @@ class UW_Widget_Twitter extends WP_Widget {
     $count = $instance['count'];
 ?>
 
+
   <?php if ($name != '' && $count > 0 ): ?>
 
     <?php echo $before_widget; ?>
       <div class="twitter-box">
-        <a href="https://www.twitter.com/<?php echo $instance['name'] ?>"><?php if ( ! empty( $title ) ) echo $before_title . $title . $after_title; ?></a>
+        <?php echo $before_title; ?>
+        <a href="https://www.twitter.com/<?php echo $instance['name'] ?>"><?php if ( ! empty( $title ) ) echo $title  ?></a>
+        <?php echo $after_title; ?>
         <div class="twitter-feed" data-name="<?php echo $name; ?>" data-count="<?php echo $count; ?>"></div>
       </div>
     <?php echo $after_widget;?>
