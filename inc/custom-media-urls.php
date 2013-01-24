@@ -3,8 +3,7 @@
 
 function uw_edit_attachment_slug( $fields, $post )
 {
-  if ( get_post_mime_type($post->ID) == 'application/pdf' || 
-        get_post_mime_type($post->ID) == 'application/msword' ) 
+  if ( strpos( get_post_mime_type($post->ID), 'application/') !== false )
   {
     $fields['post_name'] = array(
         'label' => __('Slug'),
