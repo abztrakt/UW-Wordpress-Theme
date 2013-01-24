@@ -125,7 +125,7 @@ if ( ! function_exists('uw_blogroll_shortcode') ):
     if ( ! is_array($atts) )
       $atts = array();
 
-    if ( !is_page() )
+    if ( get_post_type() == 'post' )
       return '';
 
     $params = array_merge( array(
