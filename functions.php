@@ -236,6 +236,11 @@ if ( ! function_exists( 'uw_footer_menu') ) :
     {
       switch_to_blog(1);
     }
+
+    $locations = get_nav_menu_locations();
+    $menu = wp_get_nav_menu_object($locations['footer']);
+
+    echo "<h2>{$menu->name}</h2>";
     wp_nav_menu( array( 
       'theme_location'  => 'footer',
       'menu_class'      => 'footer-navigation',

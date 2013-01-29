@@ -3,7 +3,6 @@
 
 <div id="footerBG">
     <div id="footer" role="navigation" aira-label="Global Footer Menu">
-    	<h2>Explore <?php echo apply_filters('abbreviation', get_bloginfo('title')); ?></h2>
     	<?php uw_footer_menu(); ?>
     </div>
 </div>
