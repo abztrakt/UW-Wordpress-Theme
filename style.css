@@ -677,15 +677,6 @@ body .image-page  h1, body.single .image-page  h1 {
     	visibility:hidden; 
     	height:0; 
 	}
-	.navbar .btn-navbar::before {
-		content: "MENU";
-		position: absolute;
-		right: 55px;
-		color: #C2C2C2;
-		font-size: 12px;
-		font-weight: bold;
-		top: 5px;
-	}
 	body .nav-collapse .nav > li > a:hover {
 		background-color: #f4f4f4;
 		color: #484848;
@@ -1725,6 +1716,7 @@ body .image-page  h1, body.single .image-page  h1 {
 		padding: 3px 10px 3px 7px;
 		font-size: 105%;
 		color: #717171;
+		min-width: 200px;
 	}
 	#branding .dropdown-menu li > a:focus {
 		color: white;
@@ -2184,26 +2176,35 @@ body .image-page  h1, body.single .image-page  h1 {
 @media (max-width: 979px) {
 	body .navbar .btn-navbar {	
 		background-color: #444;
-		background-image: -ms-linear-gradient(top, #f4f4f4, #f8f8f8);
-		background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f4f4f4), to(#f8f8f8));
-		background-image: -webkit-linear-gradient(top, #f4f4f4, #f8f8f8);
-		background-image: -o-linear-gradient(top, #f4f4f4, #f8f8f8);
-		background-image: linear-gradient(top, #f4f4f4, #f8f8f8);
-		background-image: -moz-linear-gradient(top, #f4f4f4, #f8f8f8);
+		background-image: -ms-linear-gradient(top, #C2C2C2, #858585);
+		background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#C2C2C2), to(#858585));
+		background-image: -webkit-linear-gradient(top, #C2C2C2, #858585);
+		background-image: -o-linear-gradient(top, #C2C2C2, #858585);
+		background-image: linear-gradient(top, #C2C2C2, #858585);
+		background-image: -moz-linear-gradient(top, #C2C2C2, #858585);
 		background-repeat: repeat-x;
 		border-color: #222 #222 black;
-		filter: progid:dximagetransform.microsoft.gradient(startColorstr='#f8f8f8', endColorstr='#f4f4f4', GradientType=0);
+		filter: progid:dximagetransform.microsoft.gradient(startColorstr='#858585', endColorstr='#C2C2C2', GradientType=0);
 		filter: progid:dximagetransform.microsoft.gradient(enabled=false);
-		border-color: #ddd;
-    position:relative;
-    z-index:1;
+		border-color: #ADADAD;
+		position:relative;
+		z-index:1;
 	}
 	body .navbar .btn-navbar:hover {
-		background-color: #DDD;
+		background-color: #6B6B6B;
 	}
-  body .menu .sub-menu {
-    right:178px;
-  }
+	body .menu .sub-menu {
+	    right:178px;
+    }
+    .navbar .btn-navbar::before {
+		content: "MENU";
+		position: absolute;
+		right: 50px;
+		color: #929292;
+		font-size: 12px;
+		font-weight: bold;
+		top: 5px;
+	}
 }
 
 @media (min-width: 980px) {
