@@ -258,3 +258,113 @@ function uw_google_calendar_shortcode( $atts ) {
 endif;
 
 add_shortcode( 'googleapps', 'uw_google_calendar_shortcode' );
+
+
+/**
+ * UWTV Shortcode and iFrame to shortcode conversion
+ */
+add_filter( 'pre_kses', 'uwtv_embed_to_shortcode' );
+if ( ! function_exists('uwtv_embed_to_shortcode') ) :
+  function uwtv_embed_to_shortcode( $content ) 
+  {
+    if ( false === strpos( $content, '<iframe ' ) && false === strpos( $content, 'uwtv.org/video/iframe' ) )
+      return $content;
+    
+	  $content = preg_replace_callback( '#&lt;iframe\s[^&]*?(?:&(?!gt;)[^&]*?)*?src="http?://.*?\.uwtv\.(.*?)/(.*?)\?(.+?)"[^&]*?(?:&(?!gt;)[^&]*?)*?&gt;\s*&lt;/iframe&gt;\s*(?:&lt;br\s*/?&gt;)?\s*#i', 'uwtv_embed_to_shortcode_callback', $content );
+
+	  $content = preg_replace_callback( '!\<iframe\s[^>]*?src="http?://.*?\.uwtv\.(.*?)/(.*?)\?(.+?)"[^>]*?\>\s*\</iframe\>\s*!i', 'uwtv_embed_to_shortcode_callback', $content );
+
+    return $content;
+  }
+endif;
+
+if ( ! function_exists('uwtv_embed_to_shortcode_callback') ) :
+function uwtv_embed_to_shortcode_callback( $match ) {
+	if ( preg_match( '/\bwidth=[\'"](\d+)/', $match[0], $width ) ) {
+		$width = min( array( (int) $width[1] , 630 ) );
+	} else {
+		$width = 630;
+	}
+
+	if ( preg_match( '/\bheight=[\'"](\d+)/', $match[0], $height ) ) {
+		$height = (int) $height[1];
+	} else {
+		$height = 500;
+	}
+
+  preg_match('/(\d+)/', $match[3], $mediaid);
+
+  return "[uwtv video=\"{$mediaid[0]}\" width=\"$width\" height=\"$height\"]";
+}
+endif;
+
+if ( ! function_exists('uwtv_shortcode') ) :
+function uwtv_shortcode( $atts ) {
+
+    $params = shortcode_atts( array(
+      'video'  => '',
+      'width'   => 620,
+      'height'  => 500,
+    ), $atts );
+    extract($params);
+
+    return '<div class="uwtv-embed"><iframe width="' . $width . '" height="' . $height . '" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.uwtv.org/video/iframe-embed.aspx?mediaid=' . $video . '"></iframe></div>';
+}
+endif;
+
+add_shortcode( 'uwtv', 'uwtv_shortcode' );
+
+
+/**
+ * TVW Shortcode and iFrame to shortcode conversion
+ */
+add_filter( 'pre_kses', 'tvw_embed_to_shortcode' );
+if ( ! function_exists('tvw_embed_to_shortcode') ) :
+  function tvw_embed_to_shortcode( $content ) 
+  {
+    if ( false === strpos( $content, '<iframe ' ) && false === strpos( $content, 'tvw.org/scripts/iframe' ) )
+      return $content;
+
+	  $content = preg_replace_callback( '#&lt;iframe\s[^&]*?(?:&(?!gt;)[^&]*?)*?src="http?://.*?\.tvw\.(.*?)/(.*?)\?(.+?)"[^&]*?(?:&(?!gt;)[^&]*?)*?&gt;\s*&lt;/iframe&gt;\s*(?:&lt;br\s*/?&gt;)?\s*#i', 'tvw_embed_to_shortcode_callback', $content );
+
+	  $content = preg_replace_callback( '!\<iframe\s[^>]*?src="http?://.*?\.tvw\.(.*?)/(.*?)\?(.+?)"[^>]*?\>\s*\</iframe\>\s*!i', 'tvw_embed_to_shortcode_callback', $content );
+
+    return $content;
+  }
+endif;
+
+if ( ! function_exists('tvw_embed_to_shortcode_callback') ) :
+function tvw_embed_to_shortcode_callback( $match ) {
+
+  //parse_str(htmlspecialchars_decode($match[3]), $query);
+
+	$width = ( preg_match( '/\bwidth=[\'"](\d+)/', $match[0], $width ) ) ?
+    min( array( (int) $width[1] , 630 ) ) : 
+    $width = 630;
+
+	$height = ( preg_match( '/\bheight=[\'"](\d+)/', $match[0], $height ) ) ? 
+		$height = (int) $height[1] : $height = 500;
+
+  //  $video = $query['eventID'];
+  //  $start = $query['start'];
+  //  $stop  = $query['stop'];
+
+  return "[tvw query=\"{$match[3]}\" width=\"$width\" height=\"$height\"]";
+}
+endif;
+
+if ( ! function_exists('tvw_shortcode') ) :
+function tvw_shortcode( $atts ) {
+
+    $params = shortcode_atts( array(
+      'query'  => '',
+      'width'   => 620,
+      'height'  => 500,
+    ), $atts );
+    extract($params);
+
+    return '<div class="tvw-embed"><iframe width="' . $width . '" height="' . $height . '" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.tvw.org/scripts/iframe_video.php?'.$query.'"></iframe></div>';
+}
+endif;
+
+add_shortcode( 'tvw', 'tvw_shortcode' );
