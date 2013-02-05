@@ -120,19 +120,10 @@ add_action( 'admin_head', 'uw_admin_js_css' );
 if ( ! function_exists( 'uw_admin_js_css' ) ):
   function uw_admin_js_css() 
   {
-    wp_register_script( 'jquery.chosen', get_bloginfo('template_directory') . '/js/jquery.chosen.min.js', array('jquery'),'1.1' );
-    wp_enqueue_script('jquery.chosen');
-
     wp_register_script( 'admin', get_bloginfo('template_directory') . '/admin/js/admin.js', array('jquery'),'1.1' );
     wp_enqueue_script('admin');
 
-    wp_enqueue_style( 'admin', get_bloginfo('template_directory') . '/admin/css/admin.css' );
-    wp_enqueue_style('admin');
-
-    wp_enqueue_style( 'chosen', 'http://www.washington.edu/maps/wp-content/themes/maps/css/chosen.css?ver=3.4.2' );
-
-
-    // no reason to register it
+    // no real reason to register it
     wp_enqueue_style( 'google-font-open-sans', 'https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300' );
   }
 endif;
@@ -212,29 +203,6 @@ if ( ! function_exists( 'uw_admin_header_image' ) ):
 	</div>
 <?php }
 endif;
-
-if( ! function_exists('uw_breadcrumbs') ) :
-  function uw_breadcrumbs()
-  {
-    global $post;
-
-    $ancestors = array_reverse(get_post_ancestors($post->ID));
-    $ancestors[] = $post->ID;
-    $len = count($ancestors);
-    if ( $len == 1 )
-      return '';
-
-    foreach ($ancestors as $index=>$ancestor) 
-    {
-      $class = $index+1 == count($ancestors) ? ' class="current" ' : '';
-      $page  = get_post($ancestor);
-      $url   = get_permalink($page->ID);
-      $html .= "<li $class><a href=\"$url\" title=\"{$page->post_title}\">{$page->post_title}</a>";
-    }
-    echo "<ul class=\"breadcrumbs\">$html</ul>";
-  }
-endif;
-
 
 if ( ! function_exists( 'uw_dropdowns' ) ): 
 

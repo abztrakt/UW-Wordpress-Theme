@@ -15,36 +15,6 @@ If there are desired features or changes, our team's philosophy is to create a c
 
 ## History
 
-### 1.2.5 - Unreleased
-  - Adding blogroll shortcode for custom post types
-  - MS Word mimetype template added 
-
-### 1.2.4 - Bugfixes, Documentation and Comments
-  - Added image view template without comments
-  - Added basic documentation page to dashboard
-  - Comment Number bubble added
-  - Update copyright date
-  - Bugfix for the twitter widget
-
-### 1.2.3 - Accessbility and small reorg for search
-  - Media alt text use title instead of blank 
-  - Update search
-  - IE Bug Fixes
-  - Twitter Widget bug fixes
-
-### 1.2.2 - Mostly Holiday Video, More Shortcodes
-  - Allow shortcodes in widgets
-  - Updates for holiday video
-  - Updated alert banner 
-  - Google Calendar Shortcode
-
-### 1.2.1 - Bug fixes, Pagination and Menus
-  - Pagination by Default
-  - Facebook Meta Tags
-  - Better Menu for Tablets
-  - Youtube Playlist Shortcode
-  - IE Updates
-
 ### 1.2.0 - Search and Navigation Updates
   - Better search
   - Slideshow template added
