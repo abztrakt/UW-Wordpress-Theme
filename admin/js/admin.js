@@ -1,4 +1,5 @@
 jQuery(document).ready(function($){
+  // Force checks the no-confirmation necessary when registering users
   $('input[name=noconfirmation]').closest('tr').hide().end().attr('checked', true);
 
 
@@ -14,4 +15,14 @@ jQuery(document).ready(function($){
       
   });
 
+  // Autocomplete (combobox) for the author, page parent dropdowns 
+  if ( $().combobox ) 
+  {
+    //$('#post_author_override').combobox()
+    $('#post_author_override').width('100%').chosen()
+    //$('#parent_id option').each(function() {
+    //  console.log($(this).html().replace(/(&nbsp;)/g,"")) 
+    //})
+    //$('#parent_id').chosen()
+  }
 })

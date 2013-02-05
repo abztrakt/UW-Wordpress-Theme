@@ -12,6 +12,8 @@
 
       <span id="arrow-mark" <?php the_blogroll_banner_style(); ?> ></span>
 				
+<?php uw_breadcrumbs(); ?>
+
 			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 				<header class="entry-header">
 					<h1 class="entry-title"><?php apply_filters('italics', get_the_title()); ?></h1>
