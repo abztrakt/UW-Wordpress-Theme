@@ -131,7 +131,13 @@ class UW_Widget_Recent_Posts extends WP_Widget {
           <p> <small><?php echo human_time_diff(get_the_time('U'), current_time('timestamp')); ?> ago</small> </p>
       </li>
 		<?php endwhile; ?>
+      <?php if ( $instance['show-more-link'] ): ?>
+        <li>
+        <a class="more" href="<?php echo get_permalink(get_option('page_for_posts')) ?>" title="Go to blog page">More</a>
+        </li>
+      <?php endif; ?>
 		</ul>
+
 
     <?php  wp_reset_postdata(); ?>
 
@@ -173,6 +179,7 @@ class UW_Widget_Recent_Posts extends WP_Widget {
 		$instance['title'] = strip_tags($new_instance['title']);
 		$instance['number'] = (int) $new_instance['number'];
 		$instance['show-popular'] = (bool) $new_instance['show-popular'];
+		$instance['show-more-link'] = (bool) $new_instance['show-more-link'];
 		$this->flush_widget_cache();
 
 		$alloptions = wp_cache_get( 'alloptions', 'options' );
@@ -196,11 +203,14 @@ class UW_Widget_Recent_Posts extends WP_Widget {
 		<p><label for="<?php echo $this->get_field_id('number'); ?>"><?php _e('Number of posts to show:'); ?></label>
 		<input id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="text" value="<?php echo $number; ?>" size="3" /></p>
 
-
     <?php if (class_exists('GADWidgetData') ) : ?>
 		<p> <input id="<?php echo $this->get_field_id('show-popular'); ?>" name="<?php echo $this->get_field_name('show-popular'); ?>" type="checkbox" value="1" <?php checked( $instance['show-popular']) ?> />
     <label for="<?php echo $this->get_field_id('show-popular'); ?>"><?php _e('Show popular posts'); ?></label> </p>
     <?php endif; ?>
+
+		<p> <input id="<?php echo $this->get_field_id('show-more-link'); ?>" name="<?php echo $this->get_field_name('show-more-link'); ?>" type="checkbox" value="1" <?php checked( $instance['show-more-link']) ?> />
+    <label for="<?php echo $this->get_field_id('show-more-link'); ?>"><?php _e('Show more link'); ?></label> </p>
+
 <?php
 	}
 }
