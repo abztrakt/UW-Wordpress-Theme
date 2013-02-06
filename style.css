@@ -462,7 +462,22 @@ ol li {
 	background-color: #F4F4F4;
 	border-radius: 20px;
 }
+/* ---- Blogroll ---- */
 
+.shortcode-blogroll img {
+	margin: 0 10px 10px 0;
+}
+.shortcode-blogroll li > a {
+	font-size: 16px;
+	margin-bottom: 10px;
+}
+ul.shortcode-blogroll li {
+	border-bottom: 1px solid rgb(243, 243, 243);
+	padding: 0 0 10px 0;
+	margin: 0 0 20px 0;
+	display: block;
+	overflow: hidden;
+}
 /* ---- Comments (built-in) ---- */
 
 .entry-header {
@@ -628,20 +643,20 @@ body .image-page  h1, body.single .image-page  h1 {
 #uwalert-alert-message a { color: #FDE048; }
 
 .uwalert-red 				{ background-color: #C61029;}
-.uwalert-red div			{ background: url('https://www.washington.edu/static/alert_logo_red-v2.jpg') no-repeat 0 -38px; }
-#alert-mini.uwalert-red	{ background: url('http://www.washington.edu/static/alert_logo_red-v2.jpg') no-repeat 16% 14% #C61029; background-size: 18%; }
+.uwalert-red div			{ background: url('https://www.washington.edu/static/alert_logo_red.jpg') no-repeat 0 -38px; }
+#alert-mini.uwalert-red	{ background: url('https://www.washington.edu/static/alert_logo_red.jpg') no-repeat 16% 14% #C61029; background-size: 18%; }
 
 .uwalert-steel 			{ background-color: #597286; }
-.uwalert-steel div 		{ background: url('https://www.washington.edu/static/alert_logo_steel-v2.jpg') no-repeat 0 -38px; }
-#alert-mini.uwalert-steel { background: url('https://www.washington.edu/static/alert_logo_steel-v2.jpg') no-repeat 16% 14% #597286; background-size: 18%; }
+.uwalert-steel div 		{ background: url('https://www.washington.edu/static/alert_logo_steel.jpg') no-repeat 0 -38px; }
+#alert-mini.uwalert-steel { background: url('https://www.washington.edu/static/alert_logo_steel.jpg') no-repeat 16% 14% #597286; background-size: 18%; }
 
 .uwalert-blue 			{ background-color: #0193c9; }
-.uwalert-blue div 		{ background: url('https://www.washington.edu/static/alert_logo_blue-v2.jpg') no-repeat 0 -38px; }
-#alert-mini.uwalert-blue  { background: url('https://www.washington.edu/static/alert_logo_blue-v2.jpg') no-repeat 16% 14% #0193c9; background-size: 18%; }
+.uwalert-blue div 		{ background: url('https://www.washington.edu/static/alert_logo_steel.jpg') no-repeat 0 -38px; }
+#alert-mini.uwalert-blue  { background: url('https://www.washington.edu/static/alert_logo_steel.jpg') no-repeat 16% 14% #597286; background-size: 18%; }
 
 .uwalert-orange 			{ background-color: #ec7330;}
-.uwalert-orange div 		{ background: url('https://www.washington.edu/static/alert_logo_orange-v2.jpg') no-repeat 0 -38px; }
-#alert-mini.uwalert-orange { background: url('https://www.washington.edu/static/alert_logo_orange-v2.jpg') no-repeat 16% 14% #ec7330; background-size: 18%; }
+.uwalert-orange div 		{ background: url('https://www.washington.edu/static/alert_logo_orange.jpg') no-repeat 0 -38px; }
+#alert-mini.uwalert-orange { background: url('https://www.washington.edu/static/alert_logo_orange.jpg') no-repeat 16% 14% #ec7330; background-size: 18%; }
 
 
 @media (min-width: 768px) and (max-width: 979px) { 
@@ -842,7 +857,7 @@ body .image-page  h1, body.single .image-page  h1 {
 		padding: 5px 0 0;
 		margin: 0 0 5px;
 		position: relative;
-		width: 80%;
+		width: 75%;
 	}
 	.navbar-inner h3 a {
 		font-size: 20px;
@@ -1901,6 +1916,40 @@ body .image-page  h1, body.single .image-page  h1 {
 	    background-position: left bottom;
 	}
 		
+	/* ----  Content ---- */ 
+	.breadcrumbs {
+		padding-bottom: 20px;
+	}
+	.breadcrumbs li {
+		max-width: 200px;
+		overflow: hidden;
+		float: left;
+		margin-left: -25px;
+		padding-right: 20px;
+		-webkit-transition: width 1s ease-in-out;
+		 -moz-transition: width 1s ease-in-out;
+		 -o-transition: width 1s ease-in-out;
+		 transition: width 1s ease-in-out;
+	}
+	.breadcrumbs li a {
+		background: url('img/misc/breadcrumb.png') no-repeat 0 0 transparent;	
+		display: block;
+		padding: 3px 0 3px 35px;
+		white-space:nowrap;
+	}
+	.breadcrumbs li:first-child a { 
+		background: none; 
+		padding-left: 25px;
+	}
+	
+	.breadcrumbs li:hover {
+		max-width: inherit;
+	}	
+	.breadcrumbs a {
+		color: #888;
+		font-size: 12px;
+	}
+	
 	/* ----  Content ---- */
 	
 	#content {
