@@ -74,9 +74,6 @@ a:focus {
 	color: #005580;
 	text-decoration: underline;
 }
-#branding a:focus {
-	outline: thin dotted #fff;
-}
 p {
 	line-height: 1.5em;
     margin-bottom: 1.4em;
@@ -465,11 +462,14 @@ ol li {
 /* ---- Blogroll ---- */
 
 .shortcode-blogroll img {
+	width: 17%;
 	margin: 0 10px 10px 0;
 }
 .shortcode-blogroll li > a {
-	font-size: 16px;
-	margin-bottom: 10px;
+	font-size: 1.2em;
+	margin-bottom: 5px;
+	display: inline-block;
+	line-height: 22px;
 }
 ul.shortcode-blogroll li {
 	border-bottom: 1px solid rgb(243, 243, 243);
@@ -477,6 +477,7 @@ ul.shortcode-blogroll li {
 	margin: 0 0 20px 0;
 	display: block;
 	overflow: hidden;
+	background: none;
 }
 /* ---- Comments (built-in) ---- */
 
