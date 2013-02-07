@@ -64,11 +64,10 @@ jQuery(document).ready(function($){
                         }).html('Campus Alert: '+post.title).addClass(css)
 
           $('body').append(mini)
+            .addClass('uw-alert')
 
-        },
-        function(){
-
-    });
+        }
+      );
 
 
     /**
