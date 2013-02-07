@@ -255,7 +255,7 @@ jQuery(window).load(function() {
   }
   calculate_dropdowns();
 
-  $('#menu-primary-menu').attr('role','menubar')
+  $('div.nav-collapse').children('.nav').attr('role','menubar')
   $('.dropdown')
     .mouseenter(function(e) {
     
