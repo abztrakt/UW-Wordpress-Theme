@@ -527,6 +527,19 @@ if ( ! function_exists( 'uw_sharing_show' ) ):
   }
 endif;
 
+add_filter('bloginfo_rss', 'uw_category_rss_link', 10, 2);
+if ( ! function_exists( 'uw_category_rss_link') ):
+
+  function uw_category_rss_link($arg, $show) {
+    if ($show == 'url' && is_feed() && is_category() )
+    {
+      $id = get_query_var('cat');
+      return get_category_link($id);
+    };
+    return $arg;
+  }
+
+endif;
 
 /*
  * Will be used in WP 3.4.2 to fix our schedules posts bug
