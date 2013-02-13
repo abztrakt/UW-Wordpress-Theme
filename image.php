@@ -18,7 +18,7 @@
 				<div class="entry-content">
 					<?php echo wp_get_attachment_image($post->ID, 'full'); ?>
 					<h1 class="entry-title"><?php the_title(); ?></h1>
-					<?php the_excerpt(); ?>
+					<?php the_content(); ?>
 				</div><!-- .entry-content -->
 				<footer class="entry-meta">
 					<?php edit_post_link( __( 'Edit', 'twentyeleven' ), '<span class="edit-link">', '</span>' ); ?>

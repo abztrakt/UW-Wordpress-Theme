@@ -605,6 +605,11 @@ ul.shortcode-blogroll li {
 	border: 5px solid #fff;
 	box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
 }
+.image-page .sharing {
+	margin: 10px auto;
+	padding-top: 10px;
+	display: table;
+}
 .image-page #arrow-mark {
 	display: none;
 }
