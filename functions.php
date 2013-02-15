@@ -447,7 +447,6 @@ add_filter('option_wpurl', 'force_https_the_content');
 add_filter('option_stylesheet_url', 'force_https_the_content');
 add_filter('option_template_url', 'force_https_the_content');
 
-
 if ( ! function_exists( 'force_https_the_content' ) ):
   /**
    * For our setup, when a user is logged into WP he or she is
@@ -461,6 +460,28 @@ if ( ! function_exists( 'force_https_the_content' ) ):
           $content = str_replace( 'src="http://', 'src="https://', $content );
         return $content;
     }
+
+endif;
+
+add_filter('wp_prepare_attachment_for_js', 'force_https_thumbnail_url');
+if ( ! function_exists( 'force_https_thumbnail_url') ):
+  /**
+   * The new media library in Wordpress 3.5 uses ajax for thumbnails, which
+   * don't pass through any of the previous filters. Need to replace all url 
+   * sizes.
+   */
+  function force_https_thumbnail_url($url) 
+  {
+    $ssl = is_ssl();
+    $http = site_url(FALSE, 'http');
+    $https = site_url(FALSE, 'https');
+    if ( $ssl && array_key_exists('sizes', $url) ) {
+      foreach ($url['sizes'] as $index=>$value) {
+        $url['sizes'][$index] = str_replace($http, $https, $url['sizes'][$index] );
+      }
+    }
+    return ( $ssl ) ? str_replace($http, $https, $url) : $url;
+  }
 
 endif;
 
