@@ -479,6 +479,19 @@ ul.shortcode-blogroll li {
 	overflow: hidden;
 	background: none;
 }
+
+/* ---- Archive Page ---- */
+
+.archive h1 {
+	font-size: 1.7em;
+	margin-bottom: .3em;
+}
+.archive article {
+	padding-bottom: 10px;
+	margin-bottom: 22px;
+	border-bottom: 1px solid rgb(243, 243, 243);
+}
+
 /* ---- Comments (built-in) ---- */
 
 .entry-header {
@@ -614,14 +627,12 @@ ul.shortcode-blogroll li {
 	display: none;
 }
 body .image-page  h1, body.single .image-page  h1 {
-	text-transform: uppercase;
 	clear: both;
 	border: none;
 	font-size: 21px;
 	display: inline-block;
 	padding: 0 15px 10px 10px;
 	margin: 40px 0 10px 0;
-	border-bottom: 1px solid #E7E7E7;
 }
 
 
