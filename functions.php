@@ -17,6 +17,8 @@ if ( ! function_exists( 'uw_setup' ) ):
     add_image_size( 'Body Image', 300, 9999, false );
     add_image_size( 'Full Width', 620, 9999, false );
 
+    add_image_size( 'thumbnail-large', 300, 300, true );
+
 	  register_nav_menu( 'primary', __( 'Primary Menu', 'uw' ) );
 	  register_nav_menu( 'footer', __( 'Footer Menu', 'uw' ) );
 
@@ -38,6 +40,7 @@ if ( ! function_exists( 'uw_setup' ) ):
 
 endif;
 
+
 add_action( 'wp_enqueue_scripts', 'uw_enqueue_default_styles' );
 
 if ( ! function_exists( 'uw_enqueue_default_styles' ) ): 
@@ -56,6 +59,7 @@ if ( ! function_exists( 'uw_enqueue_default_styles' ) ):
       if ( $is_child_theme)
         wp_register_style( 'uw-style', get_bloginfo('stylesheet_url'), array('bootstrap-responsive'), '3.4.1.1' );
       wp_register_style( 'google-font-open-sans', 'https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300' );
+      wp_register_style( 'uw-gallery', get_bloginfo('template_directory') . '/css/gallery.css' );
       wp_enqueue_style( 'bootstrap' );
       wp_enqueue_style( 'bootstrap-responsive' );
       wp_enqueue_style( 'uw-master' );
@@ -63,6 +67,7 @@ if ( ! function_exists( 'uw_enqueue_default_styles' ) ):
         wp_enqueue_style( 'uw-style' );
       wp_enqueue_style( 'google-font-open-sans' );
 
+      wp_enqueue_style('uw-gallery');
       // Holiday video 2012
       if ( $current_blog->path === '/cms/discover/' 
             && get_query_var('pagename') === 'holiday')
@@ -92,18 +97,22 @@ if ( ! function_exists( 'uw_enqueue_default_scripts' ) ):
     wp_register_script( 'jquery.placeholder', get_bloginfo('template_directory') . '/js/jquery.placeholder.js', array('jquery'), '1.0' );
     wp_register_script( 'jquery.imageexpander', get_bloginfo('template_directory') . '/js/jquery.imageexpander.js', array('jquery'), '1.0.4' );
     wp_register_script( 'jquery.waypoints', get_bloginfo('template_directory') . '/js/jquery.waypoints.min.js', array('jquery'), '1.1.7' );
-    wp_register_script( 'jquery.imagesloaded', get_bloginfo('template_directory') . '/js/jquery.imagesloaded.min.js', array('jquery'), '1.0' );
+    wp_register_script( 'jquery.imagesloaded', get_bloginfo('template_directory') . '/js/jquery.imagesloaded.min.js', array('jquery'), '2.1.1' );
     wp_register_script( 'jquery.parallax', get_bloginfo('template_directory') . '/js/jquery.parallax.min.js', array('jquery'), '1.0' );
     wp_register_script( 'jquery.404', get_bloginfo('template_directory') . '/js/404.js', array('jquery'), '1.0' );
     wp_register_script( 'jquery.masonry', get_bloginfo('template_directory') . '/js/jquery.masonry.min.js', array('jquery') );
 
     wp_register_script( 'widget-youtube-playlist', get_bloginfo('template_directory') . '/js/widget-youtube-playlist.js', array('jquery','swfobject','jquery.imagesloaded') );
+    wp_register_script( 'uw-gallery', get_bloginfo('template_directory') . '/js/gallery.js', array('jquery','jquery.imagesloaded') );
 
     wp_enqueue_script( 'jquery' );
     wp_enqueue_script( 'header' );
     wp_enqueue_script( 'jquery.firenze' );
     wp_enqueue_script( 'jquery.placeholder' );
     wp_enqueue_script( 'jquery.imageexpander' );
+
+    wp_enqueue_script('uw-gallery');
+
 
     if( is_404() ) {
 
@@ -570,6 +579,7 @@ require( get_template_directory() . '/inc/patch-band-options.php' );
 require( get_template_directory() . '/inc/media-credit.php' );
 require( get_template_directory() . '/inc/custom-media-urls.php' );
 require( get_template_directory() . '/inc/custom-widgets.php' );
+require( get_template_directory() . '/inc/custom-gallery.php' );
 require( get_template_directory() . '/inc/custom-settings.php' );
 require( get_template_directory() . '/inc/custom-image-sizes.php' );
 require( get_template_directory() . '/inc/custom-shortcodes.php' );
