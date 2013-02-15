@@ -146,7 +146,7 @@ if ( ! function_exists('uw_blogroll_shortcode') ):
 
       if ( in_array($params['excerpt'], array('show', 'true') ) ) 
       {
-        $excerpt = strlen($post->post_excerpt) > 0 ? $post->post_excerpt : $post->post_content;
+        $excerpt = strlen($post->post_excerpt) > 0 ? $post->post_excerpt : apply_filters('widget_text', $post->post_content);
         if ( in_array($params['trim'], array('show', 'true') ) )
           $excerpt = wp_trim_words($excerpt);
         $excerpt = wpautop($excerpt); //using apply_filters('the_content', $excerpt) causes an infinite loop
