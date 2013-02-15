@@ -96,7 +96,11 @@ $(document).ready(function() {
         , hasCaption = $this.closest('.wp-caption').length > 0
         , $a
 
-      if( ! $this.parent('a').attr('href').match(/\b(jpeg|jpg|png|gif|tiff)/i))
+      if ( $this.closest('.gallery').length < 0 )
+        return false;
+
+      if( $this.parent('a').length < 0 && 
+          ! $this.parent('a').attr('href').match(/\b(jpeg|jpg|png|gif|tiff)/i))
         return false;
         
 
