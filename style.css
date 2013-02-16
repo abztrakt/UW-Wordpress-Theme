@@ -486,12 +486,17 @@ ul.shortcode-blogroll li {
 	font-size: 1.7em;
 	margin-bottom: .3em;
 }
-.archive article {
-	padding-bottom: 10px;
-	margin-bottom: 22px;
-	border-bottom: 1px solid rgb(243, 243, 243);
+.archive article img {
+	float: right;
+	margin: 0 0 20px 40px;
+	border: 4px solid white;
+	-webkit-box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
+	-moz-box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
+	box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
 }
-
+.archive .span8 {
+	margin-top: 5px;
+}
 /* ---- Comments (built-in) ---- */
 
 .entry-header {
