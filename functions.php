@@ -464,6 +464,7 @@ if ( ! function_exists( 'force_https_the_content' ) ):
 endif;
 
 add_filter('wp_prepare_attachment_for_js', 'force_https_thumbnail_url');
+add_filter('media_send_to_editor', 'force_https_thumbnail_url');
 if ( ! function_exists( 'force_https_thumbnail_url') ):
   /**
    * The new media library in Wordpress 3.5 uses ajax for thumbnails, which
@@ -475,7 +476,7 @@ if ( ! function_exists( 'force_https_thumbnail_url') ):
     $ssl = is_ssl();
     $http = site_url(FALSE, 'http');
     $https = site_url(FALSE, 'https');
-    if ( $ssl && array_key_exists('sizes', $url) ) {
+    if ( $ssl && is_array($url) && array_key_exists('sizes', $url) ) {
       foreach ($url['sizes'] as $index=>$value) {
         $url['sizes'][$index] = str_replace($http, $https, $url['sizes'][$index] );
       }
