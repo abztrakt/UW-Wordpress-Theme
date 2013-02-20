@@ -154,7 +154,7 @@ $(document).ready(function() {
 
     $menu.html('')
     while (num--) {
-      $menu.append($('<li/>'))
+      $menu.append($('<li/>').text(num))
     }
     $menu.children('li').first().trigger('click')
 

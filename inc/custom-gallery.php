@@ -25,6 +25,8 @@ function t_gallery($output, $attr)
 	if ( empty($attachments) )
 		return '';
 
+  $len = sizeof($attachments);
+
   $groups = array_chunk($attachments, 5);
 
   $html = '<div class="gallery"><a href="#" class="slideshow-left"></a><a href="#" class="slideshow-right"></a><div class="gallery-viewport-wrapper"><div class="gallery-viewport">';
@@ -43,10 +45,12 @@ function t_gallery($output, $attr)
       $med_url = wp_get_attachment_image_src($image->ID, 'Full Width');
       $large_url = wp_get_attachment_image_src($image->ID, 'full');
       
-      if ( $index == 4 ) {
+      if ( $index == 4 || $len < 5 ) {
 
         $large = '<div class="gallery-image" data-permalink-url="'.get_permalink($image->ID).'" data-url="'.$med_url[0].'" data-wp-url="'. $large_url[0] .'" style="background-image:url('.$url_large[0].')"><span><p class="image-title">'. $image->post_title .'</p><p>' . $image->post_excerpt .'</p></span></div>' .  "\n\n";
 
+        if ( $len < 5 )  
+          $html .= "<div class=\"large\">$large</div>";
 
       } else {
 
@@ -58,9 +62,10 @@ function t_gallery($output, $attr)
 
     $menu .= '<li>'.$i.'</li>';
 
-    $html .= ( $i % 2 ) ? 
-      "<div class=\"large\">$large</div><div class=\"group\">$group</div>" :
-      "<div class=\"group\">$group</div><div class=\"large\">$large</div>";
+    if ( $len > 4 )
+      $html .= ( $i % 2 ) ? 
+        "<div class=\"large\">$large</div><div class=\"group\">$group</div>" :
+        "<div class=\"group\">$group</div><div class=\"large\">$large</div>";
   }
   $html .= '</div></div><div class="gallery-table"><ul class="gallery-menu">'.$menu.'</ul></div></div><!-- .gallery -->';
   $overlay = '<div id="gallery-overlay-image" style="display:none">
