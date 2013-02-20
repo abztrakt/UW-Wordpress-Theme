@@ -16,6 +16,7 @@ If there are desired features or changes, our team's philosophy is to create a c
 ## History
 
 ### 1.2.5 - Unreleased
+  - Breadcrumbs for pages
   - Adding blogroll shortcode for custom post types
   - MS Word mimetype template added 
 
