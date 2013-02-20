@@ -906,7 +906,7 @@ body .image-page  h1, body.single .image-page  h1 {
 	}
 	/* Stuff to Hide */
 	
-	.header-image, .skip-link, .assistive-text { display: none }
+	.header-image, .skip-link, .assistive-text, .breadcrumbs-list { display: none }
 
 	/* =============================================================================
 	   Mobile Header Queries Rewrite
@@ -1939,11 +1939,12 @@ body .image-page  h1, body.single .image-page  h1 {
 	}
 		
 	/* ----  Content ---- */ 
-	.breadcrumbs {
-		padding-bottom: 20px;
+	.breadcrumbs-list {
+		display: inline-block;
+		margin: 0 0 0 -7px;
 	}
-	.breadcrumbs li {
-		max-width: 200px;
+	.breadcrumbs-list li {
+		max-width: 250px;
 		overflow: hidden;
 		float: left;
 		margin-left: -25px;
@@ -1953,21 +1954,20 @@ body .image-page  h1, body.single .image-page  h1 {
 		 -o-transition: width 1s ease-in-out;
 		 transition: width 1s ease-in-out;
 	}
-	.breadcrumbs li a {
+	.breadcrumbs-list li a {
 		background: url('img/misc/breadcrumb.png') no-repeat 0 0 transparent;	
 		display: block;
 		padding: 3px 0 3px 35px;
 		white-space:nowrap;
 	}
-	.breadcrumbs li:first-child a { 
+	.breadcrumbs-list li:first-child a { 
 		background: none; 
-		padding-left: 25px;
 	}
 	
-	.breadcrumbs li:hover {
+	.breadcrumbs-list li:hover {
 		max-width: inherit;
 	}	
-	.breadcrumbs a {
+	.breadcrumbs-list a {
 		color: #888;
 		font-size: 12px;
 	}
@@ -1995,6 +1995,9 @@ body .image-page  h1, body.single .image-page  h1 {
 	    width: 32px;
 	    height: 50px;
 	    display: block;
+	}
+	.breadcrumbs #arrow-mark {
+		top: 65px;
 	}
 
 	/* .slideshowpro-wrapper object {

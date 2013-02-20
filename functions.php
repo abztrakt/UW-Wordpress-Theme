@@ -222,6 +222,44 @@ if ( ! function_exists( 'uw_admin_header_image' ) ):
 <?php }
 endif;
 
+if( ! function_exists('get_uw_breadcrumbs') ) :
+  function get_uw_breadcrumbs()
+  {
+    global $post;
+
+    $ancestors = array_reverse(get_post_ancestors($post->ID));
+    $ancestors[] = $post->ID;
+    $len = count($ancestors);
+    if ( $len == 1 )
+      return '';
+
+    foreach ($ancestors as $index=>$ancestor) 
+    {
+      $class = $index+1 == count($ancestors) ? ' class="current" ' : '';
+      $page  = get_post($ancestor);
+      $url   = get_permalink($page->ID);
+      $html .= "<li $class><a href=\"$url\" title=\"{$page->post_title}\">{$page->post_title}</a>";
+    }
+    return "<ul class=\"breadcrumbs-list\">$html</ul>";
+  }
+endif;
+
+if( ! function_exists('uw_breadcrumbs') ) :
+  function uw_breadcrumbs()
+  {
+    echo get_uw_breadcrumbs();
+  }
+endif;
+
+if( ! function_exists('uw_breadcrumbs_on') ) :
+  function uw_breadcrumbs_on()
+  {
+    return strlen(get_uw_breadcrumbs()) > 0;
+  }
+endif;
+
+
+
 if ( ! function_exists( 'uw_dropdowns' ) ): 
 
   function uw_dropdowns() 
@@ -410,7 +448,8 @@ if ( ! function_exists( 'uw_custom_body_classes' ) ):
   {
     if (is_multisite())
         $classes[] = 'site-'. sanitize_html_class(str_replace('cms','',get_blog_details(get_current_blog_id())->path));
-    $classes[] = is_home() && get_option('blogroll-banner')? 'featured-image' : '';
+    $classes[] = is_home() && get_option('blogroll-banner') ? 'featured-image' : '';
+    $classes[] = uw_breadcrumbs_on() ? 'breadcrumbs' : '';
     return $classes;
   }
 endif;
