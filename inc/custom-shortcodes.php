@@ -366,5 +366,31 @@ function tvw_shortcode( $atts ) {
     return '<div class="tvw-embed"><iframe width="' . $width . '" height="' . $height . '" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.tvw.org/scripts/iframe_video.php?'.$query.'"></iframe></div>';
 }
 endif;
-
 add_shortcode( 'tvw', 'tvw_shortcode' );
+
+/**
+ * This shortcode allows iFrames for editors.
+ * Only certain domains are allowed, listed in /inc/helper-functions.php
+ */
+if ( ! function_exists('uw_iframe_shortcode') ) :
+function uw_iframe_shortcode($atts) {
+
+    $params = shortcode_atts(array(
+      'src' => '',
+      'height' => get_option('embed_size_h'),
+      'width' => get_option('embed_size_w')
+    ), $atts);
+
+    $params['src'] = esc_url($params['src'], array('http','https'));
+    if ( $params['src'] == '' )
+      return '';
+
+    $parsed = parse_url($params['src']);
+    if ( array_key_exists('host', $parsed) && !in_array($parsed['host'], get_iframe_domains() ) )
+      return '';
+
+    return "<iframe src=\"{$params['src']}\" width=\"{$params['width']}\" height=\"{$params['height']}\" frameborder=\"0\"></iframe>";
+
+}
+endif;
+add_shortcode( 'iframe', 'uw_iframe_shortcode' );

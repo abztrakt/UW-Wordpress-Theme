@@ -68,3 +68,20 @@ if ( ! function_exists( 'is_local' ) ):
 
 endif;
 
+if ( ! function_exists( 'get_iframe_domains' )):
+  function get_iframe_domains() 
+  {
+    return array(
+      'uw.edu',
+      'washington.edu',
+      'google.com',
+      'youtube.com',
+      'excition.com',
+      'www.uw.edu',
+      'www.washington.edu',
+      'www.google.com',
+      'www.excition.com',
+      'www.youtube.com'
+    );
+  }
+endif;
