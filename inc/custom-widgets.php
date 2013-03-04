@@ -23,6 +23,9 @@ function uw_register_widgets() {
   register_widget('UW_Showcase_Widget');
   register_widget('UW_Subpage_Menu');
   register_widget('UW_Nav_Menu_Widget');
+
+  if ( is_multisite() && get_blog_details('marketing') )
+    register_widget('UW_Pride_Points');
 }
 
 add_action('widgets_init', 'uw_register_widgets', 1);
@@ -1000,6 +1003,71 @@ class UW_Nav_Menu_Widget extends WP_Nav_Menu_Widget {
 	}
 
 }
+
+
+class UW_Pride_Points extends WP_Widget {
+
+	function UW_Pride_Points() {
+		$widget_ops = array( 'description' => __('Show a UW pride point on your site!') );
+		parent::__construct( 'uw-pride-points', __('UW Pride Points'), $widget_ops );
+	}
+
+	function widget($args, $instance) {
+    extract( $args );
+		// outputs the content of the widget
+		$title = apply_filters( 'widget_title', $instance['title'] );
+
+    if ( ! empty( $title ) ) 
+      echo $before_title . $title . $after_title; 
+
+    $content .= '<div class="pride-point" style="display:none" data-category="'.$instance['category'].'"></div>
+      <script type="text/javascript">
+        jQuery(document).ready(function($){
+          
+          var $widget = $("#'.$widget_id.'").find(".pride-point");
+          var data = {
+            json : "pride_points.get_pride_point",
+            cat  : $widget.data("category")
+          }
+          $.ajax({
+            type: "GET",
+            url : "/cms/marketing/",
+            data: data, 
+            success : function(json) {
+                      if ( json.status == "ok" && json.count === 1) 
+                        $widget.fadeIn().html(json.posts.content)
+            },
+            cache:false
+  })
+        });
+      </script> 
+      ';
+
+    echo $before_widget . $content . $after_widget;
+	}
+
+	function update($new_instance, $old_instance) {
+		$instance = array();
+		$instance['title'] = strip_tags( $new_instance['title'] );
+		$instance['category'] = strip_tags( $new_instance['category'] );
+		return $instance;
+	}
+
+	function form($instance) {
+
+		$title = isset($instance['title']) ? esc_attr($instance['title']) : '';
+		$category = isset($instance['category']) ? esc_attr($instance['category']) : '';
+?>
+		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label>
+		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>
+
+		<p><label for="<?php echo $this->get_field_id('category'); ?>"><?php _e('Category:'); ?></label>
+		<input class="widefat" id="<?php echo $this->get_field_id('category'); ?>" name="<?php echo $this->get_field_name('category'); ?>" type="text" value="<?php echo $category; ?>" /></p>
+
+<?php
+	}
+}
+
 
 
 
