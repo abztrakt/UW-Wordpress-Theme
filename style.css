@@ -1952,6 +1952,8 @@ body.site-graduation {background: url("img/misc/commencement-bg.jpg") no-repeat 
 		overflow: hidden;
 		width: 10px;
 	}
+	#secondary .home-link a { display: none; }
+	
 	/************************************************************************************
 		Body
 	*************************************************************************************/
