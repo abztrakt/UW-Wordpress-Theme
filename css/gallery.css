@@ -2,6 +2,7 @@ div.gallery {
   width: 100%; 
   position: relative;
   display: inline-block;
+  margin: 15px 0;
 }
 .gallery span {
 	display: block;
@@ -409,14 +410,3 @@ ul.gallery-menu  li.active {
 }
 
 
-/* =============================================================================
-   High Pixel Density Displays
-   ========================================================================== */
-
-
-@media only screen and (max-width: 768px) and (-webkit-min-device-pixel-ratio: 1.5), 
-		only screen and (max-width: 768px) and (-o-min-device-pixel-ratio: 3/2), 
-		only screen and (max-width: 768px) and (min--moz-device-pixel-ratio: 1.5), 
-		only screen and (max-width: 768px) and (min-device-pixel-ratio: 1.5) { 
-
-}

@@ -170,6 +170,51 @@ hr {
 	padding: 2px 0 2px 25px;
 }
 
+/* - Pride Points Widget - */
+
+.widget_uw-pride-points {
+	box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
+	-webkit-box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
+	padding: 5px 5px 15px 5px;
+	margin: 0px 0px 25px 3px;
+	position: relative;
+	text-align: center;
+}
+.widget_uw-pride-points p {
+	padding: 5px;
+	margin: 0;
+}
+.widget_uw-pride-points .pride-content {
+	color: rgb(57, 39, 91);
+	font-family: Baskerville, 'Times New Roman', Times, serif;
+	font-weight: 300;
+	font-size: 1.3em;
+	text-align: center;
+	font-style: italic;
+	padding: 0 20px;
+	line-height: 23px;
+	margin: 5px 0 10px;
+}
+.widget_uw-pride-points .pride-src {
+	border-top: 1px solid rgb(221, 221, 221);
+	display: inline-block;
+	font-size: 12px;
+	padding: 5px 10px;
+	color: rgb(163, 163, 163);
+}
+.widget_uw-pride-points span {
+	background: url("img/widgets/pride-points.png") 0 0 no-repeat transparent;
+	display: block;
+	width: 123px;
+	height: 65px;
+	position: absolute;
+	top: 30px;
+	left: -15px;
+	overflow: hidden;
+	text-indent: -99999px;
+}
+
+
 /* - Announcements Widget - */
 
 #sidebar .announcements li {
@@ -603,8 +648,14 @@ ul.shortcode-blogroll li {
     margin: 0 17px;
 }
 
-/* ----  Right Sidebar ---- */
+/* ----  Image Page ---- */
 
+.attachment-jpeg #primary {
+	background-color: transparent;
+	box-shadow: none;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+}
 .image-page .attachment {
 	text-align: center;
 }
@@ -781,6 +832,13 @@ body .image-page  h1, body.single .image-page  h1 {
 	#uwalert-alert-message div {
 		width: 768px;
 	}
+	
+	/* ---- Graduation ---- */
+	
+	body.site-graduation {background: url("img/misc/graduation-bg.jpg") no-repeat center top #ffffff; }
+	.site-graduation header { background: none }
+	.site-graduation .wordmark { background-position: -1000px 0; }
+	
 }
 @media (max-width: 480px) { 
 }
@@ -2279,7 +2337,7 @@ body .image-page  h1, body.single .image-page  h1 {
    ========================================================================== */
 
 
-@media only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 1.5) { 
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5) { 
     	.wordmark {
     		background: url("img/mobile-header/logo2x.png") no-repeat 0 0 transparent;
       	    background-size: 230px 35px;
