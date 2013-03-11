@@ -730,6 +730,12 @@ body .image-page  h1, body.single .image-page  h1 {
 .uwalert-orange 			{ background-color: #ec7330;}
 .uwalert-orange div 		{ background: url('https://www.washington.edu/static/alert_logo_orange.jpg') no-repeat 0 -38px; }
 #alert-mini.uwalert-orange { background: url('https://www.washington.edu/static/alert_logo_orange.jpg') no-repeat 16% 14% #ec7330; background-size: 18%; }
+	
+/* ---- Graduation ---- */
+
+body.site-graduation {background: url("img/misc/commencement-bg.jpg") no-repeat center top #ffffff; }
+.site-graduation header { background: none }
+.site-graduation .wordmark { background-position: -1000px 0; }
 
 
 @media (min-width: 768px) and (max-width: 979px) { 
@@ -832,12 +838,6 @@ body .image-page  h1, body.single .image-page  h1 {
 	#uwalert-alert-message div {
 		width: 768px;
 	}
-	
-	/* ---- Graduation ---- */
-	
-	body.site-graduation {background: url("img/misc/graduation-bg.jpg") no-repeat center top #ffffff; }
-	.site-graduation header { background: none }
-	.site-graduation .wordmark { background-position: -1000px 0; }
 	
 }
 @media (max-width: 480px) { 
