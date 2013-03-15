@@ -832,9 +832,12 @@ body .image-page  h1, body.single .image-page  h1 {
 	#uwalert-alert-message div {
 		width: 768px;
 	}
+	
+	/* ---- Graduation ---- */
+	
 	body.site-graduation {
-		background: url("img/misc/commencement-bg.jpg") no-repeat -316px top white;
-		background-size: 180%;
+		background-size: 170%;
+		background-position: -290px 5px;
 	}
 	
 }
@@ -2292,7 +2295,6 @@ body .image-page  h1, body.single .image-page  h1 {
 	
 	/* ---- Graduation ---- */
 
-	body.site-graduation {background: url("img/misc/commencement-bg.jpg") no-repeat center top #ffffff; }
 	.site-graduation header { background-image: none !important; }
 	.site-graduation .wordmark { background-position: -1000px 0 !important; }
 	
@@ -2336,6 +2338,8 @@ body .image-page  h1, body.single .image-page  h1 {
 
 @media (min-width: 980px) {
 
+	/* ---- Graduation ---- */
+	body.site-graduation {background: url("img/misc/commencement-bg.jpg") no-repeat center top #ffffff; }
 }
 
 
