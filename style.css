@@ -832,6 +832,10 @@ body .image-page  h1, body.single .image-page  h1 {
 	#uwalert-alert-message div {
 		width: 768px;
 	}
+	body.site-graduation {
+		background: url("img/misc/commencement-bg.jpg") no-repeat -316px top white;
+		background-size: 180%;
+	}
 	
 }
 @media (max-width: 480px) { 
