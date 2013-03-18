@@ -43,18 +43,18 @@ function t_gallery($output, $attr)
       $url = wp_get_attachment_image_src($image->ID);
       $url_large = wp_get_attachment_image_src($image->ID, 'thumbnail-large');
       $med_url = wp_get_attachment_image_src($image->ID, 'Full Width');
-      $large_url = wp_get_attachment_image_src($image->ID, 'full');
+      $permalink = get_permalink($image->ID);
       
       if ( $index == 4 || $len < 5 ) {
 
-        $large = '<div class="gallery-image" data-permalink-url="'.get_permalink($image->ID).'" data-url="'.$med_url[0].'" data-wp-url="'. $large_url[0] .'" style="background-image:url('.$url_large[0].')"><span><p class="image-title">'. $image->post_title .'</p><p>' . $image->post_excerpt .'</p></span></div>' .  "\n\n";
+        $large = '<div class="gallery-image" data-permalink-url="'.$permalink.'" data-url="'.$med_url[0].'" data-wp-url="'. $permalink .'" style="background-image:url('.$url_large[0].')"><span><p class="image-title">'. $image->post_title .'</p><p>' . $image->post_excerpt .'</p></span></div>' .  "\n\n";
 
         if ( $len < 5 )  
           $html .= "<div class=\"large\">$large</div>";
 
       } else {
 
-        $group .= '<div class="gallery-image" data-permalink-url="'.get_permalink($image->ID).'" data-url="'. $med_url[0] .'" data-wp-url="'. $large_url[0] .'" style="background-image:url('.$url[0].');"><span><p class="image-title">'. $image->post_title . '</p><p>' . $image->post_excerpt . '</p><p class="text-shadow"></p></span></div>'. "\n\n";
+        $group .= '<div class="gallery-image" data-permalink-url="'.$permalink.'" data-url="'. $med_url[0] .'" data-wp-url="'. $permalink .'" style="background-image:url('.$url[0].');"><span><p class="image-title">'. $image->post_title . '</p><p>' . $image->post_excerpt . '</p><p class="text-shadow"></p></span></div>'. "\n\n";
 
       }
 
