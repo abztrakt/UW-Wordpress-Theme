@@ -277,11 +277,16 @@ hr {
     width: 30px;
     height: 30px;
     float: left;
+}
 .tweet p {
 	margin-bottom: 10px;
 }    
-.twitter-feed { padding: 15px 0 0 0 }
-.twitter-feed h2 a { color: #39275b }
+.twitter-feed { 
+	padding: 15px 0 0 0 
+}
+.twitter-feed h2 a { 
+	color: #39275b 
+}
 
 
 /* ---- Youtube Playlist Shortcode ---- */
