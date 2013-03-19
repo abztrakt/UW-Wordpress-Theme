@@ -127,6 +127,7 @@ hr {
 .subpage_menu h2, 
 .pagelet_widget h2,
 .widget_uw_rss_widget h2,
+.widget_twitter_feed h2
 #masonry h2 {
 	background: url(img/widgets/headline-background.jpg) no-repeat -16px -148px transparent;
 	padding: 32px 0 5px;
