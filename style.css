@@ -266,7 +266,16 @@ hr {
     height: 28px;
 	width: 32px;
 }
+/* ---- Twitter Widget ---- */
 
+.tweet { margin-bottom: 15px }
+
+.twitter-box img {
+    width: 30px;
+    height: 30px;
+    float: left;
+    margin: 0 7px 0 0; }
+    
 /* ---- Youtube Playlist Shortcode ---- */
 
 .youtube-large {
