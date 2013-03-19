@@ -517,10 +517,16 @@ hr {
 li {
 	list-style: none;
 }
+.entry-content ol li {
+	padding-left: 0;
+	background: none;
+	margin-left: 18px;
+}
 ol li {
 	list-style: decimal;
 	margin-left: 18px;
 }
+
 .more, .rss-more {
 	background: url('img/misc/bullet.png') right center no-repeat;
 	padding-right: 10px;
