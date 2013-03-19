@@ -283,10 +283,12 @@ hr {
 	margin-bottom: 10px;
 }    
 .twitter-feed { 
-	padding: 15px 0 0 0 
+	padding: 10px 0 0 0 
 }
-.twitter-box h2 a { color: #39275b }
-
+.twitter-box h2 a { 
+	padding-left: 32px;
+	color: rgb(57, 39, 91);
+	background: url(img/soc-med.gif) no-repeat 0 -88px transparent; }
 
 /* ---- Youtube Playlist Shortcode ---- */
 
