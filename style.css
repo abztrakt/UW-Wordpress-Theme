@@ -176,7 +176,7 @@ hr {
 .widget_uw-pride-points {
 	box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
 	-webkit-box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
-	padding: 5px 5px 15px 5px;
+	padding: 5px;
 	margin: 0px 0px 25px 3px;
 	position: relative;
 	text-align: center;
@@ -185,7 +185,7 @@ hr {
 	padding: 5px;
 	margin: 0;
 }
-.widget_uw-pride-points .pride-content {
+.pride-point p {
 	color: rgb(57, 39, 91);
 	font-family: Baskerville, 'Times New Roman', Times, serif;
 	font-weight: 300;
@@ -196,10 +196,14 @@ hr {
 	line-height: 23px;
 	margin: 5px 0 10px;
 }
-.widget_uw-pride-points .pride-src {
+.pride-point p.pride-src {
 	border-top: 1px solid rgb(221, 221, 221);
 	display: inline-block;
-	font-size: 12px;
+	font-style: normal;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 13px;
+	font-weight: normal;
+	line-height: 17px;
 	padding: 5px 10px;
 	color: rgb(163, 163, 163);
 }
@@ -213,7 +217,7 @@ hr {
 	left: -15px;
 	overflow: hidden;
 	text-indent: -99999px;
-  z-index:1;
+	z-index:1;
 }
 
 
@@ -2325,7 +2329,7 @@ body .image-page  h1, body.single .image-page  h1 {
 	/* ---- Graduation ---- */
 	
 	body.site-graduation {
-		background-image: url("img/misc/commencement-bg.jpg");		
+		background-image: url("img/misc/commencement-bg-full.jpg");		
 	}
 	.site-graduation header { background-image: none !important; }
 	.site-graduation .wordmark { background-position: -1000px 0 !important; }
