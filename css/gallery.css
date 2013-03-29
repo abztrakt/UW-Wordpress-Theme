@@ -153,7 +153,7 @@ div.gallery {
 	background-image: url('../img/gallery/arrows.png');
 	position: absolute;
 	top: 28%;
-	z-index: 3;
+	z-index: 2;
 	-webkit-transition-property: left, right;
     -webkit-transition-duration: 0.05s;
     cursor: pointer;

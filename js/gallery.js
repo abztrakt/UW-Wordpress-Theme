@@ -59,7 +59,7 @@ $(document).ready(function() {
         .hide()
         .css({
                 position:'absolute',
-                zIndex:2
+                zIndex:1
               })
         .find('.image-description').html($this.children('span').html())
           .end()

@@ -54,7 +54,7 @@ h2 {
 h3 {
 	color: #39275B;
 	font-size: 1.25em;
-	line-height: 24px;
+	line-height: 23px;
 	font-weight: 600;
 }
 h4 {
@@ -217,7 +217,6 @@ hr {
 	left: -15px;
 	overflow: hidden;
 	text-indent: -99999px;
-	z-index:1;
 }
 
 
@@ -1524,7 +1523,7 @@ body .image-page  h1, body.single .image-page  h1 {
 	    left: 0;
 	    right: 0;
 	    background-color: #39275B;
-	    z-index: 1;
+	    z-index: 3;
 	    box-shadow: 0 0px 6px #333;
 	    -moz-box-shadow: 0 0px 6px #333;
 	    -webkit-box-shadow: 0 0px 6px #333;
@@ -1624,7 +1623,7 @@ body .image-page  h1, body.single .image-page  h1 {
 	    background: url(img/header/header-sprite.png) no-repeat 5px 15px #D7A900;
 	    width: 95px;
 	    height: 90px;
-	    text-indent: -999px;
+	    text-indent: -9999px;
 	}
 	.wordmark {
 	    background: url(img/header/header-sprite.png) no-repeat 0 -87px transparent;
