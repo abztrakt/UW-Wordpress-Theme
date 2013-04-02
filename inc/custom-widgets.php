@@ -32,6 +32,7 @@ function uw_register_widgets() {
 }
 
 add_action('widgets_init', 'uw_register_widgets', 1);
+remove_action( 'widgets_init', 'akismet_register_widgets' ); // unregister_widget doesn't work
 
 /**
  *
