@@ -9,6 +9,9 @@ function uw_register_widgets() {
 	if ( !is_blog_installed() )
 		return;
 
+  unregister_widget('Widget_Akismet');
+  unregister_widget('WP_Widget_Meta');
+
 	register_widget('UW_Widget_Recent_Posts');
   unregister_widget('WP_Widget_Recent_Posts');
 
