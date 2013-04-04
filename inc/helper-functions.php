@@ -74,6 +74,8 @@ if ( ! function_exists( 'get_iframe_domains' )):
     return array(
       'uw.edu',
       'washington.edu',
+      'uwtv.org',
+      'www.uwtv.org',
       'google.com',
       'youtube.com',
       'excition.com',
