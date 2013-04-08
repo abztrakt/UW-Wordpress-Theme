@@ -258,7 +258,7 @@ jQuery(window).load(function() {
   }
   calculate_dropdowns();
 
-  $('div.nav-collapse').children('.nav').attr('role','menubar')
+  //$('div.nav-collapse').children('.nav').attr('role','menubar')
   $('.dropdown')
     .mouseenter(function(e) {
     
@@ -455,7 +455,26 @@ jQuery(window).load(function() {
             $lis.slice(i,i+10).wrapAll('<ul class="pull-left" style="width:200px"/>')
           };
         }
+      }).end().end()
+      .on('click', 'a', function() {
+        var $this = $(this)
+          , width = $(window).width() 
+        
+        if ( width > 767 || 
+             !$this.siblings('ul').length ||
+             $this.siblings('ul').hasClass('open') )
+          return true;
+
+
+        $this.closest('ul').find('ul.sub-menu').removeClass('open').end().end()
+          .siblings('ul').toggleClass('open')
+
+
+        return false;
+      
       })
+
+
 
 
   /*
