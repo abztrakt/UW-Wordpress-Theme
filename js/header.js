@@ -293,6 +293,7 @@ jQuery(window).load(function() {
         var $this   = $(this)
           , $ul     = $this.children('.dropdown-menu')
           , $a      = $this.children('a')
+          , height  = $ul.data('height') == 0 ? $ul.find('li').length * 35 : $ul.data('height')
 
       if ( $ul.hasClass('open') ) {
         document.location.href = $(e.target).attr('href')
@@ -300,7 +301,7 @@ jQuery(window).load(function() {
         window.scrollTo(0,0)
           $('.dropdown-menu').removeClass('open').height(0)
           $ul.addClass('open').attr('aria-hidden','false')
-            .height($ul.data('height')) 
+            .height(height) 
       }
 
         return false;
