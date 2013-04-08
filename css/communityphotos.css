@@ -74,6 +74,20 @@
 	width: 60px;
 	height: 60px;
 }
+#sidebar .communityphotos {
+	width: auto;
+}
+#sidebar .communityphotos a {
+	font-size: 13px;
+}
+
+#sidebar .communityphotos a span {
+	width: 47px;
+	height: 47px;
+}
+.widget_community_photos {
+	height: 400px;
+}
 .communityphotos a span {
 	width: 30px;
 	height: 30px;
@@ -85,13 +99,17 @@
 	cursor: pointer;
 	cursor: hand;
 }
+.communityphotos .widgettitle {
+	background: url(../img/widgets/headline-background.jpg) no-repeat -16px -148px rgba(0, 0, 0, 0);
+	padding: 32px 0 5px;
+}
 .communityphotos span img {
 	height:40px;
 }
 .communityphotos div img {
 	margin: 0;
 }
-#nc-left-col .communityphotos {
+#nc-left-col .communityphotos, #sidebar .communityphotos {
 	width:auto;
 	padding: 0 0 15px 15px;
 }
