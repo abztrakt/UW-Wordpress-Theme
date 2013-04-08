@@ -988,8 +988,8 @@ body .image-page  h1, body.single .image-page  h1 {
 		margin-left: -20px !important;
 		margin-top: -5px;
 	}
-	#menu-sidebar .menu-item {position: relative}
-	#menu-sidebar > .menu-item > a::after {
+	.menu .menu-item {position: relative}
+	.menu > .menu-item > a::after {
 		border-left: 8px solid transparent;
 		border-right: 8px solid transparent;
 		border-top: 8px solid black;
