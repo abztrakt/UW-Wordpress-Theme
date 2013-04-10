@@ -85,7 +85,7 @@
 	width: 47px;
 	height: 47px;
 }
-.widget_community_photos {
+#sidebar .widget_community_photos {
 	height: 400px;
 }
 .communityphotos a span {
