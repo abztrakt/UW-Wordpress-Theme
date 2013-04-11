@@ -503,10 +503,6 @@ ol > li {
 	list-style: decimal;
 	margin-left: 18px;
 }
-.entry-content li img { 
-	margin: 5px 0 10px -20px;
-}
-
 .more, .rss-more {
 	background: url('img/misc/bullet.png') right center no-repeat;
 	padding-right: 10px;
