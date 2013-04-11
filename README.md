@@ -15,7 +15,17 @@ If there are desired features or changes, our team's philosophy is to create a c
 
 ## History
 
-### 1.2.5 - Unreleased
+### 1.2.7 - More style for headings and gallery
+  - Twitter widget styling updates
+  - General style updates and header
+  - Bugfixes footer, twitter widget 
+
+### 1.2.6 - Gallery updates and iframe shortcode
+  - Added iframe shortcode
+  - Updated gallery display for few images 
+  - Tweaked display for mobile and retina
+
+### 1.2.5 - Breadcrumbs and updates to blogroll
   - Breadcrumbs for pages
   - Adding blogroll shortcode for custom post types
   - MS Word mimetype template added 
