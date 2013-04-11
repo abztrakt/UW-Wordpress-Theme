@@ -15,6 +15,11 @@ If there are desired features or changes, our team's philosophy is to create a c
 
 ## History
 
+### 1.2.8 - Replace media feature
+  - Added replace media feature
+  - Cleanup widgets, visuals
+  - Bugfixes, menu and search
+
 ### 1.2.7 - More style for headings and gallery
   - Twitter widget styling updates
   - General style updates and header
