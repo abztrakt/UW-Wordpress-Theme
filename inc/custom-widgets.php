@@ -936,31 +936,41 @@ class UW_Subpage_Menu extends WP_Widget {
 	}
 
 	public function widget( $args, $instance ) {
-    //global $post;
-    //if (!is_post_type_hierarchical($post->post_type)) 
-      //return;
 		extract( $args );
 		$id    = $this->get_post_top_ancestor_id();
     $title = '<a href="' . get_permalink($id) .'" title="'. esc_attr(strip_tags(get_the_title($id))) .'">'.get_the_title($id).'</a>';
+    $depth = isset( $instance[ 'depth' ] ) ? $instance[ 'depth' ] : 1;  
+
 
     echo $before_widget;?>
 
     <?php echo $before_title . $title . $after_title; ?>
     <?php echo '<ul class="menu">';?>
-    <?php wp_list_pages( array('title_li'=>'','depth'=>1,'child_of'=>$id) ); ?>
+    <?php wp_list_pages( array('title_li'=>'','depth'=>$depth,'child_of'=>$id) ); ?>
     <?php echo '</ul>'; ?>
     <?php
 		echo $after_widget;
 	}
 
+	function update($new_instance, $old_instance) {
+		$instance = array();
+		$instance['depth'] = (int) $new_instance['depth'];
+		return $instance;
+	}
+
 	public function form( $instance ) {
 
-    //$title  = isset( $instance[ 'title' ] ) ? $instance[ 'title' ] : __( get_bloginfo('name'), '' );  ?>
+    $depth = isset( $instance[ 'depth' ] ) ? $instance[ 'depth' ] : 1;  
 
-		<!--p>
-		<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
-		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
-		</p-->
+  ?>
+
+		<p>
+			<label for="<?php echo $this->get_field_id('depth'); ?>"><?php _e( 'Depth:' ); ?></label>
+			<select name="<?php echo $this->get_field_name('depth'); ?>" id="<?php echo $this->get_field_id('depth'); ?>" class="widefat">
+				<option value="1"<?php selected( $depth, 1 ); ?>>1</option>
+				<option value="2"<?php selected( $depth, 2 ); ?>>2</option>
+			</select>
+		</p>
 
 		<?php 
 	}

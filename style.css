@@ -471,7 +471,7 @@ summary {
 	border: none;
 }
 
-.menu .sub-menu {
+.menu .sub-menu, .menu .children {
 	display: none;	
 }
 .sub-menu li:last-child a {
@@ -1994,7 +1994,7 @@ body .image-page  h1, body.single .image-page  h1 {
 	
 	/* ----  Sidebar Navigation ---- */
 	
-	.menu .sub-menu {
+	.menu .sub-menu, .menu .children {
 		z-index: 999;
 		top: -20px;
 		position: absolute;
@@ -2010,10 +2010,10 @@ body .image-page  h1, body.single .image-page  h1 {
 		-webkit-border-radius: 5px;
 		-moz-border-radius: 5px;
 	}
-	.menu .menu-item:hover .sub-menu {
+	.menu .menu-item:hover .sub-menu, .menu .page_item:hover .children {
 		display: block;
 	}
-	.menu .menu-item .sub-menu:after {
+	.menu .menu-item .sub-menu:after, .menu .page_item .children:after {
 		content: " ";
 		background: url('img/misc/menu-notch.png') no-repeat -3px 0 transparent;
 		color: #F4F4F4;
