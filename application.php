@@ -21,7 +21,7 @@
 				</div><!-- .entry-content -->
 
 				<footer class="entry-meta">
-          <iframe class="uw-pdf-view" style="<?php echo(is_pdf() ? 'width:100%;height:900px;' : 'width:0px;height:0px;'); ?>" src="<?php echo wp_get_attachment_url(get_the_ID()); ?>"></iframe>
+          <iframe class="uw-pdf-view" style="<?php echo(is_pdf() ? 'width:100%;height:900px;' : 'width:0px;height:0px;'); ?>" src="<?php echo wp_get_attachment_url(get_the_ID()); ?>?<?php echo time() ?>"></iframe>
 					<?php edit_post_link( __( 'Edit', 'twentyeleven' ), '<span class="edit-link">', '</span>' ); ?>
 				</footer><!-- .entry-meta -->
 			</article><!-- #post-<?php the_ID(); ?> -->

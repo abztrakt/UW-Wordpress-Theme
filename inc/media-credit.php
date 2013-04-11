@@ -41,7 +41,8 @@ function my_image_attachment_fields_to_edit($form_fields, $post) {
 
   // also only show this field when the context is meant to show it
   if ( ! in_array( $_REQUEST['context'],
-                   array('custom-header-blogroll-banner', 'custom-header' )) )
+    array('custom-header-blogroll-banner', 'custom-header' )) && 
+      wp_attachment_is_image($post->ID) )
   {
     $form_fields["media_credit"] = array(
       "label" => __("Image Credit"),
