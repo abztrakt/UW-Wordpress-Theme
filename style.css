@@ -477,6 +477,16 @@ summary {
 .sub-menu li:last-child a {
 	border-bottom: none;
 }
+
+.menu > li > a:after {
+	content: '+';
+	color: rgb(215, 169, 0);
+	font-size: 15px;
+	font-weight: bold;
+	margin-left: 5px;
+}
+.menu li > a:only-child:after {content: ''; }
+
 /* ---- All Gold Bullet Stylings ---- */
 
 #nc-left-col .widget ul li,
@@ -968,15 +978,16 @@ body .image-page  h1, body.single .image-page  h1 {
 		border-top: 6px solid transparent;
 		content: " ";
 	}
-	
+		
 	/* Mobile Side Menu */
 	
-	.widget_nav_menu .pull-left { 
+	.menu .pull-left { 
 		float: none; 
 		width: 100% !important;
 	}
-	#sidebar .sub-menu.open {
-		box-shadow: inset 0 0 17px rgb(153, 153, 153);
+	#sidebar .sub-menu.open,
+	#sidebar .children.open {
+		box-shadow: inset 0 0 7px rgb(192, 192, 192);
 		background-color: rgb(244, 244, 244);
 		display: block;
 		width: 100% !important;
@@ -984,8 +995,10 @@ body .image-page  h1, body.single .image-page  h1 {
 		margin-left: -20px !important;
 		margin-top: -5px;
 	}
-	.menu .menu-item {position: relative}
-	.menu > .menu-item > a::after {
+	.menu .menu-item,
+	.menu .page_item {position: relative}
+	.menu > .menu-item::after,
+	.menu > .page_item::after {
 		border-left: 8px solid transparent;
 		border-right: 8px solid transparent;
 		border-top: 8px solid black;
