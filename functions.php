@@ -1,4 +1,9 @@
 <?  
+
+// Wordpress 3.5 oEmbed max-width
+if ( ! isset( $content_width ) ) 
+  $content_width = 620;
+
 /**
  * Register with hook 'wp_enqueue_scripts', which can be used for front end CSS and JavaScript
  */
