@@ -49,17 +49,26 @@ function uw_edit_attachment_slug( $fields, $post )
                     order:"ASC"
                   },
                   library : { 
-                    type : "application" ,
-                    post__not_in : ['.$post->ID.']
+                    type : "application" 
+                    //post__not_in : ['.$post->ID.']
                   },
                   multiple: false  
                 });
              
                 file_frame.on( "select", function() {
+                  jQuery("#replace-media-alert").remove();
+
                   attachment = file_frame.state().get("selection").first().toJSON();
 
+                  if ( attachment.id == '.$post->ID.') {
+                      jQuery("form#post")
+                        .before("<div id=\"replace-media-alert\" class=\"updated below-h2\"><p>The media you selected is the same file as this media.</p></div>");
+                      return;
+                  }
+
+
                   jQuery("#replace-media-input-'. $post->ID .'").val(attachment.id)
-                    jQuery("form#post").before("<div class=\"error below-h2\"><p>This media will be <b>permanently replaced</b> by <b>\""+ attachment.title + "\"</b> on " + (jQuery("#publish").val() || "Save" ) + "</p></div>");
+                  jQuery("form#post").before("<div id=\"replace-media-alert\" class=\"error below-h2\"><p>This media will be <b>permanently replaced</b> by <b>\""+ attachment.title + "\"</b> on " + (jQuery("#publish").val() || "Save" ) + "</p></div>");
                 });
              
                 file_frame.open();
@@ -88,6 +97,9 @@ function uw_save_attachment_slug( $attachment, $post_data )
 
     $currentMediaID = $attachment['post_ID'];
     $newMediaID = $attachment['replace_media_for_'.$currentMediaID];
+
+    if ( $currentMediaID == $newMediaID )
+      return;
 
     $currentMedia = get_attached_file($currentMediaID);
     $newMedia = get_attached_file($newMediaID);
