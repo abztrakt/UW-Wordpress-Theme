@@ -1504,9 +1504,9 @@ body .image-page  h1, body.single .image-page  h1 {
 		padding: 10px 0 0 20px;
 		margin: 0 0 15px 30px;
 	}
-	.info-box-large ul {
-		margin-left: -10px;
-	}
+	.info-box-large ul { margin-left: -10px; }
+	.info-box-large ul.shortcode-blogroll {	margin: 15px 0 0 0; }
+	.info-box-large ul.shortcode-blogroll li { margin: 0 0 5px 0; }
 	.info-box-large {
 		padding: 25px 10px 15px;
 		margin: 15px 0 15px 40px;
