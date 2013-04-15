@@ -239,7 +239,7 @@ if( ! function_exists('get_uw_breadcrumbs') ) :
       $url   = get_permalink($page->ID);
       $html .= "<li $class><a href=\"$url\" title=\"{$page->post_title}\">{$page->post_title}</a>";
     }
-    return "<ul class=\"breadcrumbs-container\"><ul class=\"breadcrumbs-list\">$html</ul></div>";
+    return "<div class=\"breadcrumbs-container\"><ul class=\"breadcrumbs-list\">$html</ul></div>";
   }
 endif;
 
