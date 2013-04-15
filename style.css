@@ -449,7 +449,7 @@ summary {
 }
 .widget_nav_menu h2 a, .subpage_menu h2 a {
 	padding-left: 13px;
-	background: url(img/arrow.png) no-repeat -25px -11px transparent;
+	/* background: url("img/arrow.png") no-repeat -25px -11px transparent; */
 	margin-left: -14px;
 }
 .widget_nav_menu a, .subpage_menu a {
