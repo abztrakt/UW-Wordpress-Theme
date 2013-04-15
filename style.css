@@ -1612,7 +1612,7 @@ body .image-page  h1, body.single .image-page  h1 {
 	
 	#branding {
     	position:relative;
-		height: 150px;
+		height: 165px;
 		margin-bottom: 20px;
 		background-position: center top;
 		padding-top: 30px;
@@ -1625,7 +1625,7 @@ body .image-page  h1, body.single .image-page  h1 {
 		width: 960px;
 		left: 50%;
 		margin-left: -480px;
-		height: 100px;
+		height: 115px;
     /* added with super-search */
     -webkit-touch-callout: none;
     -webkit-user-select: none;
