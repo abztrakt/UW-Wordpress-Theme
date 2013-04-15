@@ -2100,6 +2100,7 @@ body .image-page  h1, body.single .image-page  h1 {
 	.breadcrumbs-container {
 		width: 620px;
 		overflow: hidden;
+		position: relative;
 	}
 	.breadcrumbs-list {
 		width: 3000px;
