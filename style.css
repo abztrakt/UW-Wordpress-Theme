@@ -2097,7 +2097,13 @@ body .image-page  h1, body.single .image-page  h1 {
 	}
 		
 	/* ----  Content ---- */ 
+	.breadcrumbs-container {
+		width: 620px;
+		overflow: hidden;
+	}
 	.breadcrumbs-list {
+		width: 3000px;
+		overflow: hidden;
 		display: inline-block;
 		margin: 0 0 0 -7px;
 	}
@@ -2111,6 +2117,16 @@ body .image-page  h1, body.single .image-page  h1 {
 		 -moz-transition: width 1s ease-in-out;
 		 -o-transition: width 1s ease-in-out;
 		 transition: width 1s ease-in-out;
+	}
+	.breadcrumbs-container:after {
+		content: " ";
+		display: block;
+		position: absolute;
+		width: 20px;
+		height: 20px;
+		background: url('img/misc/breadcrumb.png') no-repeat 2px 0 rgba(0, 0, 0, 0);
+		right: -7px;
+		top: 0;
 	}
 	.breadcrumbs-list li a {
 		background: url('img/misc/breadcrumb.png') no-repeat 0 0 transparent;	
