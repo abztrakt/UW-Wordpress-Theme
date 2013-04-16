@@ -2109,15 +2109,11 @@ body .image-page  h1, body.single .image-page  h1 {
 		margin: 0 0 0 -7px;
 	}
 	.breadcrumbs-list li {
-		max-width: 250px;
+		/* max-width: 250px; */
 		overflow: hidden;
 		float: left;
 		margin-left: -25px;
 		padding-right: 20px;
-		-webkit-transition: width 1s ease-in-out;
-		 -moz-transition: width 1s ease-in-out;
-		 -o-transition: width 1s ease-in-out;
-		 transition: width 1s ease-in-out;
 	}
 	.breadcrumbs-container:after {
 		content: " ";
