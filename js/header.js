@@ -177,8 +177,8 @@ jQuery(document).ready(function($){
 
     var $this = $(this)
 
-    //if ( !$this.data('open') && !$this.height() && $this.not('.thin-fixed'))
-      //$this.css('visibility','hidden')
+    if ( !$this.data('open') && !$this.height() && $this.not('.thin-fixed'))
+      $this.css('visibility','hidden')
 
   })
 
@@ -268,7 +268,7 @@ jQuery(window).load(function() {
       var $this   = $(this)
         , $ul     = $this.children('.dropdown-menu')
 
-        $ul.addClass('open').attr('aria-hidden','false')
+        $ul.addClass('open').attr('aria-expanded','true')
           .height($ul.data('height'))
 
       $('span.navbar-caret').css('left', $this.position().left + 20 ).hide().fadeIn(100);
@@ -281,7 +281,7 @@ jQuery(window).load(function() {
       var $this   = $(this)
         , $ul     = $this.children('.dropdown-menu')
 
-        $ul.removeClass('open').attr('aria-hidden','true')
+        $ul.removeClass('open').attr('aria-expanded','false')
           .height(0)
 
       $('span.navbar-caret').stop().hide()
@@ -300,7 +300,7 @@ jQuery(window).load(function() {
       } else {
         window.scrollTo(0,0)
           $('.dropdown-menu').removeClass('open').height(0)
-          $ul.addClass('open').attr('aria-hidden','false')
+          $ul.addClass('open').attr('aria-expanded','true')
             .height(height) 
       }
 
@@ -318,7 +318,7 @@ jQuery(window).load(function() {
         , $this    = $(this)
         , $anchors = $this.closest('ul').find('a')
         , clearMenus = function() { 
-          $('.dropdown-menu').removeClass('open').attr('aria-hidden','true').height(0);
+          $('.dropdown-menu').removeClass('open').attr('aria-expanded','false').height(0);
           $('span.navbar-caret').hide();
         }
 
@@ -380,13 +380,13 @@ jQuery(window).load(function() {
         , $ul   = $this.siblings('ul')
         , $anchors = $('a.dropdown-toggle')
         , clearMenus = function() { 
-          $('.dropdown-menu').removeClass('open').attr('aria-hidden','true').height(0);
+          $('.dropdown-menu').removeClass('open').attr('aria-expanded','false').height(0);
           $('span.navbar-caret').hide();
         }
 
       switch(e.keyCode) {
         case keys.enter:
-          $ul.addClass('open').attr('aria-hidden','false').height($ul.data('height'))
+          $ul.addClass('open').attr('aria-expanded','true').height($ul.data('height'))
               .find('a').first().focus()
           $('span.navbar-caret').css('left', $this.parent().position().left + 20 ).show();
           return true;
@@ -434,7 +434,9 @@ jQuery(window).load(function() {
       if ( !$target.attr('style') )
         $target.hide()
 
-      $target.stop().css({'visibility':'visible','height':'auto'}).slideToggle()
+      $this.attr('title', $this.attr('title').indexOf('Open') == -1 ? 'Open Navigation' : 'Close Navigation' ) 
+
+      $target.stop().css({'height':'auto'}).slideToggle()
       return false;
 
     })

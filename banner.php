@@ -15,12 +15,12 @@
 
 		<a class="patch" href="http://www.uw.edu" title="University of Washington">University of Washington</a>
 		<a class="wordmark" <?php custom_wordmark(); ?> href="<?php echo is_custom_wordmark() ? home_url('/') : '//www.washington.edu'; ?>">University of Washington</a>
-		<a title="Show search" role="button" href="#searchicon-wrapper" id="searchicon-wrapper" class="visible-phone" aria-haspopup="true">Search</a>
+		<a title="Show search" role="button" href="#searchicon-wrapper" id="searchicon-wrapper" class="visible-phone" aria-controls="search">Search</a>
 
       <?php get_template_part('uw-search'); ?>
 
 		</div>
-		<a title="Show menu" role="button" href="#listicon-wrapper" id="listicon-wrapper" class="visible-phone" aria-haspopup="true">Menu</a>
+		<a title="Show menu" role="button" href="#listicon-wrapper" id="listicon-wrapper" class="visible-phone" aria-controls="thin-strip">Menu</a>
 </div>
 
 <div id="thin-strip">

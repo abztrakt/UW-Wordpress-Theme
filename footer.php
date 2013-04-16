@@ -2,17 +2,17 @@
 
 
 <div id="footerBG">
-    <div id="footer" role="navigation" aira-label="Global Footer Menu">
+    <div id="footer" role="navigation" aria-label="Global Footer Menu">
     	<?php uw_footer_menu(); ?>
     </div>
 </div>
 
 
-<div id="footer-main" role="footer">
+<div id="footer-main">
   <div id="footer-right">
   	<a href="http://www.seattle.gov/">Seattle, Washington</a>
   </div>
-	  <ul role="footer">
+	  <ul role="contentinfo">
 	  	<li><a href="http://www.washington.edu/home/siteinfo/form">Contact Us</a></li>
 	  	<li><a href="http://www.washington.edu/jobs">Jobs</a></li>
 	  	<li><a href="http://myuw.washington.edu/">My UW</a></li>
