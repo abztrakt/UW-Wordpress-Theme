@@ -137,11 +137,17 @@ if ( ! function_exists( 'uw_admin_js_css' ) ):
     wp_register_script( 'admin', get_bloginfo('template_directory') . '/admin/js/admin.js', array('jquery'),'1.1' );
     wp_enqueue_script('admin');
 
+    // "Saved Galleries" Tab
+    wp_register_script('saved-galleries', get_bloginfo('template_directory') . '/admin/js/saved-galleries.js', array('media-views') );
+    wp_enqueue_script('saved-galleries');
+
     wp_enqueue_style( 'admin', get_bloginfo('template_directory') . '/admin/css/admin.css' );
     wp_enqueue_style('admin');
 
     // no reason to register it
     wp_enqueue_style( 'google-font-open-sans', 'https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300' );
+
+
   }
 endif;
 
