@@ -50,9 +50,10 @@ if ( ! function_exists('uw_feed_shortcode') ):
         'url'    => null,
         'number' => 5,
         'title'  => null,
+        'heading' => 'h3',
         'span'   => 4
       ), $atts ) );
-    
+
     if ( $url == null )
       return '';
 
@@ -72,7 +73,7 @@ if ( ! function_exists('uw_feed_shortcode') ):
 
       $content = "<div class=\"row $pullleft\">";
       $content .= "<div class=\"span$span\">";
-      $content .= "<div class=\"feed-in-body\"><a href=\"$url\" title=\"$title\"><h3>$title</h3></a></div>";
+      $content .= "<div class=\"feed-in-body\"><a href=\"$url\" title=\"$title\"><$heading>$title</$heading></a></div>";
       $content .= "<ul>";
 
       foreach ($feed_items as $index=>$item) 

@@ -29,59 +29,29 @@ function uw_documentation_html()
 	<div class="wrap">
 
     <p>
-      This documentation is also available on the <a href="http://www.washington.edu/marketing/web-design/wordpress-theme/documentation/" target="_blank">University Marketing</a> site.
+      <h2>Top Tutorials</h2>
+      <ul class="shortcode-blogroll">
+        <li>  <a target="_blank" href="https://www.washington.edu/marketing/2013/04/10/wordpress-image-galleries/">Create image galleries</a>
+        <li>  <a target="_blank" href="http://www.washington.edu/marketing/2013/04/08/embed-video/">Embed video</a>
+        <li>  <a target="_blank" href="http://www.washington.edu/marketing/2013/01/02/embed-the-campus-map/">Embed the Campus Map</a>
+        <li>  <a target="_blank" href="http://www.washington.edu/marketing/2012/12/19/pagelets/">Create and use Pagelets</a>
+        <li>  <a target="_blank" href="http://www.washington.edu/marketing/2013/04/10/same-document-url">Update documents and keep the same URL</a>
+      </ul>
+      Looking for something else? Browse all Web Team <a href="http://www.washington.edu/marketing/web-design/wordpress-theme/documentation/">WordPress documentation</a>.
     </p>
 
-      <h2>Basic Information</h2>
-      <p>
-        For new-user documentation such as how to edit pages or make a post, please visit the 
-        <a href="http://codex.wordpress.org/Main_Page">WordPress Codex</a>.
-      </p>
+    <p>
+      <?php  echo do_shortcode('[rss url="http://www.washington.edu/marketing/category/wp-guide/feed" number=3 title="Latest Tutorials" heading="h2"]'); ?>
+    </p>
+     
+    <p>
+      <?php  echo do_shortcode('[rss url="http://www.washington.edu/marketing/topic/wordpress/feed" number=3 title="Web Team Updates" heading="h2"]'); ?>
+    </p>
 
-      <h2>Features &amp; Tips</h2>
-
-      <ul class="shortcode-blogroll">
-        <li><a target="_blank" href=
-        "http://www.washington.edu/marketing/2013/01/02/embed-the-campus-map/">Embed the
-        Campus Map</a></li>
-
-        <li><a target="_blank" href="http://www.washington.edu/marketing/2012/12/27/google-calendar/">Embed a
-        Google Calendar</a></li>
-
-        <li><a target="_blank" href="http://www.washington.edu/marketing/2012/12/19/adding-users/">Add Users
-        and Choose User Roles</a></li>
-
-        <li><a target="_blank" href=
-        "http://www.washington.edu/marketing/2012/12/19/how-to-insert-images-into-posts-and-pages/">
-        Insert Images into Posts and Pages</a></li>
-
-        <li><a target="_blank" href=
-        "http://www.washington.edu/marketing/2012/12/19/commenting-code/">Commenting Code in
-        the WordPress Editor</a></li>
-
-        <li><a target="_blank" href=
-        "http://www.washington.edu/marketing/2012/12/19/pagelets/">Pagelets</a></li>
-
-        <li><a target="_blank" href=
-        "http://www.washington.edu/marketing/2012/12/19/blogroll-shortcode/">[blogroll]:
-        Embed Blog Posts on Pages</a></li>
-
-        <li><a target="_blank" href="http://www.washington.edu/marketing/2012/12/19/rss-feeds/">How to Find
-        and Embed RSS Feeds</a></li>
-
-        <li><a target="_blank" href="http://www.washington.edu/marketing/2012/12/19/add-captions/">Add
-        Captions to Images or Video</a></li>
-
-        <li><a target="_blank" href="http://www.washington.edu/marketing/2012/12/19/infobox/">Create an
-        InfoBox</a></li>
-      </ul>
-
-      <h2>Additional Information</h2>
-
-      <p>
-        If you need guidance with something that is not outlined above or in the <a href= "http://codex.wordpress.org/Main_Page">WordPress Codex</a>,
-        please contact <a href="mailto:uweb@uw.edu">uweb@uw.edu</a> for help.
-      </p>
+    <p>
+      <h2>Stuck?</h2>
+      If you are hosted by the Marketing Web Team and need guidance on something not found in our <a href="http://www.washington.edu/marketing/web-design/wordpress-theme/documentation/">documentation</a> or the <a href="http://codex.wordpress.org/Main_Page">WordPress Codex</a>, please contact <a href="mailto:uweb@uw.edu">uweb@uw.edu</a>.
+    </p>
 
 	</div>
   
