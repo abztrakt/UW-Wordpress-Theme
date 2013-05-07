@@ -38,7 +38,47 @@ if ( ! function_exists( 'uw_setup' ) ):
         'url' => '%s/../uw/img/header/cherries.jpg',
         'thumbnail_url' => '%s/../uw/img/header/cherries-thumbnail.jpg',
         'description' => __( 'Cherry Blossoms', 'uw' )
-      )
+      ),
+      'cherries' => array(
+        'url' => '%s/../uw/img/header/cherries-II.jpg',
+        'thumbnail_url' => '%s/../uw/img/header/cherries-II-thumbnail.jpg',
+        'description' => __( 'Cherry Blossoms II', 'uw' )
+      ),
+      'fern' => array(
+        'url' => '%s/../uw/img/header/fern.jpg',
+        'thumbnail_url' => '%s/../uw/img/header/fern-thumbnail.jpg',
+        'description' => __( 'Fern', 'uw' )
+      ),
+      'globe' => array(
+        'url' => '%s/../uw/img/header/globe.jpg',
+        'thumbnail_url' => '%s/../uw/img/header/globe-thumbnail.jpg',
+        'description' => __( 'Globe', 'uw' )
+      ),
+      'grass' => array(
+        'url' => '%s/../uw/img/header/grass.jpg',
+        'thumbnail_url' => '%s/../uw/img/header/grass-thumbnail.jpg',
+        'description' => __( 'Grass', 'uw' )
+      ),
+      'grill' => array(
+        'url' => '%s/../uw/img/header/grill.jpg',
+        'thumbnail_url' => '%s/../uw/img/header/grill-thumbnail.jpg',
+        'description' => __( 'Grill', 'uw' )
+      ),
+      'lights' => array(
+        'url' => '%s/../uw/img/header/lights.jpg',
+        'thumbnail_url' => '%s/../uw/img/header/lights-thumbnail.jpg',
+        'description' => __( 'Lights', 'uw' )
+      ),
+      'reeds' => array(
+        'url' => '%s/../uw/img/header/reeds.jpg',
+        'thumbnail_url' => '%s/../uw/img/header/reeds-thumbnail.jpg',
+        'description' => __( 'Reeds', 'uw' )
+      ),
+      'suzzallo' => array(
+        'url' => '%s/../uw/img/header/suzzallo.jpg',
+        'thumbnail_url' => '%s/../uw/img/header/suzzallo-thumbnail.jpg',
+        'description' => __( 'Suzzallo', 'uw' )
+      ),
     ));
   
   }
