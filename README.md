@@ -11,7 +11,7 @@ If there are desired features or changes, our team's philosophy is to create a c
   and edit as little as possible of this theme's code by overriding and adding files via the child theme.
 
 **Important: The Web Team does not provide support for sites running our theme but not hosted by us. This includes
-special features, documentation, and training that is provided to sites we host. If you find a bug, please send your 
+special features, documentation, and training that we provide only to sites we host. If you find a bug, please send your 
 bug fix to us. If the bug is on our end, we will update it with the next release.
 
 **Please note: the theme that was originally here has been moved to the 2011 branch.
