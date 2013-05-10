@@ -17,11 +17,18 @@
 
                   <div class="row">
                     <div class="span8">
-                        <?php echo get_avatar( get_the_author_meta( 'user_email' ), apply_filters( 'twentyeleven_author_bio_avatar_size', 200 ) ); ?> 
+                        <?php if ( gravatar_exists( get_the_author_meta('user_email') ) ) :
+                        echo get_avatar( get_the_author_meta( 'user_email' ), apply_filters( 'uw_author_bio_avatar_size', 200 ) ); 
+                            endif; ?> 
                         <h1 class="author-title"><?php the_author(); ?></h1>
-                        <p><?php the_author_meta( 'description' ); ?> </p>
-                        <p><?php the_author_meta('user_email'); ?></p>
-                        <p><?php the_author_meta('user_url'); ?></p>
+                        <div class="single-author">
+                            <div class="affiliation"><small><?php the_author_meta('affiliation') ?></small></div>
+                            <div class="email">Email: <a href="mailto:<?php the_author_meta('email') ?>"><?php the_author_meta('email'); ?></a></div>
+                            <div class="phone"><?php uw_the_author_meta('phone', 'Phone: '); ?></div>
+                            <div class="office"><?php uw_the_author_meta('office', 'Office: '); ?></div>
+                        </div>
+                        <p class="author-desc"><?php the_author_meta( 'description' ); ?> </p>
+
                     </div>
                   </div>
 

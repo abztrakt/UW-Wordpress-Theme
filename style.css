@@ -2327,7 +2327,7 @@ body .image-page  h1, body.single .image-page  h1 {
 	/* ----  Author Page ---- */
 	
 	.author h3 {
-		font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 		font-size: 15px;
 		line-height: 21px;
 	}
@@ -2343,6 +2343,13 @@ body .image-page  h1, body.single .image-page  h1 {
 	.author .author-posts h2 {
 		margin: 40px 0 20px;
 	}
+	div.single-author {
+    font-size: 14px;
+    margin: 10px 0 30px;
+    border-left: 4px solid #DDD;
+    padding: 0 0 0 15px; 
+  }
+  
 	
 	/* ----  Category Page ---- */
 	

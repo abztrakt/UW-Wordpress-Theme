@@ -87,3 +87,21 @@ if ( ! function_exists( 'get_iframe_domains' )):
     );
   }
 endif;
+
+if ( ! function_exists('gravatar_exists') ) :
+  function gravatar_exists($email) 
+  {
+    $uri = 'http://www.gravatar.com/avatar/' . md5(strtolower(trim($email))) . '?d=404';
+    $headers = @get_headers($uri);
+    return ! preg_match("|200|", $headers[0]) ? false : true;
+  }
+endif;
+
+if ( ! function_exists('uw_the_author_meta') ) :
+  function uw_the_author_meta($meta, $before = "", $after = "") 
+  {
+    $data = get_the_author_meta($meta);
+    echo !!$data ? $before . $data . $after : '';
+  }
+endif;
+

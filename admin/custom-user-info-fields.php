@@ -4,6 +4,8 @@ if (!function_exists('additional_contact_fields')) :
   function additional_contact_fields( $contactmethods ) {
     // Add Twitter, Facebook and Affiliation
     $contactmethods['affiliation'] = 'Affiliation';
+    $contactmethods['phone'] = 'Phone Number';
+    $contactmethods['office'] = 'Office';
     $contactmethods['twitter'] = 'Twitter';
     $contactmethods['facebook'] = 'Facebook';
     unset( $contactmethods['yim'] );
