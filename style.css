@@ -1911,7 +1911,7 @@ body .image-page  h1, body.single .image-page  h1 {
 		color: white;
 	}
 	.dropdown-toggle, .navbar .nav > li > a {
-	    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	    font-family: 'Open Sans', sans-serif;
 	    font-weight: 400; 
 	    font-size: 1.1em;
 	}
