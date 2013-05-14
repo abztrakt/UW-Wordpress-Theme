@@ -75,7 +75,7 @@ a:focus {
 	text-decoration: underline;
 }
 p {
-	line-height: 1.5em;
+	line-height: 1.55em;
     margin-bottom: 1.4em;
 }
 ul, ol {
@@ -108,7 +108,15 @@ summary {
 	line-height: 30px;
 	border-bottom: 1px solid rgb(243, 243, 243);
 }
-
+blockquote p {
+	line-height: 22.5px;
+	font-family: Georgia,"Times New Roman",Times,serif;
+	font-size: 16px;
+	font-style: italic;
+	padding: 10px 10px;
+	color: #777;
+	font-weight: 300;
+}
 
 /* ----  Right Sidebar ---- */
 
@@ -223,6 +231,7 @@ summary {
 	color: rgb(163, 163, 163);
 }
 .widget_uw-pride-points span {
+  z-index:1;
 	background: url("img/widgets/pride-points.png") 0 0 no-repeat transparent;
 	display: block;
 	width: 123px;
@@ -485,6 +494,8 @@ summary {
 	font-weight: bold;
 	margin-left: 5px;
 }
+#ie8 .menu > li > a:after { content: '';}
+
 .menu li > a:only-child:after {content: ''; }
 
 /* ---- All Gold Bullet Stylings ---- */
@@ -564,28 +575,27 @@ ul.shortcode-blogroll li {
   position:relative;
 }
 .entry-header .comments-link a {
-  background: #eee url('img/comment-bubble.png') no-repeat;
-  color: #666;
-  font-size: 13px;
-  font-weight: normal;
-  line-height: 35px;
-  overflow: hidden;
-  padding: 0 0 0;
-  position: absolute;
-  top: -5px;
-  right: -15px;
-  text-align: center;
-  text-decoration: none;
-  width: 43px;
-  height: 36px;
+	background: rgba(0, 0, 0, 0) url('img/comment-bubble.png') no-repeat 0 4px;
+	color: #666;
+	font-size: 13px;
+	font-weight: normal;
+	line-height: 35px;
+	overflow: hidden;
+	padding: 0 0 0 24px;
+	position: absolute;
+	top: -5px;
+	right: -19px;
+	text-align: center;
+	text-decoration: none;
+	width: 43px;
+	height: 36px;
 }
 .entry-header .comments-link .leave-reply {
   visibility: hidden;
 }
 .entry-header .comments-link a:hover, .entry-header .comments-link a:focus, .entry-header .comments-link a:active {
-  background-color: #1982d1;
-  color: #fff;
-  color: rgba(255,255,255,0.8);
+  background-position: 0 -37px;
+  color: #000;
 }
 .comment {
 	list-style: none;
@@ -624,7 +634,7 @@ ul.shortcode-blogroll li {
 	padding: 40px 15px 0 25px;
 	display: block;
 	clear: both;
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 	line-height: 20px;
 }
 #respond h3 {
@@ -957,7 +967,7 @@ body .image-page  h1, body.single .image-page  h1 {
 	}
 	.navbar-inner h3 a {
 		font-size: 20px;
-		font-family: 'Open Sans', sans-serif;
+		font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 		font-weight: 400;
 		letter-spacing: -.05em;
 		color: #39275B;
@@ -1901,7 +1911,7 @@ body .image-page  h1, body.single .image-page  h1 {
 		color: white;
 	}
 	.dropdown-toggle, .navbar .nav > li > a {
-	    font-family: 'Open Sans', sans-serif;
+	    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	    font-weight: 400; 
 	    font-size: 1.1em;
 	}
@@ -2410,6 +2420,13 @@ body .image-page  h1, body.single .image-page  h1 {
 	body.site-graduation {	background-image: url("img/misc/commencement-bg.jpg"); }
 	.site-graduation header { background-image: none !important; }
 	.site-graduation .wordmark { background-position: -1000px 0 !important; }
+	
+	
+	/* ---- Accessibility Site ---- */
+	
+	.site-accessibility article a {
+		text-decoration: underline;
+	}
 	
 }
 @media (min-width: 1200px) {  
