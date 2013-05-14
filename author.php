@@ -20,7 +20,7 @@
                         <?php if ( gravatar_exists( get_the_author_meta('user_email') ) ) :
                         echo get_avatar( get_the_author_meta( 'user_email' ), apply_filters( 'uw_author_bio_avatar_size', 200 ) ); 
                             endif; ?> 
-                        <h1 class="author-title"><?php the_author(); ?></h1>
+                        <h1 class="author-title"><?php the_author_meta('display_name'); // workaround for the_author() bug ?></h1>
                         <div class="single-author">
                             <div class="affiliation"><small><?php the_author_meta('affiliation') ?></small></div>
                             <div class="email">Email: <a href="mailto:<?php the_author_meta('email') ?>"><?php the_author_meta('email'); ?></a></div>
@@ -39,6 +39,8 @@
                   <?php rewind_posts(); ?>
                   <?php while ( have_posts() ): the_post(); ?>
 
+                  <?php if ( uw_check_author() ): ?>
+
                     <div class="row">
                       <div class="span8">
                         <a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>">
@@ -46,6 +48,8 @@
                         </a>
                       </div>
                     </div>
+
+                  <?php endif; ?>
                     
                   <?php endwhile; ?>
               </div>
