@@ -122,32 +122,32 @@ function uw_general_settings_api_init() {
 
   $color = get_option('header_background_color');
   echo "<input type=\"text\" name=\"header_background_color\" id=\"bg-color\" value=\"$color\" /> ";
-  echo '<a href="#" class="hide-if-no-js" id="bg-pickcolor">' . _( 'Select a Color' ) . '</a>';
-  echo '<div id="bg-color-picker" style="z-index: 100; background:#eee; border:1px solid #ccc;width:250px;display:none;"></div>';
-  echo '<div id="bg-color-preview" style="z-index: 100; background:#eee; border:1px solid #ccc;width:250px;display:none;"></div>';
+  //echo '<a href="#" class="hide-if-no-js" id="bg-pickcolor">' . _( 'Select a Color' ) . '</a>';
+  //echo '<div id="bg-color-picker" style="z-index: 100; background:#eee; border:1px solid #ccc;width:250px;display:none;"></div>';
+  //echo '<div id="bg-color-preview" style="z-index: 100; background:#eee; border:1px solid #ccc;width:250px;display:none;"></div>';
   ?>
     <script type='text/javascript'>
-      jQuery(document).ready(function($) {
-        var $input   = $('#bg-color')
-          , $headimg = $('#headimg')
-        $('#bg-color-picker').farbtastic(function(color) {
-          $input.val(color)
-          $headimg.css('background-color', color)
-        }) ;
-          
-        $('#bg-pickcolor').click(function() { $('#bg-color-picker').show(); return false; });
-          
-        $('h3').filter(function() {
-          return $(this).text().indexOf('Text') !== -1;
-        }).next('table').andSelf().remove(); //andSelf refers to <h3>Header Text</h3>
+  //    jQuery(document).ready(function($) {
+  //      var $input   = $('#bg-color')
+  //        , $headimg = $('#headimg')
+  //      $('#bg-color-picker').farbtastic(function(color) {
+  //        $input.val(color)
+  //        $headimg.css('background-color', color)
+  //      }) ;
+  //        
+  //      $('#bg-pickcolor').click(function() { $('#bg-color-picker').show(); return false; });
+  //        
+  //      $('h3').filter(function() {
+  //        return $(this).text().indexOf('Text') !== -1;
+  //      }).next('table').andSelf().remove(); //andSelf refers to <h3>Header Text</h3>
 
-        $headimg.css('text-align', 'center').children().not('img').hide()
-            .end().width('85%')
+  //      $headimg.css('text-align', 'center').children().not('img').hide()
+  //          .end().width('85%')
 
-        $headimg.css('background-color', $input.val())
+  //      $headimg.css('background-color', $input.val())
 
-        $('body').click(function() { $('#bg-color-picker').hide() })
-      })
+  //      $('body').click(function() { $('#bg-color-picker').hide() })
+  //    })
     </script>
   <?php
   }
@@ -156,8 +156,8 @@ function uw_general_settings_api_init() {
    do_settings_sections('custom-header', 'uw_adjust_custom_header_page');
   }
 
-  add_action('admin_init', 'uw_background_color_header_settings_api_init');
-  add_action('custom_header_options', 'uw_print_header_settings');
+  //add_action('admin_init', 'uw_background_color_header_settings_api_init');
+  //add_action('custom_header_options', 'uw_print_header_settings');
 
   function header_background_color() {
    echo get_header_background_color();
@@ -231,7 +231,7 @@ function uw_general_settings_api_init() {
 
   <?php }
   
-  add_action( 'admin_init', 'uw_blogroll_banner_header_settings_api_init');
+  //add_action( 'admin_init', 'uw_blogroll_banner_header_settings_api_init');
 
   /**
    * Taken from wp-admin/custom-header.php to limit fields in the media uploader
@@ -243,7 +243,7 @@ function uw_general_settings_api_init() {
       add_filter( 'media_upload_mime_type_links', '__return_empty_array' );
     }
   }
-  add_action( 'admin_menu', 'choose_blogroll_banner' );
+  //add_action( 'admin_menu', 'choose_blogroll_banner' );
   
 	function blogroll_banner_attachment_fields_to_edit( $form_fields, $post ) {
 		$form_fields = array();
