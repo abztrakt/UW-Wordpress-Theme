@@ -938,9 +938,12 @@ class UW_Subpage_Menu extends WP_Widget {
 	public function widget( $args, $instance ) {
 		extract( $args );
 		$id    = $this->get_post_top_ancestor_id();
+
+    if ( ! count(get_pages("child_of=$id"))) 
+      return;
+
     $title = '<a href="' . get_permalink($id) .'" title="'. esc_attr(strip_tags(get_the_title($id))) .'">'.get_the_title($id).'</a>';
     $depth = isset( $instance[ 'depth' ] ) ? $instance[ 'depth' ] : 1;  
-
 
     echo $before_widget;?>
 
