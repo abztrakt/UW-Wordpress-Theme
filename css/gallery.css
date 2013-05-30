@@ -43,7 +43,7 @@ div.gallery {
   position: relative;
 }
 .gallery-viewport {
-  width:10000px;
+  width:20000px;
   margin-left: 5px;
 }
 /* --- IE Fixes --- */
@@ -250,11 +250,11 @@ div.gallery {
 	text-align: center;
 	margin-bottom: 0;
 }
-ul.gallery-menu  li {
-	display: inline;
+ul.gallery-menu li {
+	display: inline-block;
 	background: url('../img/gallery/dots.png') no-repeat 0 -13px transparent;
 	padding: 2px 5px;
-	width: 20px;
+	width: 15px;
 	height: 15px;
 	cursor: pointer;
 	list-style: none;
