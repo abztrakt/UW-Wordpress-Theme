@@ -92,7 +92,7 @@ if ( ! function_exists('uw_feed_shortcode') ):
     return $content;
   }
 endif;
-add_shortcode( 'rss', 'uw_feed_shortcode' );
+//add_shortcode( 'rss', 'uw_feed_shortcode' );
 
 /**
  * Archive Shortcode
