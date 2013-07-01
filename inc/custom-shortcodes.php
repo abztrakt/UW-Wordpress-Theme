@@ -46,7 +46,7 @@ endif;
 if ( ! function_exists('uw_feed_shortcode') ):
   function uw_feed_shortcode( $atts ) 
   {
-    return '';
+
     extract( shortcode_atts( array(
         'url'    => null,
         'number' => 5,
@@ -55,8 +55,9 @@ if ( ! function_exists('uw_feed_shortcode') ):
         'span'   => 4
       ), $atts ) );
 
-    if ( $url == null )
+    if ( $url == null || is_feed() )
       return '';
+
 
     $content = '';
 
