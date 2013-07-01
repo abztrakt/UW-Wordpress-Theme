@@ -46,6 +46,7 @@ endif;
 if ( ! function_exists('uw_feed_shortcode') ):
   function uw_feed_shortcode( $atts ) 
   {
+    return '';
     extract( shortcode_atts( array(
         'url'    => null,
         'number' => 5,
@@ -92,7 +93,7 @@ if ( ! function_exists('uw_feed_shortcode') ):
     return $content;
   }
 endif;
-//add_shortcode( 'rss', 'uw_feed_shortcode' );
+add_shortcode( 'rss', 'uw_feed_shortcode' );
 
 /**
  * Archive Shortcode
