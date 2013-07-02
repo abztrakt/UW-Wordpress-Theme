@@ -664,6 +664,13 @@ function uw_search_query_filter($query) {
   return $query;
 }
 
+/** Co-Authors Plus auto apply the author filters **/
+add_filter('coauthors_auto_apply_template_tags', 'uw_coauthors_auto_apply_template_tags' );
+
+if ( ! function_exists( 'uw_coauthors_auto_apply_template_tags' )):
+  function uw_coauthors_auto_apply_template_tags() { return true; }
+endif;
+
 /*
  * Will be used in WP 3.4.2 to fix our schedules posts bug
  *
