@@ -109,10 +109,10 @@ if ( ! function_exists('uw_check_author') ) :
 
   function uw_check_author()
   {
-    if ( ! function_exists('uw_get_coauthors') )
+    if ( ! function_exists('get_coauthors') )
       return true;
 
-    $authors = uw_get_coauthors();
+    $authors = get_coauthors();
     return ( sizeof($authors) == 1 && isset( $authors[0]->ID ));
   }
 
