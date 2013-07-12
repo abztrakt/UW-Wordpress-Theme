@@ -162,9 +162,9 @@ function band_color_header_callback ()
 	echo $html;
 }
 function show_patch_toggle_header_callback() {
-	$options = (array) get_option('patchband');
+	$options = (array) get_option('patchband', true);
 
-  if ( $options['patch']['header']['visible'] )
+  if ( $options['patch']['header']['visible'] || ! get_option('patchband') )
     $options['patch']['header']['visible'] = 1;
 
 	$html = '<input class="header-show" type="checkbox" name="patchband[patch][header][visible]" value="1" ' . checked(1, $options['patch']['header']['visible'], false) . '/>'; 
