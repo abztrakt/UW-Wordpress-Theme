@@ -167,6 +167,7 @@ if ( ! function_exists('uw_blogroll_shortcode') ):
 endif;
 add_shortcode( 'blogroll', 'uw_blogroll_shortcode' );
 
+
 /**
  * Youtube playlist shortcode
  */
@@ -397,3 +398,34 @@ function uw_iframe_shortcode($atts) {
 }
 endif;
 add_shortcode( 'iframe', 'uw_iframe_shortcode' );
+
+/**
+ * Shortcode for the Rules site and automatically updating the 'Recent updates' part
+ */
+if ( ! function_exists('uw_rules_shortcode') ):
+  function uw_rules_shortcode( $atts ) 
+  {
+    $hour = 3600;
+    $transient = 'uw-rules';
+    if ( get_transient( $transient ) == false ) {
+
+      $txtfile = wp_remote_get('http://www.washington.edu/admin/rules/inc/rulesSpotlight1.html');
+      $d = new DOMDocument;
+      $d->loadHTML($txtfile['body']);
+      $rules = $d->getElementsByTagName('li');
+      for ($i = 0; $i < $rules->length; $i++)
+           $html .= '<li>'.$rules->item($i)->nodeValue . '</li>';
+
+      $html = "<ul>$html</ul>";
+      
+      set_transient( $transient, $html, $hour );
+
+    }
+
+    return get_transient( $transient );
+
+  }
+endif;
+
+if ( get_blog_details()->path == '/cms/rules/' )
+  add_shortcode( 'rules', 'uw_rules_shortcode' );
