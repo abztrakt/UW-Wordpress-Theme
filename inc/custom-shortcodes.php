@@ -407,18 +407,15 @@ if ( ! function_exists('uw_rules_shortcode') ):
   {
     $hour = 3600;
     $transient = 'uw-rules';
-    if ( get_transient( $transient ) == false ) {
+
+    if ( get_transient( $transient ) == false ) 
+    {
 
       $txtfile = wp_remote_get('http://www.washington.edu/admin/rules/inc/rulesSpotlight1.html');
-      $d = new DOMDocument;
-      $d->loadHTML($txtfile['body']);
-      $rules = $d->getElementsByTagName('li');
-      for ($i = 0; $i < $rules->length; $i++)
-           $html .= '<li>'.$rules->item($i)->nodeValue . '</li>';
-
-      $html = "<ul>$html</ul>";
-      
-      set_transient( $transient, $html, $hour );
+      $start = strpos($txtfile['body'], '<ul>' );
+      $end   = strpos($txtfile['body'], '</ul>' );
+      $ul    = substr( $txtfile['body'], $start, $end );
+      set_transient( $transient, $ul, $hour );
 
     }
 
