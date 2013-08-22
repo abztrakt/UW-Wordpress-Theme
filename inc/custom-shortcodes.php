@@ -424,5 +424,6 @@ if ( ! function_exists('uw_rules_shortcode') ):
   }
 endif;
 
-if ( get_blog_details()->path == '/cms/rules/' )
+if ( function_exists('get_blog_details') 
+      && get_blog_details()->path == '/cms/rules/' )
   add_shortcode( 'rules', 'uw_rules_shortcode' );
