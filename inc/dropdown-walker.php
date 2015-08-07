@@ -29,7 +29,7 @@ class UW_Dropdowns_Walker_Menu extends Walker_Nav_Menu {
 		parent::display_element( $element, $children_elements, $max_depth, $depth, $args, $output );
 	}
 
-	function start_lvl( &$output, $depth, $args ) {
+	function start_lvl( &$output, $depth = 0, $args = array() ) {
 
 		if ( ! $this->dropdown_enqueued ) {
 			wp_enqueue_script( 'bootstrap-dropdown' );
@@ -41,14 +41,14 @@ class UW_Dropdowns_Walker_Menu extends Walker_Nav_Menu {
 		$output .= "\n{$indent}<ul role=\"menu\" id=\"menu-".$this->current."\" aria-expanded=\"false\" class=\"{$class}\"><div class=\"menu-wrap\"><div class=\"inner-wrap\">\n";
 	}
 
-	function end_lvl(&$output, $depth) {
+	function end_lvl(&$output, $depth = 0, $args = array()) {
 		$indent = str_repeat("\t", $depth);
 		$output .= "</div>$indent</div></div></ul>\n";
     $this->toggle = true;
     $this->count = 0;
 	}
 
-	function start_el( &$output, $item, $depth, $args ) {
+	function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
 
     $item->attr_title = apply_filters('attribute_escape', $item->post_title);
 
@@ -74,5 +74,5 @@ class UW_Dropdowns_Walker_Menu extends Walker_Nav_Menu {
 
 		$output .= $item_html;
 	}
-  
+
 }
